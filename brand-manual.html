@@ -58,16 +58,16 @@
       bottom: 40px;
       right: 80px;
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--gray-mid);
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
 
     /* ── TYPOGRAPHY ── */
     .headline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 14px;
-      letter-spacing: 4px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--purple);
       margin-bottom: 48px;
@@ -118,7 +118,7 @@
     .tagline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 24px;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       color: var(--gray-mid);
     }
 
@@ -174,7 +174,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 500;
-      letter-spacing: 6px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gray-mid);
       margin-bottom: 24px;
@@ -327,14 +327,28 @@
     .clearspace-outer .arrow-label {
       position: absolute;
       font-size: 11px;
+      font-family: 'Inter', monospace;
       color: var(--purple);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .clearspace-outer .arrow-label.top { top: 20px; left: 50%; transform: translateX(-50%); }
-    .clearspace-outer .arrow-label.bottom { bottom: 20px; left: 50%; transform: translateX(-50%); }
-    .clearspace-outer .arrow-label.left { left: 12px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
-    .clearspace-outer .arrow-label.right { right: 12px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+    .clearspace-outer .arrow-label.top { top: 18px; left: 50%; transform: translateX(-50%); flex-direction: column; }
+    .clearspace-outer .arrow-label.bottom { bottom: 18px; left: 50%; transform: translateX(-50%); flex-direction: column; }
+    .clearspace-outer .arrow-label.left { left: 10px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+    .clearspace-outer .arrow-label.right { right: 10px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+    .clearspace-outer .arrow-line {
+      display: block;
+      background: var(--purple);
+      opacity: 0.4;
+    }
+    .clearspace-outer .arrow-label.top .arrow-line,
+    .clearspace-outer .arrow-label.bottom .arrow-line { width: 1px; height: 12px; }
+    .clearspace-outer .arrow-label.left .arrow-line,
+    .clearspace-outer .arrow-label.right .arrow-line { width: 12px; height: 1px; }
 
     /* ── INCORRECT USAGE ── */
     .incorrect-grid {
@@ -373,8 +387,8 @@
 
     .incorrect-item .stamp-err {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      letter-spacing: 2px;
+      font-size: 22px;
+      letter-spacing: 1.5px;
       padding: 6px 12px;
       border: 2px solid var(--purple);
       color: var(--purple);
@@ -478,9 +492,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      min-width: 40px;
     }
 
     .proportion-bar .p-white { flex: 65; background: var(--white); border: 1px solid #E5E7EB; color: #999; }
@@ -986,17 +1002,34 @@
   <!-- PAGE 7 — LOGO PROTECTION AREA           -->
   <!-- ════════════════════════════════════════ -->
   <section class="page">
-    <div class="headline">Clear Space</div>
+    <div class="headline">Clear Space & Minimum Size</div>
     <div class="clearspace-diagram">
       <div class="clearspace-outer">
-        <span class="arrow-label top">X</span>
-        <span class="arrow-label bottom">X</span>
-        <span class="arrow-label left">X</span>
-        <span class="arrow-label right">X</span>
+        <span class="arrow-label top"><span class="arrow-line"></span>X<span class="arrow-line"></span></span>
+        <span class="arrow-label bottom"><span class="arrow-line"></span>X<span class="arrow-line"></span></span>
+        <span class="arrow-label left"><span class="arrow-line"></span>X<span class="arrow-line"></span></span>
+        <span class="arrow-label right"><span class="arrow-line"></span>X<span class="arrow-line"></span></span>
         <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="brand-logo logo-sm">
       </div>
     </div>
-    <p style="text-align: center; margin: 0 auto;">Minimum clear space equals the height of "MAKE IT REAL." tagline. This space must remain free of any graphics, text, or visual elements.</p>
+    <p style="text-align: center; margin: 0 auto;">X = height of the tagline "MAKE IT REAL." This zone must remain free of all graphics, text, and visual elements.</p>
+    <div class="grid-3" style="margin-top: 40px;">
+      <div style="background: var(--gray-light); padding: 24px; text-align: center;">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; margin-bottom: 8px;">Digital Minimum</div>
+        <div style="font-size: 28px; font-weight: 700; color: var(--purple);">120px</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">width</div>
+      </div>
+      <div style="background: var(--gray-light); padding: 24px; text-align: center;">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; margin-bottom: 8px;">Print Minimum</div>
+        <div style="font-size: 28px; font-weight: 700; color: var(--purple);">30mm</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">width</div>
+      </div>
+      <div style="background: var(--gray-light); padding: 24px; text-align: center;">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; margin-bottom: 8px;">Favicon</div>
+        <div style="font-size: 28px; font-weight: 700; color: var(--purple);">32px</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">use monogram "12" only</div>
+      </div>
+    </div>
     <span class="page-number">07</span>
   </section>
 
@@ -1096,6 +1129,14 @@
       <div class="p-accent" style="flex: 2;">2%</div>
     </div>
     <p style="margin-top: 16px;">Purple is an accent driver, not a wallpaper. Signal Green is functional only — success states, active indicators. Never decorative. Kraft never appears in digital contexts.</p>
+    <h3 class="sub-title" style="margin-top: 32px;">Accessibility Contrast</h3>
+    <div style="font-family: 'Inter', monospace; font-size: 13px; line-height: 2; color: #666;">
+      <div>White text on Purple — <span style="color: var(--green); font-weight: 600;">WCAG AA pass (7.2:1)</span></div>
+      <div>Purple text on White — <span style="color: var(--green); font-weight: 600;">WCAG AA pass (7.2:1)</span></div>
+      <div>White text on Navy — <span style="color: var(--green); font-weight: 600;">WCAG AA pass (12.6:1)</span></div>
+      <div>Green on dark backgrounds only — <span style="color: #E53935; font-weight: 600;">avoid on white</span></div>
+      <div>Never use purple text on navy — <span style="color: #E53935; font-weight: 600;">insufficient contrast</span></div>
+    </div>
     <span class="page-number">09</span>
   </section>
 
@@ -1118,8 +1159,8 @@
       </div>
       <div>
         <h3 class="sub-title">Usage</h3>
-        <p>Industrial Kraft exists exclusively in the physical world. It is a material texture — the feel of uncoated paper, the warmth of a raw envelope, the craft behind the tech. It is never a screen color.</p>
-        <p style="margin-top: 16px;">Kraft communicates grounded authenticity. It prevents the brand from feeling cold or purely digital, adding human warmth to physical touchpoints without softening the tech identity.</p>
+        <p>Kraft is used exclusively for physical materials to add material contrast. It never appears in digital systems.</p>
+        <p style="margin-top: 16px;">It grounds the brand in the physical world — adding tactile depth to printed touchpoints without softening the tech identity.</p>
       </div>
     </div>
     <div class="grid-3" style="margin-top: 40px;">
@@ -1251,6 +1292,60 @@
   </section>
 
   <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 13B — GRID SYSTEM                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Layout Grid System</div>
+    <div class="grid-3">
+      <div style="background: var(--gray-light); padding: 32px; text-align: center;">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--purple); line-height: 1;">12</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; margin-top: 8px;">Columns</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">Desktop grid base</div>
+      </div>
+      <div style="background: var(--gray-light); padding: 32px; text-align: center;">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--purple); line-height: 1;">8pt</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; margin-top: 8px;">Spacing Unit</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">All spacing in multiples of 8</div>
+      </div>
+      <div style="background: var(--gray-light); padding: 32px; text-align: center;">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--purple); line-height: 1;">24px</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; margin-top: 8px;">Gutter</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">Minimum column gap</div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top: 40px;">
+      <div>
+        <h3 class="sub-title">Spacing Scale</h3>
+        <div style="font-family: 'Inter', monospace; font-size: 13px; line-height: 2.2; color: #666;">
+          <div><span style="color: var(--purple); font-weight: 600;">XS</span> — 8px</div>
+          <div><span style="color: var(--purple); font-weight: 600;">SM</span> — 16px</div>
+          <div><span style="color: var(--purple); font-weight: 600;">MD</span> — 24px</div>
+          <div><span style="color: var(--purple); font-weight: 600;">LG</span> — 32px</div>
+          <div><span style="color: var(--purple); font-weight: 600;">XL</span> — 48px</div>
+          <div><span style="color: var(--purple); font-weight: 600;">2XL</span> — 64px</div>
+          <div><span style="color: var(--purple); font-weight: 600;">3XL</span> — 80px</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub-title">Margin Rules</h3>
+        <div style="font-family: 'Inter', monospace; font-size: 13px; line-height: 2.2; color: #666;">
+          <div><span style="font-weight: 600;">Desktop</span> — 80px side margins</div>
+          <div><span style="font-weight: 600;">Tablet</span> — 40px side margins</div>
+          <div><span style="font-weight: 600;">Mobile</span> — 24px side margins</div>
+          <div><span style="font-weight: 600;">Max width</span> — 1200px</div>
+        </div>
+        <h3 class="sub-title" style="margin-top: 24px;">Breakpoints</h3>
+        <div style="font-family: 'Inter', monospace; font-size: 13px; line-height: 2.2; color: #666;">
+          <div><span style="font-weight: 600;">Mobile</span> — &lt; 768px</div>
+          <div><span style="font-weight: 600;">Tablet</span> — 768px – 1024px</div>
+          <div><span style="font-weight: 600;">Desktop</span> — &gt; 1024px</div>
+        </div>
+      </div>
+    </div>
+    <span class="page-number">13b</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
   <!-- PAGE 14 — VISUAL STYLE                  -->
   <!-- ════════════════════════════════════════ -->
   <section class="page">
@@ -1260,8 +1355,8 @@
       <li>Neutral lighting — no heavy filters or warm color grading</li>
       <li>Dark mode UI contrast — screens with purple accents visible</li>
       <li>Subtle purple glow in screen highlights</li>
-      <li>No blue futuristic AI clich&eacute;s — no robots, no holograms</li>
-      <li>No warm-toned photography, brown environments, or paper-heavy aesthetic</li>
+      <li>Avoid generic AI imagery — no robots, holograms, or blue futuristic clich&eacute;s</li>
+      <li>Maintain neutral or cool color balance — avoid overly warm grading</li>
     </ul>
     <div class="img-placeholder" style="height: 300px; margin-top: 32px;">
       [ Place brand photography example here — operational, digital, precise ]
@@ -1406,7 +1501,29 @@
       <span class="msg-type">Headline</span>
       <div class="msg-headline">If it's repetitive, we automate it.</div>
     </div>
-    <h3 class="sub-title" style="margin-top: 40px;">Call-to-Action Examples</h3>
+    <div class="two-col" style="margin-top: 40px;">
+      <div>
+        <h3 class="sub-title">Voice Rules — Do</h3>
+        <ul style="list-style: none; line-height: 2.2; font-size: 14px; color: #444;">
+          <li>&#10003; Direct and outcome-focused</li>
+          <li>&#10003; Measurable claims with specifics</li>
+          <li>&#10003; Short sentences, active voice</li>
+          <li>&#10003; Technical confidence without jargon</li>
+          <li>&#10003; Action-oriented CTAs</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub-title">Voice Rules — Avoid</h3>
+        <ul style="list-style: none; line-height: 2.2; font-size: 14px; color: #444;">
+          <li>&times; Buzzwords (synergy, leverage, disrupt)</li>
+          <li>&times; Overpromising or vague outcomes</li>
+          <li>&times; Hype language or startup clich&eacute;s</li>
+          <li>&times; Passive voice or hedging</li>
+          <li>&times; Decorative or poetic copy</li>
+        </ul>
+      </div>
+    </div>
+    <h3 class="sub-title" style="margin-top: 32px;">Call-to-Action Examples</h3>
     <div class="cta-examples">
       <div class="cta-tag">Book a free diagnosis</div>
       <div class="cta-tag">Let's build your system</div>
