@@ -22,6 +22,7 @@
       --navy-dark: #0F172A;
       --navy-card: #1E293B;
       --green: #16A34A;
+      --kraft: #D6C2A1;
     }
 
     html { scroll-behavior: smooth; }
@@ -267,6 +268,7 @@
     .logo-box.bg-purple { background: var(--purple); }
     .logo-box.bg-navy { background: var(--navy); }
     .logo-box.bg-black { background: var(--black); }
+    .logo-box.bg-kraft { background: var(--kraft); }
 
     .logo-box .brand-logo {
       max-width: 70%;
@@ -485,6 +487,7 @@
     .proportion-bar .p-neutral { flex: 20; background: var(--black); color: var(--white); }
     .proportion-bar .p-purple { flex: 10; background: var(--purple); color: var(--white); }
     .proportion-bar .p-accent { flex: 5; background: var(--green); color: var(--white); }
+    .proportion-bar .p-kraft { flex: 5; background: var(--kraft); color: var(--black); }
 
     /* ── TYPOGRAPHY SHOWCASE ── */
     .type-specimen {
@@ -893,7 +896,7 @@
       <li><span>Brand Essence</span></li>
       <li><span>Logo System</span></li>
       <li><span>Logo Usage Rules</span></li>
-      <li><span>Color System</span></li>
+      <li><span>Color System — Digital &amp; Material</span></li>
       <li><span>Typography System</span></li>
       <li><span>Layout Principles</span></li>
       <li><span>Visual Style</span></li>
@@ -971,6 +974,10 @@
         <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="brand-logo">
         <span class="label">Monochrome — Black</span>
       </div>
+      <div class="logo-box bg-kraft">
+        <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="brand-logo">
+        <span class="label">Kraft — Print Only</span>
+      </div>
     </div>
     <span class="page-number">06</span>
   </section>
@@ -1034,10 +1041,10 @@
   </section>
 
   <!-- ════════════════════════════════════════ -->
-  <!-- PAGE 9 — PRIMARY COLOR                  -->
+  <!-- PAGE 9 — DIGITAL SYSTEM PALETTE          -->
   <!-- ════════════════════════════════════════ -->
   <section class="page">
-    <div class="headline">Color System — Primary</div>
+    <div class="headline">Color System — A. Digital System Palette</div>
     <div class="two-col">
       <div>
         <div class="color-primary">
@@ -1055,15 +1062,7 @@
         <p style="margin-top: 16px;">This color feels technological, modern, and precise. It communicates SaaS energy and strong brand recognition without being playful or decorative.</p>
       </div>
     </div>
-    <span class="page-number">09</span>
-  </section>
-
-  <!-- ════════════════════════════════════════ -->
-  <!-- PAGE 10 — SECONDARY COLORS              -->
-  <!-- ════════════════════════════════════════ -->
-  <section class="page">
-    <div class="headline">Color System — Full Palette</div>
-    <div class="grid-3">
+    <div class="grid-3" style="margin-top: 40px;">
       <div class="swatch" style="background: #6A1B9A; height: 120px;">
         <span class="swatch-label" style="color: #fff;">Tech Purple</span>
         <span class="hex" style="color: rgba(255,255,255,0.6);">#6A1B9A</span>
@@ -1089,14 +1088,86 @@
         <span class="hex" style="color: rgba(255,255,255,0.6);">#16A34A</span>
       </div>
     </div>
-    <h3 class="sub-title" style="margin-top: 40px;">Color Proportion</h3>
+    <h3 class="sub-title" style="margin-top: 40px;">Digital Proportion</h3>
     <div class="proportion-bar">
-      <div class="p-white">65% White</div>
-      <div class="p-neutral">20% Black/Navy</div>
-      <div class="p-purple">10% Purple</div>
-      <div class="p-accent">5%</div>
+      <div class="p-white" style="flex: 70;">70% White</div>
+      <div class="p-neutral" style="flex: 20;">20% Black/Navy</div>
+      <div class="p-purple" style="flex: 8;">8% Purple</div>
+      <div class="p-accent" style="flex: 2;">2%</div>
     </div>
-    <p style="margin-top: 16px;">Purple is an accent driver, not a wallpaper. Signal Green is functional only — success states, active indicators. Never decorative.</p>
+    <p style="margin-top: 16px;">Purple is an accent driver, not a wallpaper. Signal Green is functional only — success states, active indicators. Never decorative. Kraft never appears in digital contexts.</p>
+    <span class="page-number">09</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 10 — MATERIAL & PRINT PALETTE      -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Color System — B. Material & Print Palette</div>
+    <div class="two-col">
+      <div>
+        <div class="color-primary" style="background: #D6C2A1;">
+          <div class="color-info" style="color: #111;">
+            <h4 style="color: #111;">INDUSTRIAL KRAFT</h4>
+            <span>HEX #D6C2A1</span>
+            <span>RGB 214 / 194 / 161</span>
+            <span>CMYK 0 / 9 / 25 / 16</span>
+            <span style="margin-top: 8px; font-weight: 600;">Tier 3 — Material Color Only</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub-title">Usage</h3>
+        <p>Industrial Kraft exists exclusively in the physical world. It is a material texture — the feel of uncoated paper, the warmth of a raw envelope, the craft behind the tech. It is never a screen color.</p>
+        <p style="margin-top: 16px;">Kraft communicates grounded authenticity. It prevents the brand from feeling cold or purely digital, adding human warmth to physical touchpoints without softening the tech identity.</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="swatch" style="background: #D6C2A1; height: 120px;">
+        <span class="swatch-label" style="color: #111;">Industrial Kraft</span>
+        <span class="hex" style="color: rgba(17,17,17,0.5);">#D6C2A1</span>
+      </div>
+      <div class="swatch" style="background: #C8B08A; height: 120px;">
+        <span class="swatch-label" style="color: #111;">Kraft Alt (aged)</span>
+        <span class="hex" style="color: rgba(17,17,17,0.5);">#C8B08A</span>
+      </div>
+      <div class="swatch" style="background: #6A1B9A; height: 120px;">
+        <span class="swatch-label" style="color: #fff;">Tech Purple (print)</span>
+        <span class="hex" style="color: rgba(255,255,255,0.6);">#6A1B9A</span>
+      </div>
+    </div>
+    <h3 class="sub-title" style="margin-top: 40px;">Print Proportion</h3>
+    <div class="proportion-bar">
+      <div class="p-white" style="flex: 60;">60% White</div>
+      <div class="p-purple" style="flex: 20;">20% Purple</div>
+      <div class="p-neutral" style="flex: 15;">15% Black</div>
+      <div class="p-kraft" style="flex: 5;">5% Kraft</div>
+    </div>
+
+    <div class="two-col" style="margin-top: 32px;">
+      <div>
+        <h3 class="sub-title">Kraft Works In</h3>
+        <ul style="list-style: none; line-height: 2;">
+          <li>&#10003; Business cards (kraft stock)</li>
+          <li>&#10003; Envelopes &amp; mailers</li>
+          <li>&#10003; Packaging &amp; unboxing</li>
+          <li>&#10003; Proposal covers &amp; folders</li>
+          <li>&#10003; Event materials &amp; badges</li>
+          <li>&#10003; Notebook / journal merch</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub-title">Never Use Kraft In</h3>
+        <ul style="list-style: none; line-height: 2;">
+          <li>&times; Dashboards or UI screens</li>
+          <li>&times; Mobile apps</li>
+          <li>&times; Digital presentations</li>
+          <li>&times; Social media templates</li>
+          <li>&times; Website backgrounds</li>
+          <li>&times; Email templates</li>
+        </ul>
+      </div>
+    </div>
     <span class="page-number">10</span>
   </section>
 
