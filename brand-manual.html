@@ -67,7 +67,7 @@
     .headline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 14px;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--purple);
       margin-bottom: 48px;
@@ -118,7 +118,7 @@
     .tagline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 24px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: var(--gray-mid);
     }
 
@@ -174,7 +174,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 500;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--gray-mid);
       margin-bottom: 24px;
@@ -249,7 +249,7 @@
     .essence-block h4 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 28px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: var(--black);
     }
 
@@ -496,7 +496,8 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       white-space: nowrap;
-      min-width: 40px;
+      min-width: 50px;
+      padding: 0 4px;
     }
 
     .proportion-bar .p-white { flex: 65; background: var(--white); border: 1px solid #E5E7EB; color: #999; }
@@ -592,7 +593,7 @@
     .layout-block h4 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       margin-bottom: 8px;
     }
 
@@ -643,7 +644,7 @@
     .ui-card h4 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 18px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       margin-bottom: 20px;
       color: var(--purple);
     }
@@ -1027,7 +1028,7 @@
       <div style="background: var(--gray-light); padding: 24px; text-align: center;">
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; margin-bottom: 8px;">Favicon</div>
         <div style="font-size: 28px; font-weight: 700; color: var(--purple);">32px</div>
-        <div style="font-size: 12px; color: #999; margin-top: 4px;">use monogram "12" only</div>
+        <div style="font-size: 12px; color: #999; margin-top: 4px;">use DP monogram or square crop</div>
       </div>
     </div>
     <span class="page-number">07</span>
@@ -1354,7 +1355,7 @@
       <li>Clean desks with monitors showing real dashboards</li>
       <li>Neutral lighting — no heavy filters or warm color grading</li>
       <li>Dark mode UI contrast — screens with purple accents visible</li>
-      <li>Subtle purple glow in screen highlights</li>
+      <li>Purple interface highlights visible in UI screens</li>
       <li>Avoid generic AI imagery — no robots, holograms, or blue futuristic clich&eacute;s</li>
       <li>Maintain neutral or cool color balance — avoid overly warm grading</li>
     </ul>
@@ -1376,6 +1377,13 @@
           <div class="ui-btn">Make It Real</div>
           <div class="ui-btn outline">Learn More</div>
         </div>
+        <div style="font-family: 'Inter', monospace; font-size: 11px; line-height: 2; color: #999; margin-top: 16px; border-top: 1px solid #E5E7EB; padding-top: 12px;">
+          <div>Height: 48px</div>
+          <div>Border radius: 0px</div>
+          <div>Padding: 14px 32px</div>
+          <div>Font: Inter Medium 13px</div>
+          <div>Hover: --purple-hover</div>
+        </div>
       </div>
       <div class="ui-card">
         <h4>Icons</h4>
@@ -1385,7 +1393,13 @@
           <div class="ui-icon">&#9745;</div>
           <div class="ui-icon">&#8635;</div>
         </div>
-        <p style="font-size: 12px; color: #999; margin-top: 12px;">Line icons, 1.5px stroke, purple accent</p>
+        <div style="font-family: 'Inter', monospace; font-size: 11px; line-height: 2; color: #999; margin-top: 16px; border-top: 1px solid #E5E7EB; padding-top: 12px;">
+          <div>Grid: 24px base</div>
+          <div>Stroke: 1.5px</div>
+          <div>Caps: Rounded line</div>
+          <div>Color: --purple or --black</div>
+          <div>Touch target: 40px min</div>
+        </div>
       </div>
       <div class="ui-card">
         <h4>Dashboard</h4>
@@ -1395,7 +1409,12 @@
           <div class="bar" style="width: 80%;"></div>
           <div class="bar" style="width: 45%;"></div>
         </div>
-        <p style="font-size: 12px; color: #999; margin-top: 12px;">Minimal, white base, purple highlights</p>
+        <div style="font-family: 'Inter', monospace; font-size: 11px; line-height: 2; color: #999; margin-top: 16px; border-top: 1px solid #E5E7EB; padding-top: 12px;">
+          <div>Card radius: 6px</div>
+          <div>Card padding: 24px</div>
+          <div>Border: 1px solid #E5E7EB</div>
+          <div>Bar height: 8px radius 4px</div>
+        </div>
       </div>
     </div>
     <div class="statement-box">
@@ -1409,42 +1428,75 @@
   <!-- ════════════════════════════════════════ -->
   <section class="page">
     <div class="headline">Dark Mode System</div>
-    <div class="darkmode-demo">
+    <div class="two-col" style="gap: 48px;">
+      <!-- Left: Color blocks -->
+      <div>
+        <h3 class="sub-title">Color Tokens</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: #0F172A; border-radius: 6px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: #E5E7EB;">Background</div>
+              <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">Page &amp; shell base</div>
+            </div>
+            <div style="font-family: 'Inter', monospace; font-size: 12px; color: #9CA3AF;">#0F172A</div>
+          </div>
+          <div style="background: #1E293B; border-radius: 6px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: #E5E7EB;">Card Surface</div>
+              <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">Cards, modals, dropdowns</div>
+            </div>
+            <div style="font-family: 'Inter', monospace; font-size: 12px; color: #9CA3AF;">#1E293B</div>
+          </div>
+          <div style="background: #6A1B9A; border-radius: 6px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: #FFFFFF;">Accent</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px;">CTAs, links, active states</div>
+            </div>
+            <div style="font-family: 'Inter', monospace; font-size: 12px; color: rgba(255,255,255,0.7);">#6A1B9A</div>
+          </div>
+          <div style="background: #16A34A; border-radius: 6px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: #FFFFFF;">Status</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px;">Success, active, online</div>
+            </div>
+            <div style="font-family: 'Inter', monospace; font-size: 12px; color: rgba(255,255,255,0.7);">#16A34A</div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Usage rules -->
+      <div>
+        <h3 class="sub-title">Usage Rules</h3>
+        <div style="font-size: 14px; line-height: 2.2; color: #444;">
+          <div><span style="font-weight: 600;">Text primary:</span> #E5E7EB</div>
+          <div><span style="font-weight: 600;">Text secondary:</span> #9CA3AF</div>
+          <div><span style="font-weight: 600;">Borders:</span> #374151</div>
+          <div><span style="font-weight: 600;">Hover state:</span> #334155</div>
+        </div>
+        <h3 class="sub-title" style="margin-top: 32px;">Hierarchy</h3>
+        <div style="font-size: 14px; line-height: 2.2; color: #444;">
+          <div>Background &rarr; Card &rarr; Elevated Card</div>
+          <div>Each level +1 shade lighter</div>
+          <div>Maximum 3 elevation levels</div>
+        </div>
+        <h3 class="sub-title" style="margin-top: 32px;">Rules</h3>
+        <ul style="list-style: none; line-height: 2.2; font-size: 14px; color: #444;">
+          <li>&#10003; Purple for interactive highlights only</li>
+          <li>&#10003; Green for status indicators only</li>
+          <li>&times; Never use purple as background fill</li>
+          <li>&times; Never mix warm tones into dark mode</li>
+        </ul>
+      </div>
+    </div>
+    <div class="darkmode-demo" style="margin-top: 40px; padding: 32px;">
       <div class="dm-card">
-        <div class="dm-label">Dashboard Overview</div>
-        <h4>Automation Status</h4>
+        <div class="dm-label">Preview</div>
+        <h4>Dashboard — Dark Mode</h4>
         <div class="dm-bar bg-purple" style="width: 100%;"></div>
         <div class="dm-bar bg-green"></div>
         <div class="dm-bar bg-gray" style="width: 75%;"></div>
         <div class="dm-text" style="margin-top: 12px;">3 systems active &middot; 12 automations running</div>
       </div>
-      <div class="dm-card">
-        <div class="dm-label">System Metrics</div>
-        <h4>Performance</h4>
-        <div class="dm-bar bg-purple" style="width: 85%;"></div>
-        <div class="dm-bar bg-gray" style="width: 60%;"></div>
-        <div class="dm-text" style="margin-top: 12px;">Real-time operational view with purple highlights and green status indicators.</div>
-      </div>
-      <div class="darkmode-spec">
-        <div class="dm-swatch" style="background: #0F172A;">
-          <span style="color: #9CA3AF;">Background</span>
-          <span style="color: #6B7280;">#0F172A</span>
-        </div>
-        <div class="dm-swatch" style="background: #1E293B;">
-          <span style="color: #9CA3AF;">Card</span>
-          <span style="color: #6B7280;">#1E293B</span>
-        </div>
-        <div class="dm-swatch" style="background: #6A1B9A;">
-          <span style="color: #fff;">Accent</span>
-          <span style="color: rgba(255,255,255,0.6);">#6A1B9A</span>
-        </div>
-        <div class="dm-swatch" style="background: #16A34A;">
-          <span style="color: #fff;">Status</span>
-          <span style="color: rgba(255,255,255,0.6);">#16A34A</span>
-        </div>
-      </div>
     </div>
-    <p>Dark mode makes the brand feel modern SaaS. Text color: #E5E7EB. Purple for highlights. Green for active/success states only.</p>
     <span class="page-number">15b</span>
   </section>
 
@@ -1479,7 +1531,7 @@
         <span>Email Signature</span>
       </div>
     </div>
-    <p>All applications follow the same visual rules: clean grid, minimal color, stamp-style logo placement. Drop actual mockup images into the placeholders above.</p>
+    <p>All applications follow the same visual rules: clean grid, minimal color, stamp-style logo placement.</p>
     <span class="page-number">16</span>
   </section>
 
@@ -1536,7 +1588,8 @@
   <!-- PAGE 18 — FINAL PAGE                    -->
   <!-- ════════════════════════════════════════ -->
   <section class="page final">
-    <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="brand-logo logo-lg" style="margin: 0 auto;">
+    <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="brand-logo logo-md" style="margin: 0 auto;">
+    <div class="tagline" style="margin-top: 48px;">MAKE IT REAL.</div>
     <span class="page-number">18</span>
   </section>
 
