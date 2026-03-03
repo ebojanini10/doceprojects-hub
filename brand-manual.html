@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS — Brand Identity Manual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6F1D8E;
+      --purple-light: #8B3FA6;
+      --black: #111111;
+      --white: #FFFFFF;
+      --gray-light: #F2F2F2;
+      --gray-mid: #B0B0B0;
+      --kraft: #C4A882;
+      --kraft-light: #D9C4A5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAGE SYSTEM ── */
+    .page {
+      width: 100%;
+      max-width: 1200px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      page-break-after: always;
+    }
+
+    .page + .page {
+      border-top: 1px solid var(--gray-light);
+    }
+
+    .page-number {
+      position: absolute;
+      bottom: 40px;
+      right: 80px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--gray-mid);
+      letter-spacing: 2px;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 48px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--purple);
+      display: inline-block;
+    }
+
+    h1.display {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 6vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      color: var(--purple);
+    }
+
+    h2.section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 4vw, 64px);
+      line-height: 1;
+      letter-spacing: 1px;
+      color: var(--black);
+      margin-bottom: 40px;
+    }
+
+    h3.sub-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+      max-width: 640px;
+    }
+
+    p.large {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .tagline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 3px;
+      color: var(--gray-mid);
+    }
+
+    /* ── COVER PAGE ── */
+    .cover {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      background: var(--white);
+      position: relative;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="400" height="400" filter="url(%23n)" opacity="0.03"/></svg>');
+      pointer-events: none;
+    }
+
+    .cover .logo-placeholder {
+      width: 400px;
+      height: 140px;
+      margin: 0 auto 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .stamp-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      letter-spacing: 4px;
+      color: var(--purple);
+      padding: 16px 32px;
+      border: 4px solid var(--purple);
+      position: relative;
+      transform: rotate(-3deg);
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .stamp-logo::after {
+      content: 'MAKE IT REAL.';
+      font-size: 18px;
+      letter-spacing: 6px;
+      position: absolute;
+      bottom: -8px;
+      right: 12px;
+      color: var(--purple);
+    }
+
+    .cover h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 24px;
+    }
+
+    /* ── INDEX ── */
+    .index-list {
+      list-style: none;
+      counter-reset: index;
+    }
+
+    .index-list li {
+      counter-increment: index;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-light);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: default;
+    }
+
+    .index-list li::before {
+      content: counter(index, decimal-leading-zero);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--purple);
+      min-width: 40px;
+    }
+
+    .index-list li span {
+      color: #666;
+    }
+
+    /* ── TWO COLUMN ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── GRID BLOCKS ── */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .essence-block {
+      background: var(--gray-light);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .essence-block h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--black);
+    }
+
+    /* ── LOGO BOXES ── */
+    .logo-box {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gray-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-box.bg-white { background: var(--white); }
+    .logo-box.bg-purple { background: var(--purple); }
+    .logo-box.bg-black { background: var(--black); }
+    .logo-box.bg-kraft { background: var(--kraft-light); }
+
+    .logo-box .stamp-sm {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 3px solid;
+      transform: rotate(-2deg);
+      line-height: 1;
+      position: relative;
+    }
+
+    .logo-box .stamp-sm::after {
+      content: 'MAKE IT REAL.';
+      font-size: 9px;
+      letter-spacing: 3px;
+      position: absolute;
+      bottom: -4px;
+      right: 6px;
+    }
+
+    .logo-box.bg-white .stamp-sm { color: var(--purple); border-color: var(--purple); }
+    .logo-box.bg-white .stamp-sm::after { color: var(--purple); }
+    .logo-box.bg-purple .stamp-sm { color: var(--white); border-color: var(--white); }
+    .logo-box.bg-purple .stamp-sm::after { color: var(--white); }
+    .logo-box.bg-black .stamp-sm { color: var(--white); border-color: var(--white); }
+    .logo-box.bg-black .stamp-sm::after { color: var(--white); }
+    .logo-box.bg-kraft .stamp-sm { color: var(--purple); border-color: var(--purple); opacity: 0.85; }
+    .logo-box.bg-kraft .stamp-sm::after { color: var(--purple); }
+
+    .logo-box .label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 1px;
+    }
+
+    .logo-box.bg-purple .label,
+    .logo-box.bg-black .label { color: rgba(255,255,255,0.5); }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder {
+      background: var(--gray-light);
+      border: 2px dashed var(--gray-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-mid);
+      font-size: 14px;
+      letter-spacing: 1px;
+      min-height: 200px;
+    }
+
+    /* ── CLEAR SPACE DIAGRAM ── */
+    .clearspace-diagram {
+      width: 500px;
+      max-width: 100%;
+      margin: 40px auto;
+      position: relative;
+    }
+
+    .clearspace-outer {
+      border: 2px dashed var(--purple);
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .clearspace-outer .arrow-label {
+      position: absolute;
+      font-size: 11px;
+      color: var(--purple);
+      letter-spacing: 1px;
+    }
+
+    .clearspace-outer .arrow-label.top { top: 20px; left: 50%; transform: translateX(-50%); }
+    .clearspace-outer .arrow-label.bottom { bottom: 20px; left: 50%; transform: translateX(-50%); }
+    .clearspace-outer .arrow-label.left { left: 12px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+    .clearspace-outer .arrow-label.right { right: 12px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+    /* ── INCORRECT USAGE ── */
+    .incorrect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .incorrect-item {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: var(--gray-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .incorrect-item .x-mark {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      background: #E53935;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .incorrect-item .stamp-err {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      padding: 6px 12px;
+      border: 2px solid var(--purple);
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .incorrect-item .stamp-err.stretched { transform: scaleX(1.6); }
+    .incorrect-item .stamp-err.gradient { background: linear-gradient(135deg, var(--purple), #E040FB); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-color: transparent; }
+    .incorrect-item .stamp-err.shadow { text-shadow: 4px 4px 8px rgba(0,0,0,0.4); }
+    .incorrect-item .stamp-err.wrong-color { color: #FF9800; border-color: #FF9800; }
+    .incorrect-item .stamp-err.no-frame { border: none; }
+    .incorrect-item .stamp-err.distorted { transform: skewX(-15deg) skewY(5deg); }
+
+    .incorrect-item p {
+      font-size: 12px;
+      color: #999;
+      margin-top: 12px;
+      text-align: center;
+      max-width: none;
+    }
+
+    /* ── COLOR SWATCHES ── */
+    .color-primary {
+      width: 100%;
+      height: 280px;
+      background: var(--purple);
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-end;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .color-primary .color-info {
+      color: var(--white);
+    }
+
+    .color-primary .color-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .color-primary .color-info span {
+      display: block;
+      font-size: 13px;
+      opacity: 0.8;
+      line-height: 1.8;
+      font-family: 'Inter', monospace;
+    }
+
+    .swatch {
+      height: 120px;
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      position: relative;
+    }
+
+    .swatch.white-swatch { background: var(--white); border: 1px solid var(--gray-light); }
+    .swatch.black-swatch { background: var(--black); }
+    .swatch.gray-swatch { background: var(--gray-light); }
+    .swatch.kraft-swatch { background: var(--kraft); }
+
+    .swatch .swatch-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .swatch.white-swatch .swatch-label { color: var(--black); }
+    .swatch.black-swatch .swatch-label { color: var(--white); }
+    .swatch.gray-swatch .swatch-label { color: #666; }
+    .swatch.kraft-swatch .swatch-label { color: var(--white); }
+
+    .swatch .hex {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 11px;
+      font-family: 'Inter', monospace;
+    }
+
+    .swatch.white-swatch .hex { color: #999; }
+    .swatch.black-swatch .hex { color: rgba(255,255,255,0.5); }
+    .swatch.gray-swatch .hex { color: #999; }
+    .swatch.kraft-swatch .hex { color: rgba(255,255,255,0.7); }
+
+    /* ── PROPORTION BAR ── */
+    .proportion-bar {
+      display: flex;
+      height: 48px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .proportion-bar div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .proportion-bar .p-white { flex: 60; background: var(--white); border: 1px solid var(--gray-light); color: #999; }
+    .proportion-bar .p-neutral { flex: 25; background: var(--gray-light); color: #666; }
+    .proportion-bar .p-purple { flex: 15; background: var(--purple); color: var(--white); }
+
+    /* ── TYPOGRAPHY SHOWCASE ── */
+    .type-specimen {
+      margin: 32px 0;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .type-specimen .label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 12px;
+    }
+
+    .type-specimen .bebas-sample {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      color: var(--black);
+    }
+
+    .type-specimen .inter-sample {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* ── TYPE HIERARCHY TABLE ── */
+    .type-hierarchy {
+      width: 100%;
+      margin: 40px 0;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 120px 180px 1fr;
+      align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-light);
+      gap: 24px;
+    }
+
+    .type-row .level {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--gray-mid);
+      text-transform: uppercase;
+    }
+
+    .type-row .spec {
+      font-size: 12px;
+      color: #999;
+      font-family: 'Inter', monospace;
+    }
+
+    .type-row.h1-row .example { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--purple); line-height: 1; }
+    .type-row.h2-row .example { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--black); line-height: 1; }
+    .type-row.h3-row .example { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; color: var(--black); }
+    .type-row.body-row .example { font-family: 'Inter', sans-serif; font-size: 16px; color: #444; }
+    .type-row.btn-row .example { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--purple); }
+
+    /* ── LAYOUT PRINCIPLES ── */
+    .layout-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .layout-block {
+      background: var(--gray-light);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .layout-block .icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+
+    .layout-block h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .layout-block p {
+      font-size: 13px;
+      color: #888;
+      max-width: none;
+    }
+
+    /* ── VISUAL STYLE BULLETS ── */
+    .style-list {
+      list-style: none;
+      margin: 32px 0;
+    }
+
+    .style-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 16px;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .style-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--purple);
+      flex-shrink: 0;
+    }
+
+    /* ── UI SYSTEM ── */
+    .ui-components {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 40px 0;
+    }
+
+    .ui-card {
+      background: var(--gray-light);
+      padding: 32px;
+      border-radius: 4px;
+    }
+
+    .ui-card h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: var(--purple);
+    }
+
+    .ui-btn {
+      display: inline-block;
+      padding: 12px 32px;
+      background: var(--purple);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+    }
+
+    .ui-btn.outline {
+      background: transparent;
+      border: 2px solid var(--purple);
+      color: var(--purple);
+    }
+
+    .ui-icon-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .ui-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--purple);
+    }
+
+    .ui-dash {
+      background: var(--white);
+      border: 1px solid #ddd;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    .ui-dash .bar {
+      height: 8px;
+      background: var(--gray-light);
+      margin-bottom: 8px;
+      border-radius: 2px;
+    }
+
+    .ui-dash .bar.active {
+      background: var(--purple);
+      width: 65%;
+    }
+
+    /* ── APPLICATION GRID ── */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .app-mockup {
+      aspect-ratio: 4/3;
+      background: var(--gray-light);
+      border: 2px dashed var(--gray-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      border-radius: 4px;
+    }
+
+    .app-mockup .mockup-icon { font-size: 28px; opacity: 0.3; }
+    .app-mockup span {
+      font-size: 12px;
+      color: var(--gray-mid);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── MESSAGE EXAMPLES ── */
+    .msg-block {
+      margin: 24px 0;
+      padding: 32px;
+      background: var(--gray-light);
+    }
+
+    .msg-block .msg-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 1px;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .msg-block .msg-type {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .cta-examples {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .cta-tag {
+      padding: 12px 24px;
+      background: var(--purple);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* ── FINAL PAGE ── */
+    .final {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .final .stamp-logo {
+      font-size: 80px;
+      margin-bottom: 32px;
+    }
+
+    /* ── STATEMENT BOX ── */
+    .statement-box {
+      border-left: 4px solid var(--purple);
+      padding: 24px 32px;
+      margin: 32px 0;
+      background: var(--gray-light);
+    }
+
+    .statement-box p {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: var(--black);
+      line-height: 1.3;
+      max-width: none;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      .page {
+        page-break-after: always;
+        min-height: auto;
+        padding: 40px;
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page { padding: 40px 24px; }
+      .two-col { grid-template-columns: 1fr; gap: 40px; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .incorrect-grid { grid-template-columns: repeat(2, 1fr); }
+      .layout-demo { grid-template-columns: 1fr; }
+      .ui-components { grid-template-columns: 1fr; }
+      .app-grid { grid-template-columns: repeat(2, 1fr); }
+      .page-number { right: 24px; bottom: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 1 — COVER                          -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page cover">
+    <div class="logo-placeholder">
+      <!-- Replace with actual logo image: <img src="assets/logo-primary.png" alt="DOCEPROJECTS"> -->
+      <div class="stamp-logo">DOCEPROJECTS</div>
+    </div>
+    <h2>Brand Identity Manual</h2>
+    <div class="tagline">MAKE IT REAL.</div>
+    <span class="page-number">01</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 2 — CONTENT INDEX                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Content Index</div>
+    <ol class="index-list">
+      <li><span>Brand Overview</span></li>
+      <li><span>Brand Essence</span></li>
+      <li><span>Logo System</span></li>
+      <li><span>Logo Usage Rules</span></li>
+      <li><span>Color System</span></li>
+      <li><span>Typography System</span></li>
+      <li><span>Layout Principles</span></li>
+      <li><span>Visual Style</span></li>
+      <li><span>UI &amp; Digital System</span></li>
+      <li><span>Brand Applications</span></li>
+      <li><span>Messaging Guidelines</span></li>
+    </ol>
+    <span class="page-number">02</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 3 — BRAND OVERVIEW                 -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Brand Overview</div>
+    <div class="two-col">
+      <div>
+        <p class="large">DOCEPROJECTS is a digital automation agency focused on building real systems. We convert ideas into automated infrastructure.</p>
+      </div>
+      <div>
+        <h2 class="section-title" style="font-size: clamp(28px, 3vw, 44px);">WE BUILD SYSTEMS.<br>WE DON'T SELL<br>PROMISES.</h2>
+      </div>
+    </div>
+    <span class="page-number">03</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 4 — BRAND ESSENCE                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Brand Essence</div>
+    <div class="grid-4">
+      <div class="essence-block"><h4>Execution</h4></div>
+      <div class="essence-block"><h4>Automation</h4></div>
+      <div class="essence-block"><h4>Clarity</h4></div>
+      <div class="essence-block"><h4>Control</h4></div>
+    </div>
+    <div class="statement-box">
+      <p>Mission: Transform manual processes into automated systems in days, not months.</p>
+    </div>
+    <span class="page-number">04</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 5 — LOGO PRESENTATION              -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Logo System</div>
+    <div style="text-align: center; margin: 60px 0;">
+      <!-- Replace with actual logo: <img src="assets/logo-primary.png" alt="DOCEPROJECTS" style="max-width: 600px;"> -->
+      <div class="stamp-logo" style="font-size: 80px; display: inline-block;">DOCEPROJECTS</div>
+    </div>
+    <p style="text-align: center; margin: 0 auto;">Official primary version — DOCEPROJECTS with tagline MAKE IT REAL. White background only.</p>
+    <span class="page-number">05</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 6 — LOGO VERSIONS                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Approved Versions</div>
+    <div class="grid-2">
+      <div class="logo-box bg-white">
+        <div class="stamp-sm">DOCEPROJECTS</div>
+        <span class="label">Purple on White</span>
+      </div>
+      <div class="logo-box bg-purple">
+        <div class="stamp-sm">DOCEPROJECTS</div>
+        <span class="label">White on Purple</span>
+      </div>
+      <div class="logo-box bg-black">
+        <div class="stamp-sm">DOCEPROJECTS</div>
+        <span class="label">Black Version</span>
+      </div>
+      <div class="logo-box bg-kraft">
+        <div class="stamp-sm">DOCEPROJECTS</div>
+        <span class="label">Stamp on Kraft</span>
+      </div>
+    </div>
+    <span class="page-number">06</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 7 — LOGO PROTECTION AREA           -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Clear Space</div>
+    <div class="clearspace-diagram">
+      <div class="clearspace-outer">
+        <span class="arrow-label top">X</span>
+        <span class="arrow-label bottom">X</span>
+        <span class="arrow-label left">X</span>
+        <span class="arrow-label right">X</span>
+        <div class="stamp-sm" style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; padding: 8px 16px; border: 3px solid var(--purple); color: var(--purple); transform: rotate(-2deg); line-height: 1; position: relative;">
+          DOCEPROJECTS
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center; margin: 0 auto;">Minimum clear space equals the height of "MAKE IT REAL." tagline. This space must remain free of any graphics, text, or visual elements.</p>
+    <span class="page-number">07</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 8 — INCORRECT USAGE                -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Incorrect Usage</div>
+    <div class="incorrect-grid">
+      <div class="incorrect-item">
+        <div class="x-mark">&times;</div>
+        <div class="stamp-err stretched">DOCEPROJECTS</div>
+        <p>Do not stretch</p>
+      </div>
+      <div class="incorrect-item">
+        <div class="x-mark">&times;</div>
+        <div class="stamp-err gradient">DOCEPROJECTS</div>
+        <p>Do not use gradients</p>
+      </div>
+      <div class="incorrect-item">
+        <div class="x-mark">&times;</div>
+        <div class="stamp-err shadow">DOCEPROJECTS</div>
+        <p>Do not add shadows</p>
+      </div>
+      <div class="incorrect-item">
+        <div class="x-mark">&times;</div>
+        <div class="stamp-err wrong-color">DOCEPROJECTS</div>
+        <p>Do not change colors</p>
+      </div>
+      <div class="incorrect-item">
+        <div class="x-mark">&times;</div>
+        <div class="stamp-err no-frame">DOCEPROJECTS</div>
+        <p>Do not remove frame</p>
+      </div>
+      <div class="incorrect-item">
+        <div class="x-mark">&times;</div>
+        <div class="stamp-err distorted">DOCEPROJECTS</div>
+        <p>Do not distort</p>
+      </div>
+    </div>
+    <span class="page-number">08</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 9 — PRIMARY COLOR                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Color System — Primary</div>
+    <div class="two-col">
+      <div>
+        <div class="color-primary">
+          <div class="color-info">
+            <h4>DOCEPROJECTS Purple</h4>
+            <span>HEX #6F1D8E</span>
+            <span>RGB 111 / 29 / 142</span>
+            <span>CMYK 63 / 92 / 0 / 44</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub-title">Usage</h3>
+        <p>The primary purple is the core brand identifier. It is used in the logo, headlines, accent elements, buttons, and key UI highlights. It must never be diluted with opacity or mixed with other hues.</p>
+        <p style="margin-top: 16px;">This color conveys authority, precision, and creative intelligence. Use it intentionally — never decoratively.</p>
+      </div>
+    </div>
+    <span class="page-number">09</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 10 — SECONDARY COLORS              -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Color System — Secondary</div>
+    <div class="grid-4">
+      <div class="swatch white-swatch">
+        <span class="swatch-label">White</span>
+        <span class="hex">#FFFFFF</span>
+      </div>
+      <div class="swatch black-swatch">
+        <span class="swatch-label">Black</span>
+        <span class="hex">#111111</span>
+      </div>
+      <div class="swatch gray-swatch">
+        <span class="swatch-label">Light Gray</span>
+        <span class="hex">#F2F2F2</span>
+      </div>
+      <div class="swatch kraft-swatch">
+        <span class="swatch-label">Kraft Beige</span>
+        <span class="hex">#C4A882</span>
+      </div>
+    </div>
+    <h3 class="sub-title" style="margin-top: 40px;">Color Proportion</h3>
+    <div class="proportion-bar">
+      <div class="p-white">60% White</div>
+      <div class="p-neutral">25% Neutral</div>
+      <div class="p-purple">15% Purple</div>
+    </div>
+    <span class="page-number">10</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 11 — TYPOGRAPHY SYSTEM             -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Typography System</div>
+    <div class="type-specimen">
+      <div class="label">Headlines — Bebas Neue</div>
+      <div class="bebas-sample">AUTOMATE OR<br>HIRE MORE PEOPLE</div>
+    </div>
+    <div class="type-specimen">
+      <div class="label">Body Text — Inter</div>
+      <div class="inter-sample">We design and build automated systems that replace manual processes. Every project is scoped, built, and delivered in weeks — not months. Our focus is execution: real infrastructure, real results, no fluff.</div>
+    </div>
+    <span class="page-number">11</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 12 — TYPOGRAPHY HIERARCHY          -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Typography Hierarchy</div>
+    <div class="type-hierarchy">
+      <div class="type-row h1-row">
+        <span class="level">H1</span>
+        <span class="spec">Bebas Neue — Purple</span>
+        <span class="example">Main Headline</span>
+      </div>
+      <div class="type-row h2-row">
+        <span class="level">H2</span>
+        <span class="spec">Bebas Neue — Black</span>
+        <span class="example">Section Title</span>
+      </div>
+      <div class="type-row h3-row">
+        <span class="level">H3</span>
+        <span class="spec">Inter SemiBold</span>
+        <span class="example">Subsection Heading</span>
+      </div>
+      <div class="type-row body-row">
+        <span class="level">Body</span>
+        <span class="spec">Inter Regular</span>
+        <span class="example">Body text for paragraphs and descriptions across all platforms.</span>
+      </div>
+      <div class="type-row btn-row">
+        <span class="level">Button</span>
+        <span class="spec">Inter Medium</span>
+        <span class="example">CALL TO ACTION</span>
+      </div>
+    </div>
+    <span class="page-number">12</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 13 — LAYOUT PRINCIPLES             -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Layout Principles</div>
+    <div class="layout-demo">
+      <div class="layout-block">
+        <div class="icon">&#9644;</div>
+        <h4>Horizontal Alignment</h4>
+        <p>Strong horizontal lines create structure and order</p>
+      </div>
+      <div class="layout-block">
+        <div class="icon">&#9634;</div>
+        <h4>Wide Margins</h4>
+        <p>Generous whitespace for breathing room</p>
+      </div>
+      <div class="layout-block">
+        <div class="icon">&#9638;</div>
+        <h4>Rectangular Blocks</h4>
+        <p>Clean grid with engineered precision</p>
+      </div>
+    </div>
+    <div class="statement-box">
+      <p>The design must feel engineered and systematic.</p>
+    </div>
+    <span class="page-number">13</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 14 — VISUAL STYLE                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Photography &amp; Mood</div>
+    <ul class="style-list">
+      <li>Real environments — no stock photo clich&eacute;s</li>
+      <li>Minimal setup — clean desks, focused screens</li>
+      <li>Neutral lighting — no heavy filters or color grading</li>
+      <li>Screens in use — show real dashboards, real tools</li>
+      <li>No AI clich&eacute; visuals — no robots, no floating holograms</li>
+    </ul>
+    <div class="img-placeholder" style="height: 300px; margin-top: 32px;">
+      [ Place brand photography example here ]
+    </div>
+    <span class="page-number">14</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 15 — UI SYSTEM                     -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Digital System</div>
+    <div class="ui-components">
+      <div class="ui-card">
+        <h4>Buttons</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="ui-btn">Make It Real</div>
+          <div class="ui-btn outline">Learn More</div>
+        </div>
+      </div>
+      <div class="ui-card">
+        <h4>Icons</h4>
+        <div class="ui-icon-row">
+          <div class="ui-icon">&#9881;</div>
+          <div class="ui-icon">&#9889;</div>
+          <div class="ui-icon">&#9745;</div>
+          <div class="ui-icon">&#8635;</div>
+        </div>
+        <p style="font-size: 12px; color: #999; margin-top: 12px;">Line icons, 1.5px stroke, purple accent</p>
+      </div>
+      <div class="ui-card">
+        <h4>Dashboard</h4>
+        <div class="ui-dash">
+          <div class="bar" style="width: 100%;"></div>
+          <div class="bar active"></div>
+          <div class="bar" style="width: 80%;"></div>
+          <div class="bar" style="width: 45%;"></div>
+        </div>
+        <p style="font-size: 12px; color: #999; margin-top: 12px;">Minimal, white base, purple highlights</p>
+      </div>
+    </div>
+    <div class="statement-box">
+      <p>Rules: Minimal. White base. Purple highlights. No excessive decoration.</p>
+    </div>
+    <span class="page-number">15</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 16 — BRAND APPLICATIONS            -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Brand Applications</div>
+    <div class="app-grid">
+      <div class="app-mockup">
+        <span class="mockup-icon">&#9993;</span>
+        <span>Business Card</span>
+      </div>
+      <div class="app-mockup">
+        <span class="mockup-icon">&#9993;</span>
+        <span>Envelope</span>
+      </div>
+      <div class="app-mockup">
+        <span class="mockup-icon">&#128187;</span>
+        <span>Laptop Dashboard</span>
+      </div>
+      <div class="app-mockup">
+        <span class="mockup-icon">&#128241;</span>
+        <span>WhatsApp Bot</span>
+      </div>
+      <div class="app-mockup">
+        <span class="mockup-icon">&#128196;</span>
+        <span>Proposal Cover</span>
+      </div>
+      <div class="app-mockup">
+        <span class="mockup-icon">&#128232;</span>
+        <span>Email Signature</span>
+      </div>
+    </div>
+    <p>All applications follow the same visual rules: clean grid, minimal color, stamp-style logo placement. Drop actual mockup images into the placeholders above.</p>
+    <span class="page-number">16</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 17 — MESSAGING STYLE               -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page">
+    <div class="headline">Voice &amp; Messaging</div>
+    <h3 class="sub-title">Headline Examples</h3>
+    <div class="msg-block">
+      <span class="msg-type">Headline</span>
+      <div class="msg-headline">Automate or hire more people.</div>
+    </div>
+    <div class="msg-block">
+      <span class="msg-type">Headline</span>
+      <div class="msg-headline">Stop answering messages. Start scaling.</div>
+    </div>
+    <div class="msg-block">
+      <span class="msg-type">Headline</span>
+      <div class="msg-headline">If it's repetitive, we automate it.</div>
+    </div>
+    <h3 class="sub-title" style="margin-top: 40px;">Call-to-Action Examples</h3>
+    <div class="cta-examples">
+      <div class="cta-tag">Book a free diagnosis</div>
+      <div class="cta-tag">Let's build your system</div>
+      <div class="cta-tag">Make it real</div>
+    </div>
+    <span class="page-number">17</span>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PAGE 18 — FINAL PAGE                    -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="page final">
+    <div class="stamp-logo" style="font-size: clamp(60px, 8vw, 96px);">DOCEPROJECTS</div>
+    <div class="tagline" style="margin-top: 24px;">MAKE IT REAL.</div>
+    <span class="page-number">18</span>
+  </section>
+
+</body>
+</html>
