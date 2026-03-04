@@ -50,76 +50,71 @@
       box-shadow: 0 0 80px rgba(0,0,0,0.3);
     }
 
-    /* ── DUAL-BRAND HEADER ── */
+    /* ── UNIFIED HEADER ── */
     .doc-header {
-      background: var(--navy-dark);
-      padding: 24px 60px;
+      background: var(--purple);
+      padding: 32px 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
 
     .header-client {
       display: flex;
       align-items: center;
       gap: 16px;
+      flex-shrink: 0;
     }
 
     .header-client-logo {
-      height: 40px;
+      height: 44px;
       width: auto;
       object-fit: contain;
     }
 
     .header-client-name {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
       color: var(--white);
       letter-spacing: -0.02em;
     }
 
-    .header-separator {
-      font-size: 20px;
-      color: rgba(255,255,255,0.15);
+    .header-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .header-meta-line {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.9);
+      white-space: nowrap;
+    }
+
+    .header-meta-line .separator {
       margin: 0 8px;
+      opacity: 0.5;
+    }
+
+    .header-meta-line strong {
+      font-weight: 700;
     }
 
     .header-agency {
       display: flex;
       align-items: center;
-      gap: 12px;
+      flex-shrink: 0;
     }
 
     .header-agency-logo {
-      height: 32px;
+      height: 80px;
       width: auto;
-      opacity: 0.85;
-    }
-
-    .header-agency-sub {
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray-mid);
-    }
-
-    /* ── HERO BAND (meta bar) ── */
-    .hero-band {
-      background: var(--purple);
-      padding: 12px 60px;
-    }
-
-    .hero-band p {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      color: rgba(255,255,255,0.9);
-      text-align: center;
-    }
-
-    .hero-band .separator {
-      margin: 0 8px;
-      opacity: 0.5;
     }
 
     /* ── HERO / COVER ── */
@@ -1056,10 +1051,11 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .doc-header { padding: 20px 24px; flex-direction: column; gap: 12px; }
+      .doc-header { padding: 20px 24px; flex-direction: column; gap: 16px; }
+      .header-meta { gap: 2px; }
+      .header-meta-line { font-size: 11px; white-space: normal; text-align: center; }
+      .header-agency-logo { height: 44px; }
       .header-separator { display: none; }
-      .hero-band { padding: 10px 24px; }
-      .hero-band p { font-size: 11px; }
       .hero { padding: 48px 24px; }
       .countdown-section { padding: 20px 24px; }
       .countdown-number { font-size: 40px; }
@@ -1124,25 +1120,21 @@
         <img src="<!-- CLIENT_LOGO_SRC -->assets/client-logo.png" alt="<!-- CLIENT_COMPANY -->[Empresa]" class="header-client-logo">
         <span class="header-client-name"><!-- CLIENT_COMPANY_SHORT -->[Empresa]</span>
       </div>
-      <span class="header-separator">&times;</span>
+      <div class="header-meta">
+        <span class="header-meta-line">
+          Propuesta de automatizaci&oacute;n
+          <span class="separator">&middot;</span>
+          <!-- PROPOSAL_CITY -->[Ciudad], <!-- PROPOSAL_MONTH -->[mes] <!-- PROPOSAL_YEAR -->[a&ntilde;o]
+        </span>
+        <span class="header-meta-line">
+          Para: <strong><!-- CLIENT_COMPANY -->[Empresa]</strong>
+          <span class="separator">&middot;</span>
+          Preparado por: <!-- AUTHOR_NAME -->[Nombre]
+        </span>
+      </div>
       <div class="header-agency">
         <img src="assets/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-agency-logo">
       </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════ -->
-    <!-- HERO BAND (meta bar)                   -->
-    <!-- ═══════════════════════════════════════ -->
-    <div class="hero-band">
-      <p>
-        Propuesta de automatizaci&oacute;n
-        <span class="separator">&middot;</span>
-        <!-- PROPOSAL_CITY -->[Ciudad], <!-- PROPOSAL_MONTH -->[mes] <!-- PROPOSAL_YEAR -->[a&ntilde;o]
-        <span class="separator">&middot;</span>
-        Para: <strong><!-- CLIENT_COMPANY -->[Empresa]</strong>
-        <span class="separator">&middot;</span>
-        Preparado por: <!-- AUTHOR_NAME -->[Nombre]
-      </p>
     </div>
 
     <!-- ═══════════════════════════════════════ -->
