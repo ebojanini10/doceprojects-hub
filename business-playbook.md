@@ -281,4 +281,38 @@ El Brand Manual de DOCEPROJECTS (`brand-manual.html`) ya incluye los fundamentos
 
 ---
 
+## 11. DECISIONES PENDIENTES — Resolver con Emiliano
+
+> ⚠️ Las siguientes preguntas quedaron abiertas y requieren una conversación Clara + Emiliano para definir. Una vez resueltas, se integran al playbook y al contrato de servicios.
+
+### REVENUE & PRICING
+
+| # | Pregunta | Estado |
+|---|----------|--------|
+| 1 | **Breakeven:** Si el mantenimiento baja a ~1.3M COP/cliente, ¿cuántos clientes activos necesitan para cubrir costos fijos mensuales (APIs, cloud, internet, tiempo)? | ⏳ Pendiente |
+| 2 | **Scope creep:** ¿Dónde está la línea entre soporte incluido en mantenimiento y nueva implementación que se cobra aparte? | ⏳ Pendiente |
+| 3 | **Cash vs Digital (2x):** ¿Han validado con un contador las implicaciones tributarias/DIAN? ¿Cómo facturan formalmente? | ⏳ Pendiente |
+| 4 | **Tope del upgrade obligatorio:** Si migrar a nueva tecnología requiere 200+ horas, ¿lo absorben? ¿Hay tope de esfuerzo o siempre lo cubre el mantenimiento? | ⏳ Pendiente |
+| 5 | **Costo de regalos:** El Reportero de Industria y Suite de Productividad consumen API calls perpetuamente. ¿Quién paga — mantenimiento o costo hundido de DOCEPROJECTS? | ⏳ Pendiente |
+
+### OPERACIONES & CAPACIDAD
+
+| # | Pregunta | Estado |
+|---|----------|--------|
+| 6 | **Capacidad máxima con 2 personas:** ¿Cuántos clientes simultáneos pueden manejar sin reventar calidad? | ⏳ Pendiente |
+| 7 | **Dos Discoveries el mismo día:** ¿Pueden producir 2 propuestas HTML con preview funcional en 12 horas? | ⏳ Pendiente |
+| 8 | **Pipeline:** Si hay 3 leads calientes al mismo tiempo, ¿quién va primero? ¿Criterio de priorización? | ⏳ Pendiente |
+| 9 | **División de roles:** ¿Clara = técnico, Emiliano = comercial? ¿Ambos hacen Discovery? ¿Quién construye propuestas? ¿Quién maneja post-venta? | ⏳ Pendiente |
+
+### LEGAL & PROTECCIÓN
+
+| # | Pregunta | Estado |
+|---|----------|--------|
+| 10 | **Contrato de servicios:** El NDA protege la conversación, pero ¿tienen contrato que defina entregables, pagos, IP, terminación, garantías? ¿Existe o hay que crearlo? | ⏳ Pendiente |
+| 11 | **Propiedad del código:** Construyen para Juan, replican para María. ¿Juan sabe? ¿El IP es de DOCEPROJECTS por contrato? | ⏳ Pendiente |
+| 12 | **Exit policy:** Si un cliente se va: ¿se entrega código? ¿Se apaga todo? ¿Periodo de transición? ¿Datos se borran? (Habeas Data colombiano) | ⏳ Pendiente |
+| 13 | **Responsabilidad por errores de AI:** Si un agente comete un error que le cuesta plata al cliente, ¿quién responde? ¿Hay seguro? ¿Está contemplado? | ⏳ Pendiente |
+
+---
+
 *Este documento es la fuente de verdad para la metodología y el journey de DOCEPROJECTS. Se mantiene sincronizado con el Brand Manual y sirve como guía para la generación de propuestas consistentes.*
