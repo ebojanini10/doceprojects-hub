@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS &times; Grupo Monta&ntilde;a &mdash; Propuesta Comercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & VARIABLES ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6A1B9A;
+      --purple-hover: #58147F;
+      --purple-light: rgba(106, 27, 154, 0.08);
+      --purple-glow: rgba(106, 27, 154, 0.15);
+      --black: #111111;
+      --white: #FFFFFF;
+      --gray-light: #F4F6F8;
+      --gray-mid: #9CA3AF;
+      --gray-dark: #6B7280;
+      --navy: #1F2937;
+      --navy-dark: #0F172A;
+      --navy-card: #1E293B;
+      --green: #16A34A;
+      --green-light: rgba(22, 163, 74, 0.1);
+      --red: #DC2626;
+      --red-light: rgba(220, 38, 38, 0.1);
+      --kraft: #D6C2A1;
+      --wa-green: #25D366;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--black);
+      background: var(--navy-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PROPOSAL CONTAINER ── */
+    .proposal {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 0 80px rgba(0,0,0,0.3);
+    }
+
+    /* ── DUAL-BRAND HEADER ── */
+    .doc-header {
+      background: var(--navy-dark);
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-client {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-client-logo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .header-client-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .header-separator {
+      font-size: 20px;
+      color: rgba(255,255,255,0.15);
+      margin: 0 8px;
+    }
+
+    .header-agency {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-agency-logo {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .header-agency-sub {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    /* ── HERO BAND (meta bar) ── */
+    .hero-band {
+      background: var(--purple);
+      padding: 12px 60px;
+    }
+
+    .hero-band p {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+    }
+
+    .hero-band .separator {
+      margin: 0 8px;
+      opacity: 0.5;
+    }
+
+    /* ── HERO / COVER ── */
+    .hero {
+      background: var(--navy-dark);
+      padding: 64px 60px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="400" height="400" filter="url(%23n)" opacity="0.05"/></svg>');
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      max-width: 240px;
+      margin: 0 auto 32px;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--purple);
+      margin: 24px auto;
+    }
+
+    .hero-meta {
+      font-size: 14px;
+      color: var(--gray-mid);
+      margin-bottom: 6px;
+    }
+
+    .hero-meta strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── COUNTDOWN TIMER ── */
+    .countdown-section {
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 60px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .countdown-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+
+    .countdown-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .countdown-number.urgent { color: var(--red); }
+
+    .countdown-text {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-top: 8px;
+    }
+
+    .countdown-separator {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      color: var(--gray-mid);
+      line-height: 1;
+      opacity: 0.3;
+    }
+
+    .countdown-expired {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--red);
+    }
+
+    .countdown-progress {
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      margin-top: 20px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .countdown-progress-bar {
+      height: 100%;
+      background: var(--purple);
+      transition: width 1s linear;
+      border-radius: 2px;
+    }
+
+    .countdown-progress-bar.urgent { background: var(--red); }
+
+    /* ── SECTION SYSTEM ── */
+    .section {
+      padding: 56px 60px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 1px;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .section h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      max-width: 720px;
+    }
+
+    .section p + p { margin-top: 16px; }
+
+    /* ── CLIENT PROFILE ── */
+    .client-overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .client-info-card {
+      background: var(--gray-light);
+      padding: 24px;
+      border-radius: 4px;
+    }
+
+    .client-info-card .info-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-bottom: 6px;
+    }
+
+    .client-info-card .info-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .client-units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .unit-card {
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .unit-card-header {
+      background: var(--navy-dark);
+      padding: 14px 18px;
+    }
+
+    .unit-card-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: var(--purple);
+    }
+
+    .unit-card-header .unit-type {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    .unit-card-body {
+      padding: 14px 18px;
+      background: var(--gray-light);
+    }
+
+    .unit-card-body .unit-detail {
+      font-size: 12px;
+      color: var(--gray-dark);
+      margin-bottom: 4px;
+    }
+
+    .unit-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .unit-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: rgba(106, 27, 154, 0.08);
+      color: var(--purple);
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    /* ── EXECUTIVE SUMMARY ── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .summary-card {
+      background: var(--gray-light);
+      padding: 28px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .summary-card .icon { font-size: 28px; margin-bottom: 16px; }
+
+    .summary-card .number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .summary-card .label {
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-top: 8px;
+    }
+
+    /* ── PAIN POINTS ── */
+    .pain-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .pain-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .pain-list li::before {
+      content: attr(data-num);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--purple);
+      min-width: 28px;
+      line-height: 1.2;
+    }
+
+    /* ── SOLUTIONS (Problem → Solution format) ── */
+    .solutions { margin-top: 32px; }
+
+    .solution-card {
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .solution-header {
+      background: var(--gray-light);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .solution-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--black);
+    }
+
+    .solution-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    .solution-tag.automation { background: var(--purple-light); color: var(--purple); }
+    .solution-tag.dashboard { background: var(--green-light); color: var(--green); }
+    .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
+    .solution-tag.integration { background: rgba(245,158,11,0.1); color: #D97706; }
+
+    .solution-body { padding: 24px; }
+
+    .solution-problem {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gray-dark);
+      line-height: 1.6;
+      padding-left: 16px;
+      border-left: 3px solid var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .solution-problem-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      font-style: normal;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .solution-deliverable-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .solution-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .solution-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .solution-spec {
+      font-size: 13px;
+      color: var(--gray-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-spec::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── PREVIEW SECTION ── */
+    .preview-box {
+      background: var(--navy-dark);
+      border-radius: 8px;
+      padding: 40px;
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .preview-box .preview-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 24px;
+    }
+
+    .preview-mockup {
+      background: var(--navy-card);
+      border-radius: 6px;
+      padding: 32px;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .preview-mockup .mockup-icon { font-size: 48px; opacity: 0.4; }
+    .preview-mockup .mockup-text { font-size: 14px; color: var(--gray-mid); letter-spacing: 1px; }
+
+    .preview-caption {
+      font-size: 12px;
+      color: var(--gray-mid);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 28px; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gray-light);
+    }
+
+    .timeline-phase {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 3px solid var(--purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      color: var(--purple);
+      z-index: 1;
+    }
+
+    .timeline-content { flex: 1; padding-top: 6px; }
+
+    .timeline-content h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content .duration {
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--purple);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p { font-size: 14px; line-height: 1.6; color: #666; }
+
+    .timeline-content .deliverables { list-style: none; margin-top: 12px; }
+
+    .timeline-content .deliverables li {
+      font-size: 13px;
+      color: #555;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-content .deliverables li::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* ── INVESTMENT ── */
+    .investment-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .investment-table th {
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--black);
+    }
+
+    .investment-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 15px;
+      color: #444;
+    }
+
+    .investment-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .investment-table tr.total td {
+      border-top: 2px solid var(--black);
+      border-bottom: none;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--black);
+      padding-top: 20px;
+    }
+
+    .investment-note {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: var(--purple-light);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .investment-note p { font-size: 13px; color: #555; line-height: 1.6; }
+    .investment-note strong { color: var(--black); }
+
+    /* ── MAINTENANCE ── */
+    .maintenance-card {
+      background: var(--gray-light);
+      padding: 32px;
+      border-radius: 4px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .maintenance-card .maint-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .maintenance-card .maint-info p { font-size: 13px; color: var(--gray-dark); }
+    .maintenance-card .maint-price { text-align: right; }
+
+    .maintenance-card .maint-price .amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .maintenance-card .maint-price .period {
+      font-size: 12px;
+      color: var(--gray-dark);
+      letter-spacing: 1px;
+    }
+
+    /* ── CONDITIONS GRID ── */
+    .conditions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .condition-box {
+      background: var(--gray-light);
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 24px;
+    }
+
+    .condition-box h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .condition-box ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    .condition-box ul li {
+      font-size: 13px;
+      color: #555;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      line-height: 1.5;
+    }
+
+    .condition-box ul li:last-child { border-bottom: none; }
+
+    /* ── POST-SALE INCLUDED ── */
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .included-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: var(--gray-light);
+      border-radius: 4px;
+    }
+
+    .included-item .incl-icon { font-size: 24px; flex-shrink: 0; }
+
+    .included-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .included-item p { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
+
+    /* ── NDA BOX ── */
+    .nda-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      border: 1.5px solid var(--navy);
+      background: var(--gray-light);
+      border-radius: 4px;
+      padding: 28px;
+      margin-top: 28px;
+    }
+
+    .nda-box .nda-icon { font-size: 28px; flex-shrink: 0; }
+
+    .nda-box h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .nda-box p { font-size: 13px; color: #555; line-height: 1.6; max-width: none; }
+
+    /* ── GLOSSARY ── */
+    .glosario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 32px;
+      margin-top: 24px;
+    }
+
+    .glosario-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .glosario-item .g-sigla {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--navy);
+      min-width: 48px;
+      letter-spacing: 0.5px;
+    }
+
+    .glosario-item .g-def {
+      font-size: 12.5px;
+      color: var(--gray-dark);
+      line-height: 1.5;
+    }
+
+    /* ── CTA WITH STEPS ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 56px 60px;
+      text-align: center;
+    }
+
+    .cta-section .cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section .cta-subtitle {
+      font-size: 14px;
+      color: var(--gray-mid);
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .cta-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 130px;
+    }
+
+    .cta-step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+    }
+
+    .cta-step-text {
+      font-size: 12px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* ── ACCEPT / DECLINE ── */
+    .accept-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-accept { background: var(--purple); color: var(--white); }
+    .btn-accept:hover { background: var(--purple-hover); transform: translateY(-1px); }
+
+    .btn-decline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--gray-mid);
+    }
+
+    .btn-decline:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+
+    .accept-confirmation { display: none; padding: 40px; text-align: center; }
+    .accept-confirmation.show { display: block; }
+    .accept-buttons.hidden { display: none; }
+
+    .accept-confirmation .confirm-icon { font-size: 48px; margin-bottom: 16px; }
+
+    .accept-confirmation .confirm-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--green);
+    }
+
+    .accept-confirmation .confirm-sub { font-size: 14px; color: var(--gray-mid); margin-top: 8px; }
+    .decline-confirmation .confirm-text { color: var(--gray-mid); }
+
+    /* ── FOOTER ── */
+    .proposal-footer {
+      background: var(--navy-dark);
+      padding: 36px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      height: 24px;
+      filter: brightness(0) invert(1);
+      opacity: 0.4;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+
+    .footer-confidential {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: var(--wa-green);
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    .wa-float svg { width: 22px; height: 22px; fill: currentColor; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .doc-header { padding: 20px 24px; flex-direction: column; gap: 12px; }
+      .header-separator { display: none; }
+      .hero-band { padding: 10px 24px; }
+      .hero-band p { font-size: 11px; }
+      .hero { padding: 48px 24px; }
+      .countdown-section { padding: 20px 24px; }
+      .countdown-number { font-size: 40px; }
+      .countdown-separator { font-size: 40px; }
+      .countdown-unit { min-width: 56px; }
+      .section { padding: 40px 24px; }
+      .client-overview { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .solution-specs { grid-template-columns: 1fr; }
+      .conditions-grid { grid-template-columns: 1fr; }
+      .included-grid { grid-template-columns: 1fr; }
+      .glosario-grid { grid-template-columns: 1fr; }
+      .maintenance-card { flex-direction: column; text-align: center; gap: 16px; }
+      .maintenance-card .maint-price { text-align: center; }
+      .cta-section { padding: 40px 24px; }
+      .cta-steps { flex-direction: column; align-items: center; gap: 20px; }
+      .cta-step { flex-direction: row; max-width: 280px; text-align: left; }
+      .cta-step-text { text-align: left; }
+      .accept-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; text-align: center; }
+      .nda-box { flex-direction: column; }
+      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+      .wa-float { bottom: 18px; right: 18px; padding: 12px 16px; font-size: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 36px; }
+      .countdown { gap: 12px; }
+      .countdown-number { font-size: 32px; }
+      .countdown-separator { font-size: 32px; }
+      .countdown-unit { min-width: 44px; }
+      .timeline-phase { gap: 16px; }
+      .timeline-dot { width: 32px; height: 32px; font-size: 13px; }
+      .timeline::before { left: 16px; }
+      .client-units-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; }
+      .proposal { box-shadow: none; }
+      .countdown-section { position: static; }
+      .wa-float { display: none; }
+      .btn { border: 1px solid #ccc !important; }
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page { margin: 14mm 12mm; }
+  </style>
+</head>
+<body>
+
+  <div class="proposal">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DUAL-BRAND HEADER                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="doc-header">
+      <div class="header-client">
+        <span class="header-client-name">Grupo Monta&ntilde;a</span>
+      </div>
+      <span class="header-separator">&times;</span>
+      <div class="header-agency">
+        <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="header-agency-logo">
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- HERO BAND (meta bar)                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="hero-band">
+      <p>
+        Propuesta de automatizaci&oacute;n
+        <span class="separator">&middot;</span>
+        Medell&iacute;n, marzo 2026
+        <span class="separator">&middot;</span>
+        Para: <strong>Grupo Monta&ntilde;a</strong>
+        <span class="separator">&middot;</span>
+        Preparado por: Emiliano Bojanini
+      </p>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- HERO / COVER                           -->
+    <!-- ═══════════════════════════════════════ -->
+    <header class="hero">
+      <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="hero-logo">
+      <div class="hero-label">Propuesta Comercial</div>
+      <h1>LOG&Iacute;STICA<br>INTELIGENTE</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-meta">Preparada para: <strong>Roberto Vel&aacute;squez</strong></p>
+      <p class="hero-meta">Empresa: <strong>Grupo Monta&ntilde;a</strong></p>
+      <p class="hero-meta">Fecha: <strong>04 / Marzo / 2026</strong></p>
+    </header>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- COUNTDOWN TIMER (sticky)               -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="countdown-section" id="countdownSection">
+      <div class="countdown-label">Esta propuesta expira en</div>
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <div class="countdown-number" id="cd-hours">12</div>
+          <div class="countdown-text">Horas</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-number" id="cd-minutes">00</div>
+          <div class="countdown-text">Minutos</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-number" id="cd-seconds">00</div>
+          <div class="countdown-text">Segundos</div>
+        </div>
+      </div>
+      <div class="countdown-progress">
+        <div class="countdown-progress-bar" id="progressBar" style="width: 100%"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 01 — PERFIL DEL CLIENTE                -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">01</div>
+      <h2>Su Operaci&oacute;n</h2>
+      <p>
+        Esto es lo que entendemos de <strong>Grupo Monta&ntilde;a</strong>
+        despu&eacute;s de nuestra conversaci&oacute;n de Discovery:
+      </p>
+
+      <div class="client-overview">
+        <div class="client-info-card">
+          <div class="info-label">Industria</div>
+          <div class="info-value">Log&iacute;stica y Cadena de Fr&iacute;o</div>
+        </div>
+        <div class="client-info-card">
+          <div class="info-label">Ubicaci&oacute;n</div>
+          <div class="info-value">Medell&iacute;n, Colombia</div>
+        </div>
+        <div class="client-info-card">
+          <div class="info-label">Equipo</div>
+          <div class="info-value">85 personas</div>
+        </div>
+        <div class="client-info-card">
+          <div class="info-label">Herramientas actuales</div>
+          <div class="info-value">Excel, WhatsApp, correo de Outlook, ERP SAP b&aacute;sico</div>
+        </div>
+      </div>
+
+      <!-- CLIENT_UNITS — Optional: show business units/brands if applicable -->
+      <h3>Unidades de Negocio</h3>
+      <div class="client-units-grid">
+        <div class="unit-card">
+          <div class="unit-card-header">
+            <h4>Monta&ntilde;a Express</h4>
+            <div class="unit-type">Transporte refrigerado</div>
+          </div>
+          <div class="unit-card-body">
+            <div class="unit-detail">Medell&iacute;n / Bogot&aacute; / Cali</div>
+            <div class="unit-tags">
+              <span class="unit-tag">Cadena de fr&iacute;o</span>
+              <span class="unit-tag">&Uacute;ltima milla</span>
+            </div>
+          </div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-card-header">
+            <h4>Monta&ntilde;a Storage</h4>
+            <div class="unit-type">Almacenamiento en fr&iacute;o</div>
+          </div>
+          <div class="unit-card-body">
+            <div class="unit-detail">Medell&iacute;n / Barranquilla</div>
+            <div class="unit-tags">
+              <span class="unit-tag">Bodegas</span>
+              <span class="unit-tag">Inventario</span>
+            </div>
+          </div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-card-header">
+            <h4>Monta&ntilde;a Pharma</h4>
+            <div class="unit-type">Distribuci&oacute;n farmac&eacute;utica</div>
+          </div>
+          <div class="unit-card-body">
+            <div class="unit-detail">Nacional</div>
+            <div class="unit-tags">
+              <span class="unit-tag">Regulado</span>
+              <span class="unit-tag">Trazabilidad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 02 — RESUMEN EJECUTIVO                 -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">02</div>
+      <h2>Resumen Ejecutivo</h2>
+      <p>
+        Tras nuestra conversaci&oacute;n de Discovery, identificamos
+        <strong>5</strong> oportunidades de automatizaci&oacute;n
+        que pueden transformar la operaci&oacute;n de
+        <strong>Grupo Monta&ntilde;a</strong>.
+      </p>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="icon">&#x1F50D;</div>
+          <div class="number">5</div>
+          <div class="label">Oportunidades</div>
+        </div>
+        <div class="summary-card">
+          <div class="icon">&#x26A1;</div>
+          <div class="number">4</div>
+          <div class="label">Soluciones</div>
+        </div>
+        <div class="summary-card">
+          <div class="icon">&#x1F4C5;</div>
+          <div class="number">3</div>
+          <div class="label">Fases</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 03 — PAIN POINTS                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">03</div>
+      <h2>Lo que encontramos</h2>
+      <p>
+        Durante el Discovery Call revisamos su operaci&oacute;n actual e
+        identificamos los siguientes puntos de mejora:
+      </p>
+
+      <ul class="pain-list">
+        <li data-num="01">Los conductores reportan entregas y temperaturas por WhatsApp &mdash; se pierden mensajes y no hay registro centralizado</li>
+        <li data-num="02">El equipo de costos consolida manualmente las rutas en Excel cada semana &mdash; 2 d&iacute;as de trabajo para generar un reporte</li>
+        <li data-num="03">Los clientes llaman a preguntar d&oacute;nde est&aacute; su pedido &mdash; el equipo de servicio pasa 40% del tiempo en llamadas de seguimiento</li>
+        <li data-num="04">La trazabilidad farmac&eacute;utica se lleva en papel &mdash; riesgo de incumplimiento INVIMA</li>
+        <li data-num="05">No hay visibilidad en tiempo real del estado de las bodegas de fr&iacute;o &mdash; se enteran de fallas cuando ya se perdi&oacute; mercanc&iacute;a</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 04 — SOLUCIONES (Problem → Solution)   -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">04</div>
+      <h2>Soluciones Propuestas</h2>
+      <p>
+        Cada soluci&oacute;n est&aacute; dise&ntilde;ada para resolver un problema
+        espec&iacute;fico de su operaci&oacute;n e integrarse con su stack actual.
+      </p>
+
+      <div class="solutions">
+        <!-- SOLUTION 1 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <h4>MonitorBot &mdash; Registro Automatizado de Entregas</h4>
+            <span class="solution-tag automation">Automatizaci&oacute;n</span>
+          </div>
+          <div class="solution-body">
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              Los conductores reportan por WhatsApp y se pierden datos. No hay un sistema centralizado de temperatura ni confirmaci&oacute;n de entrega.
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
+            <p>Agente de WhatsApp que recibe reportes de conductores, valida temperatura, registra GPS de entrega, y alimenta un dashboard en tiempo real.</p>
+            <div class="solution-specs">
+              <div class="solution-spec">Bot WhatsApp para conductores</div>
+              <div class="solution-spec">Validaci&oacute;n autom&aacute;tica de temperatura</div>
+              <div class="solution-spec">Registro GPS de cada entrega</div>
+              <div class="solution-spec">Alertas por desv&iacute;o de ruta o temperatura</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLUTION 2 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <h4>CostFlow &mdash; Dashboard de Costos Operativos</h4>
+            <span class="solution-tag dashboard">Dashboard</span>
+          </div>
+          <div class="solution-body">
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              El equipo tarda 2 d&iacute;as por semana consolidando rutas y costos en Excel. Los datos llegan tarde y con errores.
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
+            <p>Dashboard que consolida autom&aacute;ticamente costos por ruta, veh&iacute;culo y cliente. Genera reportes semanales sin intervenci&oacute;n manual.</p>
+            <div class="solution-specs">
+              <div class="solution-spec">Consolidaci&oacute;n autom&aacute;tica de costos</div>
+              <div class="solution-spec">Reportes semanales auto-generados</div>
+              <div class="solution-spec">Filtros por ruta/veh&iacute;culo/cliente</div>
+              <div class="solution-spec">Exportable a PDF y Excel</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLUTION 3 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <h4>TrackAgent &mdash; Rastreo para Clientes</h4>
+            <span class="solution-tag agent">Agente AI</span>
+          </div>
+          <div class="solution-body">
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              El equipo de servicio al cliente pasa 40% de su tiempo respondiendo &laquo;&iquest;d&oacute;nde est&aacute; mi pedido?&raquo; por tel&eacute;fono.
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
+            <p>Agente AI que responde autom&aacute;ticamente el estado de cada env&iacute;o por WhatsApp. El cliente pregunta y recibe ubicaci&oacute;n, temperatura y ETA en segundos.</p>
+            <div class="solution-specs">
+              <div class="solution-spec">Agente WhatsApp para clientes</div>
+              <div class="solution-spec">Ubicaci&oacute;n + temperatura + ETA en tiempo real</div>
+              <div class="solution-spec">Reducci&oacute;n del 80% en llamadas de seguimiento</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLUTION 4 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <h4>PharmaTrace &mdash; Trazabilidad Digital INVIMA</h4>
+            <span class="solution-tag integration">Integraci&oacute;n</span>
+          </div>
+          <div class="solution-body">
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              La trazabilidad farmac&eacute;utica se lleva en papel. Riesgo de incumplimiento regulatorio y multas de INVIMA.
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
+            <p>Sistema digital de trazabilidad que registra cada punto de la cadena de fr&iacute;o farmac&eacute;utica con timestamps, temperaturas y firmas digitales.</p>
+            <div class="solution-specs">
+              <div class="solution-spec">Registro digital de cadena de custodia</div>
+              <div class="solution-spec">Cumplimiento INVIMA automatizado</div>
+              <div class="solution-spec">Alertas de desviaci&oacute;n en tiempo real</div>
+              <div class="solution-spec">Reportes auditables exportables</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 05 — PREVIEW / PROOF OF CONCEPT        -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">05</div>
+      <h2>Preview Funcional</h2>
+      <p>
+        Construimos un proof-of-concept de
+        <strong>MonitorBot</strong>
+        para que pueda ver la calidad y el enfoque antes de iniciar.
+      </p>
+
+      <div class="preview-box">
+        <div class="preview-label">Proof of Concept</div>
+        <div class="preview-mockup">
+          <div class="mockup-icon">&#x1F4BB;</div>
+          <div class="mockup-text">Preview interactivo de MonitorBot</div>
+        </div>
+        <p class="preview-caption">
+          Dashboard en tiempo real mostrando las entregas del d&iacute;a, temperaturas registradas y alertas activas para las 3 unidades de negocio.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 06 — CRONOGRAMA                        -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">06</div>
+      <h2>Cronograma de Entrega</h2>
+      <p>
+        Entregamos por fases. Cada fase incluye un preview antes de la entrega
+        final. Los tiempos empiezan a contar desde la aceptaci&oacute;n.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-phase">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <h4>MonitorBot + Infraestructura</h4>
+            <div class="duration">2 semanas</div>
+            <p>Setup del agente WhatsApp para conductores, integraci&oacute;n con GPS y sensores de temperatura.</p>
+            <ul class="deliverables">
+              <li>Bot WhatsApp operativo para conductores</li>
+              <li>Dashboard de entregas en tiempo real</li>
+              <li>Alertas de temperatura y desv&iacute;o</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-phase">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <h4>CostFlow + TrackAgent</h4>
+            <div class="duration">3 semanas</div>
+            <p>Dashboard de costos operativos y agente de rastreo para clientes.</p>
+            <ul class="deliverables">
+              <li>Dashboard CostFlow con datos hist&oacute;ricos</li>
+              <li>Agente TrackAgent en WhatsApp para clientes</li>
+              <li>Reportes semanales automatizados</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-phase">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-content">
+            <h4>PharmaTrace + Optimizaci&oacute;n</h4>
+            <div class="duration">3 semanas</div>
+            <p>Sistema de trazabilidad farmac&eacute;utica y optimizaci&oacute;n de todos los m&oacute;dulos.</p>
+            <ul class="deliverables">
+              <li>PharmaTrace con cumplimiento INVIMA</li>
+              <li>Integraci&oacute;n completa entre m&oacute;dulos</li>
+              <li>Capacitaci&oacute;n del equipo</li>
+              <li>Documentaci&oacute;n t&eacute;cnica</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 07 — INVERSI&Oacute;N                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">07</div>
+      <h2>Inversi&oacute;n</h2>
+
+      <h3>Implementaci&oacute;n</h3>
+      <table class="investment-table">
+        <thead>
+          <tr>
+            <th>Concepto</th>
+            <th style="text-align:right">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fase 1 &mdash; MonitorBot + Infraestructura</td>
+            <td>$4,200,000</td>
+          </tr>
+          <tr>
+            <td>Fase 2 &mdash; CostFlow + TrackAgent</td>
+            <td>$6,500,000</td>
+          </tr>
+          <tr>
+            <td>Fase 3 &mdash; PharmaTrace + Optimizaci&oacute;n</td>
+            <td>$5,800,000</td>
+          </tr>
+          <tr class="total">
+            <td>Total Implementaci&oacute;n</td>
+            <td>$16,500,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Mantenimiento Mensual</h3>
+      <div class="maintenance-card">
+        <div class="maint-info">
+          <h4>Soporte + Monitoreo + Upgrades</h4>
+          <p>Incluye monitoreo 24/7, reportes semanales, status page, y obligaci&oacute;n de upgrade.</p>
+        </div>
+        <div class="maint-price">
+          <div class="amount">$2,626,358</div>
+          <div class="period">COP / mes</div>
+        </div>
+      </div>
+
+      <div class="investment-note">
+        <p>
+          <strong>Modelo decremental:</strong> El mantenimiento mensual disminuye
+          progresivamente a medida que la soluci&oacute;n madura. Nos comprometemos
+          a mantener su operaci&oacute;n en la mejor tecnolog&iacute;a disponible
+          sin costo adicional de upgrade.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 08 — CONDICIONES                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">08</div>
+      <h2>Condiciones</h2>
+
+      <div class="conditions-grid">
+        <div class="condition-box">
+          <h4>Forma de Pago</h4>
+          <ul>
+            <li>50% de cada fase al inicio, 50% al entregar</li>
+            <li>Retainer mensual inicia al completar Fase 1</li>
+            <li>Transferencia Bancolombia o efectivo</li>
+            <li>Factura electr&oacute;nica disponible</li>
+          </ul>
+        </div>
+        <div class="condition-box">
+          <h4>Responsabilidades del Cliente</h4>
+          <ul>
+            <li>Acceso a ERP SAP y datos de rutas</li>
+            <li>Punto de contacto: Director de Operaciones</li>
+            <li>Feedback dentro de 48h en cada preview</li>
+            <li>Sensores de temperatura y GPS existentes</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- NDA BOX -->
+      <div class="nda-box">
+        <div class="nda-icon">&#x1F512;</div>
+        <div>
+          <h4>Acuerdo de Confidencialidad (NDA)</h4>
+          <p>
+            Esta propuesta y toda la informaci&oacute;n compartida est&aacute;n
+            protegidas por un NDA bilateral. Tanto DOCEPROJECTS como
+            <strong>Grupo Monta&ntilde;a</strong> se comprometen a
+            mantener la confidencialidad absoluta del contenido, procesos y datos
+            involucrados. DOCEPROJECTS firma primero como gesto de confianza.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 09 — QU&Eacute; INCLUYE               -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">09</div>
+      <h2>&iquest;Qu&eacute; incluye el mantenimiento?</h2>
+
+      <div class="included-grid">
+        <div class="included-item">
+          <div class="incl-icon">&#x1F4CA;</div>
+          <div>
+            <h4>Status Page 24/7</h4>
+            <p>P&aacute;gina dedicada para monitorear el estado de todas sus soluciones en tiempo real.</p>
+          </div>
+        </div>
+        <div class="included-item">
+          <div class="incl-icon">&#x1F4CB;</div>
+          <div>
+            <h4>Reporte Semanal</h4>
+            <p>Resumen autom&aacute;tico del rendimiento y estado de sus automatizaciones.</p>
+          </div>
+        </div>
+        <div class="included-item">
+          <div class="incl-icon">&#x1F4AC;</div>
+          <div>
+            <h4>Soporte WhatsApp</h4>
+            <p>Grupo dedicado con los stakeholders de su proceso + agente de soporte.</p>
+          </div>
+        </div>
+        <div class="included-item">
+          <div class="incl-icon">&#x1F680;</div>
+          <div>
+            <h4>Upgrades Tecnol&oacute;gicos</h4>
+            <p>Obligaci&oacute;n de actualizar su soluci&oacute;n cuando aparezca mejor tecnolog&iacute;a, sin costo adicional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 10 — GLOSARIO                          -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">10</div>
+      <h2>Glosario</h2>
+
+      <div class="glosario-grid">
+        <div class="glosario-item">
+          <span class="g-sigla">NDA</span>
+          <span class="g-def">Acuerdo de confidencialidad bilateral que protege la informaci&oacute;n de ambas partes.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">IA</span>
+          <span class="g-def">Inteligencia Artificial &mdash; tecnolog&iacute;a que permite a las m&aacute;quinas aprender y tomar decisiones.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">API</span>
+          <span class="g-def">Interfaz que permite a dos sistemas comunicarse entre s&iacute; autom&aacute;ticamente.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">Dashboard</span>
+          <span class="g-def">Panel visual que muestra datos clave de su operaci&oacute;n en tiempo real.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">Agente</span>
+          <span class="g-def">Software aut&oacute;nomo que ejecuta tareas repetitivas sin intervenci&oacute;n humana.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">ROI</span>
+          <span class="g-def">Retorno sobre la inversi&oacute;n &mdash; cu&aacute;nto gana o ahorra por cada peso invertido.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">CRM</span>
+          <span class="g-def">Sistema para gestionar relaciones con clientes (ventas, contactos, seguimiento).</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">ERP</span>
+          <span class="g-def">Sistema integral de gesti&oacute;n empresarial (inventario, finanzas, operaciones).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CTA WITH STEPS + ACCEPT/DECLINE        -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="cta-section">
+      <div class="cta-eyebrow">Arrancamos esta semana</div>
+      <h2>&iquest;Empezamos?</h2>
+      <p class="cta-subtitle">
+        Al aceptar, seguimos estos pasos para iniciar la implementaci&oacute;n:
+      </p>
+
+      <div class="cta-steps">
+        <div class="cta-step">
+          <div class="cta-step-number">1</div>
+          <div class="cta-step-text">Firma del NDA mutuo</div>
+        </div>
+        <div class="cta-step">
+          <div class="cta-step-number">2</div>
+          <div class="cta-step-text">Sesi&oacute;n estrat&eacute;gica de alineaci&oacute;n</div>
+        </div>
+        <div class="cta-step">
+          <div class="cta-step-number">3</div>
+          <div class="cta-step-text">Kick-off Fase 1</div>
+        </div>
+        <div class="cta-step">
+          <div class="cta-step-number">4</div>
+          <div class="cta-step-text">Entrega de accesos y datos</div>
+        </div>
+      </div>
+
+      <div class="accept-buttons" id="acceptButtons">
+        <button class="btn btn-accept" onclick="acceptProposal()">
+          Aceptar Propuesta
+        </button>
+        <button class="btn btn-decline" onclick="declineProposal()">
+          Necesito m&aacute;s tiempo
+        </button>
+      </div>
+
+      <div class="accept-confirmation" id="acceptConfirm">
+        <div class="confirm-icon">&#x2705;</div>
+        <div class="confirm-text">PROPUESTA ACEPTADA</div>
+        <div class="confirm-sub">Nos pondremos en contacto en las pr&oacute;ximas horas para agendar el kick-off.</div>
+      </div>
+
+      <div class="accept-confirmation decline-confirmation" id="declineConfirm">
+        <div class="confirm-icon">&#x23F3;</div>
+        <div class="confirm-text">ENTENDIDO</div>
+        <div class="confirm-sub">La propuesta sigue disponible hasta que expire el timer. Estamos aqu&iacute; para cualquier pregunta.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- FOOTER                                 -->
+    <!-- ═══════════════════════════════════════ -->
+    <footer class="proposal-footer">
+      <div class="footer-left">
+        <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="footer-logo">
+        <span class="footer-text">DOCEPROJECTS &mdash; Automatizaci&oacute;n Inteligente</span>
+      </div>
+      <span class="footer-confidential">Documento confidencial &mdash; Protegido por NDA</span>
+    </footer>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- WHATSAPP FLOATING BUTTON               -->
+  <!-- ═══════════════════════════════════════ -->
+  <a class="wa-float" href="https://wa.me/573158968278?text=Hola%20Emiliano%2C%20vi%20la%20propuesta%20de%20Grupo%20Monta%C3%B1a%20y%20quiero%20hablar" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Hablemos
+  </a>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- JAVASCRIPT                             -->
+  <!-- ═══════════════════════════════════════ -->
+  <script>
+    // ── COUNTDOWN CONFIG ──
+    const COUNTDOWN_HOURS = 12;
+    const STORAGE_KEY = 'proposal_deadline_grupo_montana';
+    let storedDeadline = localStorage.getItem(STORAGE_KEY);
+    if (!storedDeadline) {
+      storedDeadline = new Date(Date.now() + COUNTDOWN_HOURS * 60 * 60 * 1000).toISOString();
+      localStorage.setItem(STORAGE_KEY, storedDeadline);
+    }
+    const DEADLINE = new Date(storedDeadline);
+
+    const hoursEl = document.getElementById('cd-hours');
+    const minutesEl = document.getElementById('cd-minutes');
+    const secondsEl = document.getElementById('cd-seconds');
+    const progressBar = document.getElementById('progressBar');
+    const countdownEl = document.getElementById('countdown');
+    const totalMs = COUNTDOWN_HOURS * 60 * 60 * 1000;
+
+    function updateCountdown() {
+      const now = new Date();
+      const remaining = DEADLINE - now;
+
+      if (remaining <= 0) {
+        countdownEl.innerHTML = '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
+        progressBar.style.width = '0%';
+        progressBar.classList.add('urgent');
+        return;
+      }
+
+      const hours = Math.floor(remaining / (1000 * 60 * 60));
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+
+      const progress = (remaining / totalMs) * 100;
+      progressBar.style.width = progress + '%';
+
+      if (remaining < 2 * 60 * 60 * 1000) {
+        hoursEl.classList.add('urgent');
+        minutesEl.classList.add('urgent');
+        secondsEl.classList.add('urgent');
+        progressBar.classList.add('urgent');
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── ACCEPT / DECLINE ──
+    function acceptProposal() {
+      document.getElementById('acceptButtons').classList.add('hidden');
+      document.getElementById('acceptConfirm').classList.add('show');
+      console.log('Proposal ACCEPTED at:', new Date().toISOString());
+    }
+
+    function declineProposal() {
+      document.getElementById('acceptButtons').classList.add('hidden');
+      document.getElementById('declineConfirm').classList.add('show');
+      console.log('Proposal DECLINED at:', new Date().toISOString());
+    }
+  </script>
+
+</body>
+</html>
