@@ -6,7 +6,7 @@
   <title>DOCEPROJECTS — Propuesta Comercial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ── RESET & VARIABLES ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,6 +29,7 @@
       --red: #DC2626;
       --red-light: rgba(220, 38, 38, 0.1);
       --kraft: #D6C2A1;
+      --wa-green: #25D366;
     }
 
     html { scroll-behavior: smooth; }
@@ -49,10 +50,83 @@
       box-shadow: 0 0 80px rgba(0,0,0,0.3);
     }
 
+    /* ── DUAL-BRAND HEADER ── */
+    .doc-header {
+      background: var(--navy-dark);
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-client {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-client-logo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .header-client-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .header-separator {
+      font-size: 20px;
+      color: rgba(255,255,255,0.15);
+      margin: 0 8px;
+    }
+
+    .header-agency {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-agency-logo {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .header-agency-sub {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    /* ── HERO BAND (meta bar) ── */
+    .hero-band {
+      background: var(--purple);
+      padding: 12px 60px;
+    }
+
+    .hero-band p {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+    }
+
+    .hero-band .separator {
+      margin: 0 8px;
+      opacity: 0.5;
+    }
+
     /* ── HERO / COVER ── */
     .hero {
       background: var(--navy-dark);
-      padding: 80px 60px;
+      padding: 64px 60px 72px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -67,8 +141,8 @@
     }
 
     .hero-logo {
-      max-width: 280px;
-      margin: 0 auto 40px;
+      max-width: 240px;
+      margin: 0 auto 32px;
       filter: brightness(0) invert(1);
     }
 
@@ -91,10 +165,17 @@
       margin-bottom: 24px;
     }
 
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--purple);
+      margin: 24px auto;
+    }
+
     .hero-meta {
       font-size: 14px;
       color: var(--gray-mid);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-meta strong {
@@ -102,18 +183,11 @@
       font-weight: 600;
     }
 
-    .hero-divider {
-      width: 60px;
-      height: 3px;
-      background: var(--purple);
-      margin: 32px auto;
-    }
-
     /* ── COUNTDOWN TIMER ── */
     .countdown-section {
       background: var(--navy-dark);
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 40px 60px;
+      padding: 32px 60px;
       text-align: center;
       position: sticky;
       top: 0;
@@ -127,7 +201,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--purple);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .countdown {
@@ -151,9 +225,7 @@
       letter-spacing: 2px;
     }
 
-    .countdown-number.urgent {
-      color: var(--red);
-    }
+    .countdown-number.urgent { color: var(--red); }
 
     .countdown-text {
       font-size: 10px;
@@ -182,7 +254,7 @@
       width: 100%;
       height: 3px;
       background: rgba(255,255,255,0.06);
-      margin-top: 24px;
+      margin-top: 20px;
       border-radius: 2px;
       overflow: hidden;
     }
@@ -194,19 +266,15 @@
       border-radius: 2px;
     }
 
-    .countdown-progress-bar.urgent {
-      background: var(--red);
-    }
+    .countdown-progress-bar.urgent { background: var(--red); }
 
     /* ── SECTION SYSTEM ── */
     .section {
-      padding: 60px;
+      padding: 56px 60px;
       border-bottom: 1px solid var(--gray-light);
     }
 
-    .section:last-of-type {
-      border-bottom: none;
-    }
+    .section:last-of-type { border-bottom: none; }
 
     .section-number {
       font-family: 'Bebas Neue', sans-serif;
@@ -222,7 +290,7 @@
       line-height: 1.1;
       letter-spacing: 1px;
       color: var(--black);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .section h3 {
@@ -237,14 +305,99 @@
     }
 
     .section p {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.7;
       color: #555;
       max-width: 720px;
     }
 
-    .section p + p {
-      margin-top: 16px;
+    .section p + p { margin-top: 16px; }
+
+    /* ── CLIENT PROFILE ── */
+    .client-overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .client-info-card {
+      background: var(--gray-light);
+      padding: 24px;
+      border-radius: 4px;
+    }
+
+    .client-info-card .info-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-bottom: 6px;
+    }
+
+    .client-info-card .info-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .client-units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .unit-card {
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .unit-card-header {
+      background: var(--navy-dark);
+      padding: 14px 18px;
+    }
+
+    .unit-card-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: var(--purple);
+    }
+
+    .unit-card-header .unit-type {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    .unit-card-body {
+      padding: 14px 18px;
+      background: var(--gray-light);
+    }
+
+    .unit-card-body .unit-detail {
+      font-size: 12px;
+      color: var(--gray-dark);
+      margin-bottom: 4px;
+    }
+
+    .unit-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .unit-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: rgba(106, 27, 154, 0.08);
+      color: var(--purple);
+      border-radius: 2px;
+      font-weight: 500;
     }
 
     /* ── EXECUTIVE SUMMARY ── */
@@ -252,7 +405,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 32px;
+      margin-top: 28px;
     }
 
     .summary-card {
@@ -262,10 +415,7 @@
       text-align: center;
     }
 
-    .summary-card .icon {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
+    .summary-card .icon { font-size: 28px; margin-bottom: 16px; }
 
     .summary-card .number {
       font-family: 'Bebas Neue', sans-serif;
@@ -308,10 +458,8 @@
       line-height: 1.2;
     }
 
-    /* ── SOLUTIONS TABLE ── */
-    .solutions {
-      margin-top: 32px;
-    }
+    /* ── SOLUTIONS (Problem → Solution format) ── */
+    .solutions { margin-top: 32px; }
 
     .solution-card {
       border: 1px solid var(--gray-light);
@@ -322,7 +470,7 @@
 
     .solution-header {
       background: var(--gray-light);
-      padding: 20px 24px;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -349,8 +497,35 @@
     .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
     .solution-tag.integration { background: rgba(245,158,11,0.1); color: #D97706; }
 
-    .solution-body {
-      padding: 24px;
+    .solution-body { padding: 24px; }
+
+    .solution-problem {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gray-dark);
+      line-height: 1.6;
+      padding-left: 16px;
+      border-left: 3px solid var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .solution-problem-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      font-style: normal;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .solution-deliverable-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .solution-body p {
@@ -362,8 +537,8 @@
     .solution-specs {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
+      gap: 10px;
+      margin-top: 12px;
     }
 
     .solution-spec {
@@ -375,8 +550,8 @@
     }
 
     .solution-spec::before {
-      content: '→';
-      color: var(--purple);
+      content: '\2713';
+      color: var(--green);
       font-weight: 700;
     }
 
@@ -385,7 +560,7 @@
       background: var(--navy-dark);
       border-radius: 8px;
       padding: 40px;
-      margin-top: 32px;
+      margin-top: 28px;
       text-align: center;
     }
 
@@ -411,16 +586,8 @@
       gap: 16px;
     }
 
-    .preview-mockup .mockup-icon {
-      font-size: 48px;
-      opacity: 0.4;
-    }
-
-    .preview-mockup .mockup-text {
-      font-size: 14px;
-      color: var(--gray-mid);
-      letter-spacing: 1px;
-    }
+    .preview-mockup .mockup-icon { font-size: 48px; opacity: 0.4; }
+    .preview-mockup .mockup-text { font-size: 14px; color: var(--gray-mid); letter-spacing: 1px; }
 
     .preview-caption {
       font-size: 12px;
@@ -429,11 +596,8 @@
       font-style: italic;
     }
 
-    /* ── TIMELINE / CRONOGRAMA ── */
-    .timeline {
-      margin-top: 32px;
-      position: relative;
-    }
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 28px; position: relative; }
 
     .timeline::before {
       content: '';
@@ -468,10 +632,7 @@
       z-index: 1;
     }
 
-    .timeline-content {
-      flex: 1;
-      padding-top: 6px;
-    }
+    .timeline-content { flex: 1; padding-top: 6px; }
 
     .timeline-content h4 {
       font-family: 'Bebas Neue', sans-serif;
@@ -490,16 +651,9 @@
       margin-bottom: 8px;
     }
 
-    .timeline-content p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #666;
-    }
+    .timeline-content p { font-size: 14px; line-height: 1.6; color: #666; }
 
-    .timeline-content .deliverables {
-      list-style: none;
-      margin-top: 12px;
-    }
+    .timeline-content .deliverables { list-style: none; margin-top: 12px; }
 
     .timeline-content .deliverables li {
       font-size: 13px;
@@ -511,7 +665,7 @@
     }
 
     .timeline-content .deliverables li::before {
-      content: '✓';
+      content: '\2713';
       color: var(--green);
       font-weight: 700;
       font-size: 14px;
@@ -564,15 +718,8 @@
       border-radius: 0 4px 4px 0;
     }
 
-    .investment-note p {
-      font-size: 13px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .investment-note strong {
-      color: var(--black);
-    }
+    .investment-note p { font-size: 13px; color: #555; line-height: 1.6; }
+    .investment-note strong { color: var(--black); }
 
     /* ── MAINTENANCE ── */
     .maintenance-card {
@@ -593,14 +740,8 @@
       margin-bottom: 4px;
     }
 
-    .maintenance-card .maint-info p {
-      font-size: 13px;
-      color: var(--gray-dark);
-    }
-
-    .maintenance-card .maint-price {
-      text-align: right;
-    }
+    .maintenance-card .maint-info p { font-size: 13px; color: var(--gray-dark); }
+    .maintenance-card .maint-price { text-align: right; }
 
     .maintenance-card .maint-price .amount {
       font-family: 'Bebas Neue', sans-serif;
@@ -615,7 +756,46 @@
       letter-spacing: 1px;
     }
 
-    /* ── WHAT'S INCLUDED (POST-SALE) ── */
+    /* ── CONDITIONS GRID ── */
+    .conditions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .condition-box {
+      background: var(--gray-light);
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 24px;
+    }
+
+    .condition-box h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .condition-box ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    .condition-box ul li {
+      font-size: 13px;
+      color: #555;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      line-height: 1.5;
+    }
+
+    .condition-box ul li:last-child { border-bottom: none; }
+
+    /* ── POST-SALE INCLUDED ── */
     .included-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -632,10 +812,7 @@
       border-radius: 4px;
     }
 
-    .included-item .incl-icon {
-      font-size: 24px;
-      flex-shrink: 0;
-    }
+    .included-item .incl-icon { font-size: 24px; flex-shrink: 0; }
 
     .included-item h4 {
       font-family: 'Inter', sans-serif;
@@ -645,30 +822,79 @@
       margin-bottom: 4px;
     }
 
-    .included-item p {
-      font-size: 13px;
+    .included-item p { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
+
+    /* ── NDA BOX ── */
+    .nda-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      border: 1.5px solid var(--navy);
+      background: var(--gray-light);
+      border-radius: 4px;
+      padding: 28px;
+      margin-top: 28px;
+    }
+
+    .nda-box .nda-icon { font-size: 28px; flex-shrink: 0; }
+
+    .nda-box h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .nda-box p { font-size: 13px; color: #555; line-height: 1.6; max-width: none; }
+
+    /* ── GLOSSARY ── */
+    .glosario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 32px;
+      margin-top: 24px;
+    }
+
+    .glosario-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .glosario-item .g-sigla {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--navy);
+      min-width: 48px;
+      letter-spacing: 0.5px;
+    }
+
+    .glosario-item .g-def {
+      font-size: 12.5px;
       color: var(--gray-dark);
       line-height: 1.5;
     }
 
-    /* ── ACCEPT / DECLINE ── */
-    .accept-section {
-      background: var(--navy-dark);
-      padding: 60px;
+    /* ── CTA WITH STEPS ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 56px 60px;
       text-align: center;
     }
 
-    .accept-section .accept-label {
-      font-family: 'Inter', sans-serif;
+    .cta-section .cta-eyebrow {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--purple);
       margin-bottom: 16px;
     }
 
-    .accept-section h2 {
+    .cta-section h2 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(28px, 4vw, 48px);
       color: var(--white);
@@ -676,12 +902,51 @@
       margin-bottom: 12px;
     }
 
-    .accept-section .accept-subtitle {
+    .cta-section .cta-subtitle {
       font-size: 14px;
       color: var(--gray-mid);
       margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .cta-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 130px;
+    }
+
+    .cta-step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+    }
+
+    .cta-step-text {
+      font-size: 12px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* ── ACCEPT / DECLINE ── */
     .accept-buttons {
       display: flex;
       gap: 16px;
@@ -703,15 +968,8 @@
       text-decoration: none;
     }
 
-    .btn-accept {
-      background: var(--purple);
-      color: var(--white);
-    }
-
-    .btn-accept:hover {
-      background: var(--purple-hover);
-      transform: translateY(-1px);
-    }
+    .btn-accept { background: var(--purple); color: var(--white); }
+    .btn-accept:hover { background: var(--purple-hover); transform: translateY(-1px); }
 
     .btn-decline {
       background: transparent;
@@ -719,25 +977,13 @@
       color: var(--gray-mid);
     }
 
-    .btn-decline:hover {
-      border-color: rgba(255,255,255,0.3);
-      color: var(--white);
-    }
+    .btn-decline:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
 
-    /* ── ACCEPTED / DECLINED STATES ── */
-    .accept-confirmation {
-      display: none;
-      padding: 40px;
-      text-align: center;
-    }
-
+    .accept-confirmation { display: none; padding: 40px; text-align: center; }
     .accept-confirmation.show { display: block; }
     .accept-buttons.hidden { display: none; }
 
-    .accept-confirmation .confirm-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
+    .accept-confirmation .confirm-icon { font-size: 48px; margin-bottom: 16px; }
 
     .accept-confirmation .confirm-text {
       font-family: 'Bebas Neue', sans-serif;
@@ -746,27 +992,27 @@
       color: var(--green);
     }
 
-    .accept-confirmation .confirm-sub {
-      font-size: 14px;
-      color: var(--gray-mid);
-      margin-top: 8px;
-    }
-
-    .decline-confirmation .confirm-text {
-      color: var(--gray-mid);
-    }
+    .accept-confirmation .confirm-sub { font-size: 14px; color: var(--gray-mid); margin-top: 8px; }
+    .decline-confirmation .confirm-text { color: var(--gray-mid); }
 
     /* ── FOOTER ── */
     .proposal-footer {
       background: var(--navy-dark);
-      padding: 40px 60px;
+      padding: 36px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border-top: 1px solid rgba(255,255,255,0.06);
-      text-align: center;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .footer-logo {
-      max-width: 120px;
-      margin: 0 auto 16px;
+      height: 24px;
       filter: brightness(0) invert(1);
       opacity: 0.4;
     }
@@ -782,26 +1028,64 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.15);
-      margin-top: 12px;
     }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: var(--wa-green);
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    .wa-float svg { width: 22px; height: 22px; fill: currentColor; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      .doc-header { padding: 20px 24px; flex-direction: column; gap: 12px; }
+      .header-separator { display: none; }
+      .hero-band { padding: 10px 24px; }
+      .hero-band p { font-size: 11px; }
       .hero { padding: 48px 24px; }
-      .countdown-section { padding: 24px; }
+      .countdown-section { padding: 20px 24px; }
       .countdown-number { font-size: 40px; }
       .countdown-separator { font-size: 40px; }
       .countdown-unit { min-width: 56px; }
       .section { padding: 40px 24px; }
+      .client-overview { grid-template-columns: 1fr; }
       .summary-grid { grid-template-columns: 1fr; }
       .solution-specs { grid-template-columns: 1fr; }
+      .conditions-grid { grid-template-columns: 1fr; }
       .included-grid { grid-template-columns: 1fr; }
+      .glosario-grid { grid-template-columns: 1fr; }
       .maintenance-card { flex-direction: column; text-align: center; gap: 16px; }
       .maintenance-card .maint-price { text-align: center; }
-      .accept-section { padding: 40px 24px; }
+      .cta-section { padding: 40px 24px; }
+      .cta-steps { flex-direction: column; align-items: center; gap: 20px; }
+      .cta-step { flex-direction: row; max-width: 280px; text-align: left; }
+      .cta-step-text { text-align: left; }
       .accept-buttons { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 300px; text-align: center; }
-      .proposal-footer { padding: 32px 24px; }
+      .nda-box { flex-direction: column; }
+      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+      .wa-float { bottom: 18px; right: 18px; padding: 12px 16px; font-size: 12px; }
     }
 
     @media (max-width: 480px) {
@@ -813,6 +1097,7 @@
       .timeline-phase { gap: 16px; }
       .timeline-dot { width: 32px; height: 32px; font-size: 13px; }
       .timeline::before { left: 16px; }
+      .client-units-grid { grid-template-columns: 1fr; }
     }
 
     /* ── PRINT ── */
@@ -820,13 +1105,48 @@
       body { background: white; }
       .proposal { box-shadow: none; }
       .countdown-section { position: static; }
+      .wa-float { display: none; }
       .btn { border: 1px solid #ccc !important; }
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
+
+    @page { margin: 14mm 12mm; }
   </style>
 </head>
 <body>
 
   <div class="proposal">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DUAL-BRAND HEADER                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="doc-header">
+      <div class="header-client">
+        <!-- CLIENT_LOGO — Replace src with client's logo -->
+        <img src="<!-- CLIENT_LOGO_SRC -->assets/client-logo.png" alt="<!-- CLIENT_COMPANY -->[Empresa]" class="header-client-logo">
+        <span class="header-client-name"><!-- CLIENT_COMPANY_SHORT -->[Empresa]</span>
+      </div>
+      <span class="header-separator">&times;</span>
+      <div class="header-agency">
+        <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="header-agency-logo">
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- HERO BAND (meta bar)                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="hero-band">
+      <p>
+        Propuesta de automatizaci&oacute;n
+        <span class="separator">&middot;</span>
+        <!-- PROPOSAL_CITY -->[Ciudad], <!-- PROPOSAL_MONTH -->[mes] <!-- PROPOSAL_YEAR -->[a&ntilde;o]
+        <span class="separator">&middot;</span>
+        Para: <strong><!-- CLIENT_COMPANY -->[Empresa]</strong>
+        <span class="separator">&middot;</span>
+        Preparado por: <!-- AUTHOR_NAME -->[Nombre]
+      </p>
+    </div>
 
     <!-- ═══════════════════════════════════════ -->
     <!-- HERO / COVER                           -->
@@ -868,44 +1188,115 @@
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 01 — RESUMEN EJECUTIVO                 -->
+    <!-- 01 — PERFIL DEL CLIENTE                -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
       <div class="section-number">01</div>
+      <h2>Su Operaci&oacute;n</h2>
+      <p>
+        Esto es lo que entendemos de <!-- CLIENT_COMPANY --><strong>[Empresa]</strong>
+        despu&eacute;s de nuestra conversaci&oacute;n de Discovery:
+      </p>
+
+      <div class="client-overview">
+        <div class="client-info-card">
+          <div class="info-label">Industria</div>
+          <div class="info-value"><!-- CLIENT_INDUSTRY -->[Industria / Sector]</div>
+        </div>
+        <div class="client-info-card">
+          <div class="info-label">Ubicaci&oacute;n</div>
+          <div class="info-value"><!-- CLIENT_LOCATION -->[Ciudad / Pa&iacute;s]</div>
+        </div>
+        <div class="client-info-card">
+          <div class="info-label">Equipo</div>
+          <div class="info-value"><!-- CLIENT_TEAM_SIZE -->[N personas]</div>
+        </div>
+        <div class="client-info-card">
+          <div class="info-label">Herramientas actuales</div>
+          <div class="info-value"><!-- CLIENT_TOOLS -->[CRM, ERP, Excel, etc.]</div>
+        </div>
+      </div>
+
+      <!-- CLIENT_UNITS — Optional: show business units/brands if applicable -->
+      <h3>Unidades de Negocio</h3>
+      <div class="client-units-grid">
+        <div class="unit-card">
+          <div class="unit-card-header">
+            <h4><!-- UNIT_1_NAME -->[Unidad 1]</h4>
+            <div class="unit-type"><!-- UNIT_1_TYPE -->[Tipo de negocio]</div>
+          </div>
+          <div class="unit-card-body">
+            <div class="unit-detail"><!-- UNIT_1_DETAIL -->[Detalles relevantes]</div>
+            <div class="unit-tags">
+              <span class="unit-tag"><!-- UNIT_1_TAG_1 -->[Tag]</span>
+              <span class="unit-tag"><!-- UNIT_1_TAG_2 -->[Tag]</span>
+            </div>
+          </div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-card-header">
+            <h4><!-- UNIT_2_NAME -->[Unidad 2]</h4>
+            <div class="unit-type"><!-- UNIT_2_TYPE -->[Tipo de negocio]</div>
+          </div>
+          <div class="unit-card-body">
+            <div class="unit-detail"><!-- UNIT_2_DETAIL -->[Detalles relevantes]</div>
+            <div class="unit-tags">
+              <span class="unit-tag"><!-- UNIT_2_TAG_1 -->[Tag]</span>
+            </div>
+          </div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-card-header">
+            <h4><!-- UNIT_3_NAME -->[Unidad 3]</h4>
+            <div class="unit-type"><!-- UNIT_3_TYPE -->[Tipo de negocio]</div>
+          </div>
+          <div class="unit-card-body">
+            <div class="unit-detail"><!-- UNIT_3_DETAIL -->[Detalles relevantes]</div>
+            <div class="unit-tags">
+              <span class="unit-tag"><!-- UNIT_3_TAG_1 -->[Tag]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 02 — RESUMEN EJECUTIVO                 -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">02</div>
       <h2>Resumen Ejecutivo</h2>
       <p>
         Tras nuestra conversaci&oacute;n de Discovery, identificamos
         <!-- PAIN_COUNT --><strong>[N]</strong> oportunidades de automatizaci&oacute;n
         que pueden transformar la operaci&oacute;n de
         <!-- CLIENT_COMPANY --><strong>[Empresa]</strong>.
-        A continuaci&oacute;n presentamos las soluciones propuestas, un cronograma
-        de implementaci&oacute;n por fases, y un proof-of-concept funcional.
       </p>
 
       <div class="summary-grid">
         <div class="summary-card">
           <div class="icon">&#x1F50D;</div>
           <div class="number"><!-- PAIN_COUNT -->[N]</div>
-          <div class="label">Oportunidades identificadas</div>
+          <div class="label">Oportunidades</div>
         </div>
         <div class="summary-card">
           <div class="icon">&#x26A1;</div>
           <div class="number"><!-- SOLUTION_COUNT -->[N]</div>
-          <div class="label">Soluciones propuestas</div>
+          <div class="label">Soluciones</div>
         </div>
         <div class="summary-card">
           <div class="icon">&#x1F4C5;</div>
           <div class="number"><!-- PHASE_COUNT -->[N]</div>
-          <div class="label">Fases de entrega</div>
+          <div class="label">Fases</div>
         </div>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 02 — PAIN POINTS IDENTIFICADOS         -->
+    <!-- 03 — PAIN POINTS                       -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
-      <div class="section-number">02</div>
+      <div class="section-number">03</div>
       <h2>Lo que encontramos</h2>
       <p>
         Durante el Discovery Call revisamos su operaci&oacute;n actual e
@@ -913,72 +1304,82 @@
       </p>
 
       <ul class="pain-list">
-        <!-- PAIN_POINTS — Duplicate <li> for each pain point -->
-        <li data-num="01">
-          <!-- PAIN_1 -->[Descripci&oacute;n del primer pain point identificado en el Discovery]
-        </li>
-        <li data-num="02">
-          <!-- PAIN_2 -->[Descripci&oacute;n del segundo pain point]
-        </li>
-        <li data-num="03">
-          <!-- PAIN_3 -->[Descripci&oacute;n del tercer pain point]
-        </li>
+        <li data-num="01"><!-- PAIN_1 -->[Descripci&oacute;n del primer pain point]</li>
+        <li data-num="02"><!-- PAIN_2 -->[Descripci&oacute;n del segundo pain point]</li>
+        <li data-num="03"><!-- PAIN_3 -->[Descripci&oacute;n del tercer pain point]</li>
       </ul>
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 03 — SOLUCIONES PROPUESTAS             -->
+    <!-- 04 — SOLUCIONES (Problem → Solution)   -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
-      <div class="section-number">03</div>
+      <div class="section-number">04</div>
       <h2>Soluciones Propuestas</h2>
       <p>
-        Cada soluci&oacute;n est&aacute; dise&ntilde;ada para integrarse con su
-        operaci&oacute;n actual y escalar con su negocio.
+        Cada soluci&oacute;n est&aacute; dise&ntilde;ada para resolver un problema
+        espec&iacute;fico de su operaci&oacute;n e integrarse con su stack actual.
       </p>
 
       <div class="solutions">
-        <!-- SOLUTION — Duplicate .solution-card for each solution -->
+        <!-- SOLUTION 1 -->
         <div class="solution-card">
           <div class="solution-header">
             <h4><!-- SOL_1_NAME -->[Nombre de la Soluci&oacute;n]</h4>
             <span class="solution-tag automation">Automatizaci&oacute;n</span>
           </div>
           <div class="solution-body">
-            <p><!-- SOL_1_DESC -->[Descripci&oacute;n de la soluci&oacute;n, qu&eacute; problema resuelve, c&oacute;mo funciona]</p>
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              <!-- SOL_1_PROBLEM -->[Lo que el equipo hace hoy manualmente o el dolor que genera]
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
+            <p><!-- SOL_1_DESC -->[Descripci&oacute;n de la soluci&oacute;n y c&oacute;mo funciona]</p>
             <div class="solution-specs">
-              <div class="solution-spec"><!-- SOL_1_SPEC_1 -->[Especificaci&oacute;n 1]</div>
-              <div class="solution-spec"><!-- SOL_1_SPEC_2 -->[Especificaci&oacute;n 2]</div>
-              <div class="solution-spec"><!-- SOL_1_SPEC_3 -->[Especificaci&oacute;n 3]</div>
-              <div class="solution-spec"><!-- SOL_1_SPEC_4 -->[Especificaci&oacute;n 4]</div>
+              <div class="solution-spec"><!-- SOL_1_SPEC_1 -->[Entregable 1]</div>
+              <div class="solution-spec"><!-- SOL_1_SPEC_2 -->[Entregable 2]</div>
+              <div class="solution-spec"><!-- SOL_1_SPEC_3 -->[Entregable 3]</div>
+              <div class="solution-spec"><!-- SOL_1_SPEC_4 -->[Entregable 4]</div>
             </div>
           </div>
         </div>
 
+        <!-- SOLUTION 2 -->
         <div class="solution-card">
           <div class="solution-header">
             <h4><!-- SOL_2_NAME -->[Nombre de la Soluci&oacute;n]</h4>
             <span class="solution-tag dashboard">Dashboard</span>
           </div>
           <div class="solution-body">
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              <!-- SOL_2_PROBLEM -->[Dolor actual del cliente]
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
             <p><!-- SOL_2_DESC -->[Descripci&oacute;n de la soluci&oacute;n]</p>
             <div class="solution-specs">
-              <div class="solution-spec"><!-- SOL_2_SPEC_1 -->[Especificaci&oacute;n 1]</div>
-              <div class="solution-spec"><!-- SOL_2_SPEC_2 -->[Especificaci&oacute;n 2]</div>
+              <div class="solution-spec"><!-- SOL_2_SPEC_1 -->[Entregable 1]</div>
+              <div class="solution-spec"><!-- SOL_2_SPEC_2 -->[Entregable 2]</div>
             </div>
           </div>
         </div>
 
+        <!-- SOLUTION 3 -->
         <div class="solution-card">
           <div class="solution-header">
             <h4><!-- SOL_3_NAME -->[Nombre de la Soluci&oacute;n]</h4>
             <span class="solution-tag agent">Agente AI</span>
           </div>
           <div class="solution-body">
+            <div class="solution-problem">
+              <div class="solution-problem-label">Problema actual</div>
+              <!-- SOL_3_PROBLEM -->[Dolor actual del cliente]
+            </div>
+            <div class="solution-deliverable-label">Lo que entregamos</div>
             <p><!-- SOL_3_DESC -->[Descripci&oacute;n de la soluci&oacute;n]</p>
             <div class="solution-specs">
-              <div class="solution-spec"><!-- SOL_3_SPEC_1 -->[Especificaci&oacute;n 1]</div>
-              <div class="solution-spec"><!-- SOL_3_SPEC_2 -->[Especificaci&oacute;n 2]</div>
+              <div class="solution-spec"><!-- SOL_3_SPEC_1 -->[Entregable 1]</div>
+              <div class="solution-spec"><!-- SOL_3_SPEC_2 -->[Entregable 2]</div>
             </div>
           </div>
         </div>
@@ -986,15 +1387,15 @@
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 04 — PREVIEW / PROOF OF CONCEPT        -->
+    <!-- 05 — PREVIEW / PROOF OF CONCEPT        -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
-      <div class="section-number">04</div>
+      <div class="section-number">05</div>
       <h2>Preview Funcional</h2>
       <p>
         Construimos un proof-of-concept de
         <strong><!-- PREVIEW_SOLUTION_NAME -->[Nombre de la soluci&oacute;n]</strong>
-        para que pueda ver la calidad y el enfoque antes de iniciar la implementaci&oacute;n completa.
+        para que pueda ver la calidad y el enfoque antes de iniciar.
       </p>
 
       <div class="preview-box">
@@ -1005,31 +1406,29 @@
           <div class="mockup-text">Preview interactivo de la soluci&oacute;n</div>
         </div>
         <p class="preview-caption">
-          <!-- PREVIEW_CAPTION -->[Breve descripci&oacute;n de lo que se muestra en el preview]
+          <!-- PREVIEW_CAPTION -->[Breve descripci&oacute;n de lo que se muestra]
         </p>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 05 — CRONOGRAMA DE ENTREGA             -->
+    <!-- 06 — CRONOGRAMA                        -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
-      <div class="section-number">05</div>
+      <div class="section-number">06</div>
       <h2>Cronograma de Entrega</h2>
       <p>
         Entregamos por fases. Cada fase incluye un preview antes de la entrega
-        final. Los tiempos empiezan a contar desde la aceptaci&oacute;n de esta
-        propuesta.
+        final. Los tiempos empiezan a contar desde la aceptaci&oacute;n.
       </p>
 
       <div class="timeline">
-        <!-- PHASES — Duplicate .timeline-phase for each phase -->
         <div class="timeline-phase">
           <div class="timeline-dot">1</div>
           <div class="timeline-content">
             <h4><!-- PHASE_1_NAME -->[Nombre de la Fase]</h4>
             <div class="duration"><!-- PHASE_1_DURATION -->[X semanas]</div>
-            <p><!-- PHASE_1_DESC -->[Descripci&oacute;n de lo que se entrega en esta fase]</p>
+            <p><!-- PHASE_1_DESC -->[Descripci&oacute;n de lo que se entrega]</p>
             <ul class="deliverables">
               <li><!-- PHASE_1_DEL_1 -->[Entregable 1]</li>
               <li><!-- PHASE_1_DEL_2 -->[Entregable 2]</li>
@@ -1067,10 +1466,10 @@
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 06 — INVERSI&Oacute;N                  -->
+    <!-- 07 — INVERSI&Oacute;N                  -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
-      <div class="section-number">06</div>
+      <div class="section-number">07</div>
       <h2>Inversi&oacute;n</h2>
 
       <h3>Implementaci&oacute;n</h3>
@@ -1082,7 +1481,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- INVESTMENT_ROWS — Duplicate <tr> for each line item -->
           <tr>
             <td><!-- INV_1_NAME -->[Fase 1 — Nombre]</td>
             <td><!-- INV_1_PRICE -->$[X,XXX,XXX]</td>
@@ -1106,7 +1504,7 @@
       <div class="maintenance-card">
         <div class="maint-info">
           <h4>Soporte + Monitoreo + Upgrades</h4>
-          <p>Incluye monitoreo 24/7, reportes semanales, status page, y obligaci&oacute;n de upgrade tecnol&oacute;gico.</p>
+          <p>Incluye monitoreo 24/7, reportes semanales, status page, y obligaci&oacute;n de upgrade.</p>
         </div>
         <div class="maint-price">
           <div class="amount"><!-- MAINT_PRICE -->$[X,XXX,XXX]</div>
@@ -1117,18 +1515,62 @@
       <div class="investment-note">
         <p>
           <strong>Modelo decremental:</strong> El mantenimiento mensual disminuye
-          progresivamente a medida que la soluci&oacute;n madura y se estabiliza.
-          Nos comprometemos a mantener su operaci&oacute;n en la mejor tecnolog&iacute;a
-          disponible sin costo adicional de upgrade.
+          progresivamente a medida que la soluci&oacute;n madura. Nos comprometemos
+          a mantener su operaci&oacute;n en la mejor tecnolog&iacute;a disponible
+          sin costo adicional de upgrade.
         </p>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 07 — QU&Eacute; INCLUYE               -->
+    <!-- 08 — CONDICIONES                       -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
-      <div class="section-number">07</div>
+      <div class="section-number">08</div>
+      <h2>Condiciones</h2>
+
+      <div class="conditions-grid">
+        <div class="condition-box">
+          <h4>Forma de Pago</h4>
+          <ul>
+            <li><!-- PAY_1 -->Pago por fase al inicio de cada etapa</li>
+            <li><!-- PAY_2 -->Retainer mensual inicia al completar Fase 1</li>
+            <li><!-- PAY_3 -->Transferencia bancaria o efectivo</li>
+            <li><!-- PAY_4 -->Factura formal disponible</li>
+          </ul>
+        </div>
+        <div class="condition-box">
+          <h4>Responsabilidades del Cliente</h4>
+          <ul>
+            <li><!-- RESP_1 -->Proveer acceso a datos y APIs necesarios</li>
+            <li><!-- RESP_2 -->Designar un punto de contacto para validaciones</li>
+            <li><!-- RESP_3 -->Feedback dentro de 48h en cada preview</li>
+            <li><!-- RESP_4 -->Herramientas y licencias externas por su cuenta</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- NDA BOX -->
+      <div class="nda-box">
+        <div class="nda-icon">&#x1F512;</div>
+        <div>
+          <h4>Acuerdo de Confidencialidad (NDA)</h4>
+          <p>
+            Esta propuesta y toda la informaci&oacute;n compartida est&aacute;n
+            protegidas por un NDA bilateral. Tanto DOCEPROJECTS como
+            <!-- CLIENT_COMPANY --><strong>[Empresa]</strong> se comprometen a
+            mantener la confidencialidad absoluta del contenido, procesos y datos
+            involucrados. DOCEPROJECTS firma primero como gesto de confianza.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 09 — QU&Eacute; INCLUYE               -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-number">09</div>
       <h2>&iquest;Qu&eacute; incluye el mantenimiento?</h2>
 
       <div class="included-grid">
@@ -1164,14 +1606,76 @@
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- ACCEPT / DECLINE                       -->
+    <!-- 10 — GLOSARIO                          -->
     <!-- ═══════════════════════════════════════ -->
-    <div class="accept-section">
-      <div class="accept-label">Siguiente paso</div>
+    <div class="section">
+      <div class="section-number">10</div>
+      <h2>Glosario</h2>
+
+      <div class="glosario-grid">
+        <div class="glosario-item">
+          <span class="g-sigla">NDA</span>
+          <span class="g-def">Acuerdo de confidencialidad bilateral que protege la informaci&oacute;n de ambas partes.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">IA</span>
+          <span class="g-def">Inteligencia Artificial &mdash; tecnolog&iacute;a que permite a las m&aacute;quinas aprender y tomar decisiones.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">API</span>
+          <span class="g-def">Interfaz que permite a dos sistemas comunicarse entre s&iacute; autom&aacute;ticamente.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">Dashboard</span>
+          <span class="g-def">Panel visual que muestra datos clave de su operaci&oacute;n en tiempo real.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">Agente</span>
+          <span class="g-def">Software aut&oacute;nomo que ejecuta tareas repetitivas sin intervenci&oacute;n humana.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">ROI</span>
+          <span class="g-def">Retorno sobre la inversi&oacute;n &mdash; cu&aacute;nto gana o ahorra por cada peso invertido.</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">CRM</span>
+          <span class="g-def">Sistema para gestionar relaciones con clientes (ventas, contactos, seguimiento).</span>
+        </div>
+        <div class="glosario-item">
+          <span class="g-sigla">ERP</span>
+          <span class="g-def">Sistema integral de gesti&oacute;n empresarial (inventario, finanzas, operaciones).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CTA WITH STEPS + ACCEPT/DECLINE        -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="cta-section">
+      <div class="cta-eyebrow">Arrancamos esta semana</div>
       <h2>&iquest;Empezamos?</h2>
-      <p class="accept-subtitle">
-        Al aceptar, agendaremos el kick-off para iniciar la Fase 1 dentro de las pr&oacute;ximas 48 horas.
+      <p class="cta-subtitle">
+        Al aceptar, seguimos estos pasos para iniciar la implementaci&oacute;n:
       </p>
+
+      <div class="cta-steps">
+        <div class="cta-step">
+          <div class="cta-step-number">1</div>
+          <div class="cta-step-text">Firma del NDA mutuo</div>
+        </div>
+        <div class="cta-step">
+          <div class="cta-step-number">2</div>
+          <div class="cta-step-text">Sesi&oacute;n estrat&eacute;gica de alineaci&oacute;n</div>
+        </div>
+        <div class="cta-step">
+          <div class="cta-step-number">3</div>
+          <div class="cta-step-text">Kick-off Fase 1</div>
+        </div>
+        <div class="cta-step">
+          <div class="cta-step-number">4</div>
+          <div class="cta-step-text">Entrega de accesos y datos</div>
+        </div>
+      </div>
 
       <div class="accept-buttons" id="acceptButtons">
         <button class="btn btn-accept" onclick="acceptProposal()">
@@ -1199,46 +1703,32 @@
     <!-- FOOTER                                 -->
     <!-- ═══════════════════════════════════════ -->
     <footer class="proposal-footer">
-      <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="footer-logo">
-      <p class="footer-text">DOCEPROJECTS &mdash; Automatizaci&oacute;n Inteligente</p>
-      <p class="footer-confidential">Documento confidencial &mdash; Protegido por NDA</p>
+      <div class="footer-left">
+        <img src="assets/doceprojects.png" alt="DOCEPROJECTS" class="footer-logo">
+        <span class="footer-text">DOCEPROJECTS &mdash; Automatizaci&oacute;n Inteligente</span>
+      </div>
+      <span class="footer-confidential">Documento confidencial &mdash; Protegido por NDA</span>
     </footer>
 
   </div>
 
   <!-- ═══════════════════════════════════════ -->
+  <!-- WHATSAPP FLOATING BUTTON               -->
+  <!-- ═══════════════════════════════════════ -->
+  <a class="wa-float" href="<!-- WA_LINK -->https://wa.me/57XXXXXXXXXX?text=Hola%2C%20vi%20la%20propuesta%20y%20quiero%20hablar" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <!-- WA_LABEL -->Hablemos
+  </a>
+
+  <!-- ═══════════════════════════════════════ -->
   <!-- JAVASCRIPT                             -->
   <!-- ═══════════════════════════════════════ -->
   <script>
-    // ── CONFIGURATION ──
-    // Set the target time to the next 12:12 (AM or PM)
-    // In production, this would be set dynamically when the proposal is generated
-    const COUNTDOWN_HOURS = 12; // Total hours for the countdown
-
-    // Calculate target: next 12:12
-    function getTargetTime() {
-      const now = new Date();
-      const target = new Date(now);
-
-      // Find the next 12:12 (noon:12 or midnight:12)
-      if (now.getHours() < 12 || (now.getHours() === 12 && now.getMinutes() < 12)) {
-        // Next 12:12 PM today
-        target.setHours(12, 12, 0, 0);
-      } else {
-        // Next 12:12 AM tomorrow (00:12)
-        target.setDate(target.getDate() + 1);
-        target.setHours(0, 12, 0, 0);
-      }
-
-      return target;
-    }
-
-    // Override: use a fixed deadline for demo purposes
-    // In production, replace with getTargetTime() or a server-set timestamp
+    // ── COUNTDOWN CONFIG ──
+    const COUNTDOWN_HOURS = 12;
     const PROPOSAL_CREATED = new Date();
     const DEADLINE = new Date(PROPOSAL_CREATED.getTime() + COUNTDOWN_HOURS * 60 * 60 * 1000);
 
-    // ── COUNTDOWN LOGIC ──
     const hoursEl = document.getElementById('cd-hours');
     const minutesEl = document.getElementById('cd-minutes');
     const secondsEl = document.getElementById('cd-seconds');
@@ -1251,7 +1741,6 @@
       const remaining = DEADLINE - now;
 
       if (remaining <= 0) {
-        // Expired
         countdownEl.innerHTML = '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
         progressBar.style.width = '0%';
         progressBar.classList.add('urgent');
@@ -1266,11 +1755,9 @@
       minutesEl.textContent = String(minutes).padStart(2, '0');
       secondsEl.textContent = String(seconds).padStart(2, '0');
 
-      // Progress bar
       const progress = (remaining / totalMs) * 100;
       progressBar.style.width = progress + '%';
 
-      // Urgent state (last 2 hours)
       if (remaining < 2 * 60 * 60 * 1000) {
         hoursEl.classList.add('urgent');
         minutesEl.classList.add('urgent');
@@ -1279,7 +1766,6 @@
       }
     }
 
-    // Update every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
@@ -1287,16 +1773,12 @@
     function acceptProposal() {
       document.getElementById('acceptButtons').classList.add('hidden');
       document.getElementById('acceptConfirm').classList.add('show');
-
-      // In production: send webhook/API call to notify DOCEPROJECTS
       console.log('Proposal ACCEPTED at:', new Date().toISOString());
     }
 
     function declineProposal() {
       document.getElementById('acceptButtons').classList.add('hidden');
       document.getElementById('declineConfirm').classList.add('show');
-
-      // In production: send webhook/API call to notify DOCEPROJECTS
       console.log('Proposal DECLINED at:', new Date().toISOString());
     }
   </script>
