@@ -10,86 +10,93 @@
   "projects": [
     {
       "name": "Sky Flowers",
-      "repos": [
-        "ebojanini10/sky-flowers-logistics",
-        "ebojanini10/skyflowers-cobrador",
-        "ebojanini10/skyflowers-dashboard",
-        "ebojanini10/skyflowers-bot-deploy"
-      ],
+      "repos": ["ebojanini10/skyflowers-platform"],
       "stage": "mantenimiento",
       "pending": [
-        "Cobrador bot integration",
-        "Dashboard deployment"
+        "Conectar dashboard a BigQuery vistas analíticas",
+        "Configurar Cloudflare Tunnel para acceso externo",
+        "Task Scheduler AWB scanner"
       ],
-      "notes": "Enterprise logistics + cobranza + dashboard"
+      "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona"
     },
     {
-      "name": "Loretta",
-      "repos": [
-        "ebojanini10/loretta-cliente-bogota"
-      ],
+      "name": "Loretta Puro Antojo",
+      "repos": ["ebojanini10/loretta-cliente-bogota"],
       "stage": "implementacion",
-      "pending": [],
-      "notes": "Cliente Bogotá"
+      "pending": [
+        "Conectar WhatsApp Business API",
+        "Probar flujo completo cotización → entrega"
+      ],
+      "notes": "Bot WhatsApp + catering + repostería. Cliente: Laura Pradilla, Bogotá"
     },
     {
       "name": "Obras y Montajes",
-      "repos": [
-        "ebojanini10/obras-montajes-sistema"
-      ],
+      "repos": ["ebojanini10/obras-montajes-sistema"],
       "stage": "implementacion",
-      "pending": [],
-      "notes": ""
+      "pending": [
+        "Onboarding 30 min con dueño",
+        "Lista contenedores + clientes mora",
+        "Credenciales WhatsApp API"
+      ],
+      "notes": "~140 contenedores, 95% ocupación. Cobros + cotizaciones + prospección obras"
     },
     {
-      "name": "Mattilda",
-      "repos": [
-        "ebojanini10/mattilda-sistema"
+      "name": "EQR Roses",
+      "repos": ["ebojanini10/skyflowers-platform"],
+      "stage": "discovery",
+      "pending": [
+        "Logo EQR PNG",
+        "Credenciales WhatsApp Meta",
+        "Reunión Roger + Sebastián"
       ],
-      "stage": "implementacion",
-      "pending": [],
-      "notes": ""
+      "notes": "Finca de flores. Bot disponible WhatsApp. Puerto 5009"
     },
     {
       "name": "Casa Ardente",
-      "repos": [
-        "ebojanini10/casa-ardente-propuesta"
-      ],
+      "repos": ["ebojanini10/casa-ardente-sistema"],
       "stage": "propuesta",
-      "pending": [],
-      "notes": ""
+      "pending": [
+        "Reunión estratégica Daniel + Juana",
+        "Logos marcas Niku / Máximo / Taco House",
+        "Accesos WhatsApp Business API + ICG"
+      ],
+      "notes": "3 marcas restaurantes Medellín. Apertura Cartagena abril 2026"
     },
     {
-      "name": "Juan Perez",
-      "repos": [
-        "ebojanini10/juan-perez-whatsapp"
-      ],
+      "name": "Paulina Arquitectura",
+      "repos": ["ebojanini10/arquitectura-bot"],
       "stage": "implementacion",
-      "pending": [],
-      "notes": ""
+      "pending": [
+        "Datos estudio + matrícula CPNAA",
+        "Lista ingenieros + proveedores",
+        "Credenciales WhatsApp API"
+      ],
+      "notes": "Sistema multi-agente: radicados licencias + presupuesto + cotizaciones. Puerto 5005"
+    },
+    {
+      "name": "Hortensia Vision",
+      "repos": ["ebojanini10/skyflowers-hortensia-vision"],
+      "stage": "implementacion",
+      "pending": [
+        "Credenciales WhatsApp Meta Business",
+        "Cloudflare Tunnel webhook",
+        "Modelo custom hortensias (futuro)"
+      ],
+      "notes": "Reconocimiento flores por imagen. YOLO8 + WhatsApp. Puerto 5400"
     },
     {
       "name": "DOCEPROJECTS",
-      "repos": [
-        "mclara-martinez/doceprojects"
-      ],
+      "repos": ["mclara-martinez/doceprojects"],
       "stage": "interno",
       "pending": [
         "Fill Unit Economics values",
         "Create Discovery Call guide",
         "Create service contract template",
-        "Define acceptance workflow automation"
+        "Define acceptance workflow automation",
+        "Configurar dominio custom GitHub Pages",
+        "Cloudflare Tunnel infraestructura"
       ],
-      "notes": "Agency brand, proposals, playbook"
-    },
-    {
-      "name": "Arquitectura Bot",
-      "repos": [
-        "ebojanini10/arquitectura-bot"
-      ],
-      "stage": "interno",
-      "pending": [],
-      "notes": ""
+      "notes": "Agency brand, proposals, playbook, team"
     }
   ]
 }
