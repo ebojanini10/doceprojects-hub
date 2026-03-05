@@ -4,39 +4,59 @@
       "id": "emiliano",
       "name": "Emiliano Bojanini",
       "title": "Founder & Business Intelligence Lead",
-      "bio": "Especialista en entender los cuellos de botella y dolores operacionales de negocios colombianos. Su mayor fortaleza es sentarse con cualquier industria, mapear los procesos manuales y traducirlos en automatizaciones concretas. Lidera el servicio al cliente, el Discovery y la relación estratégica con cada cliente.",
-      "focus": ["Discovery & diagnóstico", "Entendimiento de negocios", "Servicio al cliente", "Arquitectura de soluciones"],
+      "bio": "Especialista en entender los cuellos de botella y dolores operacionales de negocios colombianos. Su mayor fortaleza es sentarse con cualquier industria, mapear los procesos manuales y traducirlos en automatizaciones concretas. Lidera el servicio al cliente, el Discovery y la relaciÃ³n estratÃ©gica con cada cliente.",
+      "focus": [
+        "Discovery & diagnÃ³stico",
+        "Entendimiento de negocios",
+        "Servicio al cliente",
+        "Arquitectura de soluciones"
+      ],
       "github": "ebojanini10"
     },
     {
       "id": "maria-clara",
-      "name": "María Clara Martínez",
+      "name": "MarÃ­a Clara MartÃ­nez",
       "title": "Co-Founder & Operations Lead",
-      "bio": "Responsable de la ejecución del plan de trabajo y la selección de herramientas tecnológicas. Garantiza que cada solución tenga los backups necesarios, que los procesos queden bien documentados y que los sistemas sean sostenibles sin depender del equipo de DoceProjects.",
-      "focus": ["Ejecución de proyectos", "Evaluación de herramientas", "Documentación", "Operaciones"],
+      "bio": "Responsable de la ejecuciÃ³n del plan de trabajo y la selecciÃ³n de herramientas tecnolÃ³gicas. Garantiza que cada soluciÃ³n tenga los backups necesarios, que los procesos queden bien documentados y que los sistemas sean sostenibles sin depender del equipo de DoceProjects.",
+      "focus": [
+        "EjecuciÃ³n de proyectos",
+        "EvaluaciÃ³n de herramientas",
+        "DocumentaciÃ³n",
+        "Operaciones"
+      ],
       "github": "mclara-martinez"
     },
     {
       "id": "david",
       "name": "David Posada",
-      "title": "Implementation Specialist",
-      "bio": "El puente entre la solución técnica y el equipo del cliente. David acompaña en sitio y por videollamada cada proceso de implementación, asegurando que los equipos adopten las herramientas con confianza y que la transición sea fluida desde el día uno.",
-      "focus": ["Implementación en sitio", "Capacitación de equipos", "Videollamadas de onboarding", "Soporte post-lanzamiento"],
+      "title": "Implementation & Transformation Lead",
+      "bio": "Con una sÃ³lida trayectoria en Accenture y actualmente en Sura Tech (Ã¡rea de tecnologÃ­a del Grupo Sura), David aporta una visiÃ³n enterprise Ãºnica al equipo. Experto en transformaciÃ³n digital y adopciÃ³n tecnolÃ³gica, acompaÃ±a en sitio y por videollamada cada proceso de implementaciÃ³n, asegurando que los equipos del cliente adopten las herramientas con confianza desde el dÃ­a uno.",
+      "focus": [
+        "ImplementaciÃ³n en sitio",
+        "TransformaciÃ³n digital",
+        "CapacitaciÃ³n de equipos",
+        "Onboarding y adopciÃ³n"
+      ],
       "github": null
     },
     {
       "id": "santiago",
-      "name": "Santiago Restrepo",
+      "name": "Santiago",
       "title": "Security & Infrastructure Lead",
-      "bio": "Garantiza que todo el código y las automatizaciones que construye DoceProjects tengan la seguridad y solidez suficientes para perdurar en el tiempo. Su principio rector es la regla de oro de DoceProjects: el cliente no nos puede necesitar. Cada sistema debe vivir por sí solo.",
-      "focus": ["Seguridad de código Python", "Infraestructura y hardware", "Auditoría de sistemas", "Mantenibilidad a largo plazo"],
+      "bio": "Especialista en seguridad de software e infraestructura de hardware con amplia experiencia en entornos industriales. AcompaÃ±a a DoceProjects en todos los proyectos garantizando que el cÃ³digo y las automatizaciones tengan la solidez suficiente para perdurar en el tiempo. Su principio rector es la regla de oro: el cliente no nos puede necesitar.",
+      "focus": [
+        "Seguridad de cÃ³digo Python",
+        "Infraestructura y hardware",
+        "AuditorÃ­a de sistemas",
+        "Mantenibilidad a largo plazo"
+      ],
       "github": null
     }
   ],
   "principles": [
-    "El cliente no nos puede necesitar — los sistemas deben perdurar solos",
-    "Velocidad 12:12 — propuesta en el próximo 12:12 después del Discovery",
-    "We are the surfers — nos mantenemos en la mejor tecnología disponible",
-    "Protección bilateral — firmamos el NDA primero como gesto de confianza"
+    "El cliente no nos puede necesitar â€” los sistemas deben perdurar solos",
+    "Velocidad 12:12 â€” propuesta en el prÃ³ximo 12:12 despuÃ©s del Discovery",
+    "We are the surfers â€” nos mantenemos en la mejor tecnologÃ­a disponible",
+    "ProtecciÃ³n bilateral â€” firmamos el NDA primero como gesto de confianza"
   ]
 }
