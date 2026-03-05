@@ -19,16 +19,16 @@
     {
       "id": "david",
       "name": "David Posada",
-      "title": "Implementation Specialist",
-      "bio": "El puente entre la solución técnica y el equipo del cliente. David acompaña en sitio y por videollamada cada proceso de implementación, asegurando que los equipos adopten las herramientas con confianza y que la transición sea fluida desde el día uno.",
-      "focus": ["Implementación en sitio", "Capacitación de equipos", "Videollamadas de onboarding", "Soporte post-lanzamiento"],
+      "title": "Implementation & Transformation Lead",
+      "bio": "Con una sólida trayectoria en Accenture y actualmente en Sura Tech (área de tecnología del Grupo Sura), David aporta una visión enterprise única al equipo. Experto en transformación digital y adopción tecnológica, acompaña en sitio y por videollamada cada proceso de implementación, asegurando que los equipos del cliente adopten las herramientas con confianza desde el día uno.",
+      "focus": ["Implementación en sitio", "Transformación digital", "Capacitación de equipos", "Onboarding y adopción"],
       "github": null
     },
     {
       "id": "santiago",
-      "name": "Santiago Restrepo",
+      "name": "Santiago",
       "title": "Security & Infrastructure Lead",
-      "bio": "Garantiza que todo el código y las automatizaciones que construye DoceProjects tengan la seguridad y solidez suficientes para perdurar en el tiempo. Su principio rector es la regla de oro de DoceProjects: el cliente no nos puede necesitar. Cada sistema debe vivir por sí solo.",
+      "bio": "Especialista en seguridad de software e infraestructura de hardware con amplia experiencia en entornos industriales. Acompaña a DoceProjects en todos los proyectos garantizando que el código y las automatizaciones tengan la solidez suficiente para perdurar en el tiempo. Su principio rector es la regla de oro: el cliente no nos puede necesitar.",
       "focus": ["Seguridad de código Python", "Infraestructura y hardware", "Auditoría de sistemas", "Mantenibilidad a largo plazo"],
       "github": null
     }
