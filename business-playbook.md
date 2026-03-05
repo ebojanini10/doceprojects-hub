@@ -42,7 +42,7 @@ DOCEPROJECTS es una consultora de automatización e inteligencia artificial diri
 | Output | Lista numerada de oportunidades de automatización |
 | Cierre | Solicitar datos/APIs necesarios — "Ya tienes el NDA. Yo no voy a frenar." |
 | Timer | Al final de la reunión se abre el HTML con cuenta regresiva hacia las 12:12 |
-| Duración | Sin límite de tiempo — si el empresario habla mucho, se deja hablar. No hay tope definido |
+| Duración | Sin límite de tiempo — típicamente 1-3 horas. No hay tope, pero el Discovery debe concluir con suficiente tiempo para producir la propuesta antes del siguiente 12:12 |
 | Quién lo conduce | Emiliano o Clara — debe existir una guía/mapa de ruta para que cualquiera de los dos pueda conducirlo de forma consistente |
 | Guía Discovery | 🔨 **Pendiente crear:** Ruta crítica con preguntas guía, estructura de conversación, checklist de información a obtener |
 
@@ -57,36 +57,66 @@ Si durante el Discovery se identifica que el cliente no es buen fit (no tiene pr
 | Elemento | Detalle |
 |----------|---------|
 | Formato | HTML brandeado, responsive en todos los devices |
-| Envío | Programado para las 12:12 (AM o PM, el mismo día del Discovery) |
-| Timer | Cuenta regresiva visible — genera urgencia |
-| Producción | 12 horas para producir la propuesta |
-| Vigencia | 12 horas para que el cliente acepte (timer visible) |
+| Envío | Al siguiente **12:12 en el reloj** (PM o AM) después de que termina el Discovery |
+| Timer | Cuenta regresiva visible hasta el siguiente 12:12 — genera urgencia |
+| Vigencia | Desde el envío hasta el siguiente 12:12 (12 horas) para aceptar al precio original |
 | Contenido | Soluciones propuestas + Preview/Proof of concept de UNA solución |
 | Cronograma | En horas/días/semanas — NO en fechas (depende de fecha de aceptación) |
-| Estructura | Dividido por fases de entrega |
+| Estructura | Dividido por clusters de soluciones |
 
-#### Timer de 12 Horas — Regla de Vencimiento
+#### Regla del 12:12 — Cómo Funciona el Timing
+| Momento | Qué pasa |
+|---------|----------|
+| Discovery termina | El reloj empieza — DOCEPROJECTS tiene hasta el **siguiente 12:12** (AM o PM) para enviar la propuesta |
+| 12:12 llega | La propuesta se envía automáticamente. Timer del cliente comienza |
+| Siguiente 12:12 | Vence la vigencia del precio original. El cliente tuvo 12 horas |
+| Después del vencimiento | **Incremento del 12%** sobre el valor de implementación |
+
+**Ejemplo:** Discovery termina a las 3:00 PM → propuesta se envía a las **12:12 AM** (esa misma noche). Cliente tiene hasta las **12:12 PM** del día siguiente para aceptar al precio original.
+
+#### Flexibilidad del Timer
 | Escenario | Acción |
 |-----------|--------|
-| Acepta dentro de 12h | Precio original |
-| No acepta en 12h | **Incremento del 12%** sobre el valor de implementación |
-| Cliente necesita más tiempo (consultar socio, etc.) | Flexible — se puede conversar, pero el incremento está sobre la mesa |
-| Cliente quiere modificar la oferta | Se modifica, se envía nueva propuesta, timer reinicia |
-
-> **Nota:** La vigencia real puede ser de varios días, pero el timer de 12h es la herramienta de urgencia. El 12% es negociable pero el principio se mantiene: premiar la decisión rápida.
+| Acepta dentro de la ventana 12:12 | Precio original |
+| No acepta en la ventana | **+12%** (negociable pero el principio se mantiene) |
+| Cliente necesita más tiempo (consultar socio, etc.) | Flexible — se puede conversar |
+| Cliente quiere modificar la oferta | Se modifica, se envía nueva propuesta, timer reinicia al siguiente 12:12 |
 
 **Ejemplos de Preview por tipo de cliente:**
 - Dashboard de resumen operativo
 - Cotizador de eventos
 - Reporte de tendencias de industria
 
-### FASE 4: Implementación
+### FASE 3.5: Aceptación → Contrato
+| Paso | Acción |
+|------|--------|
+| 1 | Cliente hace clic en **"Acepto"** en la propuesta HTML |
+| 2 | WhatsApp notification automática a Emiliano |
+| 3 | Emiliano envía contrato de servicios (PDF o firma digital) |
+| 4 | Cliente firma contrato + primer pago |
+| 5 | Comienza Fase 4 (Implementación) |
+
+> Si la aceptación ocurre después de la ventana 12:12 → el contrato refleja el 12% de incremento.
+
+### FASE 4: Implementación (por Clusters de Soluciones)
 | Elemento | Detalle |
 |----------|---------|
-| Entrega | Por fases — nunca todo de golpe |
-| Previews | Cada fase incluye un preview antes de la entrega final |
+| Lógica de fases | Agrupadas por **clusters funcionales** — soluciones que comparten integraciones, APIs o fuentes de datos se construyen y entregan juntas |
+| Previews | Cada cluster incluye un preview antes de la entrega final |
 | Customer Journey | "Les voy entregando de a poquito pero todavía no está, miren cómo está quedando" |
 | Pipeline | Lógica interna de cuadrar disponibilidad y orden de proyectos |
+
+#### Framework Estándar de Clusters
+
+| Fase | Lógica | Entregable |
+|------|--------|-----------|
+| **Cluster A** | Soluciones que tocan los mismos sistemas/datos. Se priorizan las de mayor impacto operativo | Primer grupo de soluciones en producción + Cangrejo activo sobre ellas |
+| **Cluster B** | Siguiente grupo de soluciones relacionadas entre sí | Segundo grupo en producción |
+| **Cluster C + Handoff** | Soluciones restantes + entrenamiento + setup grupo WhatsApp + status page | Todo en producción, post-venta comienza |
+
+**Principio:** No entregar por etapa de trabajo (diseño→desarrollo→testing). Entregar por clusters funcionales que el cliente puede **usar inmediatamente** al recibirlos.
+
+**Ejemplo:** Si el cliente tiene un cotizador y un dashboard que usan la misma base de datos de productos → van en el mismo cluster. Un agente de WhatsApp que es independiente → cluster separado.
 
 ### FASE 5: Post-Venta
 | Elemento | Detalle |
@@ -94,7 +124,7 @@ Si durante el Discovery se identifica que el cliente no es buen fit (no tiene pr
 | Grupo WhatsApp | Con dolientes/stakeholders del proceso automatizado |
 | Bot Customer Service | Agente dedicado por cliente para soporte |
 | Status Page | Disponible 24/7 para el cliente |
-| Reporte Semanal | Resumen automático del estado de todas las soluciones |
+| Reporte Semanal | Resumen automático del estado de todas las soluciones (informativo, no decisorio — lleva disclaimer) |
 | Incidentes | Se trippean automáticamente si algo falla |
 
 ### FASE 6: Mantenimiento Continuo
@@ -103,7 +133,7 @@ Si durante el Discovery se identifica que el cliente no es buen fit (no tiene pr
 | Cobertura | Infraestructura física + solución de software |
 | Monitoreo | El "Cangrejo" testea constantemente todas las soluciones |
 | Upgrade | Obligación de migrar a mejor tecnología cuando aparezca |
-| Precio | Decrece con el tiempo (ver Modelo de Revenue) |
+| Precio | Fee mensual fijo |
 
 ---
 
@@ -112,19 +142,13 @@ Si durante el Discovery se identifica que el cliente no es buen fit (no tiene pr
 ### Estructura de Cobro
 | Concepto | Detalle |
 |----------|---------|
-| **Implementación** | Fee único por proyecto/fase |
-| **Mantenimiento mensual** | Arranca ~2.6M COP, decrece progresivamente |
-| **Meta** | Llegar a 1 salario mínimo mensual por cliente maduro |
-| **Justificación de reducción** | La solución se replica en múltiples clientes → el costo se dispersa |
-
-> **Nota:** La curva decremental hasta 1 salario mínimo no necesita definirse ahora. Es una visión a futuro, no una política inmediata. No incluir breakeven de esto en el business plan por ahora.
+| **Implementación** | Fee único por proyecto/cluster |
+| **Mantenimiento mensual** | Fee mensual fijo por cliente |
 
 ### Lógica de Pricing
-- El precio de mantenimiento baja progresivamente porque:
-  1. Menos cambios necesarios a medida que la solución madura
-  2. La misma solución se reutiliza en otros clientes
-  3. El esfuerzo de mantenimiento decrece con el tiempo
-- **Cash vs Digital:** No es relevante para el modelo actual. No hay diferenciación de precio.
+- Fee de implementación se define en la propuesta comercial, basado en complejidad y cantidad de soluciones
+- Fee de mantenimiento es fijo y mensual — cubre monitoreo, soporte, upgrades, Cangrejo, regalos
+- **Cash vs Digital:** No hay diferenciación de precio
 
 ### Regalos Post-Venta (El cliente escoge 1 de 3)
 | # | Regalo | Descripción |
@@ -182,19 +206,17 @@ El **Cangrejo** es el sistema interno de testing y monitoreo automatizado de DOC
 
 ## 6. RESILIENCIA TECNOLÓGICA
 
-### API Fallback (Multi-Modelo)
-| Prioridad | Modelo |
-|-----------|--------|
-| Primario | Anthropic (Claude) |
-| Backup 1 | ChatGPT (OpenAI) |
-| Backup 2 | Gemini (Google) |
-| Otros | Perplexity, modelos emergentes |
+### API Fallback (Multi-Modelo) — Estrategia por Fases
 
-**Regla:** Cada solución que use LLMs debe tener **prompts dedicados por modelo** (no se reutilizan). Un prompt de Claude no funciona igual en GPT o Gemini.
+El multi-modelo es esencial pero no se lanza todo a la vez. Rollout por fases:
 
-**Implicación:** Cada solución se desarrolla efectivamente dos veces (o tres) — una por modelo. Se construye un **creador de prompts** interno que adapte automáticamente los prompts para cada proveedor.
+| Fase | Cuándo | Alcance |
+|------|--------|---------|
+| **v1 — Lanzamiento** | Día 1 | Claude (Anthropic) únicamente. Enviar rápido, entregar valor |
+| **v2 — Mes 3+** | Después de estabilizar primeros clientes | Agregar GPT como fallback para soluciones críticas. Construir herramienta adaptadora de prompts |
+| **v3 — Mes 6+** | Operación madura | Multi-modelo completo (Claude + GPT + Gemini). Cangrejo testea los 3 modelos |
 
-> Esto es significativamente más trabajo del que parece. Cada solución tiene costo de desarrollo x2-x3.
+**Regla:** Cada solución que use LLMs debe tener **prompts dedicados por modelo** (no se reutilizan). Un prompt de Claude no funciona igual en GPT o Gemini. Se construye un **creador de prompts** interno que adapte automáticamente los prompts para cada proveedor.
 
 ### Infraestructura Física
 | Necesidad | Solución |
@@ -242,8 +264,8 @@ El **Cangrejo** es el sistema interno de testing y monitoreo automatizado de DOC
 ### Propiedad Intelectual (IP)
 | Aspecto | Regla |
 |---------|-------|
-| Código adaptado al cliente | **El cliente es dueño** de su versión customizada |
-| Código base / framework | **DOCEPROJECTS retiene derechos** y puede reutilizar libremente |
+| Código adaptado al cliente | El cliente es dueño de una **instancia desplegada y funcionando** — no del código fuente |
+| Código fuente / repos | **DOCEPROJECTS retiene** el código fuente, repos, y derecho a reutilizar |
 | Replicación | DOCEPROJECTS puede usar la misma solución base para otros clientes |
 | Transparencia | El cliente no necesita saber que la solución se replica — pero tampoco se oculta si pregunta |
 
@@ -309,7 +331,7 @@ El **Cangrejo** es el sistema interno de testing y monitoreo automatizado de DOC
 ### Diferenciadores vs. Competencia
 | Factor | Ventaja DOCEPROJECTS |
 |--------|---------------------|
-| Velocidad | Propuesta en 12 horas con preview funcional |
+| Velocidad | Propuesta antes del siguiente 12:12 con preview funcional |
 | Eficiencia | Comprensión rápida del negocio |
 | Hosting físico | Computador dedicado del cliente — modelo único |
 | Costo | Probablemente más competitivo que agencias tradicionales |
@@ -366,34 +388,133 @@ El **Cangrejo** es el sistema interno de testing y monitoreo automatizado de DOC
 
 ---
 
-## 12. REGLAS DE NEGOCIO CLAVE
+## 12. UNIT ECONOMICS — MODELO POR CLIENTE
 
-| # | Regla | Detalle |
-|---|-------|---------|
-| 1 | **Todo 12:12** | Cotizaciones se envían a las 12:12, timer de 12h para producir, 12h para aceptar |
-| 2 | **12% por demora** | Si el cliente no acepta en 12h, incremento del 12% en implementación (negociable) |
-| 3 | **NDA primero** | Siempre antes del Discovery, DOCEPROJECTS firma primero |
-| 4 | **Siempre grabar** | Todo Discovery Call se graba |
-| 5 | **Operación primero** | Discovery enfocado en operación, no en finanzas |
-| 6 | **Sin límite de tiempo en Discovery** | Si el cliente habla mucho, se deja hablar |
-| 7 | **Preview obligatorio** | Toda propuesta incluye un proof-of-concept funcional |
-| 8 | **Fases, no bloques** | Entregas siempre por fases con previews intermedios |
-| 9 | **Cronograma relativo** | Horas/días/semanas, nunca fechas fijas |
-| 10 | **Precio decrece** | Mantenimiento baja progresivamente |
-| 11 | **Upgrade obligatorio** | Si hay mejor tecnología, se rehace sin costo adicional |
-| 12 | **Mismo proceso = mantenimiento** | Mejoras al mismo proceso no se cobran. Proceso nuevo = nueva cotización |
-| 13 | **Error nuestro = gratis** | Si no entendimos el proceso en Discovery, la corrección va por nuestra cuenta |
-| 14 | **AI disclaimer siempre** | Toda solución lleva disclaimer de que puede cometer errores — el cliente revisa |
-| 15 | **Repos no se entregan** | El cliente recibe su máquina funcionando, nunca el código fuente |
-| 16 | **Prompts por modelo** | Cada solución tiene prompts dedicados por LLM (Claude, GPT, Gemini) |
-| 17 | **Referrals > Pauta** | Invertir en programa de referidos, no en publicidad |
-| 18 | **Solución > Cliente** | Organización interna por solución, no por cliente |
-| 19 | **Branding integrado** | Toda herramienta interna tiene las reglas de marca incorporadas |
-| 20 | **Incógnito** | Operación discreta — regla en NDA |
+### Revenue por Cliente
+| Concepto | Valor | Frecuencia |
+|----------|-------|-----------|
+| Fee de implementación | $_______ COP | Único (por cluster) |
+| Fee de mantenimiento | $_______ COP | Mensual |
+| Total año 1 | Implementación + (Mantenimiento × 12) | — |
+
+### Costo por Cliente
+| Concepto | Costo estimado/mes | Notas |
+|----------|-------------------|-------|
+| API calls (LLMs) | $_______ | Claude + backups cuando se activen |
+| Hosting / compute | $_______ | Cloud + compute del Cangrejo |
+| Cangrejo (testing continuo) | $_______ | Incluido en infraestructura |
+| Soporte (tiempo humano) | $_______ | Horas/mes promedio post-estabilización |
+| Regalos (API calls continuos) | $_______ | Reportero de Industria / Suite de Productividad |
+| **Total costo/mes** | $_______ | — |
+
+### Margen
+| Métrica | Fórmula |
+|---------|---------|
+| Margen bruto/mes | Mantenimiento - Costo total/mes |
+| Punto de no-rentabilidad | Si margen < 0 → revisar fee o costo |
+| Payback | ¿Cuántos meses de mantenimiento cubren el costo de implementación? |
+
+### Breakeven Operativo
+| Variable | Valor |
+|----------|-------|
+| Costos fijos mensuales (infra, tools, tiempo) | $_______ COP |
+| Clientes en mantenimiento necesarios para cubrir fijos | _______ |
+
+> **Pendiente:** Emiliano llena los valores. Una vez completos, este modelo determina si el pricing es viable.
 
 ---
 
-## 13. ACTION ITEMS — PRIORIZADOS
+## 13. MATRIZ DE RIESGOS
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|-------------|---------|-----------|
+| Aumento de precio API Claude | Media | Alto | Fallback multi-modelo ya planeado (v2-v3) |
+| Persona clave no disponible (somos 2) | Alta | Crítico | Guía de Discovery documentada + procesos replicables |
+| Concentración de clientes | Alta (etapa temprana) | Alto | Programa de referrals para diversificar base |
+| Scope creep a pesar de reglas | Media | Medio | Contrato claro + proceso de cambio de alcance |
+| Multi-modelo inviable al lanzamiento | Media | Alto | Estrategia por fases: Claude-first, backups después |
+| Competidor copia modelo 12:12 | Baja | Medio | La velocidad de ejecución es el moat, no el concepto |
+| Error de AI le cuesta al cliente | Media | Alto | Disclaimer contractual + recordatorios + correcciones ilimitadas |
+| Cliente se va y replica internamente | Baja | Medio | Repos no se entregan — solo instancia funcionando |
+
+---
+
+## 14. KPIs — MÉTRICAS DE ÉXITO
+
+| KPI | Target | Frecuencia | Cómo se mide |
+|-----|--------|-----------|-------------|
+| Time-to-proposal | Antes del siguiente 12:12 | Per deal | Timestamp Discovery end → Timestamp envío |
+| Proposal win rate | Trackear (sin target aún) | Mensual | Propuestas aceptadas / propuestas enviadas |
+| Clientes en mantenimiento activo | Crecimiento mes a mes | Mensual | Conteo |
+| Tasa de retención | >90% | Trimestral | Clientes renovados / clientes totales |
+| Referral conversion | Trackear | Mensual | Referidos que firman / referidos totales |
+| Cangrejo uptime | 99%+ | Semanal | Status page |
+| Valor promedio de contrato (ACV) | Trackear | Mensual | Revenue total / # contratos |
+| Tickets de soporte/cliente | Trackear (menor = mejor) | Mensual | Tickets N1 por cliente |
+| Tiempo medio de resolución | Trackear | Mensual | MTTR desde ticket → resolución |
+
+---
+
+## 15. SALES FUNNEL & CAPACITY
+
+### Pipeline Completo
+```
+Leads (referrals/eventos) → Discovery Calls → Propuestas 12:12 → Firmados → Implementados → Mantenimiento
+```
+
+### Conversion Tracking
+| Etapa | Métrica | Target |
+|-------|---------|--------|
+| Lead → Discovery | % de leads que agendan | Trackear |
+| Discovery → Propuesta | % que reciben propuesta (debería ser ~100%) | 100% |
+| Propuesta → Firma | Win rate | Trackear |
+| Firma → Implementación exitosa | Completion rate | 100% |
+| Implementación → Mantenimiento | Renewal rate | >90% |
+
+### Capacidad con 2 Personas
+| Restricción | Estimado |
+|-------------|----------|
+| Discovery Calls / semana | 3-4 máximo |
+| Implementaciones concurrentes | 2-3 máximo |
+| Propuestas / semana | 3-4 (ligado a Discoveries) |
+| Revenue ceiling (antes de contratar) | (Discovery/semana × win rate × ACV) — calcular |
+
+### Cuándo Contratar
+| Signal | Acción |
+|--------|--------|
+| Discovery calls se empiezan a rechazar por falta de tiempo | Contratar implementador (1er hire) |
+| Post-venta consume >50% del tiempo | Contratar persona técnica (2do hire) |
+| Pipeline tiene >5 leads calientes esperando | Evaluar capacidad comercial |
+
+---
+
+## 16. REGLAS DE NEGOCIO CLAVE
+
+| # | Regla | Detalle |
+|---|-------|---------|
+| 1 | **Todo 12:12** | Propuestas se envían al siguiente 12:12 en el reloj. Cliente tiene hasta el siguiente 12:12 para aceptar |
+| 2 | **12% por demora** | Si el cliente no acepta en la ventana 12:12, incremento del 12% en implementación (negociable) |
+| 3 | **NDA primero** | Siempre antes del Discovery, DOCEPROJECTS firma primero |
+| 4 | **Siempre grabar** | Todo Discovery Call se graba |
+| 5 | **Operación primero** | Discovery enfocado en operación, no en finanzas |
+| 6 | **Sin límite de tiempo en Discovery** | Típicamente 1-3h. Sin tope, pero debe concluir antes del siguiente 12:12 |
+| 7 | **Preview obligatorio** | Toda propuesta incluye un proof-of-concept funcional |
+| 8 | **Clusters, no bloques** | Entregas por clusters funcionales de soluciones con previews intermedios |
+| 9 | **Cronograma relativo** | Horas/días/semanas, nunca fechas fijas |
+| 10 | **Upgrade obligatorio** | Si hay mejor tecnología, se rehace sin costo adicional |
+| 11 | **Mismo proceso = mantenimiento** | Mejoras al mismo proceso no se cobran. Proceso nuevo = nueva cotización |
+| 12 | **Error nuestro = gratis** | Si no entendimos el proceso en Discovery, la corrección va por nuestra cuenta |
+| 13 | **AI disclaimer siempre** | Toda solución lleva disclaimer de que puede cometer errores — el cliente revisa |
+| 14 | **Repos no se entregan** | El cliente recibe su instancia funcionando, nunca el código fuente |
+| 15 | **Prompts por modelo** | Cada solución tiene prompts dedicados por LLM — desplegado por fases (v1: Claude, v2: +GPT, v3: +Gemini) |
+| 16 | **Referrals > Pauta** | Invertir en programa de referidos, no en publicidad |
+| 17 | **Solución > Cliente** | Organización interna por solución, no por cliente |
+| 18 | **Branding integrado** | Toda herramienta interna tiene las reglas de marca incorporadas |
+| 19 | **Incógnito** | Operación discreta — regla en NDA |
+
+---
+
+## 17. ACTION ITEMS — PRIORIZADOS
 
 ### 🔴 Prioridad ALTA (Necesarios para operar)
 
@@ -405,39 +526,40 @@ El **Cangrejo** es el sistema interno de testing y monitoreo automatizado de DOC
 | 4 | **Crear guía/mapa de ruta del Discovery Call** — ruta crítica, preguntas guía, checklist | Clara + Emiliano | ⏳ Pendiente |
 | 5 | **Crear contrato de servicios** (persona natural) — entregables, pagos, IP, terminación, disclaimer AI | Clara + Emiliano + Legal | ⏳ Pendiente |
 | 6 | Construir el sistema de envío programado a las 12:12 | Clara | ⏳ Pendiente |
-| 7 | Definir y documentar las fases estándar de entrega | Clara + Emiliano | ⏳ Pendiente |
+| 7 | Definir y documentar los clusters estándar de entrega | Clara + Emiliano | ⏳ Pendiente |
 | 8 | Setup de infraestructura cloud (hosting, backups) | Clara | ⏳ Pendiente |
+| 9 | **Llenar unit economics** — valores reales de pricing e costs | Emiliano | ⏳ Pendiente |
 
 ### 🟡 Prioridad MEDIA (Necesarios para escalar)
 
 | # | Acción | Responsable | Estado |
 |---|--------|-------------|--------|
-| 9 | Construir el Cangrejo v1 — testing automatizado con datos reales | Clara | ⏳ Pendiente |
-| 10 | Crear dashboard interno organizado por tipo de solución | Clara | ⏳ Pendiente |
-| 11 | **Construir creador de prompts** que adapte automáticamente a Claude/GPT/Gemini | Clara | ⏳ Pendiente |
-| 12 | Implementar API fallback multi-modelo con prompts dedicados | Clara | ⏳ Pendiente |
-| 13 | **Construir agente de customer service Nivel 1** (filtro + primera resolución) | Clara | ⏳ Pendiente |
-| 14 | Diseñar status page template para clientes | Clara | ⏳ Pendiente |
-| 15 | Crear bot de customer service template (replicable por cliente) | Clara | ⏳ Pendiente |
-| 16 | Definir estructura de reporte semanal automatizado | Clara + Emiliano | ⏳ Pendiente |
-| 17 | **Diseñar programa de referrals** — incentivos, mecánica, descuentos | Emiliano | ⏳ Pendiente |
-| 18 | **Definir estructura de repos** — monorepo vs. repo por solución, manejo de customizaciones | Clara | ⏳ Pendiente |
+| 10 | Construir el Cangrejo v1 — testing automatizado con datos reales | Clara | ⏳ Pendiente |
+| 11 | Crear dashboard interno organizado por tipo de solución | Clara | ⏳ Pendiente |
+| 12 | **Construir creador de prompts** que adapte automáticamente a Claude/GPT/Gemini | Clara | ⏳ Pendiente |
+| 13 | Implementar API fallback multi-modelo con prompts dedicados (v2) | Clara | ⏳ Pendiente |
+| 14 | **Construir agente de customer service Nivel 1** (filtro + primera resolución) | Clara | ⏳ Pendiente |
+| 15 | Diseñar status page template para clientes | Clara | ⏳ Pendiente |
+| 16 | Crear bot de customer service template (replicable por cliente) | Clara | ⏳ Pendiente |
+| 17 | Definir estructura de reporte semanal automatizado | Clara + Emiliano | ⏳ Pendiente |
+| 18 | **Diseñar programa de referrals** — incentivos, mecánica, descuentos | Emiliano | ⏳ Pendiente |
+| 19 | **Definir estructura de repos** — monorepo vs. repo por solución, manejo de customizaciones | Clara | ⏳ Pendiente |
 
 ### 🟢 Prioridad BAJA (Nice to have / Post-lanzamiento)
 
 | # | Acción | Responsable | Estado |
 |---|--------|-------------|--------|
-| 19 | Desarrollar regalo #1: Bancolombia SMS Shortcut (iPhone) | Clara | ⏳ Pendiente |
-| 20 | Desarrollar regalo #2: Reportero de Industria (agente de noticias) | Clara | ⏳ Pendiente |
-| 21 | Desarrollar regalo #3: Suite de Productividad (correo/calendario) | Clara | ⏳ Pendiente |
-| 22 | Construir C-Suite de agentes AI internos (seguridad, tech, ops) | Clara | ⏳ Pendiente |
-| 23 | Evaluar ubicación de infraestructura (Colombia vs USA) | Clara + Emiliano | ⏳ Pendiente |
-| 24 | Investigar backup de internet (VPN/Starlink) | Clara | ⏳ Pendiente |
-| 25 | Investigar backup de energía (generador) | Emiliano | ⏳ Pendiente |
+| 20 | Desarrollar regalo #1: Bancolombia SMS Shortcut (iPhone) | Clara | ⏳ Pendiente |
+| 21 | Desarrollar regalo #2: Reportero de Industria (agente de noticias) | Clara | ⏳ Pendiente |
+| 22 | Desarrollar regalo #3: Suite de Productividad (correo/calendario) | Clara | ⏳ Pendiente |
+| 23 | Construir C-Suite de agentes AI internos (seguridad, tech, ops) | Clara | ⏳ Pendiente |
+| 24 | Evaluar ubicación de infraestructura (Colombia vs USA) | Clara + Emiliano | ⏳ Pendiente |
+| 25 | Investigar backup de internet (VPN/Starlink) | Clara | ⏳ Pendiente |
+| 26 | Investigar backup de energía (generador) | Emiliano | ⏳ Pendiente |
 
 ---
 
-## 14. CONEXIÓN CON BRAND MANUAL
+## 18. CONEXIÓN CON BRAND MANUAL
 
 El Brand Manual de DOCEPROJECTS (`brand-manual.html`) ya incluye los fundamentos visuales. Aquí se documenta cómo cada pieza del playbook se conecta con la marca:
 
@@ -455,17 +577,16 @@ El Brand Manual de DOCEPROJECTS (`brand-manual.html`) ya incluye los fundamentos
 
 ---
 
-## 15. DECISIONES PENDIENTES
+## 19. DECISIONES PENDIENTES
 
 > Las siguientes preguntas quedaron abiertas. Una vez resueltas, se integran al playbook.
 
 | # | Pregunta | Estado |
 |---|----------|--------|
-| 1 | **Breakeven de la curva decremental** — ¿Cuántos clientes para cubrir costos fijos con mantenimiento bajo? | ⏳ Diferido — no urgente |
-| 2 | **Estructura de repos** — ¿Monorepo, repo por solución, cómo manejar customizaciones? | ⏳ Pendiente |
-| 3 | **SLA numérico** — ¿99.9% uptime? ¿Tiempos de respuesta por nivel? | ⏳ Pendiente |
-| 4 | **Formato legal del contrato** — ¿Cómo se estructura un contrato entre personas naturales? Necesita asesoría legal | ⏳ Pendiente |
-| 5 | **Estrategia de adquisición digital** — LinkedIn, cold outreach, contenido | ⏳ Pendiente |
+| 1 | **Estructura de repos** — ¿Monorepo, repo por solución, cómo manejar customizaciones? | ⏳ Pendiente |
+| 2 | **SLA numérico** — ¿99.9% uptime? ¿Tiempos de respuesta por nivel? | ⏳ Pendiente |
+| 3 | **Formato legal del contrato** — ¿Cómo se estructura un contrato entre personas naturales? Necesita asesoría legal | ⏳ Pendiente |
+| 4 | **Estrategia de adquisición digital** — LinkedIn, cold outreach, contenido | ⏳ Pendiente |
 
 ---
 
