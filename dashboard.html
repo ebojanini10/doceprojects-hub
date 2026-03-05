@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS — Project Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & VARIABLES ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6A1B9A;
+      --purple-hover: #58147F;
+      --purple-light: rgba(106, 27, 154, 0.08);
+      --purple-glow: rgba(106, 27, 154, 0.15);
+      --black: #111111;
+      --white: #FFFFFF;
+      --gray-light: #F4F6F8;
+      --gray-mid: #9CA3AF;
+      --gray-dark: #6B7280;
+      --navy: #1F2937;
+      --navy-dark: #0F172A;
+      --navy-card: #1E293B;
+      --green: #16A34A;
+      --red: #DC2626;
+      --yellow: #F59E0B;
+      --blue: #3B82F6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--white);
+      background: var(--navy-dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .dashboard-header {
+      background: var(--purple);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 4px 20px rgba(106, 27, 154, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-logo {
+      height: 48px;
+      width: auto;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .header-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 24px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
+
+    /* ── PIPELINE BOARD ── */
+    .pipeline {
+      display: flex;
+      gap: 16px;
+      padding: 24px 24px 24px;
+      overflow-x: auto;
+      min-height: calc(100vh - 96px);
+      align-items: flex-start;
+    }
+
+    .pipeline::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .pipeline::-webkit-scrollbar-track {
+      background: var(--navy-dark);
+    }
+
+    .pipeline::-webkit-scrollbar-thumb {
+      background: var(--navy);
+      border-radius: 4px;
+    }
+
+    /* ── COLUMN ── */
+    .column {
+      flex: 1;
+      min-width: 240px;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .column-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .column-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .column-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+
+    .column-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-mid);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .column-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 60px;
+    }
+
+    /* ── EMPTY COLUMN ── */
+    .column-empty {
+      padding: 20px;
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 13px;
+      font-style: italic;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    /* ── PROJECT CARD ── */
+    .card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 16px;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .card-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .card-repo-links {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .card-repo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .card-repo-link:hover {
+      background: var(--purple);
+      color: var(--white);
+    }
+
+    .card-repo-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .card-notes {
+      font-size: 12px;
+      color: var(--gray-mid);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    /* ── PENDING ITEMS ── */
+    .card-pending {
+      margin-top: 10px;
+    }
+
+    .pending-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-mid);
+      cursor: pointer;
+      user-select: none;
+      border: none;
+      background: none;
+      padding: 4px 0;
+      transition: color 0.15s ease;
+    }
+
+    .pending-toggle:hover {
+      color: var(--white);
+    }
+
+    .pending-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 0 5px;
+    }
+
+    .pending-badge.has-items {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--yellow);
+    }
+
+    .pending-badge.no-items {
+      background: rgba(22, 163, 74, 0.15);
+      color: var(--green);
+    }
+
+    .pending-chevron {
+      transition: transform 0.2s ease;
+      font-size: 10px;
+    }
+
+    .pending-chevron.open {
+      transform: rotate(90deg);
+    }
+
+    .pending-list {
+      list-style: none;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .pending-list.hidden {
+      display: none;
+    }
+
+    .pending-item {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      border-left: 2px solid var(--yellow);
+      line-height: 1.4;
+    }
+
+    /* ── CARD FOOTER ── */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-repos-count {
+      font-size: 11px;
+      color: var(--gray-mid);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-repos-count svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* ── LOADING & ERROR ── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+      font-size: 16px;
+      color: var(--gray-mid);
+    }
+
+    .loading-spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--navy-card);
+      border-top-color: var(--purple);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 12px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error-message {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--red);
+    }
+
+    .error-message h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .error-message p {
+      color: var(--gray-mid);
+      font-size: 14px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .pipeline {
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .column {
+        min-width: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .header-title {
+        font-size: 22px;
+      }
+
+      .header-stats {
+        gap: 16px;
+      }
+
+      .pipeline {
+        flex-direction: column;
+        padding: 16px;
+      }
+
+      .column {
+        max-width: 100%;
+        min-width: 100%;
+      }
+    }
+
+    /* ── LAST UPDATED FOOTER ── */
+    .dashboard-footer {
+      padding: 16px 24px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--gray-mid);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .dashboard-footer a {
+      color: var(--purple);
+      text-decoration: none;
+    }
+
+    .dashboard-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <img src="assets/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-logo">
+      <div class="header-divider"></div>
+      <h1 class="header-title">Project Pipeline</h1>
+    </div>
+    <div class="header-stats" id="headerStats"></div>
+  </header>
+
+  <!-- PIPELINE BOARD -->
+  <main class="pipeline" id="pipeline">
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      Loading projects…
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="dashboard-footer">
+    DOCEPROJECTS Pipeline &middot; Edit <a href="https://github.com/mclara-martinez/doceprojects/edit/main/projects.json" target="_blank">projects.json</a> to update
+  </footer>
+
+  <script>
+    // ── SVG ICONS ──
+    const GITHUB_ICON = `<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
+
+    const CHEVRON_ICON = `▶`;
+
+    // ── LOAD DATA ──
+    async function loadProjects() {
+      try {
+        const res = await fetch('projects.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (err) {
+        document.getElementById('loading').innerHTML = `
+          <div class="error-message">
+            <h2>Could not load projects</h2>
+            <p>${err.message}. Make sure projects.json exists.</p>
+          </div>
+        `;
+        return null;
+      }
+    }
+
+    // ── RENDER STATS ──
+    function renderStats(data) {
+      const statsEl = document.getElementById('headerStats');
+      const total = data.projects.length;
+      const pending = data.projects.filter(p => p.pending && p.pending.length > 0).length;
+      const active = data.projects.filter(p =>
+        ['implementacion', 'mantenimiento'].includes(p.stage)
+      ).length;
+
+      statsEl.innerHTML = `
+        <div class="stat">
+          <div class="stat-number">${total}</div>
+          <div class="stat-label">Proyectos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">${active}</div>
+          <div class="stat-label">Activos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">${pending}</div>
+          <div class="stat-label">Con pendientes</div>
+        </div>
+      `;
+    }
+
+    // ── RENDER CARD ──
+    function renderCard(project) {
+      const hasPending = project.pending && project.pending.length > 0;
+      const pendingCount = hasPending ? project.pending.length : 0;
+
+      const repoLinks = project.repos.map(repo => {
+        const name = repo.split('/').pop();
+        return `<a class="card-repo-link" href="https://github.com/${repo}" target="_blank" title="${name}">${GITHUB_ICON}</a>`;
+      }).join('');
+
+      const pendingHtml = hasPending ? `
+        <div class="card-pending">
+          <button class="pending-toggle" onclick="togglePending(this)">
+            <span class="pending-chevron">${CHEVRON_ICON}</span>
+            <span class="pending-badge has-items">${pendingCount}</span>
+            <span>pendiente${pendingCount > 1 ? 's' : ''}</span>
+          </button>
+          <ul class="pending-list hidden">
+            ${project.pending.map(item => `<li class="pending-item">${item}</li>`).join('')}
+          </ul>
+        </div>
+      ` : `
+        <div class="card-pending">
+          <span class="pending-toggle" style="cursor:default;">
+            <span class="pending-badge no-items">✓</span>
+            <span>Sin pendientes</span>
+          </span>
+        </div>
+      `;
+
+      const notesHtml = project.notes
+        ? `<div class="card-notes">${project.notes}</div>`
+        : '';
+
+      return `
+        <div class="card">
+          <div class="card-top">
+            <span class="card-name">${project.name}</span>
+            <div class="card-repo-links">${repoLinks}</div>
+          </div>
+          ${notesHtml}
+          ${pendingHtml}
+          ${project.repos.length > 1 ? `
+            <div class="card-footer">
+              <span class="card-repos-count">
+                ${GITHUB_ICON}
+                ${project.repos.length} repos
+              </span>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // ── RENDER PIPELINE ──
+    function renderPipeline(data) {
+      const pipelineEl = document.getElementById('pipeline');
+      pipelineEl.innerHTML = '';
+
+      data.stages.forEach(stage => {
+        const stageProjects = data.projects.filter(p => p.stage === stage.id);
+
+        const cardsHtml = stageProjects.length > 0
+          ? stageProjects.map(renderCard).join('')
+          : `<div class="column-empty">No hay proyectos</div>`;
+
+        const columnHtml = `
+          <div class="column">
+            <div class="column-header">
+              <div class="column-title-group">
+                <div class="column-dot" style="background:${stage.color}"></div>
+                <span class="column-title">${stage.label}</span>
+              </div>
+              <span class="column-count">${stageProjects.length}</span>
+            </div>
+            <div class="column-cards">
+              ${cardsHtml}
+            </div>
+          </div>
+        `;
+
+        pipelineEl.insertAdjacentHTML('beforeend', columnHtml);
+      });
+    }
+
+    // ── TOGGLE PENDING ──
+    function togglePending(btn) {
+      const list = btn.nextElementSibling;
+      const chevron = btn.querySelector('.pending-chevron');
+
+      if (list.classList.contains('hidden')) {
+        list.classList.remove('hidden');
+        chevron.classList.add('open');
+      } else {
+        list.classList.add('hidden');
+        chevron.classList.remove('open');
+      }
+    }
+
+    // ── INIT ──
+    (async function init() {
+      const data = await loadProjects();
+      if (!data) return;
+
+      renderStats(data);
+      renderPipeline(data);
+    })();
+  </script>
+</body>
+</html>

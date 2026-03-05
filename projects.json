@@ -1,0 +1,95 @@
+{
+  "stages": [
+    { "id": "lead", "label": "Lead", "color": "#9CA3AF" },
+    { "id": "discovery", "label": "Discovery", "color": "#F59E0B" },
+    { "id": "propuesta", "label": "Propuesta", "color": "#3B82F6" },
+    { "id": "implementacion", "label": "Implementación", "color": "#8B5CF6" },
+    { "id": "mantenimiento", "label": "Mantenimiento", "color": "#16A34A" },
+    { "id": "interno", "label": "Interno", "color": "#6B7280" }
+  ],
+  "projects": [
+    {
+      "name": "Sky Flowers",
+      "repos": [
+        "ebojanini10/sky-flowers-logistics",
+        "ebojanini10/skyflowers-cobrador",
+        "ebojanini10/skyflowers-dashboard",
+        "ebojanini10/skyflowers-bot-deploy"
+      ],
+      "stage": "mantenimiento",
+      "pending": [
+        "Cobrador bot integration",
+        "Dashboard deployment"
+      ],
+      "notes": "Enterprise logistics + cobranza + dashboard"
+    },
+    {
+      "name": "Loretta",
+      "repos": [
+        "ebojanini10/loretta-cliente-bogota"
+      ],
+      "stage": "implementacion",
+      "pending": [],
+      "notes": "Cliente Bogotá"
+    },
+    {
+      "name": "Obras y Montajes",
+      "repos": [
+        "ebojanini10/obras-montajes-sistema"
+      ],
+      "stage": "implementacion",
+      "pending": [],
+      "notes": ""
+    },
+    {
+      "name": "Mattilda",
+      "repos": [
+        "ebojanini10/mattilda-sistema"
+      ],
+      "stage": "implementacion",
+      "pending": [],
+      "notes": ""
+    },
+    {
+      "name": "Casa Ardente",
+      "repos": [
+        "ebojanini10/casa-ardente-propuesta"
+      ],
+      "stage": "propuesta",
+      "pending": [],
+      "notes": ""
+    },
+    {
+      "name": "Juan Perez",
+      "repos": [
+        "ebojanini10/juan-perez-whatsapp"
+      ],
+      "stage": "implementacion",
+      "pending": [],
+      "notes": ""
+    },
+    {
+      "name": "DOCEPROJECTS",
+      "repos": [
+        "mclara-martinez/doceprojects"
+      ],
+      "stage": "interno",
+      "pending": [
+        "Fill Unit Economics values",
+        "Create Discovery Call guide",
+        "Create service contract template",
+        "Define acceptance workflow automation"
+      ],
+      "notes": "Agency brand, proposals, playbook"
+    },
+    {
+      "name": "Arquitectura Bot",
+      "repos": [
+        "ebojanini10/arquitectura-bot"
+      ],
+      "stage": "interno",
+      "pending": [],
+      "notes": ""
+    }
+  ]
+}
