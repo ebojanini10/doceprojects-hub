@@ -265,6 +265,39 @@
       "createdAt": "2026-02-24T21:25:09Z"
     },
     {
+      "id": "construhigienicas",
+      "name": "Construhigiénicas",
+      "repos": [
+        "mclara-martinez/construhigienicas"
+      ],
+      "stage": "propuesta",
+      "tasks": [
+        {
+          "id": "t-ch-1",
+          "text": "Definir precios de la propuesta (TBD con Emiliano)",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-ch-2",
+          "text": "Enviar propuesta a Laura (12:12)",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara + Emiliano"
+        },
+        {
+          "id": "t-ch-3",
+          "text": "Propuesta deployada en prop.doceprojects.com/construhigienicas/ (password: doce-construhigienicas)",
+          "done": true,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        }
+      ],
+      "notes": "Diseño+construcción plantas higiénicas (alimentos/farma). 73 empleados, ~200 con contratistas. Discovery 2025-05-03. Contactos: Laura (Gerente), Juan Fernando (Comercial), Octavio (Producción). ERP Cinco $12M/mes. Ahorro estimado $400M+ COP/año.",
+      "createdAt": "2026-03-07T22:00:00Z"
+    },
+    {
       "id": "doceprojects",
       "name": "DOCEPROJECTS",
       "repos": [
@@ -302,14 +335,77 @@
         },
         {
           "id": "t-dp-5",
-          "text": "Configurar dominio custom GitHub Pages",
-          "done": false,
+          "text": "Configurar dominio custom GitHub Pages — prop.doceprojects.com DONE, props.doceprojects.com DONE, ops.doceprojects.com DONE",
+          "done": true,
           "priority": "MEDIUM",
           "assignee": "Clara"
         },
         {
           "id": "t-dp-6",
           "text": "Cloudflare Tunnel infraestructura",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-7",
+          "text": "Hub: crear deploy.sh en mclaramartinez.github.io para automatizar despliegue de propuestas",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-8",
+          "text": "Hub: actualizar index.html raíz (blank o redirect)",
+          "done": false,
+          "priority": "LOW",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-9",
+          "text": "Hub: agregar ebojanini10 como colaborador en mclaramartinez.github.io",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-10",
+          "text": "Hub: migrar casa-ardente a prop.doceprojects.com/casa-ardente/ (mantener URL vieja funcionando)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-11",
+          "text": "Hub: migrar EQR a prop.doceprojects.com/eqr/ (después que cliente confirme)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-12",
+          "text": "Hub: migrar demo a prop.doceprojects.com/demo/",
+          "done": false,
+          "priority": "LOW",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-13",
+          "text": "Fix eqr.doceprojects.com — DNS apunta a GitHub Pages pero ningún repo lo sirve (405)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-14",
+          "text": "Configurar redirect props.doceprojects.com → prop.doceprojects.com (después de migrar todo)",
+          "done": false,
+          "priority": "LOW",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-dp-15",
+          "text": "Estandarizar workflow: StatiCrypt para todas las propuestas futuras",
           "done": false,
           "priority": "MEDIUM",
           "assignee": "Clara"

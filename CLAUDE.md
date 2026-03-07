@@ -59,7 +59,8 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 | Loretta Puro Antojo | Implementación | `ebojanini10/loretta-cliente-bogota` |
 | Obras y Montajes | Implementación | `ebojanini10/obras-montajes-sistema` |
 | EQR Roses | Discovery | `ebojanini10/skyflowers-platform` |
-| Casa Ardente | Propuesta | `ebojanini10/casa-ardente-sistema` |
+| Construhigiénicas | Propuesta | `mclara-martinez/construhigienicas` |
+| Casa Ardente | Discovery | `ebojanini10/casa-ardente-sistema` |
 | Paulina Arquitectura | Implementación | `ebojanini10/arquitectura-bot` |
 | Hortensia Vision | Implementación | `ebojanini10/skyflowers-hortensia-vision` |
 
@@ -70,5 +71,20 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 - [ ] Discovery Call guide (ruta crítica + preguntas guía)
 - [ ] Contrato de servicios template
 - [ ] Workflow automático de aceptación de propuesta
-- [ ] Configurar dominio custom (GitHub Pages)
+- [x] Configurar dominio custom (GitHub Pages) — prop/props/ops.doceprojects.com
 - [ ] Unit Economics por tipo de proyecto
+
+## Hub de propuestas (prop.doceprojects.com)
+
+Repo: `mclara-martinez/mclaramartinez.github.io` (PUBLIC)
+Todas las propuestas se despliegan aquí como `/<client>/index.html`, encriptadas con StatiCrypt.
+
+- [x] Construhigiénicas deployada (password: `doce-construhigienicas`)
+- [ ] Crear deploy.sh (script de despliegue)
+- [ ] Agregar ebojanini10 como colaborador
+- [ ] Migrar casa-ardente (mantener URL vieja)
+- [ ] Migrar EQR (esperar confirmación cliente)
+- [ ] Migrar demo
+- [ ] Fix eqr.doceprojects.com (DNS roto, 405)
+- [ ] Redirect props → prop (después de migrar todo)
+- [ ] Estandarizar StatiCrypt para todas las propuestas
