@@ -1,102 +1,148 @@
 {
+  "version": 2,
+  "lastUpdated": "2026-03-06T22:00:00Z",
   "stages": [
-    { "id": "lead", "label": "Lead", "color": "#9CA3AF" },
-    { "id": "discovery", "label": "Discovery", "color": "#F59E0B" },
-    { "id": "propuesta", "label": "Propuesta", "color": "#3B82F6" },
-    { "id": "implementacion", "label": "Implementación", "color": "#8B5CF6" },
-    { "id": "mantenimiento", "label": "Mantenimiento", "color": "#16A34A" },
-    { "id": "interno", "label": "Interno", "color": "#6B7280" }
+    { "id": "lead", "label": "Lead", "color": "#9CA3AF", "order": 0 },
+    { "id": "discovery", "label": "Discovery", "color": "#F59E0B", "order": 1 },
+    { "id": "propuesta", "label": "Propuesta", "color": "#3B82F6", "order": 2 },
+    { "id": "implementacion", "label": "Implementación", "color": "#8B5CF6", "order": 3 },
+    { "id": "mantenimiento", "label": "Mantenimiento", "color": "#16A34A", "order": 4 },
+    { "id": "interno", "label": "Interno", "color": "#6B7280", "order": 5 }
   ],
   "projects": [
     {
+      "id": "sky-flowers",
       "name": "Sky Flowers",
       "repos": ["ebojanini10/skyflowers-platform"],
       "stage": "mantenimiento",
-      "pending": [
-        "Conectar dashboard a BigQuery vistas analíticas",
-        "Configurar Cloudflare Tunnel para acceso externo",
-        "Task Scheduler AWB scanner"
+      "tasks": [
+        { "id": "t-sf-1", "text": "Conectar dashboard a BigQuery vistas analíticas", "done": false, "priority": "MEDIUM", "assignee": "Clara" },
+        { "id": "t-sf-2", "text": "Configurar Cloudflare Tunnel para acceso externo", "done": false, "priority": "MEDIUM", "assignee": "Clara" },
+        { "id": "t-sf-3", "text": "Task Scheduler AWB scanner", "done": false, "priority": "MEDIUM", "assignee": "Clara" }
       ],
-      "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona"
+      "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona",
+      "createdAt": "2026-03-04T00:00:00Z"
     },
     {
+      "id": "loretta",
       "name": "Loretta Puro Antojo",
       "repos": ["ebojanini10/loretta-cliente-bogota"],
       "stage": "implementacion",
-      "pending": [
-        "Conectar WhatsApp Business API",
-        "Probar flujo completo cotización → entrega"
+      "tasks": [
+        { "id": "t-lo-1", "text": "Conectar WhatsApp Business API", "done": false, "priority": "HIGH", "assignee": "Clara" },
+        { "id": "t-lo-2", "text": "Probar flujo completo cotización → entrega", "done": false, "priority": "HIGH", "assignee": "Clara" }
       ],
-      "notes": "Bot WhatsApp + catering + repostería. Cliente: Laura Pradilla, Bogotá"
+      "notes": "Bot WhatsApp + catering + repostería. Cliente: Laura Pradilla, Bogotá",
+      "createdAt": "2026-03-04T00:00:00Z"
     },
     {
+      "id": "obras-y-montajes",
       "name": "Obras y Montajes",
       "repos": ["ebojanini10/obras-montajes-sistema"],
       "stage": "implementacion",
-      "pending": [
-        "Onboarding 30 min con dueño",
-        "Lista contenedores + clientes mora",
-        "Credenciales WhatsApp API"
+      "tasks": [
+        { "id": "t-om-1", "text": "Onboarding 30 min con dueño", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-om-2", "text": "Lista contenedores + clientes mora", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-om-3", "text": "Credenciales WhatsApp API", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
-      "notes": "~140 contenedores, 95% ocupación. Cobros + cotizaciones + prospección obras"
+      "notes": "~140 contenedores, 95% ocupación. Cobros + cotizaciones + prospección obras",
+      "createdAt": "2026-03-04T00:00:00Z"
     },
     {
+      "id": "eqr-roses",
       "name": "EQR Roses",
       "repos": ["ebojanini10/skyflowers-platform"],
       "stage": "discovery",
-      "pending": [
-        "Logo EQR PNG",
-        "Credenciales WhatsApp Meta",
-        "Reunión Roger + Sebastián"
+      "tasks": [
+        { "id": "t-eq-1", "text": "Logo EQR PNG", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-eq-2", "text": "Credenciales WhatsApp Meta", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-eq-3", "text": "Reunión Roger + Sebastián", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
-      "notes": "Finca de flores. Bot disponible WhatsApp. Puerto 5009"
+      "notes": "Finca de flores. Bot disponible WhatsApp. Puerto 5009",
+      "createdAt": "2026-03-06T00:00:00Z"
     },
     {
+      "id": "casa-ardente",
       "name": "Casa Ardente",
       "repos": ["ebojanini10/casa-ardente-sistema"],
       "stage": "propuesta",
-      "pending": [
-        "Reunión estratégica Daniel + Juana",
-        "Logos marcas Niku / Máximo / Taco House",
-        "Accesos WhatsApp Business API + ICG"
+      "tasks": [
+        { "id": "t-ca-1", "text": "Reunión estratégica Daniel + Juana", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-ca-2", "text": "Logos marcas Niku / Máximo / Taco House", "done": false, "priority": "MEDIUM", "assignee": "Emiliano" },
+        { "id": "t-ca-3", "text": "Accesos WhatsApp Business API + ICG", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
-      "notes": "3 marcas restaurantes Medellín. Apertura Cartagena abril 2026"
+      "notes": "3 marcas restaurantes Medellín. Apertura Cartagena abril 2026",
+      "createdAt": "2026-03-04T00:00:00Z"
     },
     {
+      "id": "paulina-arquitectura",
       "name": "Paulina Arquitectura",
       "repos": ["ebojanini10/arquitectura-bot"],
       "stage": "implementacion",
-      "pending": [
-        "Datos estudio + matrícula CPNAA",
-        "Lista ingenieros + proveedores",
-        "Credenciales WhatsApp API"
+      "tasks": [
+        { "id": "t-pa-1", "text": "Datos estudio + matrícula CPNAA", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-pa-2", "text": "Lista ingenieros + proveedores", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-pa-3", "text": "Credenciales WhatsApp API", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
-      "notes": "Sistema multi-agente: radicados licencias + presupuesto + cotizaciones. Puerto 5005"
+      "notes": "Sistema multi-agente: radicados licencias + presupuesto + cotizaciones. Puerto 5005",
+      "createdAt": "2026-03-06T00:00:00Z"
     },
     {
+      "id": "hortensia-vision",
       "name": "Hortensia Vision",
       "repos": ["ebojanini10/skyflowers-hortensia-vision"],
       "stage": "implementacion",
-      "pending": [
-        "Credenciales WhatsApp Meta Business",
-        "Cloudflare Tunnel webhook",
-        "Modelo custom hortensias (futuro)"
+      "tasks": [
+        { "id": "t-hv-1", "text": "Credenciales WhatsApp Meta Business", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-hv-2", "text": "Cloudflare Tunnel webhook", "done": false, "priority": "MEDIUM", "assignee": "Clara" },
+        { "id": "t-hv-3", "text": "Modelo custom hortensias (futuro)", "done": false, "priority": "LOW", "assignee": "Clara" }
       ],
-      "notes": "Reconocimiento flores por imagen. YOLO8 + WhatsApp. Puerto 5400"
+      "notes": "Reconocimiento flores por imagen. YOLO8 + WhatsApp. Puerto 5400",
+      "createdAt": "2026-03-06T00:00:00Z"
     },
     {
+      "id": "doceprojects",
       "name": "DOCEPROJECTS",
       "repos": ["mclara-martinez/doceprojects"],
       "stage": "interno",
-      "pending": [
-        "Fill Unit Economics values",
-        "Create Discovery Call guide",
-        "Create service contract template",
-        "Define acceptance workflow automation",
-        "Configurar dominio custom GitHub Pages",
-        "Cloudflare Tunnel infraestructura"
+      "tasks": [
+        { "id": "t-dp-1", "text": "Fill Unit Economics values", "done": false, "priority": "HIGH", "assignee": "Emiliano" },
+        { "id": "t-dp-2", "text": "Create Discovery Call guide", "done": false, "priority": "HIGH", "assignee": "Clara + Emiliano" },
+        { "id": "t-dp-3", "text": "Create service contract template", "done": false, "priority": "HIGH", "assignee": "Clara + Emiliano" },
+        { "id": "t-dp-4", "text": "Define acceptance workflow automation", "done": false, "priority": "MEDIUM", "assignee": "Clara" },
+        { "id": "t-dp-5", "text": "Configurar dominio custom GitHub Pages", "done": false, "priority": "MEDIUM", "assignee": "Clara" },
+        { "id": "t-dp-6", "text": "Cloudflare Tunnel infraestructura", "done": false, "priority": "MEDIUM", "assignee": "Clara" }
       ],
-      "notes": "Agency brand, proposals, playbook, team"
+      "notes": "Agency brand, proposals, playbook, team",
+      "createdAt": "2026-03-04T00:00:00Z"
     }
+  ],
+  "actionItems": [
+    { "id": "a1", "text": "Diseñar y desarrollar el template HTML de propuesta comercial", "done": true, "priority": "HIGH", "assignee": "Clara", "category": "operacion" },
+    { "id": "a2", "text": "Crear el formulario de diagnóstico tech stack para WhatsApp agent", "done": false, "priority": "HIGH", "assignee": "Clara", "category": "operacion" },
+    { "id": "a3", "text": "Diseñar template de NDA bilateral", "done": false, "priority": "HIGH", "assignee": "Clara + Emiliano", "category": "legal" },
+    { "id": "a4", "text": "Crear guía/mapa de ruta del Discovery Call — ruta crítica, preguntas guía, checklist", "done": false, "priority": "HIGH", "assignee": "Clara + Emiliano", "category": "operacion" },
+    { "id": "a5", "text": "Crear contrato de servicios (persona natural) — entregables, pagos, IP, terminación, disclaimer AI", "done": false, "priority": "HIGH", "assignee": "Clara + Emiliano + Legal", "category": "legal" },
+    { "id": "a6", "text": "Construir el sistema de envío programado a las 12:12", "done": false, "priority": "HIGH", "assignee": "Clara", "category": "tech" },
+    { "id": "a7", "text": "Definir y documentar los clusters estándar de entrega", "done": false, "priority": "HIGH", "assignee": "Clara + Emiliano", "category": "operacion" },
+    { "id": "a8", "text": "Setup de infraestructura cloud (hosting, backups)", "done": false, "priority": "HIGH", "assignee": "Clara", "category": "tech" },
+    { "id": "a9", "text": "Llenar unit economics — valores reales de pricing y costs", "done": false, "priority": "HIGH", "assignee": "Emiliano", "category": "negocio" },
+    { "id": "a10", "text": "Construir el Cangrejo v1 — testing automatizado con datos reales", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a11", "text": "Crear dashboard interno organizado por tipo de solución", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a12", "text": "Construir creador de prompts que adapte automáticamente a Claude/GPT/Gemini", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a13", "text": "Implementar API fallback multi-modelo con prompts dedicados (v2)", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a14", "text": "Construir agente de customer service Nivel 1 (filtro + primera resolución)", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a15", "text": "Diseñar status page template para clientes", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "operacion" },
+    { "id": "a16", "text": "Crear bot de customer service template (replicable por cliente)", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a17", "text": "Definir estructura de reporte semanal automatizado", "done": false, "priority": "MEDIUM", "assignee": "Clara + Emiliano", "category": "operacion" },
+    { "id": "a18", "text": "Diseñar programa de referrals — incentivos, mecánica, descuentos", "done": false, "priority": "MEDIUM", "assignee": "Emiliano", "category": "negocio" },
+    { "id": "a19", "text": "Definir estructura de repos — monorepo vs. repo por solución, manejo de customizaciones", "done": false, "priority": "MEDIUM", "assignee": "Clara", "category": "tech" },
+    { "id": "a20", "text": "Desarrollar regalo #1: Bancolombia SMS Shortcut (iPhone)", "done": false, "priority": "LOW", "assignee": "Clara", "category": "producto" },
+    { "id": "a21", "text": "Desarrollar regalo #2: Reportero de Industria (agente de noticias)", "done": false, "priority": "LOW", "assignee": "Clara", "category": "producto" },
+    { "id": "a22", "text": "Desarrollar regalo #3: Suite de Productividad (correo/calendario)", "done": false, "priority": "LOW", "assignee": "Clara", "category": "producto" },
+    { "id": "a23", "text": "Construir C-Suite de agentes AI internos (seguridad, tech, ops)", "done": false, "priority": "LOW", "assignee": "Clara", "category": "tech" },
+    { "id": "a24", "text": "Evaluar ubicación de infraestructura (Colombia vs USA)", "done": false, "priority": "LOW", "assignee": "Clara + Emiliano", "category": "tech" },
+    { "id": "a25", "text": "Investigar backup de internet (VPN/Starlink)", "done": false, "priority": "LOW", "assignee": "Clara", "category": "infra" },
+    { "id": "a26", "text": "Investigar backup de energía (generador)", "done": false, "priority": "LOW", "assignee": "Emiliano", "category": "infra" }
   ]
 }

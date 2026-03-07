@@ -44,11 +44,11 @@
     /* ── HEADER ── */
     .dashboard-header {
       background: var(--purple);
-      padding: 24px 40px;
+      padding: 16px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 16px;
       box-shadow: 0 4px 20px rgba(106, 27, 154, 0.3);
       position: sticky;
       top: 0;
@@ -58,45 +58,80 @@
     .header-left {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
 
     .header-logo {
-      height: 48px;
+      height: 40px;
       width: auto;
     }
 
     .header-divider {
       width: 1px;
-      height: 32px;
+      height: 28px;
       background: rgba(255, 255, 255, 0.3);
     }
 
     .header-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
+      font-size: 24px;
       letter-spacing: 0.05em;
       color: var(--white);
     }
 
+    /* ── NAV ── */
+    .header-nav {
+      display: flex;
+      gap: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .nav-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      background: transparent;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover { color: var(--white); }
+
+    .nav-btn.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--white);
+    }
+
+    /* ── HEADER RIGHT ── */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .header-stats {
       display: flex;
-      gap: 24px;
+      gap: 20px;
     }
 
-    .stat {
-      text-align: center;
-    }
+    .stat { text-align: center; }
 
     .stat-number {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 800;
       color: var(--white);
       line-height: 1;
     }
 
     .stat-label {
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -104,28 +139,55 @@
       margin-top: 2px;
     }
 
+    .header-add-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .header-add-btn:hover { background: rgba(255, 255, 255, 0.28); }
+
+    .header-settings-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.15s ease-out;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-settings-btn:hover { color: var(--white); background: rgba(255, 255, 255, 0.1); }
+    .header-settings-btn svg { width: 18px; height: 18px; }
+
+    /* ── MAIN CONTENT ── */
+    .main-content {
+      min-height: calc(100vh - 130px);
+    }
+
     /* ── PIPELINE BOARD ── */
     .pipeline {
       display: flex;
       gap: 16px;
-      padding: 24px 24px 24px;
+      padding: 24px;
       overflow-x: auto;
-      min-height: calc(100vh - 96px);
+      min-height: calc(100vh - 130px);
       align-items: flex-start;
     }
 
-    .pipeline::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .pipeline::-webkit-scrollbar-track {
-      background: var(--navy-dark);
-    }
-
-    .pipeline::-webkit-scrollbar-thumb {
-      background: var(--navy);
-      border-radius: 4px;
-    }
+    .pipeline::-webkit-scrollbar { height: 8px; }
+    .pipeline::-webkit-scrollbar-track { background: var(--navy-dark); }
+    .pipeline::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 4px; }
 
     /* ── COLUMN ── */
     .column {
@@ -134,14 +196,14 @@
       max-width: 320px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .column-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border-radius: 10px;
       background: var(--navy-card);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -150,7 +212,7 @@
     .column-title-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .column-dot {
@@ -161,7 +223,7 @@
     }
 
     .column-title {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -169,7 +231,7 @@
     }
 
     .column-count {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--gray-mid);
       background: rgba(255, 255, 255, 0.06);
@@ -180,16 +242,25 @@
     .column-cards {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       min-height: 60px;
+      padding: 4px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: all 0.2s ease-out;
     }
 
-    /* ── EMPTY COLUMN ── */
+    .column-cards.drag-over {
+      background: rgba(106, 27, 154, 0.08);
+      border-color: rgba(106, 27, 154, 0.3);
+      border-style: dashed;
+    }
+
     .column-empty {
       padding: 20px;
       text-align: center;
       color: var(--gray-mid);
-      font-size: 13px;
+      font-size: 12px;
       font-style: italic;
       border: 1px dashed rgba(255, 255, 255, 0.1);
       border-radius: 10px;
@@ -200,9 +271,9 @@
       background: var(--navy-card);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 10px;
-      padding: 16px;
-      transition: all 0.2s ease;
-      cursor: default;
+      padding: 14px;
+      transition: all 0.2s ease-out;
+      cursor: grab;
     }
 
     .card:hover {
@@ -211,16 +282,23 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
 
+    .card.dragging {
+      opacity: 0.4;
+      transform: scale(0.97);
+    }
+
+    .card:active { cursor: grabbing; }
+
     .card-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .card-name {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--white);
       line-height: 1.3;
@@ -228,21 +306,22 @@
 
     .card-repo-links {
       display: flex;
-      gap: 4px;
+      gap: 3px;
       flex-shrink: 0;
+      flex-wrap: wrap;
     }
 
     .card-repo-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
       background: rgba(255, 255, 255, 0.06);
       color: var(--gray-mid);
       text-decoration: none;
-      transition: all 0.15s ease;
+      transition: all 0.15s ease-out;
     }
 
     .card-repo-link:hover {
@@ -250,117 +329,697 @@
       color: var(--white);
     }
 
-    .card-repo-link svg {
-      width: 14px;
-      height: 14px;
-    }
+    .card-repo-link svg { width: 13px; height: 13px; }
 
     .card-notes {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--gray-mid);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       line-height: 1.4;
     }
 
-    /* ── PENDING ITEMS ── */
-    .card-pending {
-      margin-top: 10px;
-    }
+    /* ── TASK ITEMS ── */
+    .card-tasks { margin-top: 8px; }
 
-    .pending-toggle {
+    .tasks-toggle {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--gray-mid);
       cursor: pointer;
       user-select: none;
       border: none;
       background: none;
-      padding: 4px 0;
-      transition: color 0.15s ease;
+      padding: 3px 0;
+      transition: color 0.15s ease-out;
     }
 
-    .pending-toggle:hover {
-      color: var(--white);
-    }
+    .tasks-toggle:hover { color: var(--white); }
 
-    .pending-badge {
+    .tasks-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-width: 18px;
       height: 18px;
       border-radius: 9px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       padding: 0 5px;
     }
 
-    .pending-badge.has-items {
+    .tasks-badge.has-items {
       background: rgba(245, 158, 11, 0.15);
       color: var(--yellow);
     }
 
-    .pending-badge.no-items {
+    .tasks-badge.no-items {
       background: rgba(22, 163, 74, 0.15);
       color: var(--green);
     }
 
-    .pending-chevron {
-      transition: transform 0.2s ease;
-      font-size: 10px;
+    .tasks-chevron {
+      transition: transform 0.2s ease-out;
+      font-size: 9px;
     }
 
-    .pending-chevron.open {
-      transform: rotate(90deg);
-    }
+    .tasks-chevron.open { transform: rotate(90deg); }
 
-    .pending-list {
+    .tasks-list {
       list-style: none;
-      margin-top: 8px;
+      margin-top: 6px;
       display: flex;
       flex-direction: column;
+      gap: 3px;
+    }
+
+    .tasks-list.hidden { display: none; }
+
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 5px 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 5px;
+      border-left: 2px solid var(--yellow);
+      line-height: 1.4;
+      transition: all 0.15s ease-out;
+    }
+
+    .task-item.done {
+      border-left-color: var(--green);
+      opacity: 0.45;
+    }
+
+    .task-item.done .task-text { text-decoration: line-through; }
+
+    .task-checkbox {
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      border: 1.5px solid var(--gray-mid);
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 1px;
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      transition: all 0.15s ease-out;
+    }
+
+    .task-checkbox:checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .task-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 4px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .task-text { flex: 1; }
+
+    .task-priority {
+      font-size: 8px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .task-priority.HIGH { background: rgba(220, 38, 38, 0.15); color: var(--red); }
+    .task-priority.MEDIUM { background: rgba(245, 158, 11, 0.15); color: var(--yellow); }
+    .task-priority.LOW { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
+
+    .task-delete {
+      display: none;
+      font-size: 13px;
+      color: var(--gray-mid);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 2px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .task-item:hover .task-delete { display: inline; }
+    .task-delete:hover { color: var(--red); }
+
+    .add-task-row {
+      display: flex;
       gap: 4px;
     }
 
-    .pending-list.hidden {
-      display: none;
+    .add-task-btn {
+      font-size: 10px;
+      color: var(--gray-mid);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: color 0.15s ease-out;
     }
 
-    .pending-item {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.75);
-      padding: 6px 10px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 6px;
-      border-left: 2px solid var(--yellow);
-      line-height: 1.4;
+    .add-task-btn:hover { color: var(--purple); }
+
+    .add-task-input {
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--white);
+      border-radius: 4px;
+      padding: 4px 8px;
+      outline: none;
     }
+
+    .add-task-input:focus { border-color: var(--purple); }
 
     /* ── CARD FOOTER ── */
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 12px;
-      padding-top: 10px;
+      margin-top: 10px;
+      padding-top: 8px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .card-repos-count {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--gray-mid);
       display: flex;
       align-items: center;
       gap: 4px;
     }
 
-    .card-repos-count svg {
-      width: 12px;
-      height: 12px;
+    .card-repos-count svg { width: 11px; height: 11px; }
+
+    .card-stage-select {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray-mid);
+      border-radius: 5px;
+      padding: 2px 6px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.15s ease-out;
     }
+
+    .card-stage-select:hover, .card-stage-select:focus {
+      border-color: var(--purple);
+      color: var(--white);
+    }
+
+    .card-add-repo-btn {
+      font-size: 11px;
+      color: var(--gray-mid);
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+    }
+
+    .card-add-repo-btn:hover { background: var(--purple); color: var(--white); }
+
+    .add-repo-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--white);
+      border-radius: 4px;
+      padding: 3px 6px;
+      outline: none;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .add-repo-input:focus { border-color: var(--purple); }
+
+    /* ── ACTION ITEMS VIEW ── */
+    .action-items-view {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .action-filters {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .filter-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-mid);
+    }
+
+    .filter-select, .filter-search {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 7px 10px;
+      outline: none;
+      transition: border-color 0.15s ease-out;
+    }
+
+    .filter-select:focus, .filter-search:focus { border-color: var(--purple); }
+
+    .action-progress {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .progress-text {
+      font-size: 11px;
+      color: var(--gray-mid);
+    }
+
+    .progress-bar {
+      width: 120px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 2px;
+      transition: width 0.3s ease-out;
+    }
+
+    .action-group { margin-bottom: 20px; }
+
+    .action-group-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .action-group-count {
+      font-size: 11px;
+      color: var(--gray-mid);
+    }
+
+    .action-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      margin-bottom: 5px;
+      transition: all 0.15s ease-out;
+    }
+
+    .action-item:hover { border-color: rgba(255, 255, 255, 0.15); }
+
+    .action-item.done { opacity: 0.45; }
+    .action-item.done .action-item-text { text-decoration: line-through; }
+
+    .action-item-content {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .action-item-text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.4;
+    }
+
+    .action-item-assignee {
+      font-size: 10px;
+      color: var(--gray-mid);
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .action-add-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: none;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      transition: all 0.15s ease-out;
+      margin-top: 8px;
+    }
+
+    .action-add-btn:hover { border-color: var(--purple); color: var(--purple); }
+
+    /* ── OVERVIEW VIEW ── */
+    .overview-view {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .overview-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .overview-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .overview-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-mid);
+      margin-top: 4px;
+    }
+
+    .overview-section {
+      margin-bottom: 28px;
+    }
+
+    .overview-section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .stage-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .stage-bar-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-mid);
+      width: 110px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .stage-bar-track {
+      flex: 1;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .stage-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s ease-out;
+      min-width: 2px;
+    }
+
+    .stage-bar-count {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      width: 24px;
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 8px;
+    }
+
+    .repo-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--white);
+      transition: all 0.15s ease-out;
+    }
+
+    .repo-card:hover { border-color: var(--purple); }
+    .repo-card svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--gray-mid); }
+
+    .repo-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .repo-project {
+      font-size: 10px;
+      color: var(--gray-mid);
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+
+    .modal-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      width: 90%;
+      max-width: 460px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .modal-field { margin-bottom: 12px; }
+
+    .modal-field input, .modal-field select, .modal-field textarea {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 8px 12px;
+      outline: none;
+      transition: border-color 0.15s ease-out;
+    }
+
+    .modal-field input:focus, .modal-field select:focus, .modal-field textarea:focus {
+      border-color: var(--purple);
+    }
+
+    .modal-field textarea { resize: vertical; min-height: 60px; }
+
+    .modal-field select option { background: var(--navy-card); }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+
+    .modal-btn-primary {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 9px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s ease-out;
+    }
+
+    .modal-btn-primary:hover { background: var(--purple-hover); }
+
+    .modal-btn-secondary {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--gray-mid);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 9px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .modal-btn-secondary:hover { color: var(--white); border-color: rgba(255, 255, 255, 0.3); }
+
+    /* ── FOOTER ── */
+    .dashboard-footer {
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--gray-mid);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .save-status {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 600;
+    }
+
+    .save-status.saved { color: var(--green); }
+    .save-status.saving { color: var(--yellow); }
+    .save-status.error { color: var(--red); }
+    .save-status.dirty { color: var(--yellow); }
+
+    .save-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .save-dot.pulse { animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .save-now-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.15s ease-out;
+    }
+
+    .save-now-btn:hover { background: var(--purple-hover); }
+
+    .export-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--gray-mid);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+    }
+
+    .export-btn:hover { color: var(--white); border-color: rgba(255, 255, 255, 0.3); }
+
+    .footer-link {
+      color: var(--purple);
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    .footer-link:hover { text-decoration: underline; }
 
     /* ── LOADING & ERROR ── */
     .loading {
@@ -368,23 +1027,21 @@
       align-items: center;
       justify-content: center;
       height: 60vh;
-      font-size: 16px;
+      font-size: 14px;
       color: var(--gray-mid);
     }
 
     .loading-spinner {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       border: 3px solid var(--navy-card);
       border-top-color: var(--purple);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin-right: 12px;
+      margin-right: 10px;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .error-message {
       text-align: center;
@@ -392,70 +1049,51 @@
       color: var(--red);
     }
 
-    .error-message h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .error-message p {
-      color: var(--gray-mid);
-      font-size: 14px;
-    }
+    .error-message h2 { font-size: 16px; margin-bottom: 6px; }
+    .error-message p { color: var(--gray-mid); font-size: 13px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .pipeline {
-        padding: 16px;
-        gap: 12px;
-      }
-
-      .column {
-        min-width: 220px;
-      }
+      .pipeline { padding: 16px; gap: 12px; }
+      .column { min-width: 220px; }
     }
 
     @media (max-width: 768px) {
       .dashboard-header {
-        padding: 16px 20px;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .header-left { gap: 10px; }
+      .header-logo { height: 32px; }
+      .header-title { font-size: 20px; }
+
+      .header-nav { width: 100%; order: 10; justify-content: center; }
+
+      .header-stats { gap: 12px; }
+      .stat-number { font-size: 16px; }
+
+      .pipeline { flex-direction: column; padding: 16px; }
+
+      .column { max-width: 100%; min-width: 100%; }
+
+      .card { cursor: default; }
+
+      .action-items-view { padding: 16px; }
+      .action-filters { flex-direction: column; gap: 8px; }
+      .action-progress { margin-left: 0; text-align: left; }
+
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+      .repo-grid { grid-template-columns: 1fr; }
+
+      .dashboard-footer {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
+        text-align: center;
       }
 
-      .header-title {
-        font-size: 22px;
-      }
-
-      .header-stats {
-        gap: 16px;
-      }
-
-      .pipeline {
-        flex-direction: column;
-        padding: 16px;
-      }
-
-      .column {
-        max-width: 100%;
-        min-width: 100%;
-      }
-    }
-
-    /* ── LAST UPDATED FOOTER ── */
-    .dashboard-footer {
-      padding: 16px 24px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--gray-mid);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .dashboard-footer a {
-      color: var(--purple);
-      text-decoration: none;
-    }
-
-    .dashboard-footer a:hover {
-      text-decoration: underline;
+      .modal-card { width: 95%; }
     }
   </style>
 </head>
@@ -468,11 +1106,22 @@
       <div class="header-divider"></div>
       <h1 class="header-title">Project Pipeline</h1>
     </div>
-    <div class="header-stats" id="headerStats"></div>
+    <nav class="header-nav">
+      <button class="nav-btn active" onclick="switchView('kanban')">Pipeline</button>
+      <button class="nav-btn" onclick="switchView('actions')">Action Items</button>
+      <button class="nav-btn" onclick="switchView('overview')">Resumen</button>
+    </nav>
+    <div class="header-right">
+      <div class="header-stats" id="headerStats"></div>
+      <button class="header-add-btn" onclick="showAddProject()">+ Proyecto</button>
+      <button class="header-settings-btn" onclick="showSettings()" title="GitHub Settings">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
   </header>
 
-  <!-- PIPELINE BOARD -->
-  <main class="pipeline" id="pipeline">
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent">
     <div class="loading" id="loading">
       <div class="loading-spinner"></div>
       Loading projects…
@@ -481,124 +1130,233 @@
 
   <!-- FOOTER -->
   <footer class="dashboard-footer">
-    DOCEPROJECTS Pipeline &middot; Edit <a href="https://github.com/mclara-martinez/doceprojects/edit/main/projects.json" target="_blank">projects.json</a> to update
+    <div class="footer-left">
+      <span class="save-status" id="saveStatus"></span>
+      <span id="lastUpdated"></span>
+    </div>
+    <div class="footer-right">
+      <button class="save-now-btn" id="saveNowBtn" onclick="saveToGitHub()" style="display:none">Guardar ahora</button>
+      <button class="export-btn" onclick="exportJSON()">Exportar JSON</button>
+      <a href="https://github.com/mclara-martinez/doceprojects/edit/main/projects.json" target="_blank" class="footer-link">GitHub</a>
+    </div>
   </footer>
 
   <script>
     // ── SVG ICONS ──
     const GITHUB_ICON = `<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
+    const CHEVRON = `\u25B6`;
 
-    const CHEVRON_ICON = `▶`;
+    // ── GITHUB API CONFIG ──
+    const REPO_OWNER = 'mclara-martinez';
+    const REPO_NAME = 'doceprojects';
+    const FILE_PATH = 'projects.json';
+    const API_BASE = 'https://api.github.com';
+
+    // ── STATE ──
+    const AppState = {
+      data: null,
+      sha: null,
+      dirty: false,
+      currentView: 'kanban',
+      filters: { priority: 'ALL', assignee: 'ALL', search: '' },
+      saveTimer: null,
+      saving: false,
+
+      getToken() { return localStorage.getItem('doce-gh-token'); },
+      setToken(t) { localStorage.setItem('doce-gh-token', t); },
+      removeToken() { localStorage.removeItem('doce-gh-token'); },
+
+      markDirty() {
+        this.dirty = true;
+        updateSaveStatus();
+        // Auto-save with 2s debounce if token exists
+        if (this.getToken()) {
+          clearTimeout(this.saveTimer);
+          this.saveTimer = setTimeout(() => saveToGitHub(), 2000);
+        }
+      },
+
+      update() {
+        this.data.lastUpdated = new Date().toISOString();
+        this.markDirty();
+        this.render();
+      },
+
+      render() {
+        renderStats(this.data);
+        if (this.currentView === 'kanban') renderPipeline(this.data);
+        else if (this.currentView === 'actions') renderActionItems(this.data);
+        else if (this.currentView === 'overview') renderOverview(this.data);
+      }
+    };
+
+    // ── DATA MIGRATION ──
+    function migrateData(data) {
+      if (data.version === 2) return data;
+      data.version = 2;
+      data.lastUpdated = data.lastUpdated || new Date().toISOString();
+      data.actionItems = data.actionItems || [];
+      data.projects = data.projects.map((p, i) => ({
+        ...p,
+        id: p.id || p.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+        tasks: p.tasks || (p.pending || []).map((text, j) => ({
+          id: `t${i}-${j}`, text, done: false, priority: 'MEDIUM', assignee: ''
+        })),
+        createdAt: p.createdAt || new Date().toISOString()
+      }));
+      data.projects.forEach(p => delete p.pending);
+      data.stages = data.stages.map((s, i) => ({ ...s, order: s.order ?? i }));
+      return data;
+    }
+
+    // ── GITHUB API ──
+    async function fetchFromGitHub() {
+      const token = AppState.getToken();
+      const headers = { 'Accept': 'application/vnd.github.v3+json' };
+      if (token) headers['Authorization'] = `token ${token}`;
+
+      const res = await fetch(`${API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, { headers });
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      const json = await res.json();
+      AppState.sha = json.sha;
+      const content = atob(json.content.replace(/\n/g, ''));
+      return JSON.parse(new TextDecoder().decode(
+        Uint8Array.from(content, c => c.charCodeAt(0))
+      ));
+    }
+
+    async function saveToGitHub() {
+      const token = AppState.getToken();
+      if (!token || AppState.saving) return;
+
+      AppState.saving = true;
+      updateSaveStatus('saving');
+
+      try {
+        // Fetch current SHA to avoid conflicts
+        const headers = {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': `token ${token}`
+        };
+        const check = await fetch(`${API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, { headers });
+        if (check.ok) {
+          const checkJson = await check.json();
+          if (checkJson.sha !== AppState.sha) {
+            // SHA mismatch — someone else edited
+            if (!confirm('El archivo fue modificado externamente. ¿Sobreescribir con tus cambios?')) {
+              AppState.saving = false;
+              updateSaveStatus('dirty');
+              return;
+            }
+          }
+          AppState.sha = checkJson.sha;
+        }
+
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(AppState.data, null, 2) + '\n')));
+        const res = await fetch(`${API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+          method: 'PUT',
+          headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'dashboard: update projects.json',
+            content,
+            sha: AppState.sha
+          })
+        });
+
+        if (!res.ok) throw new Error(`Save failed: ${res.status}`);
+        const result = await res.json();
+        AppState.sha = result.content.sha;
+        AppState.dirty = false;
+        updateSaveStatus('saved');
+      } catch (err) {
+        console.error('Save error:', err);
+        updateSaveStatus('error');
+      } finally {
+        AppState.saving = false;
+      }
+    }
+
+    async function validateToken(token) {
+      try {
+        const res = await fetch(`${API_BASE}/user`, {
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        return res.ok;
+      } catch { return false; }
+    }
 
     // ── LOAD DATA ──
-    async function loadProjects() {
+    async function loadData() {
       try {
+        // Try GitHub API first if token exists
+        if (AppState.getToken()) {
+          const data = await fetchFromGitHub();
+          return migrateData(data);
+        }
+        // Fallback to direct fetch
         const res = await fetch('projects.json');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return await res.json();
+        return migrateData(await res.json());
       } catch (err) {
-        document.getElementById('loading').innerHTML = `
-          <div class="error-message">
-            <h2>Could not load projects</h2>
-            <p>${err.message}. Make sure projects.json exists.</p>
-          </div>
-        `;
-        return null;
+        // Final fallback: direct fetch
+        try {
+          const res = await fetch('projects.json');
+          if (!res.ok) throw err;
+          return migrateData(await res.json());
+        } catch (e) {
+          document.getElementById('loading').innerHTML = `
+            <div class="error-message">
+              <h2>Could not load projects</h2>
+              <p>${e.message}</p>
+            </div>`;
+          return null;
+        }
       }
     }
 
     // ── RENDER STATS ──
     function renderStats(data) {
-      const statsEl = document.getElementById('headerStats');
+      const el = document.getElementById('headerStats');
       const total = data.projects.length;
-      const pending = data.projects.filter(p => p.pending && p.pending.length > 0).length;
-      const active = data.projects.filter(p =>
-        ['implementacion', 'mantenimiento'].includes(p.stage)
-      ).length;
+      const active = data.projects.filter(p => ['implementacion', 'mantenimiento'].includes(p.stage)).length;
+      const allTasks = data.projects.flatMap(p => p.tasks || []);
+      const pendingTasks = allTasks.filter(t => !t.done).length;
 
-      statsEl.innerHTML = `
-        <div class="stat">
-          <div class="stat-number">${total}</div>
-          <div class="stat-label">Proyectos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">${active}</div>
-          <div class="stat-label">Activos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">${pending}</div>
-          <div class="stat-label">Con pendientes</div>
-        </div>
+      el.innerHTML = `
+        <div class="stat"><div class="stat-number">${total}</div><div class="stat-label">Proyectos</div></div>
+        <div class="stat"><div class="stat-number">${active}</div><div class="stat-label">Activos</div></div>
+        <div class="stat"><div class="stat-number">${pendingTasks}</div><div class="stat-label">Pendientes</div></div>
       `;
     }
 
-    // ── RENDER CARD ──
-    function renderCard(project) {
-      const hasPending = project.pending && project.pending.length > 0;
-      const pendingCount = hasPending ? project.pending.length : 0;
-
-      const repoLinks = project.repos.map(repo => {
-        const name = repo.split('/').pop();
-        return `<a class="card-repo-link" href="https://github.com/${repo}" target="_blank" title="${name}">${GITHUB_ICON}</a>`;
-      }).join('');
-
-      const pendingHtml = hasPending ? `
-        <div class="card-pending">
-          <button class="pending-toggle" onclick="togglePending(this)">
-            <span class="pending-chevron">${CHEVRON_ICON}</span>
-            <span class="pending-badge has-items">${pendingCount}</span>
-            <span>pendiente${pendingCount > 1 ? 's' : ''}</span>
-          </button>
-          <ul class="pending-list hidden">
-            ${project.pending.map(item => `<li class="pending-item">${item}</li>`).join('')}
-          </ul>
-        </div>
-      ` : `
-        <div class="card-pending">
-          <span class="pending-toggle" style="cursor:default;">
-            <span class="pending-badge no-items">✓</span>
-            <span>Sin pendientes</span>
-          </span>
-        </div>
-      `;
-
-      const notesHtml = project.notes
-        ? `<div class="card-notes">${project.notes}</div>`
-        : '';
-
-      return `
-        <div class="card">
-          <div class="card-top">
-            <span class="card-name">${project.name}</span>
-            <div class="card-repo-links">${repoLinks}</div>
-          </div>
-          ${notesHtml}
-          ${pendingHtml}
-          ${project.repos.length > 1 ? `
-            <div class="card-footer">
-              <span class="card-repos-count">
-                ${GITHUB_ICON}
-                ${project.repos.length} repos
-              </span>
-            </div>
-          ` : ''}
-        </div>
-      `;
+    // ── VIEW SWITCHING ──
+    function switchView(view) {
+      AppState.currentView = view;
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.toggle('active',
+          (btn.textContent === 'Pipeline' && view === 'kanban') ||
+          (btn.textContent === 'Action Items' && view === 'actions') ||
+          (btn.textContent === 'Resumen' && view === 'overview')
+        );
+      });
+      AppState.render();
     }
 
-    // ── RENDER PIPELINE ──
+    // ── RENDER PIPELINE (KANBAN) ──
     function renderPipeline(data) {
-      const pipelineEl = document.getElementById('pipeline');
-      pipelineEl.innerHTML = '';
+      const main = document.getElementById('mainContent');
+      let html = '<div class="pipeline">';
 
       data.stages.forEach(stage => {
         const stageProjects = data.projects.filter(p => p.stage === stage.id);
-
         const cardsHtml = stageProjects.length > 0
-          ? stageProjects.map(renderCard).join('')
-          : `<div class="column-empty">No hay proyectos</div>`;
+          ? stageProjects.map(p => renderCard(p)).join('')
+          : '<div class="column-empty">No hay proyectos</div>';
 
-        const columnHtml = `
+        html += `
           <div class="column">
             <div class="column-header">
               <div class="column-title-group">
@@ -607,37 +1365,571 @@
               </div>
               <span class="column-count">${stageProjects.length}</span>
             </div>
-            <div class="column-cards">
+            <div class="column-cards" data-stage="${stage.id}"
+              ondragover="onDragOver(event)"
+              ondragleave="onDragLeave(event)"
+              ondrop="onDrop(event, '${stage.id}')">
               ${cardsHtml}
             </div>
-          </div>
-        `;
-
-        pipelineEl.insertAdjacentHTML('beforeend', columnHtml);
+          </div>`;
       });
+
+      html += '</div>';
+      main.innerHTML = html;
     }
 
-    // ── TOGGLE PENDING ──
-    function togglePending(btn) {
-      const list = btn.nextElementSibling;
-      const chevron = btn.querySelector('.pending-chevron');
+    function renderCard(project) {
+      const tasks = project.tasks || [];
+      const pendingCount = tasks.filter(t => !t.done).length;
+      const totalCount = tasks.length;
 
-      if (list.classList.contains('hidden')) {
+      const repoLinks = project.repos.map(repo => {
+        const name = repo.split('/').pop();
+        return `<a class="card-repo-link" href="https://github.com/${repo}" target="_blank" title="${name}">${GITHUB_ICON}</a>`;
+      }).join('');
+
+      const notesHtml = project.notes ? `<div class="card-notes">${project.notes}</div>` : '';
+
+      let tasksHtml = '';
+      if (totalCount > 0) {
+        tasksHtml = `
+          <div class="card-tasks">
+            <button class="tasks-toggle" onclick="toggleTasks(this)">
+              <span class="tasks-chevron">${CHEVRON}</span>
+              <span class="tasks-badge ${pendingCount > 0 ? 'has-items' : 'no-items'}">${pendingCount > 0 ? pendingCount : '&#10003;'}</span>
+              <span>${pendingCount > 0 ? pendingCount + ' pendiente' + (pendingCount > 1 ? 's' : '') : 'Todo listo'}</span>
+            </button>
+            <ul class="tasks-list hidden">
+              ${tasks.map(task => `
+                <li class="task-item ${task.done ? 'done' : ''}">
+                  <input type="checkbox" class="task-checkbox" ${task.done ? 'checked' : ''}
+                    onchange="toggleTask('${project.id}', '${task.id}', this.checked)">
+                  <span class="task-text">${task.text}</span>
+                  ${task.priority ? `<span class="task-priority ${task.priority}">${task.priority === 'HIGH' ? 'ALTA' : task.priority === 'MEDIUM' ? 'MEDIA' : 'BAJA'}</span>` : ''}
+                  <button class="task-delete" onclick="event.stopPropagation(); deleteTask('${project.id}', '${task.id}')">&times;</button>
+                </li>
+              `).join('')}
+              <li class="add-task-row">
+                <button class="add-task-btn" onclick="showAddTask('${project.id}', this)">+ tarea</button>
+              </li>
+            </ul>
+          </div>`;
+      } else {
+        tasksHtml = `
+          <div class="card-tasks">
+            <span class="tasks-toggle" style="cursor:default;">
+              <span class="tasks-badge no-items">&#10003;</span>
+              <span>Sin tareas</span>
+            </span>
+            <button class="add-task-btn" onclick="showAddTask('${project.id}', this)" style="margin-top:4px">+ tarea</button>
+          </div>`;
+      }
+
+      const stageOptions = AppState.data.stages.map(s =>
+        `<option value="${s.id}" ${s.id === project.stage ? 'selected' : ''}>${s.label}</option>`
+      ).join('');
+
+      return `
+        <div class="card" draggable="true" data-project-id="${project.id}"
+          ondragstart="onDragStart(event, '${project.id}')"
+          ondragend="onDragEnd(event)">
+          <div class="card-top">
+            <span class="card-name">${project.name}</span>
+            <div class="card-repo-links">${repoLinks}
+              <button class="card-add-repo-btn" onclick="event.stopPropagation(); showAddRepo('${project.id}', this)" title="Agregar repo">+</button>
+            </div>
+          </div>
+          ${notesHtml}
+          ${tasksHtml}
+          <div class="card-footer">
+            <span class="card-repos-count">${GITHUB_ICON} ${project.repos.length} repo${project.repos.length !== 1 ? 's' : ''}</span>
+            <select class="card-stage-select" onchange="moveProject('${project.id}', this.value)" title="Mover fase">
+              ${stageOptions}
+            </select>
+          </div>
+        </div>`;
+    }
+
+    // ── TASK INTERACTIONS ──
+    function toggleTasks(btn) {
+      const list = btn.nextElementSibling;
+      const chevron = btn.querySelector('.tasks-chevron');
+      if (list && list.classList.contains('hidden')) {
         list.classList.remove('hidden');
         chevron.classList.add('open');
-      } else {
+      } else if (list) {
         list.classList.add('hidden');
         chevron.classList.remove('open');
       }
     }
 
+    function toggleTask(projectId, taskId, checked) {
+      const project = AppState.data.projects.find(p => p.id === projectId);
+      if (!project) return;
+      const task = (project.tasks || []).find(t => t.id === taskId);
+      if (!task) return;
+      task.done = checked;
+      AppState.update();
+    }
+
+    function deleteTask(projectId, taskId) {
+      const project = AppState.data.projects.find(p => p.id === projectId);
+      if (!project) return;
+      project.tasks = (project.tasks || []).filter(t => t.id !== taskId);
+      AppState.update();
+    }
+
+    function showAddTask(projectId, btn) {
+      const row = btn.parentElement;
+      row.innerHTML = `
+        <input type="text" class="add-task-input" placeholder="Nueva tarea..."
+          onkeydown="if(event.key==='Enter')addTask('${projectId}',this.value);if(event.key==='Escape')AppState.render();">
+      `;
+      row.querySelector('.add-task-input').focus();
+    }
+
+    function addTask(projectId, text) {
+      if (!text.trim()) return;
+      const project = AppState.data.projects.find(p => p.id === projectId);
+      if (!project) return;
+      if (!project.tasks) project.tasks = [];
+      project.tasks.push({
+        id: 't-' + Date.now(),
+        text: text.trim(),
+        done: false,
+        priority: 'MEDIUM',
+        assignee: ''
+      });
+      AppState.update();
+    }
+
+    // ── DRAG AND DROP ──
+    let draggedProjectId = null;
+
+    function onDragStart(e, projectId) {
+      draggedProjectId = projectId;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', projectId);
+    }
+
+    function onDragEnd(e) {
+      e.target.classList.remove('dragging');
+      document.querySelectorAll('.column-cards').forEach(el => el.classList.remove('drag-over'));
+      draggedProjectId = null;
+    }
+
+    function onDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      e.currentTarget.classList.add('drag-over');
+    }
+
+    function onDragLeave(e) {
+      e.currentTarget.classList.remove('drag-over');
+    }
+
+    function onDrop(e, stageId) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('drag-over');
+      const projectId = e.dataTransfer.getData('text/plain');
+      moveProject(projectId, stageId);
+    }
+
+    function moveProject(projectId, newStage) {
+      const project = AppState.data.projects.find(p => p.id === projectId);
+      if (!project || project.stage === newStage) return;
+      project.stage = newStage;
+      AppState.update();
+    }
+
+    // ── ACTION ITEMS VIEW ──
+    function renderActionItems(data) {
+      const main = document.getElementById('mainContent');
+      const items = data.actionItems || [];
+
+      const filtered = items.filter(item => {
+        if (AppState.filters.priority !== 'ALL' && item.priority !== AppState.filters.priority) return false;
+        if (AppState.filters.assignee !== 'ALL' && !item.assignee.includes(AppState.filters.assignee)) return false;
+        if (AppState.filters.search && !item.text.toLowerCase().includes(AppState.filters.search.toLowerCase())) return false;
+        return true;
+      });
+
+      const doneCount = filtered.filter(i => i.done).length;
+      const pct = filtered.length ? Math.round(doneCount / filtered.length * 100) : 0;
+
+      const assignees = [...new Set(items.flatMap(i => i.assignee.split(/\s*\+\s*/)))].sort();
+
+      let html = `<div class="action-items-view">
+        <div class="action-filters">
+          <div class="filter-group">
+            <label class="filter-label">Prioridad</label>
+            <select class="filter-select" onchange="setFilter('priority', this.value)">
+              <option value="ALL">Todas</option>
+              <option value="HIGH" ${AppState.filters.priority === 'HIGH' ? 'selected' : ''}>Alta</option>
+              <option value="MEDIUM" ${AppState.filters.priority === 'MEDIUM' ? 'selected' : ''}>Media</option>
+              <option value="LOW" ${AppState.filters.priority === 'LOW' ? 'selected' : ''}>Baja</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Responsable</label>
+            <select class="filter-select" onchange="setFilter('assignee', this.value)">
+              <option value="ALL">Todos</option>
+              ${assignees.map(a => `<option value="${a}" ${AppState.filters.assignee === a ? 'selected' : ''}>${a}</option>`).join('')}
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Buscar</label>
+            <input type="text" class="filter-search" placeholder="Buscar..." value="${AppState.filters.search}" oninput="setFilter('search', this.value)">
+          </div>
+          <div class="action-progress">
+            <span class="progress-text">${doneCount}/${filtered.length} completados (${pct}%)</span>
+            <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+          </div>
+        </div>`;
+
+      ['HIGH', 'MEDIUM', 'LOW'].forEach(priority => {
+        const group = filtered.filter(i => i.priority === priority);
+        if (group.length === 0) return;
+        const label = priority === 'HIGH' ? 'ALTA' : priority === 'MEDIUM' ? 'MEDIA' : 'BAJA';
+        const pendingInGroup = group.filter(i => !i.done).length;
+
+        html += `<div class="action-group">
+          <div class="action-group-header">
+            <span class="task-priority ${priority}">${label}</span>
+            <span class="action-group-count">${pendingInGroup} pendiente${pendingInGroup !== 1 ? 's' : ''}</span>
+          </div>
+          ${group.map(item => `
+            <div class="action-item ${item.done ? 'done' : ''}">
+              <input type="checkbox" class="task-checkbox" ${item.done ? 'checked' : ''}
+                onchange="toggleActionItem('${item.id}', this.checked)">
+              <div class="action-item-content">
+                <span class="action-item-text">${item.text}</span>
+                <span class="action-item-assignee">${item.assignee}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>`;
+      });
+
+      html += `<button class="action-add-btn" onclick="showAddActionItem()">+ Action Item</button>`;
+      html += '</div>';
+      main.innerHTML = html;
+    }
+
+    function setFilter(key, value) {
+      AppState.filters[key] = value;
+      renderActionItems(AppState.data);
+    }
+
+    function toggleActionItem(itemId, checked) {
+      const item = (AppState.data.actionItems || []).find(i => i.id === itemId);
+      if (!item) return;
+      item.done = checked;
+      AppState.update();
+    }
+
+    function showAddActionItem() {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+      modal.innerHTML = `
+        <div class="modal-card">
+          <h3 class="modal-title">Nuevo Action Item</h3>
+          <div class="modal-field">
+            <label class="filter-label">Descripción</label>
+            <input type="text" id="aiText" placeholder="Descripción del action item">
+          </div>
+          <div class="modal-field">
+            <label class="filter-label">Prioridad</label>
+            <select id="aiPriority">
+              <option value="HIGH">Alta</option>
+              <option value="MEDIUM" selected>Media</option>
+              <option value="LOW">Baja</option>
+            </select>
+          </div>
+          <div class="modal-field">
+            <label class="filter-label">Responsable</label>
+            <input type="text" id="aiAssignee" placeholder="Clara, Emiliano, etc.">
+          </div>
+          <div class="modal-field">
+            <label class="filter-label">Categoría</label>
+            <input type="text" id="aiCategory" placeholder="tech, operacion, legal, etc.">
+          </div>
+          <div class="modal-actions">
+            <button class="modal-btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancelar</button>
+            <button class="modal-btn-primary" onclick="createActionItem()">Crear</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById('aiText').focus();
+    }
+
+    function createActionItem() {
+      const text = document.getElementById('aiText').value.trim();
+      if (!text) return;
+      if (!AppState.data.actionItems) AppState.data.actionItems = [];
+      AppState.data.actionItems.push({
+        id: 'a' + Date.now(),
+        text,
+        done: false,
+        priority: document.getElementById('aiPriority').value,
+        assignee: document.getElementById('aiAssignee').value.trim() || '',
+        category: document.getElementById('aiCategory').value.trim() || ''
+      });
+      closeModal();
+      AppState.update();
+    }
+
+    // ── OVERVIEW VIEW ──
+    function renderOverview(data) {
+      const main = document.getElementById('mainContent');
+      const projects = data.projects;
+      const actions = data.actionItems || [];
+      const allTasks = projects.flatMap(p => p.tasks || []);
+      const doneTasks = allTasks.filter(t => t.done).length;
+      const doneActions = actions.filter(a => a.done).length;
+      const totalRepos = projects.reduce((s, p) => s + p.repos.length, 0);
+
+      let html = `<div class="overview-view">
+        <div class="overview-grid">
+          <div class="overview-card"><div class="overview-number">${projects.length}</div><div class="overview-label">Proyectos</div></div>
+          <div class="overview-card"><div class="overview-number">${totalRepos}</div><div class="overview-label">Repos</div></div>
+          <div class="overview-card"><div class="overview-number">${doneTasks}/${allTasks.length}</div><div class="overview-label">Tareas</div></div>
+          <div class="overview-card"><div class="overview-number">${doneActions}/${actions.length}</div><div class="overview-label">Action Items</div></div>
+        </div>
+        <div class="overview-section">
+          <h3 class="overview-section-title">Proyectos por Fase</h3>
+          <div class="stage-bars">
+            ${data.stages.map(s => {
+              const count = projects.filter(p => p.stage === s.id).length;
+              const pct = projects.length ? (count / projects.length * 100) : 0;
+              return `<div class="stage-bar-row">
+                <span class="stage-bar-label">${s.label}</span>
+                <div class="stage-bar-track"><div class="stage-bar-fill" style="width:${pct}%;background:${s.color}"></div></div>
+                <span class="stage-bar-count">${count}</span>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>
+        <div class="overview-section">
+          <h3 class="overview-section-title">Todos los Repos</h3>
+          <div class="repo-grid">
+            ${projects.flatMap(p => p.repos.map(r => ({ repo: r, project: p.name }))).map(item => `
+              <a href="https://github.com/${item.repo}" target="_blank" class="repo-card">
+                ${GITHUB_ICON}
+                <div>
+                  <div class="repo-name">${item.repo.split('/').pop()}</div>
+                  <div class="repo-project">${item.project}</div>
+                </div>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      </div>`;
+
+      main.innerHTML = html;
+    }
+
+    // ── PROJECT CRUD ──
+    function showAddProject() {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+      modal.innerHTML = `
+        <div class="modal-card">
+          <h3 class="modal-title">Nuevo Proyecto</h3>
+          <div class="modal-field">
+            <label class="filter-label">Nombre</label>
+            <input type="text" id="npName" placeholder="Nombre del proyecto">
+          </div>
+          <div class="modal-field">
+            <label class="filter-label">Fase</label>
+            <select id="npStage">
+              ${AppState.data.stages.map(s => `<option value="${s.id}">${s.label}</option>`).join('')}
+            </select>
+          </div>
+          <div class="modal-field">
+            <label class="filter-label">Repos (uno por línea, formato: owner/repo)</label>
+            <textarea id="npRepos" rows="3" placeholder="ebojanini10/repo-name"></textarea>
+          </div>
+          <div class="modal-field">
+            <label class="filter-label">Notas</label>
+            <input type="text" id="npNotes" placeholder="Notas opcionales">
+          </div>
+          <div class="modal-actions">
+            <button class="modal-btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancelar</button>
+            <button class="modal-btn-primary" onclick="createProject()">Crear</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById('npName').focus();
+    }
+
+    function createProject() {
+      const name = document.getElementById('npName').value.trim();
+      if (!name) return;
+      AppState.data.projects.push({
+        id: name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+        name,
+        repos: document.getElementById('npRepos').value.trim().split('\n').map(r => r.trim()).filter(Boolean),
+        stage: document.getElementById('npStage').value,
+        tasks: [],
+        notes: document.getElementById('npNotes').value.trim(),
+        createdAt: new Date().toISOString()
+      });
+      closeModal();
+      AppState.update();
+    }
+
+    function showAddRepo(projectId, btn) {
+      // Prevent duplicate inputs
+      const existing = btn.parentElement.querySelector('.add-repo-input');
+      if (existing) return;
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'add-repo-input';
+      input.placeholder = 'owner/repo';
+      input.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+          const val = input.value.trim();
+          if (val) {
+            const project = AppState.data.projects.find(p => p.id === projectId);
+            if (project) { project.repos.push(val); AppState.update(); }
+          }
+        }
+        if (e.key === 'Escape') input.remove();
+      };
+      btn.parentElement.parentElement.insertBefore(input, btn.parentElement.nextSibling);
+      input.focus();
+    }
+
+    function closeModal() {
+      document.querySelectorAll('.modal-overlay').forEach(m => m.remove());
+    }
+
+    // ── EXPORT JSON ──
+    function exportJSON() {
+      const json = JSON.stringify(AppState.data, null, 2);
+      const blob = new Blob([json + '\n'], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'projects.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // ── SAVE STATUS ──
+    function updateSaveStatus(status) {
+      const el = document.getElementById('saveStatus');
+      const saveBtn = document.getElementById('saveNowBtn');
+      const token = AppState.getToken();
+
+      if (!token) {
+        el.innerHTML = '<span class="save-status dirty"><span class="save-dot pulse"></span> Sin token GitHub</span>';
+        saveBtn.style.display = 'none';
+        return;
+      }
+
+      if (status === 'saving') {
+        el.innerHTML = '<span class="save-status saving"><span class="save-dot pulse"></span> Guardando...</span>';
+        saveBtn.style.display = 'none';
+      } else if (status === 'saved' || !AppState.dirty) {
+        el.innerHTML = '<span class="save-status saved"><span class="save-dot"></span> Guardado</span>';
+        saveBtn.style.display = 'none';
+      } else if (status === 'error') {
+        el.innerHTML = '<span class="save-status error"><span class="save-dot"></span> Error al guardar</span>';
+        saveBtn.style.display = 'inline-block';
+      } else if (AppState.dirty) {
+        el.innerHTML = '<span class="save-status dirty"><span class="save-dot pulse"></span> Cambios sin guardar</span>';
+        saveBtn.style.display = 'inline-block';
+      }
+
+      const lastUp = document.getElementById('lastUpdated');
+      if (lastUp && AppState.data) {
+        const d = new Date(AppState.data.lastUpdated);
+        lastUp.textContent = d.toLocaleString('es-CO');
+      }
+    }
+
+    // ── SETTINGS MODAL ──
+    function showSettings() {
+      const token = AppState.getToken() || '';
+      const masked = token ? token.slice(0, 8) + '...' + token.slice(-4) : '';
+
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+      modal.innerHTML = `
+        <div class="modal-card">
+          <h3 class="modal-title">GitHub Settings</h3>
+          <p style="font-size:12px;color:var(--gray-mid);margin-bottom:14px;">
+            Conecta un Personal Access Token (PAT) con permisos <code style="background:rgba(255,255,255,0.06);padding:2px 4px;border-radius:3px;">repo</code> para guardar cambios automáticamente.
+          </p>
+          ${token ? `<p style="font-size:11px;color:var(--green);margin-bottom:10px;">Token actual: ${masked}</p>` : ''}
+          <div class="modal-field">
+            <label class="filter-label">Personal Access Token</label>
+            <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" value="">
+          </div>
+          <div id="tokenStatus" style="font-size:11px;margin-bottom:10px;"></div>
+          <div class="modal-actions">
+            ${token ? '<button class="modal-btn-secondary" onclick="removeToken()" style="margin-right:auto;color:var(--red);">Desconectar</button>' : ''}
+            <button class="modal-btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancelar</button>
+            <button class="modal-btn-primary" id="saveTokenBtn" onclick="saveToken()">Guardar</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+    }
+
+    async function saveToken() {
+      const input = document.getElementById('ghToken');
+      const status = document.getElementById('tokenStatus');
+      const token = input.value.trim();
+
+      if (!token) {
+        status.innerHTML = '<span style="color:var(--red)">Ingresa un token</span>';
+        return;
+      }
+
+      status.innerHTML = '<span style="color:var(--yellow)">Validando...</span>';
+      const valid = await validateToken(token);
+
+      if (valid) {
+        AppState.setToken(token);
+        status.innerHTML = '<span style="color:var(--green)">Token válido. Conectado.</span>';
+        // Re-fetch data with token to get SHA
+        try {
+          const data = await fetchFromGitHub();
+          AppState.data = migrateData(data);
+          AppState.dirty = false;
+          AppState.render();
+        } catch (e) { /* keep current data */ }
+        updateSaveStatus();
+        setTimeout(() => closeModal(), 800);
+      } else {
+        status.innerHTML = '<span style="color:var(--red)">Token inválido. Verifica que tenga permisos `repo`.</span>';
+      }
+    }
+
+    function removeToken() {
+      AppState.removeToken();
+      AppState.sha = null;
+      closeModal();
+      updateSaveStatus();
+    }
+
     // ── INIT ──
     (async function init() {
-      const data = await loadProjects();
+      const data = await loadData();
       if (!data) return;
-
-      renderStats(data);
-      renderPipeline(data);
+      AppState.data = data;
+      AppState.dirty = false;
+      AppState.render();
+      updateSaveStatus();
     })();
   </script>
 </body>
