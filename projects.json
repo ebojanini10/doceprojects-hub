@@ -21,7 +21,7 @@
         { "id": "t-sf-3", "text": "Task Scheduler AWB scanner", "done": false, "priority": "MEDIUM", "assignee": "Clara" }
       ],
       "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona",
-      "createdAt": "2026-03-04T00:00:00Z"
+      "createdAt": "2026-03-05T03:38:07Z"
     },
     {
       "id": "loretta",
@@ -33,7 +33,7 @@
         { "id": "t-lo-2", "text": "Probar flujo completo cotización → entrega", "done": false, "priority": "HIGH", "assignee": "Clara" }
       ],
       "notes": "Bot WhatsApp + catering + repostería. Cliente: Laura Pradilla, Bogotá",
-      "createdAt": "2026-03-04T00:00:00Z"
+      "createdAt": "2026-02-24T03:40:22Z"
     },
     {
       "id": "obras-y-montajes",
@@ -46,7 +46,7 @@
         { "id": "t-om-3", "text": "Credenciales WhatsApp API", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
       "notes": "~140 contenedores, 95% ocupación. Cobros + cotizaciones + prospección obras",
-      "createdAt": "2026-03-04T00:00:00Z"
+      "createdAt": "2026-03-01T21:09:44Z"
     },
     {
       "id": "eqr-roses",
@@ -59,7 +59,7 @@
         { "id": "t-eq-3", "text": "Reunión Roger + Sebastián", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
       "notes": "Finca de flores. Bot disponible WhatsApp. Puerto 5009",
-      "createdAt": "2026-03-06T00:00:00Z"
+      "createdAt": "2026-03-05T03:38:07Z"
     },
     {
       "id": "casa-ardente",
@@ -85,7 +85,7 @@
         { "id": "t-pa-3", "text": "Credenciales WhatsApp API", "done": false, "priority": "HIGH", "assignee": "Emiliano" }
       ],
       "notes": "Sistema multi-agente: radicados licencias + presupuesto + cotizaciones. Puerto 5005",
-      "createdAt": "2026-03-06T00:00:00Z"
+      "createdAt": "2026-03-01T06:07:07Z"
     },
     {
       "id": "hortensia-vision",
@@ -98,7 +98,7 @@
         { "id": "t-hv-3", "text": "Modelo custom hortensias (futuro)", "done": false, "priority": "LOW", "assignee": "Clara" }
       ],
       "notes": "Reconocimiento flores por imagen. YOLO8 + WhatsApp. Puerto 5400",
-      "createdAt": "2026-03-06T00:00:00Z"
+      "createdAt": "2026-02-24T21:25:09Z"
     },
     {
       "id": "doceprojects",
@@ -114,7 +114,7 @@
         { "id": "t-dp-6", "text": "Cloudflare Tunnel infraestructura", "done": false, "priority": "MEDIUM", "assignee": "Clara" }
       ],
       "notes": "Agency brand, proposals, playbook, team",
-      "createdAt": "2026-03-04T00:00:00Z"
+      "createdAt": "2026-03-03T16:12:56Z"
     }
   ],
   "actionItems": [
