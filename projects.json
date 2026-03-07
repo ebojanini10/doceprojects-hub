@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastUpdated": "2026-03-07T05:42:47.998Z",
+  "lastUpdated": "2026-03-07T05:42:51.378Z",
   "stages": [
     {
       "id": "lead",
@@ -105,7 +105,7 @@
       "repos": [
         "ebojanini10/obras-montajes-sistema"
       ],
-      "stage": "implementacion",
+      "stage": "propuesta",
       "tasks": [
         {
           "id": "t-om-1",
