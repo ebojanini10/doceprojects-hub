@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS — Instagram Post Designs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── BRAND TOKENS (Updated from DoceProjects_Brandbook.pdf) ── */
+    /* Display: Babas Neue Negrita (Bebas Neue as web fallback) */
+    /* Body: Glock Grotesk (DM Sans as web fallback) */
+    /* Header letter-spacing: -45 (-0.045em) */
+    /* Subtitle letter-spacing: 145 (0.145em) */
+    :root {
+      --purple: #6A1B9A;
+      --purple-light: #8E24AA;
+      --black: #333333;
+      --white: #FFFFFF;
+      --gray-light: #F0EDE8;
+      --gray-mid: #9CA3AF;
+      --navy: #1F2937;
+      --navy-dark: #0F172A;
+      --navy-card: #1E293B;
+      --green: #00A86B;
+      --orange: #E8751A;
+      --red: #C43B3B;
+      --kraft: #C4AD8A;
+      --kraft-dark: #A89470;
+      --kraft-light: #D6C2A1;
+
+      --font-display: 'Bebas Neue', sans-serif; /* Babas Neue Negrita — Bebas Neue as web fallback */
+      --font-body: 'DM Sans', -apple-system, sans-serif; /* Glock Grotesk — DM Sans as web fallback */
+
+      --post-size: 1080px;
+      --carousel-w: 1080px;
+      --carousel-h: 1350px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: #E5E7EB;
+      color: var(--black);
+      padding: 40px;
+    }
+
+    /* ── GALLERY LAYOUT ── */
+    .instructions {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .instructions h1 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .instructions p, .instructions li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+    .instructions ol { padding-left: 20px; margin-top: 12px; }
+    .instructions li { margin-bottom: 8px; }
+    .instructions code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .post-section {
+      margin: 60px auto;
+      max-width: calc(var(--post-size) + 80px);
+    }
+
+    .post-label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 12px;
+      padding-left: 4px;
+    }
+    .post-label span {
+      color: var(--purple);
+      font-weight: 700;
+    }
+
+    .carousel-row {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+      scroll-snap-type: x mandatory;
+    }
+    .carousel-row > .post { scroll-snap-align: start; flex-shrink: 0; }
+
+    /* ── BASE POST FRAME ── */
+    .post {
+      width: var(--post-size);
+      height: var(--post-size);
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+    .post.carousel-slide {
+      width: var(--carousel-w);
+      height: var(--carousel-h);
+    }
+
+    /* Scale down for screen viewing */
+    .scale-wrapper {
+      transform: scale(0.5);
+      transform-origin: top left;
+      margin-bottom: -540px; /* compensate for scale on 1080px */
+    }
+    .scale-wrapper.carousel-scale {
+      margin-bottom: -675px; /* compensate for scale on 1350px */
+    }
+
+    /* ── SHARED DESIGN COMPONENTS ── */
+    .post-dark {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+    .post-white {
+      background: var(--white);
+      color: var(--black);
+    }
+    .post-navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* ── KRAFT TEXTURE (real image) ── */
+    .post-kraft {
+      background: url('kraft-texture.jpg') center/cover no-repeat;
+      color: var(--black);
+      position: relative;
+    }
+    .post-kraft.carousel-slide {
+      background: url('kraft-texture-tall.jpg') center/cover no-repeat;
+    }
+
+    .stamp-logo {
+      max-width: 600px;
+      height: auto;
+      display: block;
+    }
+    .stamp-logo.logo-xl { max-width: 700px; }
+    .stamp-logo.logo-lg { max-width: 550px; }
+    .stamp-logo.logo-md { max-width: 400px; }
+    .stamp-logo.logo-sm { max-width: 280px; }
+
+    .kraft-line {
+      width: 60px;
+      height: 4px;
+      background: var(--purple);
+      margin-bottom: 32px;
+      opacity: 0.7;
+    }
+
+    .slide-dot.kraft-dots {
+      background: rgba(106, 27, 154, 0.15);
+    }
+    .slide-dot.kraft-dots.active {
+      background: var(--purple);
+    }
+
+    .post-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px;
+      position: relative;
+    }
+
+    .post-inner-left {
+      align-items: flex-start;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 4px;
+      color: var(--white);
+      opacity: 0.4;
+      position: absolute;
+      top: 48px;
+      left: 56px;
+    }
+    .logo-text.dark { color: var(--black); }
+
+    .tagline-bottom {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: var(--gray-mid);
+      position: absolute;
+      bottom: 48px;
+      left: 56px;
+    }
+
+    .purple-line {
+      width: 60px;
+      height: 4px;
+      background: var(--purple);
+      margin-bottom: 32px;
+    }
+
+    .purple-line-v {
+      width: 4px;
+      height: 60px;
+      background: var(--purple);
+      margin-bottom: 32px;
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 120px;
+      color: var(--purple);
+      opacity: 0.15;
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      line-height: 1;
+    }
+
+    .slide-indicator {
+      position: absolute;
+      bottom: 48px;
+      right: 56px;
+      display: flex;
+      gap: 8px;
+    }
+    .slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+    }
+    .slide-dot.active {
+      background: var(--purple);
+    }
+    .slide-dot.dark-dots {
+      background: rgba(0,0,0,0.1);
+    }
+    .slide-dot.dark-dots.active {
+      background: var(--purple);
+    }
+
+    /* ── TYPOGRAPHY HELPERS ── */
+    /* Headers: Babas Neue Negrita, letter-spacing -45 (-0.045em) */
+    /* Subtitles: Babas Neue Negrita, letter-spacing 145 (0.145em) */
+    /* Body: Glock Grotesk (DM Sans fallback) */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: 96px;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: 72px;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+    .display-sm {
+      font-family: var(--font-display);
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.045em;
+    }
+    .subtitle {
+      font-family: var(--font-display);
+      letter-spacing: 0.145em;
+      text-transform: uppercase;
+    }
+    .body-lg {
+      font-family: var(--font-body);
+      font-size: 28px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .body-md {
+      font-family: var(--font-body);
+      font-size: 22px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .body-sm {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .text-purple { color: var(--purple); }
+    .text-gray { color: var(--gray-mid); }
+    .text-white { color: var(--white); }
+    .text-green { color: var(--green); }
+    .fw-700 { font-weight: 700; }
+    .fw-800 { font-weight: 800; }
+    .fw-900 { font-weight: 900; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+    .text-center { text-align: center; }
+
+    /* ── DECORATIVE ── */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(106, 27, 154, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(106, 27, 154, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .noise-overlay {
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="300" height="300" filter="url(%23n)" opacity="0.02"/></svg>');
+      pointer-events: none;
+    }
+
+    .corner-accent {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--purple);
+      opacity: 0.15;
+    }
+    .corner-accent.tl { top: 40px; left: 40px; border-right: none; border-bottom: none; }
+    .corner-accent.br { bottom: 40px; right: 40px; border-left: none; border-top: none; }
+
+    /* ── METRICS GRID ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      width: 100%;
+    }
+    .metric-card {
+      background: var(--navy-card);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid rgba(106, 27, 154, 0.2);
+    }
+    .metric-number {
+      font-family: var(--font-display);
+      font-size: 72px;
+      color: var(--purple-light);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .metric-label {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--gray-mid);
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    /* ── PROCESS LIST ── */
+    .process-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .process-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--purple);
+      line-height: 1;
+      min-width: 60px;
+    }
+    .process-text {
+      font-family: var(--font-body);
+      font-size: 26px;
+      color: var(--white);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* ── BEFORE/AFTER ── */
+    .ba-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+      opacity: 0.8;
+    }
+    .ba-list {
+      list-style: none;
+      padding: 0;
+    }
+    .ba-list li {
+      font-family: var(--font-body);
+      font-size: 24px;
+      line-height: 1.8;
+      padding-left: 24px;
+      position: relative;
+    }
+    .ba-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .ba-list.before li::before { background: #EF4444; }
+    .ba-list.after li::before { background: var(--green); }
+
+    /* Section divider */
+    .section-divider {
+      width: 100%;
+      max-width: 800px;
+      margin: 80px auto 0;
+      padding-top: 40px;
+      border-top: 2px solid #D1D5DB;
+    }
+    .section-divider h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--purple);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- INSTRUCTIONS                         -->
+  <!-- ════════════════════════════════════ -->
+  <div class="instructions">
+    <h1>INSTAGRAM POST DESIGNS</h1>
+    <p>Todos los disenos visuales para los primeros 12 posts del Instagram de DOCEPROJECTS. Cada diseno esta renderizado a tamano real (1080x1080 para feed, 1080x1350 para carousels) y escalado al 50% para navegacion.</p>
+    <p style="margin-top: 12px;"><strong>Como exportar cada imagen:</strong></p>
+    <ol>
+      <li>Abre este archivo en <strong>Google Chrome</strong></li>
+      <li>Click derecho sobre el diseno que quieres exportar</li>
+      <li>Selecciona <code>Inspeccionar</code></li>
+      <li>En el panel de DevTools, haz click derecho sobre el elemento <code>&lt;div class="post ..."&gt;</code></li>
+      <li>Selecciona <code>Capture node screenshot</code></li>
+      <li>La imagen se descargara a tamano real (1080x1080 o 1080x1350)</li>
+    </ol>
+    <p style="margin-top: 12px;"><strong>Alternativa:</strong> Usa estos disenos como referencia visual para recrear en <strong>Canva Pro</strong> con tu brand kit cargado.</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 1 — INTRO (Static 1080x1080)           -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-label"><span>Post 1</span> — Intro | Static 1080x1080 | Lun 9 Mar</div>
+    <div class="scale-wrapper">
+      <div class="post post-kraft" id="post-01">
+        <div class="post-inner text-center">
+          <img src="../assets/doceprojects.png" alt="DOCEPROJECTS — MAKE IT REAL." class="stamp-logo logo-xl" style="margin: 0 auto;">
+          <div class="mt-48 body-lg" style="color: rgba(106, 27, 154, 0.55); max-width: 700px; margin: 0 auto;">
+            Automatizacion e inteligencia artificial<br>para empresas colombianas.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 2 — MODELO 12:12 (Carousel 5 slides)   -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section" style="max-width: none;">
+    <div class="post-label"><span>Post 2</span> — El Modelo 12:12 | Carousel 1080x1350 | Mie 11 Mar</div>
+    <div class="carousel-row">
+
+      <!-- Slide 1: Cover -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-02-s1">
+          <div class="noise-overlay"></div>
+          <div class="grid-bg"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="post-inner text-center">
+            <div class="display-sm text-gray mb-24" style="letter-spacing: 4px;">NUESTRO PROCESO</div>
+            <div class="display-xl text-white" style="font-size: 140px; line-height: 0.9;">EL MODELO<br><span class="text-purple">12:12</span></div>
+            <div class="mt-48 body-md text-gray">Velocidad. Precision. Urgencia.</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Discovery -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-02-s2">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">01</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">DISCOVERY</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Entendemos tu operacion de principio a fin.
+            </div>
+            <div class="mt-32 body-md text-gray" style="max-width: 600px; opacity: 0.6;">
+              Sin limite de tiempo. Grabado. Enfocado en operacion, no en finanzas.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Propuesta -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-02-s3">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">02</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">PROPUESTA<br>EN 12 HORAS</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Al siguiente 12:12 en el reloj tienes una propuesta completa.
+            </div>
+            <div class="mt-32 body-md text-gray" style="max-width: 600px; opacity: 0.6;">
+              Soluciones especificas para tu operacion. Con cronograma real.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Proof of Concept -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-02-s4">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">03</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">PROOF OF<br>CONCEPT</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              No te pedimos que imagines. Te mostramos una solucion funcionando.
+            </div>
+            <div class="mt-32 body-md text-gray" style="max-width: 600px; opacity: 0.6;">
+              Antes de que aceptes. No renders. No mockups. Codigo real.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: CTA (Kraft) -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-kraft" id="post-02-s5">
+          <div class="post-inner text-center">
+            <img src="../assets/doceprojects.png" alt="DOCEPROJECTS — MAKE IT REAL." class="stamp-logo logo-lg" style="margin: 0 auto;">
+            <div class="mt-48 body-lg" style="color: rgba(106, 27, 154, 0.6);">Diagnostico gratis.</div>
+            <div class="mt-16 body-md fw-700" style="color: var(--purple);">Link en bio.</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots active"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 4 — PAIN POINT (Static 1080x1080)      -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-label"><span>Post 4</span> — Pain Point | Static 1080x1080 | Lun 16 Mar</div>
+    <div class="scale-wrapper">
+      <div class="post post-white" id="post-04">
+        <div class="noise-overlay"></div>
+        <div class="logo-text dark" style="opacity: 0.15;">DOCEPROJECTS</div>
+        <div class="post-inner post-inner-left">
+          <div class="purple-line"></div>
+          <div style="font-family: var(--font-body); font-size: 52px; font-weight: 800; line-height: 1.2; color: var(--black); max-width: 850px;">
+            Tu equipo contesta las mismas preguntas <span class="text-purple" style="font-size: 72px; font-family: var(--font-display);">47</span> veces al dia.
+          </div>
+          <div class="mt-48 body-md" style="color: var(--gray-mid);">
+            Eso no necesita una persona.<br>Necesita un sistema.
+          </div>
+        </div>
+        <div class="tagline-bottom" style="color: rgba(0,0,0,0.15);">MAKE IT REAL.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 5 — PROPUESTA (Carousel 5 slides)      -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section" style="max-width: none;">
+    <div class="post-label"><span>Post 5</span> — Que incluye nuestra propuesta | Carousel 1080x1350 | Mie 18 Mar</div>
+    <div class="carousel-row">
+
+      <!-- Slide 1: Cover -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-05-s1">
+          <div class="noise-overlay"></div>
+          <div class="grid-bg"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="post-inner text-center">
+            <div class="display-sm text-gray mb-24" style="letter-spacing: 3px;">TRANSPARENCIA TOTAL</div>
+            <div class="display-xl text-white" style="font-size: 100px; line-height: 0.95;">QUE INCLUYE<br>NUESTRA<br><span class="text-purple">PROPUESTA</span></div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Diagnostico -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-05-s2">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">01</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">DIAGNOSTICO</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Radiografia completa de tu tech stack y procesos actuales.
+            </div>
+            <div class="mt-32 body-md text-gray" style="opacity: 0.6; max-width: 600px;">
+              Desde cero o desde lo que ya tienes. Cada negocio es diferente.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Clusters -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-05-s3">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">02</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">SOLUCIONES<br>POR CLUSTERS</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Agrupadas por funcionalidad. Se entregan por bloques que puedes usar inmediatamente.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Proof of concept -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-05-s4">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">03</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">PROOF OF<br>CONCEPT</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Una solucion funcionando antes de que aceptes.
+            </div>
+            <div class="mt-32 body-md text-gray" style="opacity: 0.6; max-width: 600px;">
+              No renders. No mockups. Codigo real.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Countdown (Kraft) -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-kraft" id="post-05-s5">
+          <div class="post-inner post-inner-left">
+            <div class="kraft-line"></div>
+            <div class="display-lg" style="margin-bottom: 24px; color: var(--purple);">COUNTDOWN<br>12:12</div>
+            <div class="body-lg" style="color: rgba(106, 27, 154, 0.55); max-width: 700px;">
+              12 horas para aceptar al precio original.
+            </div>
+            <div class="mt-32 body-md" style="color: rgba(106, 27, 154, 0.4); max-width: 600px;">
+              Despues, +12%. Velocidad premia.
+            </div>
+            <img src="../assets/doceprojects.png" alt="DOCEPROJECTS" class="stamp-logo logo-sm" style="margin-top: 48px;">
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots active"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 7 — EDUCATION (Carousel 4 slides)      -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section" style="max-width: none;">
+    <div class="post-label"><span>Post 7</span> — IA no reemplaza empleados | Carousel 1080x1350 | Lun 23 Mar</div>
+    <div class="carousel-row">
+
+      <!-- Slide 1: Hook -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-white" id="post-07-s1">
+          <div class="noise-overlay"></div>
+          <div class="logo-text dark" style="opacity: 0.1;">DOCEPROJECTS</div>
+          <div class="post-inner text-center">
+            <div class="display-xl" style="font-size: 110px; color: var(--black); line-height: 0.95;">
+              IA NO<br>REEMPLAZA<br><span class="text-purple">EMPLEADOS</span>
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot dark-dots active"></div>
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: What it replaces -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-white" id="post-07-s2">
+          <div class="noise-overlay"></div>
+          <div class="logo-text dark" style="opacity: 0.1;">DOCEPROJECTS</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-md" style="color: var(--black); margin-bottom: 40px;">REEMPLAZA TAREAS<br><span class="text-purple">REPETITIVAS</span></div>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--purple); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md" style="color: #555;">Copiar datos entre sistemas</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--purple); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md" style="color: #555;">Responder las mismas preguntas</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--purple); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md" style="color: #555;">Buscar informacion que ya existe</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--purple); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md" style="color: #555;">Armar reportes manualmente</div>
+              </div>
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots active"></div>
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: What humans do -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-07-s3">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-md text-white" style="margin-bottom: 40px;">TU EQUIPO SE ENFOCA<br>EN LO QUE <span class="text-purple">IMPORTA</span></div>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--green); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md text-gray">Vender</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--green); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md text-gray">Atender clientes</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--green); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md text-gray">Crear</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 12px; height: 12px; background: var(--green); border-radius: 2px; flex-shrink: 0;"></div>
+                <div class="body-md text-gray">Decidir</div>
+              </div>
+            </div>
+            <div class="mt-48 body-md text-gray" style="opacity: 0.5;">Las maquinas hacen el resto.</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: CTA (Kraft) -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-kraft" id="post-07-s4">
+          <div class="post-inner text-center">
+            <img src="../assets/doceprojects.png" alt="DOCEPROJECTS — MAKE IT REAL." class="stamp-logo logo-lg" style="margin: 0 auto;">
+            <div class="mt-48 body-lg" style="color: rgba(106, 27, 154, 0.6);">Diagnostico gratis.</div>
+            <div class="mt-16 body-md fw-700" style="color: var(--purple);">Link en bio.</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots active"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 8 — BEFORE/AFTER (Carousel 3 slides)   -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section" style="max-width: none;">
+    <div class="post-label"><span>Post 8</span> — Antes vs. Despues | Carousel 1080x1350 | Mie 25 Mar</div>
+    <div class="carousel-row">
+
+      <!-- Slide 1: Cover -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-white" id="post-08-s1">
+          <div class="noise-overlay"></div>
+          <div class="logo-text dark" style="opacity: 0.1;">DOCEPROJECTS</div>
+          <div class="post-inner text-center">
+            <div class="display-xl" style="font-size: 130px; color: var(--black); line-height: 0.9;">
+              ANTES<br><span class="text-purple">VS.</span><br>DESPUES
+            </div>
+            <div class="mt-32 body-md" style="color: var(--gray-mid);">Cotizaciones en tu empresa</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot dark-dots active"></div>
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Before -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide" id="post-08-s2" style="background: #FEF2F2;">
+          <div class="noise-overlay"></div>
+          <div class="post-inner post-inner-left">
+            <div style="width: 60px; height: 4px; background: #EF4444; margin-bottom: 32px;"></div>
+            <div class="display-lg" style="color: #991B1B; margin-bottom: 48px;">ANTES</div>
+            <ul class="ba-list before">
+              <li style="color: #555;">3 horas armando cotizacion en Excel</li>
+              <li style="color: #555;">Buscando precios en 4 archivos diferentes</li>
+              <li style="color: #555;">Copiando datos a mano</li>
+              <li style="color: #555;">Mandando por WhatsApp</li>
+              <li style="color: #555;">Esperando respuesta del cliente</li>
+              <li style="color: #555;">Olvidando hacer follow-up</li>
+            </ul>
+            <div class="mt-48 display-sm" style="color: #991B1B; opacity: 0.3;">3 HORAS</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots active"></div>
+            <div class="slide-dot dark-dots"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: After -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide" id="post-08-s3" style="background: #F0FDF4;">
+          <div class="noise-overlay"></div>
+          <div class="post-inner post-inner-left">
+            <div style="width: 60px; height: 4px; background: var(--green); margin-bottom: 32px;"></div>
+            <div class="display-lg" style="color: #166534; margin-bottom: 48px;">DESPUES</div>
+            <ul class="ba-list after">
+              <li style="color: #555;">Cliente manda mensaje</li>
+              <li style="color: #555;">Sistema responde con precio y disponibilidad</li>
+              <li style="color: #555;">Cotizacion generada automaticamente</li>
+              <li style="color: #555;">Follow-up programado</li>
+              <li style="color: #555;">Dashboard actualizado en tiempo real</li>
+              <li style="color: #555;">Tu equipo no toco nada</li>
+            </ul>
+            <div class="mt-48 display-sm" style="color: #166534; opacity: 0.3;">30 SEGUNDOS</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots"></div>
+            <div class="slide-dot dark-dots active"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 9 — 5 PROCESOS (Carousel 7 slides)     -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section" style="max-width: none;">
+    <div class="post-label"><span>Post 9</span> — 5 procesos para automatizar | Carousel 1080x1350 | Vie 27 Mar</div>
+    <div class="carousel-row">
+
+      <!-- Slide 1: Cover -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-09-s1">
+          <div class="noise-overlay"></div>
+          <div class="grid-bg"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="post-inner text-center">
+            <div class="display-xl text-white" style="font-size: 100px; line-height: 0.95;">
+              <span class="text-purple">5</span> PROCESOS<br>QUE DEBERIAS<br>AUTOMATIZAR
+            </div>
+            <div class="mt-32 body-md text-gray">Y que probablemente estas haciendo manualmente.</div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Cotizaciones -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-09-s2">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">01</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">COTIZACIONES</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Tu cliente pide precio. El sistema responde en segundos con precio, disponibilidad y condiciones.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: WhatsApp -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-09-s3">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">02</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">RESPUESTAS<br>POR WHATSAPP</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Las mismas 12 preguntas todos los dias. Un bot inteligente las resuelve 24/7.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Cobros -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-09-s4">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">03</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">SEGUIMIENTO<br>DE COBROS</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Recordatorios automaticos. Escalamiento si no pagan. Sin que tu equipo levante un dedo.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Reportes -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-09-s5">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">04</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">REPORTES<br>OPERATIVOS</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Dashboard en tiempo real. Sin armar Excel los viernes. Los datos se actualizan solos.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Agendamiento -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-dark" id="post-09-s6">
+          <div class="noise-overlay"></div>
+          <div class="logo-text">DOCEPROJECTS</div>
+          <div class="step-number">05</div>
+          <div class="post-inner post-inner-left">
+            <div class="purple-line"></div>
+            <div class="display-lg text-white mb-24">AGENDAMIENTO</div>
+            <div class="body-lg text-gray" style="max-width: 700px;">
+              Citas, reuniones, disponibilidad. El cliente agenda directo. Sin llamadas de ida y vuelta.
+            </div>
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot"></div>
+            <div class="slide-dot active"></div>
+            <div class="slide-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: CTA (Kraft) -->
+      <div class="scale-wrapper carousel-scale">
+        <div class="post carousel-slide post-kraft" id="post-09-s7">
+          <div class="post-inner text-center">
+            <div class="display-lg" style="margin-bottom: 24px; color: var(--purple);">CUANTOS DE ESTOS<br>HACE TU EQUIPO<br>A MANO?</div>
+            <div class="kraft-line" style="margin: 0 auto 40px;"></div>
+            <div class="body-lg" style="color: rgba(106, 27, 154, 0.6);">Diagnostico gratis.</div>
+            <div class="mt-16 body-md fw-700" style="color: var(--purple);">Link en bio.</div>
+            <img src="../assets/doceprojects.png" alt="DOCEPROJECTS" class="stamp-logo logo-sm" style="margin: 48px auto 0;">
+          </div>
+          <div class="slide-indicator">
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots"></div>
+            <div class="slide-dot kraft-dots active"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 10 — PAIN POINT 2 (Static 1080x1080)   -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-label"><span>Post 10</span> — Pain Point 2 | Static 1080x1080 | Lun 30 Mar</div>
+    <div class="scale-wrapper">
+      <div class="post post-kraft" id="post-10">
+        <div class="post-inner text-center">
+          <div class="display-xl" style="font-size: 88px; line-height: 0.95; max-width: 900px; color: var(--purple);">
+            SI ES REPETITIVO,<br>LO AUTOMATIZAMOS.
+          </div>
+          <div class="mt-48 body-md" style="color: rgba(106, 27, 154, 0.5); max-width: 600px; margin-left: auto; margin-right: auto;">
+            No importa la industria. No importa el tamano. Si tu equipo repite la misma tarea todos los dias, esa tarea necesita un sistema.
+          </div>
+          <img src="../assets/doceprojects.png" alt="DOCEPROJECTS" class="stamp-logo logo-sm mt-48" style="margin: 48px auto 0;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- POST 12 — SOCIAL PROOF (Static 1080x1080)   -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-label"><span>Post 12</span> — Social Proof | Static 1080x1080 | Vie 3 Abr</div>
+    <div class="scale-wrapper">
+      <div class="post post-dark" id="post-12">
+        <div class="noise-overlay"></div>
+        <div class="logo-text">DOCEPROJECTS</div>
+        <div class="post-inner">
+          <div class="display-md text-white mb-32 text-center" style="width: 100%;">LOS NUMEROS HABLAN.</div>
+          <div class="purple-line" style="margin: 0 auto 48px;"></div>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-number">7+</div>
+              <div class="metric-label">Empresas colombianas</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-number">5</div>
+              <div class="metric-label">Industrias diferentes</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-number">24/7</div>
+              <div class="metric-label">Monitoreo continuo</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-number">12h</div>
+              <div class="metric-label">Propuesta con proof of concept</div>
+            </div>
+          </div>
+          <div class="mt-32 text-center" style="width: 100%;">
+            <div class="display-sm text-purple">MAKE IT REAL.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 100px;"></div>
+
+</body>
+</html>
