@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastUpdated": "2026-03-07T05:42:44.811Z",
+  "lastUpdated": "2026-03-07T05:42:47.998Z",
   "stages": [
     {
       "id": "lead",
@@ -79,7 +79,7 @@
       "repos": [
         "ebojanini10/loretta-cliente-bogota"
       ],
-      "stage": "implementacion",
+      "stage": "discovery",
       "tasks": [
         {
           "id": "t-lo-1",
