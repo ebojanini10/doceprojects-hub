@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "proposal-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "/Users/mclaramartinez/Claude_Code/doceprojects", "-p", "8090", "-c-1"],
+      "port": 8090
+    }
+  ]
+}

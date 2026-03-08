@@ -3,43 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOCEPROJECTS — Propuesta Comercial</title>
+  <title>DOCEPROJECTS &mdash; Propuesta Comercial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* ══════════════════════════════════════════════════ */
+    /* DOCEPROJECTS — Proposal Template v2               */
+    /* Brand Refresh: Kraft + Purple + System Gray        */
+    /* ══════════════════════════════════════════════════ */
+
     /* ── RESET & VARIABLES ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
+      /* Brand Colors — per Manual de Identidad */
       --purple: #6A1B9A;
       --purple-hover: #58147F;
       --purple-light: rgba(106, 27, 154, 0.08);
       --purple-glow: rgba(106, 27, 154, 0.15);
-      --black: #111111;
+
+      /* System Grays */
+      --dark: #1F2937;          /* Dark System Gray — replaces black */
       --white: #FFFFFF;
-      --gray-light: #F4F6F8;
+      --grid-gray: #F4F6F8;    /* Grid Gray — backgrounds, tables */
       --gray-mid: #9CA3AF;
-      --gray-dark: #6B7280;
-      --navy: #1F2937;
-      --navy-dark: #0F172A;
-      --navy-card: #1E293B;
+      --gray-text: #6B7280;
+
+      /* Kraft Paper */
+      --kraft: #C4A882;
+      --kraft-light: #D6C8AD;
+      --kraft-dark: #A8916E;
+
+      /* Status Colors — functional only */
       --green: #16A34A;
       --green-light: rgba(22, 163, 74, 0.1);
+      --orange: #F59E0B;
+      --orange-light: rgba(245, 158, 11, 0.1);
       --red: #DC2626;
       --red-light: rgba(220, 38, 38, 0.1);
-      --kraft: #D6C2A1;
+
       --wa-green: #25D366;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      color: var(--black);
-      background: var(--navy-dark);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--dark);
+      background: #E8DED0;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── KRAFT PAPER TEXTURE (real image) ── */
+    .kraft-bg {
+      background: url('assets/kraft-texture.jpg') center / cover no-repeat;
     }
 
     /* ── PROPOSAL CONTAINER ── */
@@ -47,17 +66,22 @@
       max-width: 900px;
       margin: 0 auto;
       background: var(--white);
-      box-shadow: 0 0 80px rgba(0,0,0,0.3);
+      box-shadow: 0 0 60px rgba(0,0,0,0.15);
     }
 
-    /* ── UNIFIED HEADER ── */
+    /* ── DUAL-BRAND HEADER ── */
     .doc-header {
-      background: var(--purple);
-      padding: 32px 60px;
+      background: var(--dark);
+      padding: 24px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header-brands {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
     }
 
     .header-client {
@@ -68,42 +92,16 @@
     }
 
     .header-client-logo {
-      height: 44px;
+      height: 48px;
       width: auto;
       object-fit: contain;
     }
 
     .header-client-name {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-
-    .header-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .header-meta-line {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      color: rgba(255,255,255,0.9);
-      white-space: nowrap;
-    }
-
-    .header-meta-line .separator {
-      margin: 0 8px;
-      opacity: 0.5;
-    }
-
-    .header-meta-line strong {
+      font-size: 20px;
       font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
     }
 
     .header-agency {
@@ -113,16 +111,42 @@
     }
 
     .header-agency-logo {
-      height: 80px;
+      height: 48px;
       width: auto;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+    }
+
+    .header-meta-line {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+
+    .header-meta-line .separator {
+      margin: 0 8px;
+      opacity: 0.4;
+    }
+
+    .header-meta-line strong {
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
     }
 
     /* ── HERO / COVER ── */
     .hero {
-      background: var(--navy-dark);
-      padding: 64px 60px 72px;
-      text-align: center;
       position: relative;
+      padding: 72px 60px 80px;
+      text-align: center;
       overflow: hidden;
     }
 
@@ -130,89 +154,80 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="400" height="400" filter="url(%23n)" opacity="0.05"/></svg>');
-      pointer-events: none;
+      background: url('assets/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
     }
 
-    .hero-logo {
-      max-width: 240px;
-      margin: 0 auto 32px;
-    }
+    .hero > * { position: relative; z-index: 1; }
 
     .hero-label {
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 16px;
+      color: var(--white);
+      margin-bottom: 20px;
+      opacity: 0.9;
     }
 
     .hero h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 0.95;
+      font-size: clamp(56px, 8vw, 96px);
+      line-height: 0.9;
       letter-spacing: 2px;
-      color: var(--white);
-      margin-bottom: 24px;
+      color: var(--purple);
+      margin-bottom: 0;
     }
 
-    .hero-divider {
-      width: 60px;
-      height: 3px;
-      background: var(--purple);
-      margin: 24px auto;
-    }
-
-    .hero-meta {
-      font-size: 14px;
-      color: var(--gray-mid);
-      margin-bottom: 6px;
-    }
-
-    .hero-meta strong {
-      color: var(--white);
+    .hero-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
       font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 24px;
+      opacity: 0.85;
     }
 
     /* ── COUNTDOWN TIMER ── */
     .countdown-section {
-      background: var(--navy-dark);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 60px;
+      background: var(--dark);
+      padding: 28px 60px;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 3px solid var(--purple);
     }
 
     .countdown-label {
       font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--purple);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 20px;
     }
 
     .countdown-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 80px;
+      min-width: 72px;
     }
 
     .countdown-number {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 56px;
+      font-size: 52px;
       line-height: 1;
       color: var(--white);
       letter-spacing: 2px;
@@ -221,19 +236,20 @@
     .countdown-number.urgent { color: var(--red); }
 
     .countdown-text {
-      font-size: 10px;
-      letter-spacing: 2px;
+      font-size: 9px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gray-mid);
-      margin-top: 8px;
+      margin-top: 6px;
+      font-weight: 500;
     }
 
     .countdown-separator {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 56px;
+      font-size: 52px;
       color: var(--gray-mid);
       line-height: 1;
-      opacity: 0.3;
+      opacity: 0.25;
     }
 
     .countdown-expired {
@@ -245,10 +261,10 @@
 
     .countdown-progress {
       width: 100%;
-      height: 3px;
+      height: 2px;
       background: rgba(255,255,255,0.06);
-      margin-top: 20px;
-      border-radius: 2px;
+      margin-top: 18px;
+      border-radius: 1px;
       overflow: hidden;
     }
 
@@ -256,7 +272,7 @@
       height: 100%;
       background: var(--purple);
       transition: width 1s linear;
-      border-radius: 2px;
+      border-radius: 1px;
     }
 
     .countdown-progress-bar.urgent { background: var(--red); }
@@ -264,43 +280,43 @@
     /* ── SECTION SYSTEM ── */
     .section {
       padding: 56px 60px;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
     }
 
     .section:last-of-type { border-bottom: none; }
 
     .section-number {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 14px;
-      letter-spacing: 2px;
+      font-size: 13px;
+      letter-spacing: 3px;
       color: var(--purple);
       margin-bottom: 8px;
     }
 
     .section h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.1;
+      font-size: clamp(30px, 4.5vw, 46px);
+      line-height: 1.05;
       letter-spacing: 1px;
-      color: var(--black);
-      margin-bottom: 20px;
+      color: var(--dark);
+      margin-bottom: 16px;
     }
 
     .section h3 {
       font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      letter-spacing: 1px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 12px;
-      margin-top: 32px;
+      margin-top: 36px;
     }
 
     .section p {
       font-size: 15px;
-      line-height: 1.7;
-      color: #555;
+      line-height: 1.75;
+      color: var(--gray-text);
       max-width: 720px;
     }
 
@@ -310,45 +326,47 @@
     .client-overview {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 16px;
       margin-top: 28px;
     }
 
     .client-info-card {
-      background: var(--gray-light);
-      padding: 24px;
-      border-radius: 4px;
+      background: var(--grid-gray);
+      padding: 22px 24px;
+      border-radius: 3px;
+      border-left: 3px solid var(--purple);
     }
 
     .client-info-card .info-label {
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-dark);
+      color: var(--gray-mid);
       margin-bottom: 6px;
+      font-weight: 600;
     }
 
     .client-info-card .info-value {
       font-size: 15px;
       font-weight: 600;
-      color: var(--black);
+      color: var(--dark);
     }
 
     .client-units-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
-      margin-top: 28px;
+      margin-top: 24px;
     }
 
     .unit-card {
-      border: 1px solid var(--gray-light);
-      border-radius: 4px;
+      border: 1px solid var(--grid-gray);
+      border-radius: 3px;
       overflow: hidden;
     }
 
     .unit-card-header {
-      background: var(--navy-dark);
+      background: var(--dark);
       padding: 14px 18px;
     }
 
@@ -368,12 +386,12 @@
 
     .unit-card-body {
       padding: 14px 18px;
-      background: var(--gray-light);
+      background: var(--grid-gray);
     }
 
     .unit-card-body .unit-detail {
       font-size: 12px;
-      color: var(--gray-dark);
+      color: var(--gray-text);
       margin-bottom: 4px;
     }
 
@@ -387,42 +405,44 @@
     .unit-tag {
       font-size: 10px;
       padding: 3px 8px;
-      background: rgba(106, 27, 154, 0.08);
+      background: var(--purple-light);
       color: var(--purple);
       border-radius: 2px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* ── EXECUTIVE SUMMARY ── */
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 16px;
       margin-top: 28px;
     }
 
     .summary-card {
-      background: var(--gray-light);
-      padding: 28px;
-      border-radius: 4px;
+      background: var(--grid-gray);
+      padding: 28px 24px;
+      border-radius: 3px;
       text-align: center;
+      border-top: 3px solid var(--purple);
     }
 
-    .summary-card .icon { font-size: 28px; margin-bottom: 16px; }
+    .summary-card .icon { font-size: 28px; margin-bottom: 14px; }
 
     .summary-card .number {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
+      font-size: 40px;
       color: var(--purple);
       line-height: 1;
     }
 
     .summary-card .label {
-      font-size: 12px;
-      letter-spacing: 1px;
+      font-size: 11px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-dark);
+      color: var(--gray-text);
       margin-top: 8px;
+      font-weight: 600;
     }
 
     /* ── PAIN POINTS ── */
@@ -432,38 +452,38 @@
     }
 
     .pain-list li {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--gray-light);
+      padding: 18px 0;
+      border-bottom: 1px solid var(--grid-gray);
       display: flex;
       align-items: flex-start;
       gap: 16px;
       font-size: 15px;
-      color: #444;
-      line-height: 1.6;
+      color: var(--gray-text);
+      line-height: 1.65;
     }
 
     .pain-list li::before {
       content: attr(data-num);
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
+      font-size: 24px;
       color: var(--purple);
       min-width: 28px;
-      line-height: 1.2;
+      line-height: 1.1;
     }
 
-    /* ── SOLUTIONS (Problem → Solution format) ── */
-    .solutions { margin-top: 32px; }
+    /* ── SOLUTIONS (Problem > Solution) ── */
+    .solutions { margin-top: 28px; }
 
     .solution-card {
-      border: 1px solid var(--gray-light);
-      border-radius: 4px;
+      border: 1px solid var(--grid-gray);
+      border-radius: 3px;
       overflow: hidden;
       margin-bottom: 20px;
     }
 
     .solution-header {
-      background: var(--gray-light);
-      padding: 18px 24px;
+      background: var(--grid-gray);
+      padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -473,7 +493,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
     }
 
     .solution-tag {
@@ -482,24 +502,24 @@
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 2px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .solution-tag.automation { background: var(--purple-light); color: var(--purple); }
     .solution-tag.dashboard { background: var(--green-light); color: var(--green); }
     .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
-    .solution-tag.integration { background: rgba(245,158,11,0.1); color: #D97706; }
+    .solution-tag.integration { background: var(--orange-light); color: #D97706; }
 
     .solution-body { padding: 24px; }
 
     .solution-problem {
       font-size: 13px;
       font-style: italic;
-      color: var(--gray-dark);
-      line-height: 1.6;
+      color: var(--gray-text);
+      line-height: 1.65;
       padding-left: 16px;
       border-left: 3px solid var(--purple);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .solution-problem-label {
@@ -508,7 +528,7 @@
       text-transform: uppercase;
       color: var(--gray-mid);
       font-style: normal;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 4px;
     }
 
@@ -516,7 +536,7 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--dark);
       font-weight: 700;
       margin-bottom: 8px;
     }
@@ -524,19 +544,19 @@
     .solution-body p {
       font-size: 14px;
       line-height: 1.7;
-      color: #555;
+      color: var(--gray-text);
     }
 
     .solution-specs {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .solution-spec {
       font-size: 13px;
-      color: var(--gray-dark);
+      color: var(--gray-text);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -548,28 +568,40 @@
       font-weight: 700;
     }
 
-    /* ── PREVIEW SECTION ── */
+    /* ── PREVIEW / PROOF OF CONCEPT ── */
     .preview-box {
-      background: var(--navy-dark);
-      border-radius: 8px;
+      position: relative;
+      border-radius: 6px;
       padding: 40px;
       margin-top: 28px;
       text-align: center;
+      overflow: hidden;
     }
+
+    .preview-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .preview-box > * { position: relative; z-index: 1; }
 
     .preview-box .preview-label {
       font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--purple);
+      color: var(--white);
       margin-bottom: 24px;
+      opacity: 0.8;
     }
 
     .preview-mockup {
-      background: var(--navy-card);
-      border-radius: 6px;
+      background: rgba(31,41,55,0.85);
+      border-radius: 4px;
       padding: 32px;
       min-height: 300px;
       display: flex;
@@ -577,6 +609,7 @@
       justify-content: center;
       flex-direction: column;
       gap: 16px;
+      backdrop-filter: blur(4px);
     }
 
     .preview-mockup .mockup-icon { font-size: 48px; opacity: 0.4; }
@@ -584,7 +617,7 @@
 
     .preview-caption {
       font-size: 12px;
-      color: var(--gray-mid);
+      color: rgba(255,255,255,0.7);
       margin-top: 16px;
       font-style: italic;
     }
@@ -599,7 +632,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--gray-light);
+      background: var(--grid-gray);
     }
 
     .timeline-phase {
@@ -631,26 +664,26 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 4px;
     }
 
     .timeline-content .duration {
-      font-size: 12px;
-      letter-spacing: 1px;
+      font-size: 11px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--purple);
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
-    .timeline-content p { font-size: 14px; line-height: 1.6; color: #666; }
+    .timeline-content p { font-size: 14px; line-height: 1.65; color: var(--gray-text); }
 
     .timeline-content .deliverables { list-style: none; margin-top: 12px; }
 
     .timeline-content .deliverables li {
       font-size: 13px;
-      color: #555;
+      color: var(--gray-text);
       padding: 4px 0;
       display: flex;
       align-items: center;
@@ -673,33 +706,34 @@
 
     .investment-table th {
       text-align: left;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-dark);
+      color: var(--gray-mid);
       padding: 12px 16px;
-      border-bottom: 2px solid var(--black);
+      border-bottom: 2px solid var(--dark);
+      font-weight: 700;
     }
 
     .investment-table td {
       padding: 16px;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
       font-size: 15px;
-      color: #444;
+      color: var(--gray-text);
     }
 
     .investment-table td:last-child {
       text-align: right;
-      font-weight: 600;
-      color: var(--black);
+      font-weight: 700;
+      color: var(--dark);
     }
 
     .investment-table tr.total td {
-      border-top: 2px solid var(--black);
+      border-top: 2px solid var(--dark);
       border-bottom: none;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 18px;
-      color: var(--black);
+      color: var(--dark);
       padding-top: 20px;
     }
 
@@ -708,45 +742,47 @@
       padding: 20px 24px;
       background: var(--purple-light);
       border-left: 3px solid var(--purple);
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 3px 3px 0;
     }
 
-    .investment-note p { font-size: 13px; color: #555; line-height: 1.6; }
-    .investment-note strong { color: var(--black); }
+    .investment-note p { font-size: 13px; color: var(--gray-text); line-height: 1.65; }
+    .investment-note strong { color: var(--dark); }
 
     /* ── MAINTENANCE ── */
     .maintenance-card {
-      background: var(--gray-light);
-      padding: 32px;
-      border-radius: 4px;
+      background: var(--grid-gray);
+      padding: 28px 32px;
+      border-radius: 3px;
       margin-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-left: 3px solid var(--purple);
     }
 
     .maintenance-card .maint-info h4 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 4px;
     }
 
-    .maintenance-card .maint-info p { font-size: 13px; color: var(--gray-dark); }
+    .maintenance-card .maint-info p { font-size: 13px; color: var(--gray-text); }
     .maintenance-card .maint-price { text-align: right; }
 
     .maintenance-card .maint-price .amount {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
+      font-size: 36px;
       color: var(--purple);
       line-height: 1;
     }
 
     .maintenance-card .maint-price .period {
-      font-size: 12px;
-      color: var(--gray-dark);
+      font-size: 11px;
+      color: var(--gray-text);
       letter-spacing: 1px;
+      font-weight: 600;
     }
 
     /* ── CONDITIONS GRID ── */
@@ -758,9 +794,8 @@
     }
 
     .condition-box {
-      background: var(--gray-light);
-      border: 1px solid #e2e8f0;
-      border-radius: 4px;
+      background: var(--grid-gray);
+      border-radius: 3px;
       padding: 24px;
     }
 
@@ -769,19 +804,18 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 12px;
+      color: var(--dark);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--purple);
     }
 
-    .condition-box ul {
-      list-style: none;
-      margin: 0;
-    }
+    .condition-box ul { list-style: none; }
 
     .condition-box ul li {
       font-size: 13px;
-      color: #555;
-      padding: 6px 0;
+      color: var(--gray-text);
+      padding: 7px 0;
       border-bottom: 1px solid rgba(0,0,0,0.04);
       line-height: 1.5;
     }
@@ -792,7 +826,7 @@
     .included-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 16px;
       margin-top: 24px;
     }
 
@@ -801,30 +835,30 @@
       gap: 16px;
       align-items: flex-start;
       padding: 20px;
-      background: var(--gray-light);
-      border-radius: 4px;
+      background: var(--grid-gray);
+      border-radius: 3px;
     }
 
     .included-item .incl-icon { font-size: 24px; flex-shrink: 0; }
 
     .included-item h4 {
       font-family: 'Inter', sans-serif;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 4px;
     }
 
-    .included-item p { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
+    .included-item p { font-size: 13px; color: var(--gray-text); line-height: 1.5; }
 
     /* ── NDA BOX ── */
     .nda-box {
       display: flex;
       align-items: flex-start;
       gap: 20px;
-      border: 1.5px solid var(--navy);
-      background: var(--gray-light);
-      border-radius: 4px;
+      border: 2px solid var(--dark);
+      background: var(--grid-gray);
+      border-radius: 3px;
       padding: 28px;
       margin-top: 28px;
     }
@@ -835,11 +869,11 @@
       font-family: 'Inter', sans-serif;
       font-weight: 700;
       font-size: 14px;
-      color: var(--navy);
+      color: var(--dark);
       margin-bottom: 8px;
     }
 
-    .nda-box p { font-size: 13px; color: #555; line-height: 1.6; max-width: none; }
+    .nda-box p { font-size: 13px; color: var(--gray-text); line-height: 1.65; max-width: none; }
 
     /* ── GLOSSARY ── */
     .glosario-grid {
@@ -854,60 +888,73 @@
       align-items: baseline;
       gap: 12px;
       padding: 10px 0;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
     }
 
     .glosario-item .g-sigla {
       font-size: 12px;
       font-weight: 800;
-      color: var(--navy);
+      color: var(--dark);
       min-width: 48px;
       letter-spacing: 0.5px;
     }
 
     .glosario-item .g-def {
       font-size: 12.5px;
-      color: var(--gray-dark);
+      color: var(--gray-text);
       line-height: 1.5;
     }
 
     /* ── CTA WITH STEPS ── */
     .cta-section {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
-      padding: 56px 60px;
+      position: relative;
+      padding: 64px 60px;
       text-align: center;
+      overflow: hidden;
     }
 
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .cta-section > * { position: relative; z-index: 1; }
+
     .cta-section .cta-eyebrow {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--purple);
+      color: var(--white);
       margin-bottom: 16px;
+      opacity: 0.8;
     }
 
     .cta-section h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 4vw, 48px);
-      color: var(--white);
+      font-size: clamp(32px, 5vw, 56px);
+      color: var(--purple);
       letter-spacing: 2px;
       margin-bottom: 12px;
     }
 
     .cta-section .cta-subtitle {
       font-size: 14px;
-      color: var(--gray-mid);
+      color: rgba(255,255,255,0.8);
       margin-bottom: 40px;
-      max-width: 520px;
+      max-width: 480px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.6;
     }
 
     .cta-steps {
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 28px;
       margin-bottom: 40px;
     }
 
@@ -915,7 +962,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       max-width: 130px;
     }
 
@@ -934,9 +981,10 @@
 
     .cta-step-text {
       font-size: 12px;
-      color: var(--gray-mid);
+      color: rgba(255,255,255,0.85);
       line-height: 1.4;
       text-align: center;
+      font-weight: 500;
     }
 
     /* ── ACCEPT / DECLINE ── */
@@ -951,14 +999,15 @@
       display: inline-block;
       padding: 16px 48px;
       font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 1px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       border: none;
       cursor: pointer;
       transition: all 0.2s ease;
       text-decoration: none;
+      border-radius: 2px;
     }
 
     .btn-accept { background: var(--purple); color: var(--white); }
@@ -966,11 +1015,11 @@
 
     .btn-decline {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--gray-mid);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
     }
 
-    .btn-decline:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .btn-decline:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
 
     .accept-confirmation { display: none; padding: 40px; text-align: center; }
     .accept-confirmation.show { display: block; }
@@ -985,17 +1034,16 @@
       color: var(--green);
     }
 
-    .accept-confirmation .confirm-sub { font-size: 14px; color: var(--gray-mid); margin-top: 8px; }
-    .decline-confirmation .confirm-text { color: var(--gray-mid); }
+    .accept-confirmation .confirm-sub { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 8px; }
+    .decline-confirmation .confirm-text { color: rgba(255,255,255,0.7); }
 
     /* ── FOOTER ── */
     .proposal-footer {
-      background: var(--navy-dark);
-      padding: 36px 60px;
+      background: var(--dark);
+      padding: 32px 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
     .footer-left {
@@ -1006,7 +1054,7 @@
 
     .footer-logo {
       height: 24px;
-      opacity: 0.4;
+      opacity: 0.35;
     }
 
     .footer-text {
@@ -1051,12 +1099,15 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .doc-header { padding: 20px 24px; flex-direction: column; gap: 16px; }
-      .header-meta { gap: 2px; }
-      .header-meta-line { font-size: 11px; white-space: normal; text-align: center; }
-      .header-agency-logo { height: 44px; }
-      .header-separator { display: none; }
-      .hero { padding: 48px 24px; }
+      .doc-header { padding: 16px 20px 14px; gap: 12px; }
+      .header-brands { flex-direction: row; gap: 12px; }
+      .header-client-logo { height: 36px; }
+      .header-client-name { font-size: 16px; }
+      .header-agency-logo { height: 36px; }
+      .header-meta { gap: 2px; flex-direction: column; }
+      .header-meta-line { font-size: 10px; white-space: normal; text-align: center; }
+      .hero { padding: 48px 24px 56px; }
+      .hero h1 { font-size: 44px; }
       .countdown-section { padding: 20px 24px; }
       .countdown-number { font-size: 40px; }
       .countdown-separator { font-size: 40px; }
@@ -1070,14 +1121,14 @@
       .glosario-grid { grid-template-columns: 1fr; }
       .maintenance-card { flex-direction: column; text-align: center; gap: 16px; }
       .maintenance-card .maint-price { text-align: center; }
-      .cta-section { padding: 40px 24px; }
+      .cta-section { padding: 48px 24px; }
       .cta-steps { flex-direction: column; align-items: center; gap: 20px; }
       .cta-step { flex-direction: row; max-width: 280px; text-align: left; }
       .cta-step-text { text-align: left; }
       .accept-buttons { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 300px; text-align: center; }
       .nda-box { flex-direction: column; }
-      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
       .wa-float { bottom: 18px; right: 18px; padding: 12px 16px; font-size: 12px; }
     }
 
@@ -1100,6 +1151,9 @@
       .countdown-section { position: static; }
       .wa-float { display: none; }
       .btn { border: 1px solid #ccc !important; }
+      .hero::before, .cta-section::before, .preview-box::before {
+        background: url('assets/kraft-texture.jpg') center / cover no-repeat !important;
+      }
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
@@ -1115,10 +1169,15 @@
     <!-- DUAL-BRAND HEADER                      -->
     <!-- ═══════════════════════════════════════ -->
     <div class="doc-header">
-      <div class="header-client">
-        <!-- CLIENT_LOGO — Replace src with client's logo -->
-        <img src="<!-- CLIENT_LOGO_SRC -->assets/client-logo.png" alt="<!-- CLIENT_COMPANY -->[Empresa]" class="header-client-logo">
-        <span class="header-client-name"><!-- CLIENT_COMPANY_SHORT -->[Empresa]</span>
+      <div class="header-brands">
+        <div class="header-client">
+          <!-- CLIENT_LOGO — Replace src with client's logo -->
+          <img src="<!-- CLIENT_LOGO_SRC -->assets/client-logo.png" alt="<!-- CLIENT_COMPANY -->[Empresa]" class="header-client-logo">
+          <span class="header-client-name"><!-- CLIENT_COMPANY_SHORT -->[Empresa]</span>
+        </div>
+        <div class="header-agency">
+          <img src="assets/doceprojects logo/doceprojects_logo_blanco.png" alt="DOCEPROJECTS" class="header-agency-logo">
+        </div>
       </div>
       <div class="header-meta">
         <span class="header-meta-line">
@@ -1132,9 +1191,6 @@
           Preparado por: <!-- AUTHOR_NAME -->[Nombre]
         </span>
       </div>
-      <div class="header-agency">
-        <img src="assets/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-agency-logo">
-      </div>
     </div>
 
     <!-- ═══════════════════════════════════════ -->
@@ -1143,10 +1199,7 @@
     <header class="hero">
       <div class="hero-label">Propuesta Comercial</div>
       <h1>AUTOMATIZACI&Oacute;N<br>INTELIGENTE</h1>
-      <div class="hero-divider"></div>
-      <p class="hero-meta">Preparada para: <strong><!-- CLIENT_NAME -->[Nombre del Cliente]</strong></p>
-      <p class="hero-meta">Empresa: <strong><!-- CLIENT_COMPANY -->[Empresa]</strong></p>
-      <p class="hero-meta">Fecha: <strong><!-- PROPOSAL_DATE -->[DD / MM / YYYY]</strong></p>
+      <div class="hero-tagline">Make it real.</div>
     </header>
 
     <!-- ═══════════════════════════════════════ -->
@@ -1299,7 +1352,7 @@
     </div>
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- 04 — SOLUCIONES (Problem → Solution)   -->
+    <!-- 04 — SOLUCIONES (Problem > Solution)   -->
     <!-- ═══════════════════════════════════════ -->
     <div class="section">
       <div class="section-number">04</div>
@@ -1470,15 +1523,15 @@
         </thead>
         <tbody>
           <tr>
-            <td><!-- INV_1_NAME -->[Fase 1 — Nombre]</td>
+            <td><!-- INV_1_NAME -->[Fase 1 &mdash; Nombre]</td>
             <td><!-- INV_1_PRICE -->$[X,XXX,XXX]</td>
           </tr>
           <tr>
-            <td><!-- INV_2_NAME -->[Fase 2 — Nombre]</td>
+            <td><!-- INV_2_NAME -->[Fase 2 &mdash; Nombre]</td>
             <td><!-- INV_2_PRICE -->$[X,XXX,XXX]</td>
           </tr>
           <tr>
-            <td><!-- INV_3_NAME -->[Fase 3 — Nombre]</td>
+            <td><!-- INV_3_NAME -->[Fase 3 &mdash; Nombre]</td>
             <td><!-- INV_3_PRICE -->$[X,XXX,XXX]</td>
           </tr>
           <tr class="total">
@@ -1692,8 +1745,8 @@
     <!-- ═══════════════════════════════════════ -->
     <footer class="proposal-footer">
       <div class="footer-left">
-        <img src="assets/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="footer-logo">
-        <span class="footer-text">DOCEPROJECTS &mdash; Automatizaci&oacute;n Inteligente</span>
+        <img src="assets/doceprojects logo/doceprojects_logo_blanco.png" alt="DOCEPROJECTS" class="footer-logo">
+        <span class="footer-text">DOCEPROJECTS &mdash; Make it real.</span>
       </div>
       <span class="footer-confidential">Documento confidencial &mdash; Protegido por NDA</span>
     </footer>
@@ -1701,56 +1754,58 @@
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- WHATSAPP FLOATING BUTTON               -->
+  <!-- WHATSAPP FLOAT                         -->
   <!-- ═══════════════════════════════════════ -->
-  <a class="wa-float" href="<!-- WA_LINK -->https://wa.me/57XXXXXXXXXX?text=Hola%2C%20vi%20la%20propuesta%20y%20quiero%20hablar" target="_blank">
+  <a class="wa-float"
+     href="https://wa.me/<!-- WA_NUMBER -->573001234567?text=Hola%2C%20me%20interesa%20la%20propuesta"
+     target="_blank">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <!-- WA_LABEL -->Hablemos
+    Hablar con nosotros
   </a>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- JAVASCRIPT                             -->
+  <!-- SCRIPTS                                -->
   <!-- ═══════════════════════════════════════ -->
   <script>
     // ── COUNTDOWN CONFIG ──
-    const COUNTDOWN_HOURS = 12;
-    const PROPOSAL_CREATED = new Date();
-    const DEADLINE = new Date(PROPOSAL_CREATED.getTime() + COUNTDOWN_HOURS * 60 * 60 * 1000);
-
-    const hoursEl = document.getElementById('cd-hours');
-    const minutesEl = document.getElementById('cd-minutes');
-    const secondsEl = document.getElementById('cd-seconds');
-    const progressBar = document.getElementById('progressBar');
-    const countdownEl = document.getElementById('countdown');
-    const totalMs = COUNTDOWN_HOURS * 60 * 60 * 1000;
+    // Set PROPOSAL_SEND_TIME to the exact moment the proposal is sent
+    // Format: 'YYYY-MM-DDTHH:MM:SS' (local time)
+    // Replace the value below with the actual send time before deploying
+    const PROPOSAL_SEND_TIME = '2025-01-15T10:00:00'; // <!-- PROPOSAL_SEND_TIME -->
+    const HOURS_LIMIT = 12;
+    const deadline = new Date(new Date(PROPOSAL_SEND_TIME).getTime() + HOURS_LIMIT * 60 * 60 * 1000);
+    const totalMs = HOURS_LIMIT * 60 * 60 * 1000;
 
     function updateCountdown() {
       const now = new Date();
-      const remaining = DEADLINE - now;
+      const diff = deadline - now;
+      const pct = Math.max(0, (diff / totalMs) * 100);
 
-      if (remaining <= 0) {
-        countdownEl.innerHTML = '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
-        progressBar.style.width = '0%';
-        progressBar.classList.add('urgent');
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML =
+          '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
+        document.getElementById('progressBar').style.width = '0%';
         return;
       }
 
-      const hours = Math.floor(remaining / (1000 * 60 * 60));
-      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const isUrgent = diff < 3600000;
 
-      hoursEl.textContent = String(hours).padStart(2, '0');
-      minutesEl.textContent = String(minutes).padStart(2, '0');
-      secondsEl.textContent = String(seconds).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(s).padStart(2, '0');
+      document.getElementById('progressBar').style.width = pct + '%';
 
-      const progress = (remaining / totalMs) * 100;
-      progressBar.style.width = progress + '%';
-
-      if (remaining < 2 * 60 * 60 * 1000) {
-        hoursEl.classList.add('urgent');
-        minutesEl.classList.add('urgent');
-        secondsEl.classList.add('urgent');
-        progressBar.classList.add('urgent');
+      const nums = document.querySelectorAll('.countdown-number');
+      const bar = document.getElementById('progressBar');
+      if (isUrgent) {
+        nums.forEach(n => n.classList.add('urgent'));
+        bar.classList.add('urgent');
+      } else {
+        nums.forEach(n => n.classList.remove('urgent'));
+        bar.classList.remove('urgent');
       }
     }
 
@@ -1761,13 +1816,12 @@
     function acceptProposal() {
       document.getElementById('acceptButtons').classList.add('hidden');
       document.getElementById('acceptConfirm').classList.add('show');
-      console.log('Proposal ACCEPTED at:', new Date().toISOString());
+      // TODO: hook to webhook / notification
     }
 
     function declineProposal() {
       document.getElementById('acceptButtons').classList.add('hidden');
       document.getElementById('declineConfirm').classList.add('show');
-      console.log('Proposal DECLINED at:', new Date().toISOString());
     }
   </script>
 
