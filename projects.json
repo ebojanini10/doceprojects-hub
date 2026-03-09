@@ -136,7 +136,8 @@
       "id": "eqr-roses",
       "name": "EQR Roses",
       "repos": [
-        "ebojanini10/eqr-roses-sistema"
+        "ebojanini10/eqr-roses-sistema",
+        "ebojanini10/skyflowers-platform"
       ],
       "stage": "discovery",
       "tasks": [
