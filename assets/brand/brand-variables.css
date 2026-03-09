@@ -1,0 +1,46 @@
+/* ═══════════════════════════════════════════════════
+   DOCEPROJECTS — Brand Variables (Source of Truth)
+   Sync :root block into each HTML file.
+   ═══════════════════════════════════════════════════ */
+
+/* ── Font Face ── */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeue-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Glock Grotesque';
+  src: url('fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+       url('fonts/GlockGrotesque-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Typography ──
+   Headings: 'Bebas Neue', sans-serif
+   Body:     'Glock Grotesque', sans-serif
+*/
+
+/* ── Color Palette ── */
+:root {
+  /* Identidad principal */
+  --purple: #6A1B9A;          /* Tech Purple — botones, CTAs, estados activos */
+  --purple-hover: #58147F;
+
+  /* Base del sistema */
+  --dark: #1F2937;            /* Dark System Gray — reemplaza al negro */
+  --grid-gray: #F4F6F8;       /* Grid Gray — fondos secundarios, tablas */
+  --white: #FFFFFF;
+
+  /* Estado (solo dashboards/sistema, nunca decorativo) */
+  --green: #16A34A;           /* Signal Green — success */
+  --orange: #F59E0B;          /* System Orange — warning */
+  --red: #DC2626;             /* System Red — error */
+
+  /* Especial */
+  --wa-green: #25D366;        /* WhatsApp */
+}

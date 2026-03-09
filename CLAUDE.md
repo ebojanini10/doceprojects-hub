@@ -17,7 +17,8 @@ Consultora de automatización e inteligencia artificial. El modelo opera bajo el
 
 | Archivo | Propósito |
 |---------|-----------|
-| `brand-manual.html` / `.pdf` | Brand book visual DoceProjects |
+| `assets/brand/` | Paquete de marca consolidado (logos, fonts, textures, docs) |
+| `assets/brand/brand-variables.css` | Source of truth: paleta de colores + @font-face |
 | `business-playbook.md` | Metodología completa: Discovery, propuesta, 12:12 |
 | `proposal-template.html` | Template HTML para propuestas comerciales |
 | `proposal-demo.html` | Demo de propuesta con datos ficticios |
@@ -88,16 +89,48 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 | Actaia (ReunIA) | Implementación | `ebojanini10/actaia` |
 | Mattilda | Propuesta | `ebojanini10/mattilda-sistema` |
 | Glow Institute | Discovery | `ebojanini10/estetica-santiago-manuela` |
+| Distrihogar | Propuesta | `ebojanini10/distrihogar-propuesta` |
+
+---
+
+## Equipo de Agentes AI
+
+8 agentes AI que multiplican la capacidad del equipo. Documentación completa en `agents/README.md`.
+
+| Agente | Trigger | Propósito |
+|--------|---------|-----------|
+| PM Agent | `/pm` | Briefing diario, tracking de proyectos, alertas de blockers |
+| Propuesta Agent | `/propuesta` | Genera propuestas HTML desde notas de discovery |
+| QA Agent | `/qa` | Testing y monitoreo de sistemas desplegados |
+| Tech Review Agent | `/techreview` | Revisión técnica/ingeniería antes de deployar propuestas |
+| Discovery Agent | `/discovery` | Estandariza discovery calls, analiza transcripciones |
+| Soporte Agent | `/soporte` | Customer service Nivel 1, filtra antes de escalar |
+| Onboarding Agent | `/onboarding` | Recolecta credenciales y assets de clientes |
+| Finance Agent | `/finance` | Unit economics, costos, márgenes por proyecto |
+
+**Scheduled Tasks:**
+- `pm-briefing-diario` — Briefing a las 12:00 todos los días
+- `qa-scan-semanal` — Health check de sistemas los lunes a las 9:00
+
+**Pipeline de propuestas con agentes:**
+```
+/discovery prep → Discovery Call → /discovery analizar
+→ /propuesta generar → /techreview revisar → /finance pricing
+→ /propuesta deploy → /pm advance
+```
+
+**Archivos de agentes:** `agents/[nombre]/SKILL.md`
+**Estado compartido:** `projects.json` + `agents/event-log.jsonl`
 
 ---
 
 ## Pendientes internos
 
-- [ ] Discovery Call guide (ruta crítica + preguntas guía)
+- [x] Discovery Call guide (ruta crítica + preguntas guía) — implementado via Discovery Agent
 - [ ] Contrato de servicios template
 - [ ] Workflow automático de aceptación de propuesta
 - [x] Configurar dominio custom (GitHub Pages) — prop/props/ops.doceprojects.com
-- [ ] Unit Economics por tipo de proyecto
+- [ ] Unit Economics por tipo de proyecto — facilitable via Finance Agent
 
 ## Hub de propuestas (prop.doceprojects.com)
 
@@ -113,6 +146,7 @@ Deploy: `./deploy.sh <client-slug> <source.html> [password]` — password defaul
 | Casa Ardente | `prop.doceprojects.com/casa-ardente/` | `doce-casa-ardente` |
 | EQR Roses | `prop.doceprojects.com/eqr/` | `doce-eqr` |
 | Demo | `prop.doceprojects.com/demo/` | `doce-demo` |
+| Distrihogar | `prop.doceprojects.com/distrihogar/` | `doce-distrihogar` |
 
 ### Completado
 
