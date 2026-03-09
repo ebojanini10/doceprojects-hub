@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12 Industrias — DOCEPROJECTS</title>
+  <meta name="description" content="DoceProjects automatiza empresas de 12 industrias en Colombia. Un equipo, velocidad 12:12, resultados permanentes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6A1B9A;
+      --purple-hover: #58147F;
+      --purple-light: rgba(106, 27, 154, 0.12);
+      --white: #FFFFFF;
+      --gray-mid: #9CA3AF;
+      --navy-dark: #0F172A;
+      --navy-card: #1E293B;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--white);
+      background: var(--navy-dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .page-header {
+      background: var(--purple);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(106, 27, 154, 0.35);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .header-logo { height: 38px; width: auto; }
+    .header-divider { width: 1px; height: 26px; background: rgba(255,255,255,0.3); }
+    .header-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; }
+    .header-nav { display: flex; gap: 6px; }
+    .nav-link {
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7);
+      text-decoration: none; padding: 7px 14px; border-radius: 6px; transition: all 0.15s;
+    }
+    .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-link.active { background: rgba(255,255,255,0.18); color: var(--white); }
+
+    /* HERO */
+    .hero { text-align: center; padding: 80px 32px 60px; max-width: 720px; margin: 0 auto; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--purple); margin-bottom: 16px; background: var(--purple-light);
+      display: inline-block; padding: 4px 14px; border-radius: 20px;
+      border: 1px solid rgba(106,27,154,0.3);
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 80px);
+      letter-spacing: 0.02em; line-height: 0.95;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .hero-title span { color: var(--purple); display: block; }
+    .hero-sub { font-size: 16px; color: var(--gray-mid); line-height: 1.6; max-width: 520px; margin: 0 auto 36px; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--purple); color: var(--white); text-decoration: none;
+      font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .hero-cta:hover { background: var(--purple-hover); }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: flex; justify-content: center; gap: 48px; padding: 28px 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; line-height: 1; }
+    .stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-mid); margin-top: 4px; }
+
+    /* INDUSTRIES SECTION */
+    .industries-section { max-width: 1120px; margin: 0 auto; padding: 64px 32px; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; }
+    .section-count { font-size: 12px; font-weight: 600; color: var(--gray-mid); }
+
+    /* GRID */
+    .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .industry-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px; padding: 24px 20px;
+      cursor: pointer; transition: all 0.2s ease-out;
+      position: relative; overflow: hidden;
+    }
+    .industry-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--purple); opacity: 0; transition: opacity 0.2s;
+    }
+    .industry-card:hover { border-color: rgba(106,27,154,0.4); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .industry-card:hover::before { opacity: 1; }
+    .industry-card.active { border-color: rgba(106,27,154,0.5); background: rgba(106,27,154,0.08); }
+    .industry-card.active::before { opacity: 1; }
+    .industry-card.empty { opacity: 0.45; }
+    .industry-card.empty:hover { opacity: 0.7; transform: none; box-shadow: none; }
+
+    .card-icon { font-size: 28px; margin-bottom: 12px; display: block; line-height: 1; }
+    .card-name { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; line-height: 1.2; }
+    .card-desc { font-size: 11px; color: var(--gray-mid); line-height: 1.5; margin-bottom: 14px; }
+    .card-count {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+    }
+    .card-count.has { background: rgba(106,27,154,0.15); color: #B980FF; border: 1px solid rgba(106,27,154,0.3); }
+    .card-count.none { background: rgba(255,255,255,0.04); color: var(--gray-mid); border: 1px solid rgba(255,255,255,0.06); }
+
+    /* CLIENT PANEL */
+    .client-panel { display: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px 32px; margin-top: 24px; }
+    .client-panel.visible { display: block; }
+    .panel-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .panel-icon { font-size: 24px; }
+    .panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; }
+    .panel-close { margin-left: auto; background: none; border: none; color: var(--gray-mid); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: all 0.15s; }
+    .panel-close:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    .clients-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .client-card { background: var(--navy-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px 16px; transition: border-color 0.15s; }
+    .client-card:hover { border-color: rgba(255,255,255,0.15); }
+    .client-name { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+    .client-stage { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 10px; }
+    .client-notes { font-size: 11px; color: var(--gray-mid); margin-top: 6px; line-height: 1.4; }
+    .empty-panel { color: var(--gray-mid); font-size: 13px; padding: 12px 0; font-style: italic; }
+
+    /* Stage pills */
+    .s-lead        { background: rgba(156,163,175,0.12); color: #9CA3AF; }
+    .s-discovery   { background: rgba(245,158,11,0.12);  color: #F59E0B; }
+    .s-propuesta   { background: rgba(59,130,246,0.12);  color: #60A5FA; }
+    .s-implementacion { background: rgba(139,92,246,0.12); color: #A78BFA; }
+    .s-mantenimiento  { background: rgba(22,163,74,0.12);  color: #4ADE80; }
+    .s-interno     { background: rgba(107,114,128,0.12); color: #9CA3AF; }
+
+    /* FOOTER */
+    .page-footer {
+      padding: 28px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; color: var(--gray-mid); flex-wrap: wrap; gap: 10px;
+    }
+    .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.06em; color: var(--purple); }
+
+    /* LOADING */
+    .loading-state { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 80px 32px; color: var(--gray-mid); font-size: 14px; }
+    .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.1); border-top-color: var(--purple); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 900px) { .industry-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px) {
+      .industry-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-bar { gap: 24px; flex-wrap: wrap; }
+      .page-header { padding: 12px 16px; }
+      .hero { padding: 48px 16px 40px; }
+      .industries-section { padding: 40px 16px; }
+    }
+    @media (max-width: 380px) { .industry-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-left">
+      <img src="assets/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-logo">
+      <div class="header-divider"></div>
+      <span class="header-title">12 Industrias</span>
+    </div>
+    <nav class="header-nav">
+      <a href="dashboard.html" class="nav-link">Pipeline</a>
+      <a href="industries.html" class="nav-link active">Industrias</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Portafolio por industria</div>
+    <h1 class="hero-title">12 industrias.<span>Un solo equipo.</span></h1>
+    <p class="hero-sub">DoceProjects automatiza empresas colombianas de sectores completamente distintos. La misma metodología 12:12, adaptada al ADN de cada industria.</p>
+    <a href="#industrias" class="hero-cta">Ver las 12 categorías ↓</a>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Industrias</div></div>
+    <div class="stat-item"><div class="stat-num" id="statProjects">—</div><div class="stat-label">Proyectos</div></div>
+    <div class="stat-item"><div class="stat-num" id="statActive">—</div><div class="stat-label">Activos</div></div>
+    <div class="stat-item"><div class="stat-num" id="statRepos">—</div><div class="stat-label">Repos</div></div>
+  </div>
+
+  <section class="industries-section" id="industrias">
+    <div class="section-header">
+      <h2 class="section-title">Industrias</h2>
+      <span class="section-count" id="sectionCount"></span>
+    </div>
+    <div id="loading" class="loading-state"><div class="spinner"></div> Cargando portafolio…</div>
+    <div id="industryGrid" class="industry-grid" style="display:none;"></div>
+    <div id="clientPanel" class="client-panel">
+      <div class="panel-header">
+        <span class="panel-icon" id="panelIcon"></span>
+        <h3 class="panel-title" id="panelTitle"></h3>
+        <button class="panel-close" onclick="closePanel()">✕</button>
+      </div>
+      <div class="clients-grid" id="clientsGrid"></div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span class="footer-brand">DOCEPROJECTS</span>
+    <span>Automatización e IA para empresas colombianas</span>
+    <span id="footerUpdated"></span>
+  </footer>
+
+  <script>
+    // Internal dashboard — data loaded from projects.json (team-controlled file)
+    let appData = null;
+    let activeSlug = null;
+
+    async function init() {
+      try {
+        const res = await fetch('projects.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        appData = await res.json();
+        renderPage();
+      } catch (err) {
+        document.getElementById('loading').textContent = 'Error al cargar: ' + err.message;
+      }
+    }
+
+    function renderPage() {
+      const projects = (appData.projects || []).filter(p => p.industry !== 'interno');
+      const industries = appData.industries || [];
+
+      // Stats
+      const active = projects.filter(p => ['implementacion', 'mantenimiento'].includes(p.stage)).length;
+      const repos = projects.reduce((s, p) => s + (p.repos || []).length, 0);
+      document.getElementById('statProjects').textContent = projects.length;
+      document.getElementById('statActive').textContent = active;
+      document.getElementById('statRepos').textContent = repos;
+      if (appData.lastUpdated) {
+        document.getElementById('footerUpdated').textContent = 'Actualizado: ' + new Date(appData.lastUpdated).toLocaleDateString('es-CO');
+      }
+
+      // Count per industry
+      const counts = {};
+      projects.forEach(p => { if (p.industry) counts[p.industry] = (counts[p.industry] || 0) + 1; });
+
+      const mapped = Object.values(counts).reduce((s, v) => s + v, 0);
+      document.getElementById('sectionCount').textContent = mapped + ' cliente' + (mapped !== 1 ? 's' : '') + ' mapeados';
+
+      // Build grid (using DOM methods to avoid XSS concerns)
+      const grid = document.getElementById('industryGrid');
+      grid.textContent = '';
+
+      industries.forEach(ind => {
+        const count = counts[ind.slug] || 0;
+        const card = document.createElement('div');
+        card.className = 'industry-card' + (count === 0 ? ' empty' : '');
+        card.dataset.slug = ind.slug;
+        card.onclick = () => toggleIndustry(ind.slug);
+
+        const icon = document.createElement('span');
+        icon.className = 'card-icon';
+        icon.textContent = ind.icon;
+
+        const name = document.createElement('div');
+        name.className = 'card-name';
+        name.textContent = ind.name;
+
+        const desc = document.createElement('div');
+        desc.className = 'card-desc';
+        desc.textContent = ind.desc;
+
+        const badge = document.createElement('span');
+        badge.className = 'card-count ' + (count > 0 ? 'has' : 'none');
+        badge.textContent = count > 0
+          ? '● ' + count + ' cliente' + (count !== 1 ? 's' : '')
+          : '● Próximamente';
+
+        card.appendChild(icon);
+        card.appendChild(name);
+        card.appendChild(desc);
+        card.appendChild(badge);
+        grid.appendChild(card);
+      });
+
+      document.getElementById('loading').style.display = 'none';
+      grid.style.display = 'grid';
+    }
+
+    function toggleIndustry(slug) {
+      if (activeSlug === slug) { closePanel(); return; }
+      activeSlug = slug;
+
+      document.querySelectorAll('.industry-card').forEach(card => {
+        card.classList.toggle('active', card.dataset.slug === slug);
+      });
+
+      renderPanel(slug);
+    }
+
+    function renderPanel(slug) {
+      const ind = (appData.industries || []).find(i => i.slug === slug);
+      if (!ind) return;
+
+      document.getElementById('panelIcon').textContent = ind.icon;
+      document.getElementById('panelTitle').textContent = ind.name;
+
+      const clients = (appData.projects || []).filter(p => p.industry === slug);
+      const stages = appData.stages || [];
+      const grid = document.getElementById('clientsGrid');
+      grid.textContent = '';
+
+      if (clients.length === 0) {
+        const msg = document.createElement('p');
+        msg.className = 'empty-panel';
+        msg.textContent = 'No hay clientes en esta industria todavía. ¡Espacio reservado!';
+        grid.appendChild(msg);
+      } else {
+        clients.forEach(p => {
+          const stg = stages.find(s => s.id === p.stage);
+          const stageLabel = stg ? stg.label : p.stage;
+
+          const card = document.createElement('div');
+          card.className = 'client-card';
+
+          const nameEl = document.createElement('div');
+          nameEl.className = 'client-name';
+          nameEl.textContent = p.name;
+
+          const badge = document.createElement('span');
+          badge.className = 'client-stage s-' + p.stage;
+          badge.textContent = stageLabel;
+
+          card.appendChild(nameEl);
+          card.appendChild(badge);
+
+          if (p.notes) {
+            const notes = document.createElement('div');
+            notes.className = 'client-notes';
+            notes.textContent = p.notes.length > 90 ? p.notes.substring(0, 90) + '…' : p.notes;
+            card.appendChild(notes);
+          }
+
+          grid.appendChild(card);
+        });
+      }
+
+      const panel = document.getElementById('clientPanel');
+      panel.classList.add('visible');
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+    }
+
+    function closePanel() {
+      activeSlug = null;
+      document.getElementById('clientPanel').classList.remove('visible');
+      document.querySelectorAll('.industry-card').forEach(c => c.classList.remove('active'));
+    }
+
+    init();
+  </script>
+</body>
+</html>

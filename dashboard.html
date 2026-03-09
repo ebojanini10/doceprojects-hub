@@ -181,6 +181,56 @@
       min-height: calc(100vh - 130px);
     }
 
+    /* ── INDUSTRY FILTER BAR ── */
+    .industry-filter-bar {
+      display: flex;
+      gap: 6px;
+      padding: 12px 24px 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .industry-filter-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-mid);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .industry-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--gray-mid);
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+    .industry-btn:hover { color: var(--white); border-color: rgba(255, 255, 255, 0.2); }
+    .industry-btn.active { background: rgba(106, 27, 154, 0.2); border-color: var(--purple); color: var(--white); }
+
+    /* ── INDUSTRY BADGE ON CARD ── */
+    .card-industry {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gray-mid);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-bottom: 5px;
+    }
+
     /* ── PIPELINE BOARD ── */
     .pipeline {
       display: flex;
@@ -1158,6 +1208,7 @@
       <button class="nav-btn active" onclick="switchView('kanban')">Pipeline</button>
       <button class="nav-btn" onclick="switchView('actions')">Action Items</button>
       <button class="nav-btn" onclick="switchView('overview')">Resumen</button>
+      <a class="nav-btn" href="industries.html" style="text-decoration:none;">Industrias</a>
     </nav>
     <div class="header-right">
       <div class="header-stats" id="headerStats"></div>
@@ -1213,6 +1264,7 @@
       sha: null,
       dirty: false,
       currentView: 'kanban',
+      industryFilter: 'ALL',
       filters: { priority: 'ALL', assignee: 'ALL', search: '' },
       saveTimer: null,
       saving: false,
@@ -1403,12 +1455,33 @@
     // ── RENDER PIPELINE (KANBAN) ──
     function renderPipeline(data) {
       const main = document.getElementById('mainContent');
-      let html = '<div class="pipeline">';
+      const industries = data.industries || [];
+      const activeFilter = AppState.industryFilter;
+
+      // Industry filter bar (only show slugs that appear in projects)
+      const usedSlugs = [...new Set(data.projects.map(p => p.industry).filter(Boolean))];
+      const availableInds = industries.filter(i => usedSlugs.includes(i.slug));
+
+      let allBtns = availableInds.map(ind =>
+        '<button class="industry-btn' + (activeFilter === ind.slug ? ' active' : '') +
+        '" onclick="setIndustryFilter(\'' + ind.slug + '\')">' + ind.icon + ' ' + ind.name + '</button>'
+      ).join('');
+
+      let html = '<div class="industry-filter-bar">' +
+        '<span class="industry-filter-label">Industria:</span>' +
+        '<button class="industry-btn' + (activeFilter === 'ALL' ? ' active' : '') +
+        '" onclick="setIndustryFilter(\'ALL\')">Todas</button>' +
+        allBtns + '</div>';
+
+      html += '<div class="pipeline">';
 
       data.stages.forEach(stage => {
-        const stageProjects = data.projects.filter(p => p.stage === stage.id);
+        const allStage = data.projects.filter(p => p.stage === stage.id);
+        const stageProjects = activeFilter === 'ALL'
+          ? allStage
+          : allStage.filter(p => p.industry === activeFilter);
         const cardsHtml = stageProjects.length > 0
-          ? stageProjects.map(p => renderCard(p)).join('')
+          ? stageProjects.map(p => renderCard(p, data.industries)).join('')
           : '<div class="column-empty">No hay proyectos</div>';
 
         html += `
@@ -1433,7 +1506,12 @@
       main.innerHTML = html;
     }
 
-    function renderCard(project) {
+    function setIndustryFilter(slug) {
+      AppState.industryFilter = slug;
+      renderPipeline(AppState.data);
+    }
+
+    function renderCard(project, industries) {
       const tasks = project.tasks || [];
       const pendingCount = tasks.filter(t => !t.done).length;
       const totalCount = tasks.length;
@@ -1442,6 +1520,12 @@
         const name = repo.split('/').pop();
         return `<a class="card-repo-link" href="https://github.com/${repo}" target="_blank" title="${name}">${GITHUB_ICON}</a>`;
       }).join('');
+
+      let industryBadge = '';
+      if (project.industry && project.industry !== 'interno' && industries) {
+        const ind = industries.find(i => i.slug === project.industry);
+        if (ind) industryBadge = `<div class="card-industry">${ind.icon} ${ind.name}</div>`;
+      }
 
       const notesHtml = project.notes ? `<div class="card-notes">${project.notes}</div>` : '';
 
@@ -1503,6 +1587,7 @@
         <div class="card" draggable="true" data-project-id="${project.id}"
           ondragstart="onDragStart(event, '${project.id}')"
           ondragend="onDragEnd(event)">
+          ${industryBadge}
           <div class="card-top">
             <span class="card-name">${project.name}</span>
             <div class="card-repo-links">${repoLinks}
@@ -1841,6 +1926,13 @@
             <input type="text" id="npNotes" placeholder="Notas opcionales">
           </div>
           <div class="modal-field">
+            <label class="filter-label">Industria</label>
+            <select id="npIndustry">
+              <option value="">— Sin industria —</option>
+              ${(AppState.data.industries || []).map(i => `<option value="${i.slug}">${i.icon} ${i.name}</option>`).join('')}
+            </select>
+          </div>
+          <div class="modal-field">
             <label class="filter-label">Propuesta (slug para prop.doceprojects.com/<slug>/)</label>
             <input type="text" id="npProposalSlug" placeholder="ej: mi-cliente (opcional)">
           </div>
@@ -1862,10 +1954,12 @@
         name,
         repos: document.getElementById('npRepos').value.trim().split('\n').map(r => r.trim()).filter(Boolean),
         stage: document.getElementById('npStage').value,
+        industry: document.getElementById('npIndustry').value || undefined,
         tasks: [],
         notes: document.getElementById('npNotes').value.trim(),
         createdAt: new Date().toISOString()
       };
+      if (!newProject.industry) delete newProject.industry;
       if (slug) {
         newProject.proposal = {
           url: 'https://prop.doceprojects.com/' + slug + '/',

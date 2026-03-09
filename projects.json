@@ -1,6 +1,80 @@
 {
   "version": 2,
   "lastUpdated": "2026-03-09T12:00:00.000Z",
+  "industries": [
+    {
+      "slug": "agro",
+      "name": "Agro & Campo",
+      "icon": "🌱",
+      "desc": "Floricultura, agricultura, campo y producción vegetal"
+    },
+    {
+      "slug": "gastronomia",
+      "name": "Gastronomía",
+      "icon": "🍽️",
+      "desc": "Restaurantes, catering, repostería y food service"
+    },
+    {
+      "slug": "construccion",
+      "name": "Construcción & Arquitectura",
+      "icon": "🏗️",
+      "desc": "Diseño arquitectónico, estructuras metálicas y plantas industriales"
+    },
+    {
+      "slug": "inmobiliaria",
+      "name": "Inmobiliaria & VIS",
+      "icon": "🏢",
+      "desc": "Arrendamiento de activos, proyectos VIS y crédito hipotecario"
+    },
+    {
+      "slug": "moda",
+      "name": "Moda & Retail",
+      "icon": "👗",
+      "desc": "Moda DTC, tiendas de ropa y e-commerce fashion"
+    },
+    {
+      "slug": "finanzas",
+      "name": "Finanzas & Servicios Financieros",
+      "icon": "💰",
+      "desc": "Factoring, pensiones, fintech y servicios financieros"
+    },
+    {
+      "slug": "salud",
+      "name": "Salud & Bienestar",
+      "icon": "🏥",
+      "desc": "Clínicas, consultorios médicos y estética"
+    },
+    {
+      "slug": "eventos",
+      "name": "Eventos & Hospitalidad",
+      "icon": "🎉",
+      "desc": "Organización de eventos, banquetes y experiencias"
+    },
+    {
+      "slug": "deporte",
+      "name": "Deporte & Recreación",
+      "icon": "🎾",
+      "desc": "Canchas, clubes deportivos y recreación"
+    },
+    {
+      "slug": "marcas-personales",
+      "name": "Marcas Personales",
+      "icon": "⭐",
+      "desc": "Consultores, profesionales independientes y personal branding"
+    },
+    {
+      "slug": "servicios",
+      "name": "Servicios & Operaciones",
+      "icon": "⚙️",
+      "desc": "Logística, lavanderías y operaciones B2B"
+    },
+    {
+      "slug": "manufactura",
+      "name": "Manufactura de Alimentos",
+      "icon": "🏭",
+      "desc": "Plantas de producción, procesadoras y food manufacturing"
+    }
+  ],
   "stages": [
     {
       "id": "lead",
@@ -72,7 +146,8 @@
         }
       ],
       "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona",
-      "createdAt": "2026-03-05T03:38:07Z"
+      "createdAt": "2026-03-05T03:38:07Z",
+      "industry": "agro"
     },
     {
       "id": "loretta",
@@ -98,7 +173,8 @@
         }
       ],
       "notes": "Bot WhatsApp + catering + repostería. Cliente: Laura Pradilla, Bogotá",
-      "createdAt": "2026-02-24T03:40:22Z"
+      "createdAt": "2026-02-24T03:40:22Z",
+      "industry": "gastronomia"
     },
     {
       "id": "obras-y-montajes",
@@ -131,7 +207,8 @@
         }
       ],
       "notes": "~140 contenedores, 95% ocupación. Cobros + cotizaciones + prospección obras",
-      "createdAt": "2026-03-01T21:09:44Z"
+      "createdAt": "2026-03-01T21:09:44Z",
+      "industry": "inmobiliaria"
     },
     {
       "id": "eqr-roses",
@@ -170,7 +247,8 @@
         }
       ],
       "notes": "Finca de flores. Bot disponible WhatsApp. Puerto 5009",
-      "createdAt": "2026-03-05T03:38:07Z"
+      "createdAt": "2026-03-05T03:38:07Z",
+      "industry": "agro"
     },
     {
       "id": "casa-ardente",
@@ -209,7 +287,8 @@
         }
       ],
       "notes": "3 marcas restaurantes Medellín. Apertura Cartagena abril 2026",
-      "createdAt": "2026-03-04T00:00:00Z"
+      "createdAt": "2026-03-04T00:00:00Z",
+      "industry": "gastronomia"
     },
     {
       "id": "paulina-arquitectura",
@@ -242,7 +321,8 @@
         }
       ],
       "notes": "Sistema multi-agente: radicados licencias + presupuesto + cotizaciones. Puerto 5005",
-      "createdAt": "2026-03-01T06:07:07Z"
+      "createdAt": "2026-03-01T06:07:07Z",
+      "industry": "construccion"
     },
     {
       "id": "hortensia-vision",
@@ -275,7 +355,8 @@
         }
       ],
       "notes": "Reconocimiento flores por imagen. YOLO8 + WhatsApp. Puerto 5400",
-      "createdAt": "2026-02-24T21:25:09Z"
+      "createdAt": "2026-02-24T21:25:09Z",
+      "industry": "agro"
     },
     {
       "id": "construhigienicas",
@@ -313,7 +394,8 @@
         }
       ],
       "notes": "Diseño+construcción plantas higiénicas (alimentos/farma). 73 empleados, ~200 con contratistas. Discovery 2025-05-03. Contactos: Laura (Gerente), Juan Fernando (Comercial), Octavio (Producción). ERP Cinco $12M/mes. Ahorro estimado $400M+ COP/año.",
-      "createdAt": "2026-03-07T22:00:00Z"
+      "createdAt": "2026-03-07T22:00:00Z",
+      "industry": "construccion"
     },
     {
       "id": "terramistica",
@@ -333,7 +415,8 @@
         }
       ],
       "notes": "Marca This Is — alimentos artesanales (mermeladas, esparcibles). Multi-agente: contenido, pauta, SEO, WhatsApp, analytics, comunidad, tendencias, ingredientes. Contactos: Catalina, Lucas, Manuela, Irina.",
-      "createdAt": "2026-03-08T18:37:56Z"
+      "createdAt": "2026-03-08T18:37:56Z",
+      "industry": "marcas-personales"
     },
     {
       "id": "actaia",
@@ -352,7 +435,8 @@
         }
       ],
       "notes": "Producto: transcripción automática de reuniones y generación de actas PDF por WhatsApp. Landing + privacy policy listos.",
-      "createdAt": "2026-03-06T07:18:51Z"
+      "createdAt": "2026-03-06T07:18:51Z",
+      "industry": "servicios"
     },
     {
       "id": "mattilda",
@@ -371,7 +455,8 @@
         }
       ],
       "notes": "Fintech/edtech — Colombia, Ecuador, México. Conecta colegios con gestión financiera/educativa. 3 herramientas: limpieza BD + leads inbound + auditoría visitas campo. mattilda.io",
-      "createdAt": "2026-03-02T20:48:50Z"
+      "createdAt": "2026-03-02T20:48:50Z",
+      "industry": "finanzas"
     },
     {
       "id": "glow-institute",
@@ -390,7 +475,8 @@
         }
       ],
       "notes": "Medicina estética y cirugía plástica, Medellín. Fundadores: Dr. Santiago (31) + Dra. Manuela. Integración agentes IA con procesos médicos.",
-      "createdAt": "2026-02-24T21:25:14Z"
+      "createdAt": "2026-02-24T21:25:14Z",
+      "industry": "salud"
     },
     {
       "id": "doceprojects",
@@ -507,7 +593,8 @@
         }
       ],
       "notes": "Agency brand, proposals, playbook, team",
-      "createdAt": "2026-03-03T16:12:56Z"
+      "createdAt": "2026-03-03T16:12:56Z",
+      "industry": "interno"
     },
     {
       "id": "flashy",
@@ -540,7 +627,8 @@
         }
       ],
       "notes": "Moda femenina DTC. Shopify + Siigo + Klaviyo. Ticket $120k. Ciclos producción 22 días. Pain: revisión manual de referentes. Web: flashy.com.co | IG: @flashy.co",
-      "createdAt": "2026-03-08T00:00:00Z"
+      "createdAt": "2026-03-08T00:00:00Z",
+      "industry": "moda"
     },
     {
       "id": "origami",
@@ -573,7 +661,8 @@
         }
       ],
       "notes": "Estructuras metálicas. 2 líneas: B2B (bodegas/ARA) + B2C acabados (firmas arq). Pain: despiece manual de planos. Inventario acero importado desde China financiado por Globanz. Anticipos 30%.",
-      "createdAt": "2026-03-08T00:00:00Z"
+      "createdAt": "2026-03-08T00:00:00Z",
+      "industry": "construccion"
     },
     {
       "id": "alamo-sas",
@@ -606,7 +695,8 @@
         }
       ],
       "notes": "Estructuración proyectos edificios VIS. Agente WA que acompaña compradores en gestión crédito hipotecario: subsidios, documentos, paso a paso. Oportunidad: digitalizar todo el customer journey.",
-      "createdAt": "2026-03-08T00:00:00Z"
+      "createdAt": "2026-03-08T00:00:00Z",
+      "industry": "inmobiliaria"
     }
   ],
   "actionItems": [
