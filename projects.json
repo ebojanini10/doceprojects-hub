@@ -141,6 +141,11 @@
         "ebojanini10/eqr-roses-client"
       ],
       "stage": "discovery",
+      "proposal": {
+        "url": "https://prop.doceprojects.com/eqr/",
+        "password": "doce-eqr",
+        "slug": "eqr"
+      },
       "tasks": [
         {
           "id": "t-eq-1",
@@ -175,6 +180,11 @@
         "ebojanini10/casa-ardente-propuesta"
       ],
       "stage": "discovery",
+      "proposal": {
+        "url": "https://prop.doceprojects.com/casa-ardente/",
+        "password": "doce-casa-ardente",
+        "slug": "casa-ardente"
+      },
       "tasks": [
         {
           "id": "t-ca-1",
@@ -274,6 +284,11 @@
         "mclara-martinez/construhigienicas"
       ],
       "stage": "propuesta",
+      "proposal": {
+        "url": "https://prop.doceprojects.com/construhigienicas/",
+        "password": "doce-construhigienicas",
+        "slug": "construhigienicas"
+      },
       "tasks": [
         {
           "id": "t-ch-1",
@@ -291,7 +306,7 @@
         },
         {
           "id": "t-ch-3",
-          "text": "Propuesta deployada en prop.doceprojects.com/construhigienicas/ (password: doce-construhigienicas)",
+          "text": "Propuesta deployada en prop.doceprojects.com/construhigienicas/",
           "done": true,
           "priority": "HIGH",
           "assignee": "Clara"
@@ -430,7 +445,7 @@
         {
           "id": "t-dp-7",
           "text": "Hub: crear deploy.sh en mclaramartinez.github.io para automatizar despliegue de propuestas",
-          "done": false,
+          "done": true,
           "priority": "MEDIUM",
           "assignee": "Clara"
         },
@@ -444,28 +459,28 @@
         {
           "id": "t-dp-9",
           "text": "Hub: agregar ebojanini10 como colaborador en mclaramartinez.github.io",
-          "done": false,
+          "done": true,
           "priority": "HIGH",
           "assignee": "Clara"
         },
         {
           "id": "t-dp-10",
           "text": "Hub: migrar casa-ardente a prop.doceprojects.com/casa-ardente/ (mantener URL vieja funcionando)",
-          "done": false,
+          "done": true,
           "priority": "MEDIUM",
           "assignee": "Clara"
         },
         {
           "id": "t-dp-11",
-          "text": "Hub: migrar EQR a prop.doceprojects.com/eqr/ (después que cliente confirme)",
-          "done": false,
+          "text": "Hub: migrar EQR a prop.doceprojects.com/eqr/",
+          "done": true,
           "priority": "MEDIUM",
           "assignee": "Clara"
         },
         {
           "id": "t-dp-12",
           "text": "Hub: migrar demo a prop.doceprojects.com/demo/",
-          "done": false,
+          "done": true,
           "priority": "LOW",
           "assignee": "Clara"
         },
@@ -486,7 +501,7 @@
         {
           "id": "t-dp-15",
           "text": "Estandarizar workflow: StatiCrypt para todas las propuestas futuras",
-          "done": false,
+          "done": true,
           "priority": "MEDIUM",
           "assignee": "Clara"
         }

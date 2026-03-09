@@ -337,6 +337,44 @@
       line-height: 1.4;
     }
 
+    /* ── PROPOSAL LINK ── */
+    .card-proposal {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding: 6px 8px;
+      background: rgba(106, 27, 154, 0.12);
+      border: 1px solid rgba(106, 27, 154, 0.25);
+      border-radius: 6px;
+    }
+    .proposal-link {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #c084fc;
+      text-decoration: none;
+    }
+    .proposal-link:hover { color: #d8b4fe; }
+    .proposal-pwd-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--gray-mid);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 2px 6px;
+      cursor: pointer;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      transition: all 0.15s;
+    }
+    .proposal-pwd-btn:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+    .proposal-pwd-btn.copied { color: var(--green); border-color: var(--green); }
+
     /* ── TASK ITEMS ── */
     .card-tasks { margin-top: 8px; }
 
@@ -1401,6 +1439,21 @@
 
       const notesHtml = project.notes ? `<div class="card-notes">${project.notes}</div>` : '';
 
+      let proposalHtml = '';
+      if (project.proposal && project.proposal.url) {
+        proposalHtml = `
+          <div class="card-proposal">
+            <a class="proposal-link" href="${project.proposal.url}" target="_blank" title="Abrir propuesta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Propuesta
+            </a>
+            <button class="proposal-pwd-btn" onclick="event.stopPropagation(); copyPwd('${project.proposal.password}', this)" title="Copiar contraseña">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span class="pwd-text">${project.proposal.password}</span>
+            </button>
+          </div>`;
+      }
+
       let tasksHtml = '';
       if (totalCount > 0) {
         tasksHtml = `
@@ -1451,6 +1504,7 @@
             </div>
           </div>
           ${notesHtml}
+          ${proposalHtml}
           ${tasksHtml}
           <div class="card-footer">
             <span class="card-repos-count">${GITHUB_ICON} ${project.repos.length} repo${project.repos.length !== 1 ? 's' : ''}</span>
@@ -1460,6 +1514,17 @@
             </select>
           </div>
         </div>`;
+    }
+
+    // ── PROPOSAL COPY ──
+    function copyPwd(pwd, btn) {
+      navigator.clipboard.writeText(pwd).then(() => {
+        btn.classList.add('copied');
+        const txt = btn.querySelector('.pwd-text');
+        const orig = txt.textContent;
+        txt.textContent = '¡copiado!';
+        setTimeout(() => { btn.classList.remove('copied'); txt.textContent = orig; }, 1500);
+      });
     }
 
     // ── TASK INTERACTIONS ──
@@ -1769,6 +1834,10 @@
             <label class="filter-label">Notas</label>
             <input type="text" id="npNotes" placeholder="Notas opcionales">
           </div>
+          <div class="modal-field">
+            <label class="filter-label">Propuesta (slug para prop.doceprojects.com/<slug>/)</label>
+            <input type="text" id="npProposalSlug" placeholder="ej: mi-cliente (opcional)">
+          </div>
           <div class="modal-actions">
             <button class="modal-btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancelar</button>
             <button class="modal-btn-primary" onclick="createProject()">Crear</button>
@@ -1781,7 +1850,8 @@
     function createProject() {
       const name = document.getElementById('npName').value.trim();
       if (!name) return;
-      AppState.data.projects.push({
+      const slug = document.getElementById('npProposalSlug').value.trim();
+      const newProject = {
         id: name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
         name,
         repos: document.getElementById('npRepos').value.trim().split('\n').map(r => r.trim()).filter(Boolean),
@@ -1789,7 +1859,15 @@
         tasks: [],
         notes: document.getElementById('npNotes').value.trim(),
         createdAt: new Date().toISOString()
-      });
+      };
+      if (slug) {
+        newProject.proposal = {
+          url: 'https://prop.doceprojects.com/' + slug + '/',
+          password: 'doce-' + slug,
+          slug: slug
+        };
+      }
+      AppState.data.projects.push(newProject);
       closeModal();
       AppState.update();
     }

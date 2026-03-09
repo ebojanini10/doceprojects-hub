@@ -40,6 +40,24 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 
 ---
 
+## Regla de deployment de propuestas (OBLIGATORIO)
+
+**Toda propuesta comercial DEBE deployarse en el hub centralizado. Sin excepción.**
+
+| Paso | Comando / Acción |
+|------|------------------|
+| 1. Crear HTML | Usar `proposal-template.html` como base |
+| 2. Deploy | `cd mclaramartinez.github.io && ./deploy.sh <slug> <propuesta.html>` |
+| 3. URL | `https://prop.doceprojects.com/<slug>/` |
+| 4. Password | `doce-<slug>` (default, personalizable como 3er arg) |
+| 5. projects.json | Agregar campo `proposal: { url, password, slug }` al proyecto |
+| 6. Dashboard | Verificar que el link y password aparecen en la card |
+
+**Aplica para todo el equipo:** Clara, Emiliano, David, Santiago.
+**El dashboard es la fuente de verdad** — si no tiene el link y el password, no está deployada.
+
+---
+
 ## Equipo
 
 | Persona | Rol |
@@ -85,13 +103,29 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 
 Repo: `mclara-martinez/mclaramartinez.github.io` (PUBLIC)
 Todas las propuestas se despliegan aquí como `/<client>/index.html`, encriptadas con StatiCrypt.
+Deploy: `./deploy.sh <client-slug> <source.html> [password]` — password default: `doce-<slug>`
 
-- [x] Construhigiénicas deployada (password: `doce-construhigienicas`)
-- [ ] Crear deploy.sh (script de despliegue)
-- [ ] Agregar ebojanini10 como colaborador
-- [ ] Migrar casa-ardente (mantener URL vieja)
-- [ ] Migrar EQR (esperar confirmación cliente)
-- [ ] Migrar demo
-- [ ] Fix eqr.doceprojects.com (DNS roto, 405)
-- [ ] Redirect props → prop (después de migrar todo)
-- [ ] Estandarizar StatiCrypt para todas las propuestas
+### Propuestas deployadas
+
+| Cliente | URL | Password |
+|---------|-----|----------|
+| Construhigiénicas | `prop.doceprojects.com/construhigienicas/` | `doce-construhigienicas` |
+| Casa Ardente | `prop.doceprojects.com/casa-ardente/` | `doce-casa-ardente` |
+| EQR Roses | `prop.doceprojects.com/eqr/` | `doce-eqr` |
+| Demo | `prop.doceprojects.com/demo/` | `doce-demo` |
+
+### Completado
+
+- [x] Construhigiénicas deployada
+- [x] Crear deploy.sh (script de despliegue)
+- [x] Agregar ebojanini10 como colaborador (invitación enviada, pendiente aceptar)
+- [x] Migrar casa-ardente (redirect desde URL vieja `/casa-ardente-propuesta/`)
+- [x] Migrar EQR
+- [x] Migrar demo
+- [x] Estandarizar StatiCrypt — todas usan salt compartido de `.staticrypt.json`
+- [x] 404.html con redirect automático props → prop (JS fallback)
+
+### Pendiente — requiere GoDaddy DNS (cuenta Emiliano)
+
+- [ ] Fix eqr.doceprojects.com — cambiar A records (AWS) a CNAME → `mclaramartinez.github.io`
+- [ ] Redirect props → prop — cambiar CNAME de `ebjoanini10.github.io` (typo) a `mclaramartinez.github.io`, o eliminar

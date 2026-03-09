@@ -63,6 +63,22 @@ Si durante el Discovery se identifica que el cliente no es buen fit (no tiene pr
 | Contenido | Soluciones propuestas + Preview/Proof of concept de UNA solución |
 | Cronograma | En horas/días/semanas — NO en fechas (depende de fecha de aceptación) |
 | Estructura | Dividido por clusters de soluciones |
+| **Deployment** | **OBLIGATORIO:** Toda propuesta se deploya en `prop.doceprojects.com/<slug>/` encriptada con StatiCrypt. Password: `doce-<slug>`. Ejecutar: `./deploy.sh <slug> <archivo.html>` |
+
+#### Regla de Deployment de Propuestas (OBLIGATORIO)
+
+**Toda propuesta comercial DEBE deployarse siguiendo este estándar, sin excepción:**
+
+| Paso | Detalle |
+|------|---------|
+| 1. Crear HTML | Propuesta en HTML brandeado usando `proposal-template.html` |
+| 2. Deploy al hub | Ejecutar `./deploy.sh <slug> <propuesta.html>` en el repo `mclaramartinez.github.io` |
+| 3. URL estándar | `https://prop.doceprojects.com/<slug>/` |
+| 4. Password estándar | `doce-<slug>` (se puede personalizar como tercer argumento de deploy.sh) |
+| 5. Registrar en projects.json | Agregar campo `proposal` con `url`, `password` y `slug` al proyecto |
+| 6. Verificar en dashboard | El link y la contraseña deben aparecer en la card del proyecto en el dashboard |
+
+**Esto aplica para TODOS:** Clara, Emiliano, David, Santiago. No importa quién cree la propuesta.
 
 #### Regla del 12:12 — Cómo Funciona el Timing
 | Momento | Qué pasa |
@@ -511,6 +527,7 @@ Leads (referrals/eventos) → Discovery Calls → Propuestas 12:12 → Firmados 
 | 17 | **Solución > Cliente** | Organización interna por solución, no por cliente |
 | 18 | **Branding integrado** | Toda herramienta interna tiene las reglas de marca incorporadas |
 | 19 | **Incógnito** | Operación discreta — regla en NDA |
+| 20 | **Propuesta = Hub** | Toda propuesta se deploya en `prop.doceprojects.com/<slug>/` con StatiCrypt. Password `doce-<slug>`. Registrar URL + password en `projects.json` + dashboard. Sin excepción |
 
 ---
 
