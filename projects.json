@@ -479,6 +479,22 @@
       "industry": "salud"
     },
     {
+      "id": "distrihogar",
+      "name": "Distrihogar",
+      "repos": [
+        "ebojanini10/distrihogar-propuesta"
+      ],
+      "stage": "propuesta",
+      "proposal": {
+        "url": "https://prop.doceprojects.com/distrihogar/",
+        "password": "doce-distrihogar",
+        "slug": "distrihogar"
+      },
+      "tasks": [],
+      "notes": "Propuesta creada por Emiliano.",
+      "createdAt": "2026-03-09T00:00:00Z"
+    },
+    {
       "id": "doceprojects",
       "name": "DOCEPROJECTS",
       "repos": [

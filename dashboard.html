@@ -1150,6 +1150,292 @@
     .error-message h2 { font-size: 16px; margin-bottom: 6px; }
     .error-message p { color: #9CA3AF; font-size: 13px; }
 
+    /* ── AGENTS VIEW ── */
+    .agents-view {
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .agents-pipeline-flow {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+
+    .agents-pipeline-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .pipeline-flow-diagram {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .pipeline-flow-step {
+      background: rgba(106, 27, 154, 0.2);
+      border: 1px solid rgba(106, 27, 154, 0.4);
+      color: #CE93D8;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .pipeline-flow-step.gate {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--orange);
+    }
+
+    .pipeline-flow-arrow {
+      color: #4B5563;
+      font-size: 14px;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .agent-card {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 18px;
+      transition: border-color 0.15s ease-out;
+    }
+
+    .agent-card:hover {
+      border-color: rgba(106, 27, 154, 0.4);
+    }
+
+    .agent-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .agent-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .agent-tier {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .agent-tier.tier-1 {
+      background: rgba(106, 27, 154, 0.2);
+      color: #CE93D8;
+    }
+
+    .agent-tier.tier-2 {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93C5FD;
+    }
+
+    .agent-tier.tier-3 {
+      background: rgba(107, 114, 128, 0.2);
+      color: #9CA3AF;
+    }
+
+    .agent-trigger {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--purple);
+      background: rgba(106, 27, 154, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .agent-description {
+      font-size: 12px;
+      color: #9CA3AF;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .agent-commands {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .agent-cmd {
+      font-family: monospace;
+      font-size: 10px;
+      color: #6B7280;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .agent-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .agent-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .agent-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .agent-status.ready .agent-status-dot { background: var(--green); }
+    .agent-status.ready { color: var(--green); }
+
+    .agent-status.scheduled .agent-status-dot { background: var(--orange); }
+    .agent-status.scheduled { color: var(--orange); }
+
+    .agent-status.idle .agent-status-dot { background: #4B5563; }
+    .agent-status.idle { color: #6B7280; }
+
+    .agent-last-run {
+      font-size: 10px;
+      color: #6B7280;
+    }
+
+    .agent-interactions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .agent-interacts-with {
+      font-size: 9px;
+      color: #6B7280;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* ── EVENT LOG ── */
+    .agents-event-log {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .event-log-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .event-log-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .event-log-count {
+      font-size: 10px;
+      color: #6B7280;
+      font-weight: 600;
+    }
+
+    .event-log-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .event-log-entries::-webkit-scrollbar { width: 4px; }
+    .event-log-entries::-webkit-scrollbar-track { background: transparent; }
+    .event-log-entries::-webkit-scrollbar-thumb { background: #374151; border-radius: 2px; }
+
+    .event-entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    .event-agent-badge {
+      font-family: monospace;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(106, 27, 154, 0.2);
+      color: #CE93D8;
+      padding: 2px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .event-action {
+      color: #D1D5DB;
+      flex: 1;
+    }
+
+    .event-project {
+      color: var(--purple);
+      font-weight: 600;
+    }
+
+    .event-time {
+      color: #4B5563;
+      font-size: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .event-log-empty {
+      text-align: center;
+      padding: 30px;
+      color: #4B5563;
+      font-size: 12px;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .pipeline { padding: 16px; gap: 12px; }
@@ -1185,6 +1471,9 @@
       .overview-grid { grid-template-columns: 1fr 1fr; }
       .repo-grid { grid-template-columns: 1fr; }
 
+      .agents-view { padding: 16px; }
+      .agents-grid { grid-template-columns: 1fr; }
+
       .dashboard-footer {
         flex-direction: column;
         gap: 8px;
@@ -1208,6 +1497,7 @@
       <button class="nav-btn active" onclick="switchView('kanban')">Pipeline</button>
       <button class="nav-btn" onclick="switchView('actions')">Action Items</button>
       <button class="nav-btn" onclick="switchView('overview')">Resumen</button>
+      <button class="nav-btn" onclick="switchView('agents')">Agents</button>
       <a class="nav-btn" href="industries.html" style="text-decoration:none;">Industrias</a>
     </nav>
     <div class="header-right">
@@ -1294,6 +1584,7 @@
         if (this.currentView === 'kanban') renderPipeline(this.data);
         else if (this.currentView === 'actions') renderActionItems(this.data);
         else if (this.currentView === 'overview') renderOverview(this.data);
+        else if (this.currentView === 'agents') renderAgents();
       }
     };
 
@@ -1446,7 +1737,8 @@
         btn.classList.toggle('active',
           (btn.textContent === 'Pipeline' && view === 'kanban') ||
           (btn.textContent === 'Action Items' && view === 'actions') ||
-          (btn.textContent === 'Resumen' && view === 'overview')
+          (btn.textContent === 'Resumen' && view === 'overview') ||
+          (btn.textContent === 'Agents' && view === 'agents')
         );
       });
       AppState.render();
@@ -1897,6 +2189,205 @@
       </div>`;
 
       main.innerHTML = html;
+    }
+
+    // ── AGENTS DATA ──
+    const AGENTS = [
+      {
+        id: 'pm', name: 'PM Agent', trigger: '/pm', tier: 1,
+        description: 'Orquestador central. Briefing diario, tracking de proyectos, alertas de blockers, actualización de stages.',
+        commands: ['/pm', '/pm status', '/pm add-task', '/pm advance'],
+        schedule: 'Diario 12:00 PM',
+        interacts: ['Todos los agentes'],
+        icon: '📋'
+      },
+      {
+        id: 'propuesta', name: 'Propuesta Agent', trigger: '/propuesta', tier: 1,
+        description: 'Genera propuestas HTML desde notas de discovery. Deploya a prop.doceprojects.com con StatiCrypt.',
+        commands: ['/propuesta generar', '/propuesta deploy', '/propuesta programar'],
+        schedule: null,
+        interacts: ['PM', 'Discovery', 'Tech Review'],
+        icon: '📄'
+      },
+      {
+        id: 'qa', name: 'QA Agent', trigger: '/qa', tier: 1,
+        description: 'Testing y monitoreo de sistemas desplegados. Health checks, scan completo, reporte semanal.',
+        commands: ['/qa check', '/qa scan', '/qa reporte', '/qa verify-proposals'],
+        schedule: 'Lunes 9:00 AM',
+        interacts: ['PM', 'Soporte'],
+        icon: '🔍'
+      },
+      {
+        id: 'tech-review', name: 'Tech Review Agent', trigger: '/techreview', tier: 1,
+        description: 'Revisión técnica de propuestas. Valida factibilidad, arquitectura, riesgos y estimaciones.',
+        commands: ['/techreview revisar', '/techreview stack', '/techreview comparar', '/techreview checklist-pre-deploy'],
+        schedule: null,
+        interacts: ['Propuesta', 'PM', 'Finance', 'QA'],
+        icon: '🔧'
+      },
+      {
+        id: 'discovery', name: 'Discovery Agent', trigger: '/discovery', tier: 2,
+        description: 'Estandariza discovery calls, analiza transcripciones, genera documento de oportunidades.',
+        commands: ['/discovery prep', '/discovery analizar', '/discovery guia', '/discovery oportunidades'],
+        schedule: null,
+        interacts: ['Propuesta'],
+        icon: '🎯'
+      },
+      {
+        id: 'soporte', name: 'Soporte Agent', trigger: '/soporte', tier: 2,
+        description: 'Customer service Nivel 1. Clasifica tickets, intenta resolver, escala a humano si no puede.',
+        commands: ['/soporte clasificar', '/soporte responder', '/soporte escalar'],
+        schedule: null,
+        interacts: ['QA', 'PM'],
+        icon: '💬'
+      },
+      {
+        id: 'onboarding', name: 'Onboarding Agent', trigger: '/onboarding', tier: 3,
+        description: 'Recolecta credenciales y assets de clientes. Checklist, follow-up, validación.',
+        commands: ['/onboarding checklist', '/onboarding status', '/onboarding followup', '/onboarding validar'],
+        schedule: null,
+        interacts: ['PM', 'QA'],
+        icon: '🔑'
+      },
+      {
+        id: 'finance', name: 'Finance Agent', trigger: '/finance', tier: 3,
+        description: 'Unit economics, costos de APIs, márgenes por proyecto, recomendaciones de pricing.',
+        commands: ['/finance economics', '/finance resumen', '/finance estimar', '/finance pricing'],
+        schedule: null,
+        interacts: ['PM', 'Tech Review'],
+        icon: '💰'
+      }
+    ];
+
+    // ── EVENT LOG LOADING ──
+    let eventLogCache = null;
+    let eventLogLoading = false;
+
+    async function loadEventLog() {
+      if (eventLogCache !== null || eventLogLoading) return eventLogCache || [];
+      eventLogLoading = true;
+
+      try {
+        const token = AppState.getToken();
+        const headers = { 'Accept': 'application/vnd.github.v3+json' };
+        if (token) headers['Authorization'] = `token ${token}`;
+
+        const res = await fetch(`${API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/agents/event-log.jsonl`, { headers });
+        if (!res.ok) { eventLogLoading = false; return []; }
+
+        const json = await res.json();
+        const content = atob(json.content.replace(/\n/g, ''));
+        const text = new TextDecoder().decode(Uint8Array.from(content, c => c.charCodeAt(0)));
+        const lines = text.trim().split('\n').filter(Boolean);
+        eventLogCache = lines.map(line => {
+          try { return JSON.parse(line); } catch { return null; }
+        }).filter(Boolean).reverse(); // newest first
+      } catch {
+        eventLogCache = [];
+      }
+
+      eventLogLoading = false;
+      return eventLogCache;
+    }
+
+    // ── RENDER AGENTS VIEW ──
+    function renderAgents() {
+      const main = document.getElementById('mainContent');
+
+      // Pipeline flow
+      const pipelineSteps = [
+        { label: '/discovery prep', type: 'step' },
+        { label: 'Discovery Call', type: 'step' },
+        { label: '/discovery analizar', type: 'step' },
+        { label: '/propuesta generar', type: 'step' },
+        { label: '/techreview revisar', type: 'gate' },
+        { label: '/finance pricing', type: 'step' },
+        { label: '/propuesta deploy', type: 'step' },
+        { label: '/pm advance', type: 'step' }
+      ];
+
+      const flowHtml = pipelineSteps.map((step, i) => {
+        const arrow = i < pipelineSteps.length - 1 ? '<span class="pipeline-flow-arrow">&rarr;</span>' : '';
+        return `<span class="pipeline-flow-step ${step.type}">${step.label}</span>${arrow}`;
+      }).join('');
+
+      // Agent cards
+      const cardsHtml = AGENTS.map(agent => {
+        const tierClass = `tier-${agent.tier}`;
+        const tierLabel = `Tier ${agent.tier}`;
+        const statusClass = agent.schedule ? 'scheduled' : 'ready';
+        const statusLabel = agent.schedule ? `Programado: ${agent.schedule}` : 'Bajo demanda';
+        const cmdsHtml = agent.commands.map(cmd => `<span class="agent-cmd">${cmd}</span>`).join('');
+        const interactsHtml = agent.interacts.map(a => `<span class="agent-interacts-with">${a}</span>`).join('');
+
+        return `
+          <div class="agent-card">
+            <div class="agent-card-header">
+              <div>
+                <div class="agent-name">${agent.icon} ${agent.name}</div>
+                <span class="agent-trigger">${agent.trigger}</span>
+              </div>
+              <span class="agent-tier ${tierClass}">${tierLabel}</span>
+            </div>
+            <div class="agent-description">${agent.description}</div>
+            <div class="agent-commands">${cmdsHtml}</div>
+            <div class="agent-status-row">
+              <div class="agent-status ${statusClass}">
+                <span class="agent-status-dot"></span>
+                ${statusLabel}
+              </div>
+            </div>
+            <div class="agent-interactions">${interactsHtml}</div>
+          </div>`;
+      }).join('');
+
+      // Build the view
+      let html = `<div class="agents-view">
+        <div class="agents-pipeline-flow">
+          <div class="agents-pipeline-title">Pipeline de Propuestas</div>
+          <div class="pipeline-flow-diagram">${flowHtml}</div>
+        </div>
+        <div class="agents-grid">${cardsHtml}</div>
+        <div class="agents-event-log">
+          <div class="event-log-header">
+            <div class="event-log-title">Event Log</div>
+            <span class="event-log-count" id="eventLogCount"></span>
+          </div>
+          <div class="event-log-entries" id="eventLogEntries">
+            <div class="event-log-empty">Cargando eventos...</div>
+          </div>
+        </div>
+      </div>`;
+
+      main.innerHTML = html;
+
+      // Load event log async
+      loadEventLog().then(events => {
+        const container = document.getElementById('eventLogEntries');
+        const countEl = document.getElementById('eventLogCount');
+        if (!container) return;
+
+        if (events.length === 0) {
+          container.innerHTML = '<div class="event-log-empty">No hay eventos registrados. Los agentes registran acciones aqu\u00ED cuando se ejecutan.</div>';
+          if (countEl) countEl.textContent = '0 eventos';
+          return;
+        }
+
+        if (countEl) countEl.textContent = `${events.length} evento${events.length !== 1 ? 's' : ''}`;
+
+        container.innerHTML = events.slice(0, 50).map(evt => {
+          const time = evt.timestamp ? new Date(evt.timestamp).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+          const projectLabel = evt.project ? `<span class="event-project">${evt.project}</span>` : '';
+          const action = evt.action || 'unknown';
+          const dataStr = evt.data ? ` \u2014 ${JSON.stringify(evt.data).slice(0, 80)}` : '';
+
+          return `<div class="event-entry">
+            <span class="event-agent-badge">${evt.agent || '?'}</span>
+            <span class="event-action">${action} ${projectLabel}${dataStr}</span>
+            <span class="event-time">${time}</span>
+          </div>`;
+        }).join('');
+      });
     }
 
     // ── PROJECT CRUD ──
