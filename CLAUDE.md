@@ -63,9 +63,9 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 | Casa Ardente | Discovery | `ebojanini10/casa-ardente-sistema`, `casa-ardente-propuesta` |
 | Paulina Arquitectura | Implementación | `ebojanini10/arquitectura-bot` |
 | Hortensia Vision | Implementación | `ebojanini10/skyflowers-hortensia-vision` |
-| Álamo SAS | Discovery | `ebojanini10/alamo-sistema` |
-| Origami | Discovery | `ebojanini10/origami-sistema` |
-| Flashy | Discovery | `ebojanini10/flashy-sistema` |
+| Álamo SAS | Lead | `ebojanini10/alamo-sistema` |
+| Origami | Lead | `ebojanini10/origami-sistema` |
+| Flashy | Lead | `ebojanini10/flashy-sistema` |
 | Terramística / This Is | Implementación | `ebojanini10/terramistica-metaads`, `this-is-entregables` |
 | Actaia (ReunIA) | Implementación | `ebojanini10/actaia` |
 | Mattilda | Propuesta | `ebojanini10/mattilda-sistema` |
