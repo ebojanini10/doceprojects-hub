@@ -10,13 +10,22 @@
 
   <title>DOCEPROJECTS &times; EQR Roses &mdash; Propuesta + NDA</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('assets/brand/fonts/BebasNeue-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Glock Grotesque';
+      src: url('assets/brand/fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+           url('assets/brand/fonts/GlockGrotesque-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -24,37 +33,25 @@
 
     :root {
 
-      --purple:       #6A1B9A;
+      --purple: #6A1B9A;
 
       --purple-hover: #58147F;
 
-      --purple-light: rgba(106, 27, 154, 0.08);
+      --dark: #1F2937;
 
-      --black:        #111111;
+      --grid-gray: #F4F6F8;
 
-      --white:        #FFFFFF;
+      --white: #FFFFFF;
 
-      --gray-light:   #F4F6F8;
+      --green: #16A34A;
 
-      --gray-mid:     #9CA3AF;
+      --orange: #F59E0B;
 
-      --gray-dark:    #6B7280;
+      --red: #DC2626;
 
-      --navy:         #1F2937;
+      --wa-green: #25D366;
 
-      --navy-dark:    #0F172A;
-
-      --navy-card:    #1E293B;
-
-      --green:        #16A34A;
-
-      --green-light:  rgba(22, 163, 74, 0.1);
-
-      --red:          #DC2626;
-
-      --wa-green:     #25D366;
-
-      --eqr-rose:     #8B3D65;
+      --eqr-rose: #8B3D65;
 
     }
 
@@ -66,11 +63,11 @@
 
     body {
 
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
 
-      color: var(--black);
+      color: var(--dark);
 
-      background: var(--navy-dark);
+      background: #0F172A;
 
       line-height: 1.6;
 
@@ -206,7 +203,7 @@
 
     .hero {
 
-      background: var(--navy-dark);
+      background: #0F172A;
 
       padding: 64px 60px 72px;
 
@@ -238,7 +235,7 @@
 
     .hero-label {
 
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
 
       font-size: 12px;
 
@@ -292,7 +289,7 @@
 
 
 
-    .hero-meta { font-size: 14px; color: var(--gray-mid); margin-bottom: 6px; }
+    .hero-meta { font-size: 14px; color: #9CA3AF; margin-bottom: 6px; }
 
     .hero-meta strong { color: var(--white); font-weight: 600; }
 
@@ -326,7 +323,7 @@
 
       padding: 56px 60px;
 
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
 
     }
 
@@ -360,7 +357,7 @@
 
       letter-spacing: 1px;
 
-      color: var(--black);
+      color: var(--dark);
 
       margin-bottom: 20px;
 
@@ -404,7 +401,7 @@
 
     .client-info-card {
 
-      background: var(--gray-light);
+      background: var(--grid-gray);
 
       border-radius: 4px;
 
@@ -424,7 +421,7 @@
 
       text-transform: uppercase;
 
-      color: var(--gray-dark);
+      color: #6B7280;
 
       margin-bottom: 6px;
 
@@ -438,7 +435,7 @@
 
       font-weight: 600;
 
-      color: var(--black);
+      color: var(--dark);
 
     }
 
@@ -538,7 +535,7 @@
 
       gap: 8px;
 
-      background: var(--navy-dark);
+      background: #0F172A;
 
       color: var(--white);
 
@@ -562,7 +559,7 @@
 
 
 
-    .demo-link:hover { background: var(--navy); }
+    .demo-link:hover { background: var(--dark); }
 
 
 
@@ -594,7 +591,7 @@
 
       width: 2px;
 
-      background: var(--gray-light);
+      background: var(--grid-gray);
 
     }
 
@@ -670,7 +667,7 @@
 
       letter-spacing: 1px;
 
-      color: var(--black);
+      color: var(--dark);
 
       margin-bottom: 4px;
 
@@ -756,7 +753,7 @@
 
       gap: 0;
 
-      border-bottom: 2px solid var(--gray-light);
+      border-bottom: 2px solid var(--grid-gray);
 
       margin-bottom: 32px;
 
@@ -776,7 +773,7 @@
 
       text-transform: uppercase;
 
-      color: var(--gray-dark);
+      color: #6B7280;
 
       cursor: pointer;
 
@@ -826,7 +823,7 @@
 
       letter-spacing: 1px;
 
-      color: var(--black);
+      color: var(--dark);
 
       margin: 28px 0 10px;
 
@@ -858,7 +855,7 @@
 
     .nda-text .parties {
 
-      background: var(--gray-light);
+      background: var(--grid-gray);
 
       border-radius: 4px;
 
@@ -878,7 +875,7 @@
 
     .nda-highlight {
 
-      background: var(--purple-light);
+      background: rgba(106, 27, 154, 0.08);
 
       border-left: 3px solid var(--purple);
 
@@ -902,7 +899,7 @@
 
       padding-top: 32px;
 
-      border-top: 2px solid var(--gray-light);
+      border-top: 2px solid var(--grid-gray);
 
     }
 
@@ -938,7 +935,7 @@
 
     .sign-box {
 
-      background: var(--gray-light);
+      background: var(--grid-gray);
 
       border-radius: 4px;
 
@@ -958,7 +955,7 @@
 
       text-transform: uppercase;
 
-      color: var(--gray-dark);
+      color: #6B7280;
 
       margin-bottom: 16px;
 
@@ -986,7 +983,7 @@
 
       text-transform: uppercase;
 
-      color: var(--gray-dark);
+      color: #6B7280;
 
       margin-bottom: 6px;
 
@@ -998,7 +995,7 @@
 
       font-size: 14px;
 
-      color: var(--black);
+      color: var(--dark);
 
       font-weight: 500;
 
@@ -1020,11 +1017,11 @@
 
       border-radius: 2px;
 
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
 
       font-size: 14px;
 
-      color: var(--black);
+      color: var(--dark);
 
       background: var(--white);
 
@@ -1048,7 +1045,7 @@
 
     .cta-section {
 
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      background: linear-gradient(135deg, #0F172A 0%, var(--dark) 100%);
 
       padding: 56px 60px;
 
@@ -1096,7 +1093,7 @@
 
       font-size: 14px;
 
-      color: var(--gray-mid);
+      color: #9CA3AF;
 
       margin-bottom: 40px;
 
@@ -1174,7 +1171,7 @@
 
       font-size: 12px;
 
-      color: var(--gray-mid);
+      color: #9CA3AF;
 
       line-height: 1.4;
 
@@ -1194,7 +1191,7 @@
 
       padding: 16px 48px;
 
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
 
       font-size: 14px;
 
@@ -1228,7 +1225,7 @@
 
       border: 1px solid rgba(255,255,255,0.2);
 
-      color: var(--gray-mid);
+      color: #9CA3AF;
 
     }
 
@@ -1264,7 +1261,7 @@
 
 
 
-    .confirm-sub { font-size: 14px; color: var(--gray-mid); margin-top: 8px; }
+    .confirm-sub { font-size: 14px; color: #9CA3AF; margin-top: 8px; }
 
 
 
@@ -1272,7 +1269,7 @@
 
     .proposal-footer {
 
-      background: var(--navy-dark);
+      background: #0F172A;
 
       padding: 36px 60px;
 
@@ -1484,7 +1481,7 @@
 
 
 
-    <div style="margin-top:32px; padding: 24px 28px; background: var(--gray-light); border-radius:4px; border-left: 3px solid var(--purple);">
+    <div style="margin-top:32px; padding: 24px 28px; background: var(--grid-gray); border-radius:4px; border-left: 3px solid var(--purple);">
 
       <p style="font-size:14px; color:#444; line-height:1.7;">
 

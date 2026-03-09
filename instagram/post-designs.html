@@ -4,37 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOCEPROJECTS — Instagram Post Designs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('../assets/brand/fonts/BebasNeue-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Glock Grotesque';
+      src: url('../assets/brand/fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+           url('../assets/brand/fonts/GlockGrotesque-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* ── RESET ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── BRAND TOKENS (Updated from DoceProjects_Brandbook.pdf) ── */
-    /* Display: Babas Neue Negrita (Bebas Neue as web fallback) */
-    /* Body: Glock Grotesk (DM Sans as web fallback) */
+    /* ── BRAND TOKENS ── */
+    /* Display: Bebas Neue */
+    /* Body: Glock Grotesque */
     /* Header letter-spacing: -45 (-0.045em) */
     /* Subtitle letter-spacing: 145 (0.145em) */
     :root {
       --purple: #6A1B9A;
-      --purple-light: #8E24AA;
-      --black: #333333;
+      --purple-hover: #58147F;
+      --dark: #1F2937;
+      --grid-gray: #F4F6F8;
       --white: #FFFFFF;
-      --gray-light: #F0EDE8;
-      --gray-mid: #9CA3AF;
-      --navy: #1F2937;
-      --navy-dark: #0F172A;
-      --navy-card: #1E293B;
-      --green: #00A86B;
-      --orange: #E8751A;
-      --red: #C43B3B;
-      --kraft: #C4AD8A;
-      --kraft-dark: #A89470;
-      --kraft-light: #D6C2A1;
+      --green: #16A34A;
+      --orange: #F59E0B;
+      --red: #DC2626;
+      --wa-green: #25D366;
 
-      --font-display: 'Bebas Neue', sans-serif; /* Babas Neue Negrita — Bebas Neue as web fallback */
-      --font-body: 'DM Sans', -apple-system, sans-serif; /* Glock Grotesk — DM Sans as web fallback */
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Glock Grotesque', sans-serif;
 
       --post-size: 1080px;
       --carousel-w: 1080px;
@@ -44,7 +51,7 @@
     body {
       font-family: var(--font-body);
       background: #E5E7EB;
-      color: var(--black);
+      color: var(--dark);
       padding: 40px;
     }
 
@@ -88,7 +95,7 @@
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       margin-bottom: 12px;
       padding-left: 4px;
     }
@@ -132,22 +139,22 @@
 
     /* ── SHARED DESIGN COMPONENTS ── */
     .post-dark {
-      background: var(--navy-dark);
+      background: #0F172A;
       color: var(--white);
     }
     .post-white {
       background: var(--white);
-      color: var(--black);
+      color: var(--dark);
     }
     .post-navy {
-      background: var(--navy);
+      background: var(--dark);
       color: var(--white);
     }
 
     /* ── KRAFT TEXTURE (real image) ── */
     .post-kraft {
       background: url('../assets/brand/textures/kraft-texture-square.jpg') center/cover no-repeat;
-      color: var(--black);
+      color: var(--dark);
       position: relative;
     }
     .post-kraft.carousel-slide {
@@ -204,13 +211,13 @@
       top: 48px;
       left: 56px;
     }
-    .logo-text.dark { color: var(--black); }
+    .logo-text.dark { color: var(--dark); }
 
     .tagline-bottom {
       font-family: var(--font-display);
       font-size: 20px;
       letter-spacing: 3px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       position: absolute;
       bottom: 48px;
       left: 56px;
@@ -317,7 +324,7 @@
     }
 
     .text-purple { color: var(--purple); }
-    .text-gray { color: var(--gray-mid); }
+    .text-gray { color: #9CA3AF; }
     .text-white { color: var(--white); }
     .text-green { color: var(--green); }
     .fw-700 { font-weight: 700; }
@@ -368,7 +375,7 @@
       width: 100%;
     }
     .metric-card {
-      background: var(--navy-card);
+      background: #1E293B;
       border-radius: 12px;
       padding: 40px;
       text-align: center;
@@ -377,14 +384,14 @@
     .metric-number {
       font-family: var(--font-display);
       font-size: 72px;
-      color: var(--purple-light);
+      color: #8E24AA;
       letter-spacing: 2px;
       line-height: 1;
     }
     .metric-label {
       font-family: var(--font-body);
       font-size: 18px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       margin-top: 12px;
       font-weight: 500;
     }
@@ -631,10 +638,10 @@
         <div class="logo-text dark" style="opacity: 0.15;">DOCEPROJECTS</div>
         <div class="post-inner post-inner-left">
           <div class="purple-line"></div>
-          <div style="font-family: var(--font-body); font-size: 52px; font-weight: 800; line-height: 1.2; color: var(--black); max-width: 850px;">
+          <div style="font-family: var(--font-body); font-size: 52px; font-weight: 800; line-height: 1.2; color: var(--dark); max-width: 850px;">
             Tu equipo contesta las mismas preguntas <span class="text-purple" style="font-size: 72px; font-family: var(--font-display);">47</span> veces al dia.
           </div>
-          <div class="mt-48 body-md" style="color: var(--gray-mid);">
+          <div class="mt-48 body-md" style="color: #9CA3AF;">
             Eso no necesita una persona.<br>Necesita un sistema.
           </div>
         </div>
@@ -785,7 +792,7 @@
           <div class="noise-overlay"></div>
           <div class="logo-text dark" style="opacity: 0.1;">DOCEPROJECTS</div>
           <div class="post-inner text-center">
-            <div class="display-xl" style="font-size: 110px; color: var(--black); line-height: 0.95;">
+            <div class="display-xl" style="font-size: 110px; color: var(--dark); line-height: 0.95;">
               IA NO<br>REEMPLAZA<br><span class="text-purple">EMPLEADOS</span>
             </div>
           </div>
@@ -805,7 +812,7 @@
           <div class="logo-text dark" style="opacity: 0.1;">DOCEPROJECTS</div>
           <div class="post-inner post-inner-left">
             <div class="purple-line"></div>
-            <div class="display-md" style="color: var(--black); margin-bottom: 40px;">REEMPLAZA TAREAS<br><span class="text-purple">REPETITIVAS</span></div>
+            <div class="display-md" style="color: var(--dark); margin-bottom: 40px;">REEMPLAZA TAREAS<br><span class="text-purple">REPETITIVAS</span></div>
             <div style="display: flex; flex-direction: column; gap: 20px;">
               <div style="display: flex; align-items: center; gap: 16px;">
                 <div style="width: 12px; height: 12px; background: var(--purple); border-radius: 2px; flex-shrink: 0;"></div>
@@ -904,10 +911,10 @@
           <div class="noise-overlay"></div>
           <div class="logo-text dark" style="opacity: 0.1;">DOCEPROJECTS</div>
           <div class="post-inner text-center">
-            <div class="display-xl" style="font-size: 130px; color: var(--black); line-height: 0.9;">
+            <div class="display-xl" style="font-size: 130px; color: var(--dark); line-height: 0.9;">
               ANTES<br><span class="text-purple">VS.</span><br>DESPUES
             </div>
-            <div class="mt-32 body-md" style="color: var(--gray-mid);">Cotizaciones en tu empresa</div>
+            <div class="mt-32 body-md" style="color: #9CA3AF;">Cotizaciones en tu empresa</div>
           </div>
           <div class="slide-indicator">
             <div class="slide-dot dark-dots active"></div>

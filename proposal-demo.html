@@ -4,40 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOCEPROJECTS &times; Grupo Monta&ntilde;a &mdash; Propuesta Comercial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('assets/brand/fonts/BebasNeue-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Glock Grotesque';
+      src: url('assets/brand/fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+           url('assets/brand/fonts/GlockGrotesque-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* ── RESET & VARIABLES ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --purple: #6A1B9A;
       --purple-hover: #58147F;
-      --purple-light: rgba(106, 27, 154, 0.08);
-      --purple-glow: rgba(106, 27, 154, 0.15);
-      --black: #111111;
+      --dark: #1F2937;
+      --grid-gray: #F4F6F8;
       --white: #FFFFFF;
-      --gray-light: #F4F6F8;
-      --gray-mid: #9CA3AF;
-      --gray-dark: #6B7280;
-      --navy: #1F2937;
-      --navy-dark: #0F172A;
-      --navy-card: #1E293B;
       --green: #16A34A;
-      --green-light: rgba(22, 163, 74, 0.1);
+      --orange: #F59E0B;
       --red: #DC2626;
-      --red-light: rgba(220, 38, 38, 0.1);
-      --kraft: #D6C2A1;
       --wa-green: #25D366;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      color: var(--black);
-      background: var(--navy-dark);
+      font-family: 'Glock Grotesque', sans-serif;
+      color: var(--dark);
+      background: #0F172A;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
@@ -119,7 +123,7 @@
 
     /* ── HERO / COVER ── */
     .hero {
-      background: var(--navy-dark);
+      background: #0F172A;
       padding: 64px 60px 72px;
       text-align: center;
       position: relative;
@@ -140,7 +144,7 @@
     }
 
     .hero-label {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 3px;
@@ -167,7 +171,7 @@
 
     .hero-meta {
       font-size: 14px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       margin-bottom: 6px;
     }
 
@@ -178,7 +182,7 @@
 
     /* ── COUNTDOWN TIMER ── */
     .countdown-section {
-      background: var(--navy-dark);
+      background: #0F172A;
       border-top: 1px solid rgba(255,255,255,0.06);
       padding: 32px 60px;
       text-align: center;
@@ -188,7 +192,7 @@
     }
 
     .countdown-label {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 3px;
@@ -224,14 +228,14 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       margin-top: 8px;
     }
 
     .countdown-separator {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 56px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       line-height: 1;
       opacity: 0.3;
     }
@@ -264,7 +268,7 @@
     /* ── SECTION SYSTEM ── */
     .section {
       padding: 56px 60px;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
     }
 
     .section:last-of-type { border-bottom: none; }
@@ -282,17 +286,17 @@
       font-size: clamp(28px, 4vw, 42px);
       line-height: 1.1;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 20px;
     }
 
     .section h3 {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-weight: 600;
       font-size: 15px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 12px;
       margin-top: 32px;
     }
@@ -315,7 +319,7 @@
     }
 
     .client-info-card {
-      background: var(--gray-light);
+      background: var(--grid-gray);
       padding: 24px;
       border-radius: 4px;
     }
@@ -324,14 +328,14 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-dark);
+      color: #6B7280;
       margin-bottom: 6px;
     }
 
     .client-info-card .info-value {
       font-size: 15px;
       font-weight: 600;
-      color: var(--black);
+      color: var(--dark);
     }
 
     .client-units-grid {
@@ -342,13 +346,13 @@
     }
 
     .unit-card {
-      border: 1px solid var(--gray-light);
+      border: 1px solid var(--grid-gray);
       border-radius: 4px;
       overflow: hidden;
     }
 
     .unit-card-header {
-      background: var(--navy-dark);
+      background: #0F172A;
       padding: 14px 18px;
     }
 
@@ -363,17 +367,17 @@
       font-size: 10px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--gray-mid);
+      color: #9CA3AF;
     }
 
     .unit-card-body {
       padding: 14px 18px;
-      background: var(--gray-light);
+      background: var(--grid-gray);
     }
 
     .unit-card-body .unit-detail {
       font-size: 12px;
-      color: var(--gray-dark);
+      color: #6B7280;
       margin-bottom: 4px;
     }
 
@@ -402,7 +406,7 @@
     }
 
     .summary-card {
-      background: var(--gray-light);
+      background: var(--grid-gray);
       padding: 28px;
       border-radius: 4px;
       text-align: center;
@@ -421,7 +425,7 @@
       font-size: 12px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--gray-dark);
+      color: #6B7280;
       margin-top: 8px;
     }
 
@@ -433,7 +437,7 @@
 
     .pain-list li {
       padding: 16px 0;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
       display: flex;
       align-items: flex-start;
       gap: 16px;
@@ -455,14 +459,14 @@
     .solutions { margin-top: 32px; }
 
     .solution-card {
-      border: 1px solid var(--gray-light);
+      border: 1px solid var(--grid-gray);
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 20px;
     }
 
     .solution-header {
-      background: var(--gray-light);
+      background: var(--grid-gray);
       padding: 18px 24px;
       display: flex;
       justify-content: space-between;
@@ -473,7 +477,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
     }
 
     .solution-tag {
@@ -485,8 +489,8 @@
       font-weight: 600;
     }
 
-    .solution-tag.automation { background: var(--purple-light); color: var(--purple); }
-    .solution-tag.dashboard { background: var(--green-light); color: var(--green); }
+    .solution-tag.automation { background: rgba(106, 27, 154, 0.08); color: var(--purple); }
+    .solution-tag.dashboard { background: rgba(22, 163, 74, 0.1); color: var(--green); }
     .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
     .solution-tag.integration { background: rgba(245,158,11,0.1); color: #D97706; }
 
@@ -495,7 +499,7 @@
     .solution-problem {
       font-size: 13px;
       font-style: italic;
-      color: var(--gray-dark);
+      color: #6B7280;
       line-height: 1.6;
       padding-left: 16px;
       border-left: 3px solid var(--purple);
@@ -506,7 +510,7 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       font-style: normal;
       font-weight: 600;
       margin-bottom: 4px;
@@ -516,7 +520,7 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--dark);
       font-weight: 700;
       margin-bottom: 8px;
     }
@@ -536,7 +540,7 @@
 
     .solution-spec {
       font-size: 13px;
-      color: var(--gray-dark);
+      color: #6B7280;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -550,7 +554,7 @@
 
     /* ── PREVIEW SECTION ── */
     .preview-box {
-      background: var(--navy-dark);
+      background: #0F172A;
       border-radius: 8px;
       padding: 40px;
       margin-top: 28px;
@@ -558,7 +562,7 @@
     }
 
     .preview-box .preview-label {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 3px;
@@ -568,7 +572,7 @@
     }
 
     .preview-mockup {
-      background: var(--navy-card);
+      background: #1E293B;
       border-radius: 6px;
       padding: 32px;
       min-height: 300px;
@@ -580,11 +584,11 @@
     }
 
     .preview-mockup .mockup-icon { font-size: 48px; opacity: 0.4; }
-    .preview-mockup .mockup-text { font-size: 14px; color: var(--gray-mid); letter-spacing: 1px; }
+    .preview-mockup .mockup-text { font-size: 14px; color: #9CA3AF; letter-spacing: 1px; }
 
     .preview-caption {
       font-size: 12px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       margin-top: 16px;
       font-style: italic;
     }
@@ -599,7 +603,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--gray-light);
+      background: var(--grid-gray);
     }
 
     .timeline-phase {
@@ -631,7 +635,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 4px;
     }
 
@@ -676,14 +680,14 @@
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray-dark);
+      color: #6B7280;
       padding: 12px 16px;
-      border-bottom: 2px solid var(--black);
+      border-bottom: 2px solid var(--dark);
     }
 
     .investment-table td {
       padding: 16px;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
       font-size: 15px;
       color: #444;
     }
@@ -691,32 +695,32 @@
     .investment-table td:last-child {
       text-align: right;
       font-weight: 600;
-      color: var(--black);
+      color: var(--dark);
     }
 
     .investment-table tr.total td {
-      border-top: 2px solid var(--black);
+      border-top: 2px solid var(--dark);
       border-bottom: none;
       font-weight: 700;
       font-size: 18px;
-      color: var(--black);
+      color: var(--dark);
       padding-top: 20px;
     }
 
     .investment-note {
       margin-top: 24px;
       padding: 20px 24px;
-      background: var(--purple-light);
+      background: rgba(106, 27, 154, 0.08);
       border-left: 3px solid var(--purple);
       border-radius: 0 4px 4px 0;
     }
 
     .investment-note p { font-size: 13px; color: #555; line-height: 1.6; }
-    .investment-note strong { color: var(--black); }
+    .investment-note strong { color: var(--dark); }
 
     /* ── MAINTENANCE ── */
     .maintenance-card {
-      background: var(--gray-light);
+      background: var(--grid-gray);
       padding: 32px;
       border-radius: 4px;
       margin-top: 24px;
@@ -729,11 +733,11 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 4px;
     }
 
-    .maintenance-card .maint-info p { font-size: 13px; color: var(--gray-dark); }
+    .maintenance-card .maint-info p { font-size: 13px; color: #6B7280; }
     .maintenance-card .maint-price { text-align: right; }
 
     .maintenance-card .maint-price .amount {
@@ -745,7 +749,7 @@
 
     .maintenance-card .maint-price .period {
       font-size: 12px;
-      color: var(--gray-dark);
+      color: #6B7280;
       letter-spacing: 1px;
     }
 
@@ -758,7 +762,7 @@
     }
 
     .condition-box {
-      background: var(--gray-light);
+      background: var(--grid-gray);
       border: 1px solid #e2e8f0;
       border-radius: 4px;
       padding: 24px;
@@ -769,7 +773,7 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--navy);
+      color: var(--dark);
       margin-bottom: 12px;
     }
 
@@ -801,29 +805,29 @@
       gap: 16px;
       align-items: flex-start;
       padding: 20px;
-      background: var(--gray-light);
+      background: var(--grid-gray);
       border-radius: 4px;
     }
 
     .included-item .incl-icon { font-size: 24px; flex-shrink: 0; }
 
     .included-item h4 {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-weight: 600;
       font-size: 14px;
-      color: var(--black);
+      color: var(--dark);
       margin-bottom: 4px;
     }
 
-    .included-item p { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
+    .included-item p { font-size: 13px; color: #6B7280; line-height: 1.5; }
 
     /* ── NDA BOX ── */
     .nda-box {
       display: flex;
       align-items: flex-start;
       gap: 20px;
-      border: 1.5px solid var(--navy);
-      background: var(--gray-light);
+      border: 1.5px solid var(--dark);
+      background: var(--grid-gray);
       border-radius: 4px;
       padding: 28px;
       margin-top: 28px;
@@ -832,10 +836,10 @@
     .nda-box .nda-icon { font-size: 28px; flex-shrink: 0; }
 
     .nda-box h4 {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-weight: 700;
       font-size: 14px;
-      color: var(--navy);
+      color: var(--dark);
       margin-bottom: 8px;
     }
 
@@ -854,26 +858,26 @@
       align-items: baseline;
       gap: 12px;
       padding: 10px 0;
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--grid-gray);
     }
 
     .glosario-item .g-sigla {
       font-size: 12px;
       font-weight: 800;
-      color: var(--navy);
+      color: var(--dark);
       min-width: 48px;
       letter-spacing: 0.5px;
     }
 
     .glosario-item .g-def {
       font-size: 12.5px;
-      color: var(--gray-dark);
+      color: #6B7280;
       line-height: 1.5;
     }
 
     /* ── CTA WITH STEPS ── */
     .cta-section {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      background: linear-gradient(135deg, #0F172A 0%, var(--dark) 100%);
       padding: 56px 60px;
       text-align: center;
     }
@@ -897,7 +901,7 @@
 
     .cta-section .cta-subtitle {
       font-size: 14px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       margin-bottom: 40px;
       max-width: 520px;
       margin-left: auto;
@@ -934,7 +938,7 @@
 
     .cta-step-text {
       font-size: 12px;
-      color: var(--gray-mid);
+      color: #9CA3AF;
       line-height: 1.4;
       text-align: center;
     }
@@ -950,7 +954,7 @@
     .btn {
       display: inline-block;
       padding: 16px 48px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Glock Grotesque', sans-serif;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 1px;
@@ -967,7 +971,7 @@
     .btn-decline {
       background: transparent;
       border: 1px solid rgba(255,255,255,0.15);
-      color: var(--gray-mid);
+      color: #9CA3AF;
     }
 
     .btn-decline:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
@@ -985,12 +989,12 @@
       color: var(--green);
     }
 
-    .accept-confirmation .confirm-sub { font-size: 14px; color: var(--gray-mid); margin-top: 8px; }
-    .decline-confirmation .confirm-text { color: var(--gray-mid); }
+    .accept-confirmation .confirm-sub { font-size: 14px; color: #9CA3AF; margin-top: 8px; }
+    .decline-confirmation .confirm-text { color: #9CA3AF; }
 
     /* ── FOOTER ── */
     .proposal-footer {
-      background: var(--navy-dark);
+      background: #0F172A;
       padding: 36px 60px;
       display: flex;
       align-items: center;
