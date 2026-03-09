@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastUpdated": "2026-03-07T05:43:05.319Z",
+  "lastUpdated": "2026-03-08T00:00:00.000Z",
   "stages": [
     {
       "id": "lead",
@@ -136,7 +136,7 @@
       "id": "eqr-roses",
       "name": "EQR Roses",
       "repos": [
-        "ebojanini10/skyflowers-platform"
+        "ebojanini10/eqr-roses-sistema"
       ],
       "stage": "discovery",
       "tasks": [
@@ -413,6 +413,105 @@
       ],
       "notes": "Agency brand, proposals, playbook, team",
       "createdAt": "2026-03-03T16:12:56Z"
+    },
+    {
+      "id": "flashy",
+      "name": "Flashy",
+      "repos": [
+        "ebojanini10/flashy-sistema"
+      ],
+      "stage": "lead",
+      "tasks": [
+        {
+          "id": "t-fl-1",
+          "text": "Discovery Call — mañana 2026-03-09",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-fl-2",
+          "text": "Propuesta: automatizar monitoreo de referentes (producto + contenido)",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-fl-3",
+          "text": "Confirmar % ventas físicas vs digitales",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "Moda femenina DTC. Shopify + Siigo + Klaviyo. Ticket $120k. Ciclos producción 22 días. Pain: revisión manual de referentes. Web: flashy.com.co | IG: @flashy.co",
+      "createdAt": "2026-03-08T00:00:00Z"
+    },
+    {
+      "id": "origami",
+      "name": "Origami",
+      "repos": [
+        "ebojanini10/origami-sistema"
+      ],
+      "stage": "lead",
+      "tasks": [
+        {
+          "id": "t-or-1",
+          "text": "Discovery Call — mañana 2026-03-09",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-or-2",
+          "text": "Propuesta: despiece automático de planos PDF → cantidades de material",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-or-3",
+          "text": "Explorar alianza Origami + Globanz (financiamiento acero)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "Estructuras metálicas. 2 líneas: B2B (bodegas/ARA) + B2C acabados (firmas arq). Pain: despiece manual de planos. Inventario acero importado desde China financiado por Globanz. Anticipos 30%.",
+      "createdAt": "2026-03-08T00:00:00Z"
+    },
+    {
+      "id": "alamo-sas",
+      "name": "Álamo SAS",
+      "repos": [
+        "ebojanini10/alamo-sistema"
+      ],
+      "stage": "lead",
+      "tasks": [
+        {
+          "id": "t-al-1",
+          "text": "Discovery Call — mañana 2026-03-09",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-al-2",
+          "text": "Propuesta: agente WhatsApp customer journey crédito hipotecario VIS",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-al-3",
+          "text": "Mapear subsidios disponibles: cajas de compensación + bancos aliados",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "Estructuración proyectos edificios VIS. Agente WA que acompaña compradores en gestión crédito hipotecario: subsidios, documentos, paso a paso. Oportunidad: digitalizar todo el customer journey.",
+      "createdAt": "2026-03-08T00:00:00Z"
     }
   ],
   "actionItems": [
