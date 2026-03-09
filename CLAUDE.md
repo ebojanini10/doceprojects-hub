@@ -53,16 +53,23 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 
 ## Proyectos activos (ver projects.json para detalle)
 
-| Cliente | Stage | Repo |
-|---------|-------|------|
-| Sky Flowers | Mantenimiento | `ebojanini10/skyflowers-platform` |
-| Loretta Puro Antojo | Implementación | `ebojanini10/loretta-cliente-bogota` |
-| Obras y Montajes | Implementación | `ebojanini10/obras-montajes-sistema` |
-| EQR Roses | Discovery | `ebojanini10/skyflowers-platform` |
+| Cliente | Stage | Repo(s) |
+|---------|-------|---------|
+| Sky Flowers | Implementación | `ebojanini10/skyflowers-platform`, `skyflowers-poscosecha-planner` |
+| Loretta Puro Antojo | Discovery | `ebojanini10/loretta-cliente-bogota` |
+| Obras y Montajes | Propuesta | `ebojanini10/obras-montajes-sistema` |
+| EQR Roses | Discovery | `ebojanini10/eqr-roses-sistema`, `eqr-roses-client` |
 | Construhigiénicas | Propuesta | `mclara-martinez/construhigienicas` |
-| Casa Ardente | Discovery | `ebojanini10/casa-ardente-sistema` |
+| Casa Ardente | Discovery | `ebojanini10/casa-ardente-sistema`, `casa-ardente-propuesta` |
 | Paulina Arquitectura | Implementación | `ebojanini10/arquitectura-bot` |
 | Hortensia Vision | Implementación | `ebojanini10/skyflowers-hortensia-vision` |
+| Álamo SAS | Discovery | `ebojanini10/alamo-sistema` |
+| Origami | Discovery | `ebojanini10/origami-sistema` |
+| Flashy | Discovery | `ebojanini10/flashy-sistema` |
+| Terramística / This Is | Implementación | `ebojanini10/terramistica-metaads`, `this-is-entregables` |
+| Actaia (ReunIA) | Implementación | `ebojanini10/actaia` |
+| Mattilda | Propuesta | `ebojanini10/mattilda-sistema` |
+| Glow Institute | Discovery | `ebojanini10/estetica-santiago-manuela` |
 
 ---
 
