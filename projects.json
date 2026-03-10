@@ -199,9 +199,65 @@
           "done": false,
           "priority": "MEDIUM",
           "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-4",
+          "text": "[Mac Mini] git pull skyflowers-platform + actaia para aplicar webhook_interno endpoints",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-5",
+          "text": "[Mac Mini] Crear LaunchAgents para: SST (5010), ActaIA (5011), Monitor (5012), Reconciliador (5013), Admin (5014), Extractor Facturas (5015), Cotizador (5016), Agente Ordenes (5017)",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-6",
+          "text": "[Mac Mini] Reiniciar bot_skyflowers.py (5000) para activar nuevo router con media support",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-7",
+          "text": "[Mac Mini] Poblar directorio.json con numeros reales: empleados (SST/poscosecha), clientes (Komet API), compradores HYD",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-8",
+          "text": "[Mac Mini] Probar con curl cada /webhook_interno: SST, ActaIA, Monitor, Reconciliador, Admin, Extractor, Cotizador, Ordenes",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-9",
+          "text": "[Mac Mini] Probar flujo end-to-end: enviar WhatsApp real → router → agente → respuesta",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-10",
+          "text": "[Mac Mini] Completar pipeline media en extractor_facturas (descargar imagen via media_id → Vision AI)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-sf-11",
+          "text": "[Mac Mini] Completar pipeline audio en ActaIA (descargar audio via media_id → Whisper → PDF)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Clara"
         }
       ],
-      "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona",
+      "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona. 12 agentes IA, 4 activos, 8 pendientes activación en Mac Mini.",
       "createdAt": "2026-03-05T03:38:07Z",
       "industry": "agro",
       "solution": "multi-agent"
