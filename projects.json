@@ -1,6 +1,62 @@
 {
   "version": 2,
   "lastUpdated": "2026-03-09T12:00:00.000Z",
+  "solutions": [
+    {
+      "slug": "whatsapp-bot",
+      "name": "Bot WhatsApp",
+      "icon": "🤖",
+      "desc": "Agente conversacional en WhatsApp Business API"
+    },
+    {
+      "slug": "multi-agent",
+      "name": "Multi-Agente",
+      "icon": "🧠",
+      "desc": "Sistema con múltiples agentes AI coordinados"
+    },
+    {
+      "slug": "computer-vision",
+      "name": "Computer Vision",
+      "icon": "👁️",
+      "desc": "Reconocimiento de imágenes y visión artificial"
+    },
+    {
+      "slug": "meta-ads",
+      "name": "Meta Ads & Contenido",
+      "icon": "📱",
+      "desc": "Pauta digital, contenido y marketing en Meta"
+    },
+    {
+      "slug": "data-cleaning",
+      "name": "Limpieza de Datos",
+      "icon": "🧹",
+      "desc": "Limpieza, normalización y auditoría de bases de datos"
+    },
+    {
+      "slug": "document-ai",
+      "name": "Document AI",
+      "icon": "📄",
+      "desc": "Procesamiento inteligente de documentos, transcripción y generación"
+    },
+    {
+      "slug": "ai-monitoring",
+      "name": "Monitoreo IA",
+      "icon": "🔍",
+      "desc": "Monitoreo automatizado de competencia, referentes o mercado"
+    },
+    {
+      "slug": "dashboard",
+      "name": "Dashboard & Analytics",
+      "icon": "📊",
+      "desc": "Paneles de control, reportes y visualización de datos"
+    },
+    {
+      "slug": "automation",
+      "name": "Automatización",
+      "icon": "⚡",
+      "desc": "Automatización de procesos y flujos de trabajo"
+    }
+  ],
   "industries": [
     {
       "slug": "agro",
@@ -147,7 +203,8 @@
       ],
       "notes": "Monorepo unificado: bot + cobrador + logística + dashboard + hortensia-vision + migration + ai-persona",
       "createdAt": "2026-03-05T03:38:07Z",
-      "industry": "agro"
+      "industry": "agro",
+      "solution": "multi-agent"
     },
     {
       "id": "loretta",
@@ -174,7 +231,8 @@
       ],
       "notes": "Bot WhatsApp + catering + repostería. Cliente: Laura Pradilla, Bogotá",
       "createdAt": "2026-02-24T03:40:22Z",
-      "industry": "gastronomia"
+      "industry": "gastronomia",
+      "solution": "whatsapp-bot"
     },
     {
       "id": "obras-y-montajes",
@@ -208,7 +266,8 @@
       ],
       "notes": "~140 contenedores, 95% ocupación. Cobros + cotizaciones + prospección obras",
       "createdAt": "2026-03-01T21:09:44Z",
-      "industry": "inmobiliaria"
+      "industry": "inmobiliaria",
+      "solution": "whatsapp-bot"
     },
     {
       "id": "eqr-roses",
@@ -248,7 +307,8 @@
       ],
       "notes": "Finca de flores. Bot disponible WhatsApp. Puerto 5009",
       "createdAt": "2026-03-05T03:38:07Z",
-      "industry": "agro"
+      "industry": "agro",
+      "solution": "whatsapp-bot"
     },
     {
       "id": "casa-ardente",
@@ -288,7 +348,8 @@
       ],
       "notes": "3 marcas restaurantes Medellín. Apertura Cartagena abril 2026",
       "createdAt": "2026-03-04T00:00:00Z",
-      "industry": "gastronomia"
+      "industry": "gastronomia",
+      "solution": "whatsapp-bot"
     },
     {
       "id": "paulina-arquitectura",
@@ -322,7 +383,8 @@
       ],
       "notes": "Sistema multi-agente: radicados licencias + presupuesto + cotizaciones. Puerto 5005",
       "createdAt": "2026-03-01T06:07:07Z",
-      "industry": "construccion"
+      "industry": "construccion",
+      "solution": "multi-agent"
     },
     {
       "id": "hortensia-vision",
@@ -356,7 +418,8 @@
       ],
       "notes": "Reconocimiento flores por imagen. YOLO8 + WhatsApp. Puerto 5400",
       "createdAt": "2026-02-24T21:25:09Z",
-      "industry": "agro"
+      "industry": "agro",
+      "solution": "computer-vision"
     },
     {
       "id": "construhigienicas",
@@ -395,7 +458,8 @@
       ],
       "notes": "Diseño+construcción plantas higiénicas (alimentos/farma). 73 empleados, ~200 con contratistas. Discovery 2025-05-03. Contactos: Laura (Gerente), Juan Fernando (Comercial), Octavio (Producción). ERP Cinco $12M/mes. Ahorro estimado $400M+ COP/año.",
       "createdAt": "2026-03-07T22:00:00Z",
-      "industry": "construccion"
+      "industry": "construccion",
+      "solution": "automation"
     },
     {
       "id": "terramistica",
@@ -416,7 +480,8 @@
       ],
       "notes": "Marca This Is — alimentos artesanales (mermeladas, esparcibles). Multi-agente: contenido, pauta, SEO, WhatsApp, analytics, comunidad, tendencias, ingredientes. Contactos: Catalina, Lucas, Manuela, Irina.",
       "createdAt": "2026-03-08T18:37:56Z",
-      "industry": "marcas-personales"
+      "industry": "marcas-personales",
+      "solution": "multi-agent"
     },
     {
       "id": "actaia",
@@ -436,7 +501,8 @@
       ],
       "notes": "Producto: transcripción automática de reuniones y generación de actas PDF por WhatsApp. Landing + privacy policy listos.",
       "createdAt": "2026-03-06T07:18:51Z",
-      "industry": "servicios"
+      "industry": "servicios",
+      "solution": "document-ai"
     },
     {
       "id": "mattilda",
@@ -456,7 +522,8 @@
       ],
       "notes": "Fintech/edtech — Colombia, Ecuador, México. Conecta colegios con gestión financiera/educativa. 3 herramientas: limpieza BD + leads inbound + auditoría visitas campo. mattilda.io",
       "createdAt": "2026-03-02T20:48:50Z",
-      "industry": "finanzas"
+      "industry": "finanzas",
+      "solution": "data-cleaning"
     },
     {
       "id": "glow-institute",
@@ -476,7 +543,8 @@
       ],
       "notes": "Medicina estética y cirugía plástica, Medellín. Fundadores: Dr. Santiago (31) + Dra. Manuela. Integración agentes IA con procesos médicos.",
       "createdAt": "2026-02-24T21:25:14Z",
-      "industry": "salud"
+      "industry": "salud",
+      "solution": null
     },
     {
       "id": "distrihogar",
@@ -492,7 +560,8 @@
       },
       "tasks": [],
       "notes": "Propuesta creada por Emiliano.",
-      "createdAt": "2026-03-09T00:00:00Z"
+      "createdAt": "2026-03-09T00:00:00Z",
+      "solution": null
     },
     {
       "id": "doceprojects",
@@ -610,7 +679,8 @@
       ],
       "notes": "Agency brand, proposals, playbook, team",
       "createdAt": "2026-03-03T16:12:56Z",
-      "industry": "interno"
+      "industry": "interno",
+      "solution": null
     },
     {
       "id": "flashy",
@@ -644,7 +714,8 @@
       ],
       "notes": "Moda femenina DTC. Shopify + Siigo + Klaviyo. Ticket $120k. Ciclos producción 22 días. Pain: revisión manual de referentes. Web: flashy.com.co | IG: @flashy.co",
       "createdAt": "2026-03-08T00:00:00Z",
-      "industry": "moda"
+      "industry": "moda",
+      "solution": "ai-monitoring"
     },
     {
       "id": "origami",
@@ -678,7 +749,8 @@
       ],
       "notes": "Estructuras metálicas. 2 líneas: B2B (bodegas/ARA) + B2C acabados (firmas arq). Pain: despiece manual de planos. Inventario acero importado desde China financiado por Globanz. Anticipos 30%.",
       "createdAt": "2026-03-08T00:00:00Z",
-      "industry": "construccion"
+      "industry": "construccion",
+      "solution": "document-ai"
     },
     {
       "id": "alamo-sas",
@@ -712,7 +784,8 @@
       ],
       "notes": "Estructuración proyectos edificios VIS. Agente WA que acompaña compradores en gestión crédito hipotecario: subsidios, documentos, paso a paso. Oportunidad: digitalizar todo el customer journey.",
       "createdAt": "2026-03-08T00:00:00Z",
-      "industry": "inmobiliaria"
+      "industry": "inmobiliaria",
+      "solution": "whatsapp-bot"
     }
   ],
   "actionItems": [

@@ -214,6 +214,16 @@
     .industry-btn:hover { color: var(--white); border-color: rgba(255, 255, 255, 0.2); }
     .industry-btn.active { background: rgba(106, 27, 154, 0.2); border-color: var(--purple); color: var(--white); }
 
+    /* ── CARD BADGES ROW ── */
+    .card-badges {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 1px;
+    }
+    .card-badges:empty { display: none; }
+
     /* ── INDUSTRY BADGE ON CARD ── */
     .card-industry {
       display: inline-flex;
@@ -228,13 +238,67 @@
       border: 1px solid rgba(255, 255, 255, 0.06);
       padding: 1px 5px;
       border-radius: 8px;
-      margin-bottom: 3px;
       max-width: 100%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
     .card-industry .ind-name { display: none; }
+
+    /* ── SOLUTION TAG ON CARD ── */
+    .card-solution-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #c084fc;
+      background: rgba(106, 27, 154, 0.12);
+      border: 1px solid rgba(106, 27, 154, 0.25);
+      padding: 1px 5px;
+      border-radius: 8px;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .card-solution-tag .sol-icon { font-size: 10px; line-height: 1; }
+    .card-solution-tag .sol-name { display: none; }
+    .card.expanded .card-solution-tag .sol-name { display: inline; }
+
+    .card-solution-select-wrap {
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+    .card-solution-select-wrap label {
+      font-size: 9px;
+      font-weight: 600;
+      color: #9CA3AF;
+      margin-right: 4px;
+    }
+    .card-solution-select {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 9px;
+      background: rgba(106, 27, 154, 0.08);
+      border: 1px solid rgba(106, 27, 154, 0.2);
+      color: #c084fc;
+      border-radius: 4px;
+      padding: 2px 4px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.15s ease-out;
+      max-width: 100%;
+    }
+    .card-solution-select:hover, .card-solution-select:focus {
+      border-color: var(--purple);
+      color: #d8b4fe;
+    }
+    .card-solution-select option {
+      background: #1E293B;
+      color: #e2e8f0;
+    }
 
     /* ── PIPELINE BOARD ── */
     .pipeline {
@@ -1874,6 +1938,26 @@
         if (ind) industryBadge = `<div class="card-industry">${ind.icon}<span class="ind-name"> ${ind.name}</span></div>`;
       }
 
+      // Solution tag (compact) + dropdown (expanded)
+      const solutions = AppState.data.solutions || [];
+      let solutionBadge = '';
+      if (project.solution) {
+        const sol = solutions.find(s => s.slug === project.solution);
+        if (sol) solutionBadge = `<div class="card-solution-tag"><span class="sol-icon">${sol.icon}</span><span class="sol-name">${sol.name}</span></div>`;
+      }
+
+      const solutionOptions = solutions.map(s =>
+        `<option value="${s.slug}" ${s.slug === project.solution ? 'selected' : ''}>${s.icon} ${s.name}</option>`
+      ).join('');
+      const solutionDropdown = `
+        <div class="card-solution-select-wrap">
+          <label>Solución:</label>
+          <select class="card-solution-select" onchange="event.stopPropagation(); changeSolution('${project.id}', this.value)">
+            <option value="">— Sin definir —</option>
+            ${solutionOptions}
+          </select>
+        </div>`;
+
       const notesHtml = project.notes ? `<div class="card-notes">${project.notes}</div>` : '';
 
       let proposalHtml = '';
@@ -1944,7 +2028,7 @@
           ondragstart="onDragStart(event, '${project.id}')"
           ondragend="onDragEnd(event)"
           onclick="toggleCardExpand(this, event)">
-          ${industryBadge}
+          <div class="card-badges">${industryBadge}${solutionBadge}</div>
           <div class="card-top">
             <span class="card-name">${project.name}</span>
             <div class="card-repo-links">${repoLinks}</div>
@@ -1954,6 +2038,7 @@
             <span class="card-date">${formatDate(project.createdAt)}</span>
           </div>
           <div class="card-details">
+            ${solutionDropdown}
             ${notesHtml}
             ${proposalHtml}
             ${tasksHtml}
@@ -2075,6 +2160,13 @@
       const project = AppState.data.projects.find(p => p.id === projectId);
       if (!project || project.stage === newStage) return;
       project.stage = newStage;
+      AppState.update();
+    }
+
+    function changeSolution(projectId, solutionSlug) {
+      const project = AppState.data.projects.find(p => p.id === projectId);
+      if (!project) return;
+      project.solution = solutionSlug || null;
       AppState.update();
     }
 
