@@ -1,0 +1,32 @@
+
+==================================================
+  Updater algo-grande — 2026-03-06 06:16
+==================================================
+  10 empresas en base de datos actual
+Traceback (most recent call last):
+  File "C:\Users\Eboja\algo-grande\updater\updater.py", line 239, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Eboja\algo-grande\updater\updater.py", line 214, in main
+    print("  \U0001f50d Buscando noticias...")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eboja\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50d' in position 2: character maps to <undefined>
+
+==================================================
+  Updater algo-grande — 2026-03-08 17:01
+==================================================
+  10 empresas en base de datos actual
+Traceback (most recent call last):
+  File "C:\Users\Eboja\algo-grande\updater\updater.py", line 239, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Eboja\algo-grande\updater\updater.py", line 214, in main
+    print("  \U0001f50d Buscando noticias...")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eboja\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50d' in position 2: character maps to <undefined>
