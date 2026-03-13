@@ -571,6 +571,33 @@
       color: var(--green);
     }
 
+    /* ── CARD PROGRESS BAR ── */
+    .card-progress {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-progress-bar {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .card-progress-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.3s ease-out;
+    }
+    .card-progress-label {
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+      min-width: 28px;
+      text-align: right;
+    }
+
     .tasks-chevron {
       transition: transform 0.2s ease-out;
       font-size: 9px;
@@ -1888,9 +1915,10 @@
 
       data.stages.forEach(stage => {
         const allStage = data.projects.filter(p => p.stage === stage.id);
-        const stageProjects = activeFilter === 'ALL'
+        const stageProjects = (activeFilter === 'ALL'
           ? allStage
-          : allStage.filter(p => p.industry === activeFilter);
+          : allStage.filter(p => p.industry === activeFilter))
+          .sort((a, b) => calcPct(b) - calcPct(a));
         const cardsHtml = stageProjects.length > 0
           ? stageProjects.map(p => renderCard(p, data.industries)).join('')
           : '<div class="column-empty">No hay proyectos</div>';
@@ -1922,10 +1950,20 @@
       renderPipeline(AppState.data);
     }
 
+    function calcPct(project) {
+      const tasks = project.tasks || [];
+      if (tasks.length === 0) return -1;
+      const done = tasks.filter(t => t.done).length;
+      return Math.round((done / tasks.length) * 100);
+    }
+
     function renderCard(project, industries) {
       const tasks = project.tasks || [];
       const pendingCount = tasks.filter(t => !t.done).length;
       const totalCount = tasks.length;
+      const completedCount = totalCount - pendingCount;
+      const pct = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+      const progressColor = pct >= 75 ? 'var(--green)' : pct >= 40 ? 'var(--orange)' : '#9CA3AF';
 
       const repoLinks = project.repos.map(repo => {
         const name = repo.split('/').pop();
@@ -2037,6 +2075,14 @@
             ${pendingBadge}${propIcon}${reposBadge}
             <span class="card-date">${formatDate(project.createdAt)}</span>
           </div>
+          ${totalCount > 0 ? `
+          <div class="card-progress">
+            <div class="card-progress-bar">
+              <div class="card-progress-fill" style="width:${pct}%;background:${progressColor}"></div>
+            </div>
+            <span class="card-progress-label" style="color:${progressColor}">${pct}%</span>
+          </div>
+          ` : ''}
           <div class="card-details">
             ${solutionDropdown}
             ${notesHtml}
