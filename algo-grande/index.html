@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algo Grande Está Pasando</title>
+  <meta name="description" content="El AI está cambiando el mundo ahora mismo. Lo que nadie te está diciendo — y qué hacer al respecto." />
+  <meta property="og:title" content="Algo Grande Está Pasando" />
+  <meta property="og:description" content="El AI está cambiando el mundo ahora mismo. Lo que nadie te está diciendo — y qué hacer al respecto." />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0d0d0d;
+      --paper:     #f5f0e8;
+      --cream:     #ede8dc;
+      --red:       #c0392b;
+      --red-dim:   #8b2920;
+      --gray:      #6b6560;
+      --light:     #a09890;
+      --wa-green:  #25D366;
+      --wa-dark:   #128C7E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      z-index: 100;
+    }
+
+    .site-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .date-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--light);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .kicker {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .kicker::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .hero-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.6;
+      border-left: 3px solid var(--red);
+      padding-left: 1.2rem;
+    }
+
+    .hero-divider {
+      margin: 3rem 0 0;
+      border: none;
+      border-top: 1px solid var(--cream);
+    }
+
+    /* ── LAYOUT ── */
+    .content-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── INTRO BLOCK ── */
+    .intro-block {
+      padding: 4rem 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      border-bottom: 1px solid var(--cream);
+    }
+
+    .intro-block p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    .intro-block p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .pull-quote {
+      border-left: 4px solid var(--red);
+      padding: 1.2rem 1.5rem;
+      background: var(--cream);
+    }
+
+    .pull-quote p {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: var(--ink) !important;
+      font-weight: 400;
+    }
+
+    .pull-quote span {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--cream);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    h2 em { font-style: italic; color: var(--red); }
+
+    p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #2a2520;
+      margin-bottom: 1.2rem;
+    }
+
+    p strong { font-weight: 500; color: var(--ink); }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid var(--cream);
+      align-items: baseline;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .tl-item.visible { opacity: 1; transform: translateY(0); }
+
+    .tl-year {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .tl-text {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .tl-text strong { color: var(--ink); font-weight: 500; }
+
+    /* ── STAT CARDS ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--cream);
+      border: 1px solid var(--cream);
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: var(--paper);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: var(--red);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ── WARNING QUOTE ── */
+    .warning-block {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 2.5rem 2.5rem;
+      margin: 2.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .warning-block::before {
+      content: '"';
+      position: absolute;
+      top: -1.5rem;
+      left: 1.5rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 12rem;
+      color: var(--red);
+      opacity: 0.15;
+      line-height: 1;
+    }
+
+    .warning-block p {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      line-height: 1.4;
+      color: var(--paper);
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .warning-block cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-style: normal;
+    }
+
+    /* ── JOBS AT RISK ── */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--cream);
+      border: 1px solid var(--cream);
+      margin: 2rem 0;
+    }
+
+    .job-item {
+      background: var(--paper);
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .job-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ── ACTION LIST ── */
+    .actions {
+      counter-reset: action-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 2rem 0;
+    }
+
+    .action-item {
+      counter-increment: action-counter;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1.5rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--cream);
+      align-items: start;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .action-item.visible { opacity: 1; transform: translateX(0); }
+
+    .action-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--cream);
+      line-height: 1;
+      text-align: right;
+      -webkit-text-stroke: 1.5px var(--red);
+    }
+
+    .action-body h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .action-body p {
+      font-size: 0.92rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    /* ── JUBILADOS BLOCK ── */
+    .jubilados-wrap {
+      padding: 4rem 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .jubilados-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .jubilados-tag::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--light);
+    }
+
+    .jubilados-box {
+      background: var(--cream);
+      border-left: 4px solid var(--red);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .jubilados-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .jubilados-box p {
+      font-size: 1rem;
+    }
+
+    .risk-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+
+    .risk-table th {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .risk-table td {
+      padding: 0.85rem 0.8rem;
+      border-bottom: 1px solid var(--cream);
+      vertical-align: top;
+      font-weight: 300;
+      color: #2a2520;
+    }
+
+    .risk-table tr:last-child td { border-bottom: none; }
+
+    .risk-table .sector { font-weight: 500; color: var(--ink); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .badge-high { background: #fce4e4; color: var(--red); }
+    .badge-med  { background: #fdf3dc; color: #9a6a00; }
+    .badge-low  { background: #e4f4e8; color: #2d6a3f; }
+
+    .jubilados-tips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--cream);
+      border: 1px solid var(--cream);
+      margin-top: 1.5rem;
+    }
+
+    .jub-tip {
+      background: var(--paper);
+      padding: 1.5rem;
+    }
+
+    .jub-tip-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .jub-tip h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .jub-tip p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    @media (max-width: 680px) {
+      .jubilados-tips { grid-template-columns: 1fr; }
+      .jubilados-box { padding: 1.5rem; }
+      .risk-table { font-size: 0.82rem; }
+      .risk-table td, .risk-table th { padding: 0.6rem 0.4rem; }
+    }
+
+    /* ── MANUELA BLOCK ── */
+    .manuela-wrap {
+      padding: 4rem 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .manuela-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .manuela-tag::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--light);
+    }
+
+    .manuela-box {
+      background: var(--cream);
+      border-left: 4px solid var(--ink);
+      padding: 2.5rem;
+    }
+
+    .manuela-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .manuela-box p {
+      font-size: 1rem;
+    }
+
+    /* ── CTA / WHATSAPP ── */
+    .cta-section {
+      background: var(--ink);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-kicker {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--wa-green);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--paper);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section h2 em {
+      color: var(--wa-green);
+    }
+
+    .cta-section p {
+      color: #8a8580;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      background: var(--wa-green);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 1rem 2.2rem;
+      border-radius: 0;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wa-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.12);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .wa-btn:hover { background: var(--wa-dark); transform: translateY(-2px); }
+    .wa-btn:hover::after { opacity: 1; }
+    .wa-btn:active { transform: translateY(0); }
+
+    .wa-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .cta-note {
+      margin-top: 1.5rem;
+      font-size: 0.78rem !important;
+      color: #555050 !important;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid #1e1e1e;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: #444;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      header { padding: 1rem; }
+      .hero { padding: 3rem 1.5rem 2rem; }
+      .content-wrap { padding: 0 1.5rem; }
+
+      .intro-block {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .stat-row { grid-template-columns: 1fr; }
+
+      .tl-item { grid-template-columns: 70px 1fr; }
+
+      .action-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+      .action-num { font-size: 1.5rem; }
+
+      .manuela-box { padding: 1.5rem; }
+      .cta-section { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <span class="site-label">Nota de Emiliano Bojanini</span>
+    <span class="date-label">Marzo 2026</span>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker">Urgente · Para quienes me importan</div>
+    <h1>Algo grande<br/>está <em>pasando.</em><br/>Y la mayoría<br/>no lo ve.</h1>
+    <p class="hero-sub">
+      El mundo está cambiando ahora mismo. No después. Ahora.<br/>
+      Y si esperas a que sea obvio, ya vas tarde.
+    </p>
+    <p style="margin-top:1.8rem; font-size:0.82rem; font-weight:300; color:var(--light); letter-spacing:0.05em;">
+      ♪ Dale play abajo y lee con la canción correcta de fondo
+    </p>
+
+    <hr class="hero-divider" />
+  </div>
+
+  <!-- INTRO -->
+  <div class="content-wrap">
+    <div class="intro-block fade-in">
+      <div>
+        <p>
+          En enero de 2020 todos sabían que algo pasaba en China. Nadie reaccionó. <strong>Dos meses después el mundo estaba encerrado.</strong>
+        </p>
+        <p>
+          Estamos en ese momento otra vez. No es un virus. Es algo que ya está funcionando, ya está en el mercado laboral, y ya está cambiando quién tiene trabajo y quién no.
+        </p>
+        <p>
+          Yo trabajo con estas herramientas todos los días. Te digo exactamente lo que está pasando.
+        </p>
+      </div>
+      <div class="pull-quote">
+        <p>"Le describo lo que quiero que construya en español normal. Y aparece. No un borrador que arreglar. El producto terminado."</p>
+        <span>— Matt Shumer, fundador AI, febrero 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: CAPACIDADES -->
+  <div class="content-wrap">
+    <section>
+      <h2 class="fade-in">Lo que el AI<br/><em>ya puede hacer</em></h2>
+      <p class="fade-in">
+        El 5 de febrero de 2026 salieron <strong>GPT-5.3 Codex</strong> de OpenAI y <strong>Claude Opus 4.6</strong> de Anthropic. No son una actualización. Son otra categoría.
+      </p>
+      <p class="fade-in">
+        El AI razona. Prueba sus propios resultados. Se corrige solo. Detecta errores. Decide qué cambiar. Hace dos años eso era <strong>exclusivamente humano</strong>.
+      </p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-year">2022</span>
+          <p class="tl-text">Las sumas simples eran poco confiables. Se inventaba datos.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2023</span>
+          <p class="tl-text"><strong>Pasó el examen de abogados</strong> de Estados Unidos. Arriba del 90% de los humanos.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2024</span>
+          <p class="tl-text">Escribía software funcional. Hacía análisis financiero completo.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2026</span>
+          <p class="tl-text"><strong>Opera solo, por horas, en tareas complejas.</strong> Mínima supervisión humana.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SECTION: ACELERACIÓN -->
+  <div class="content-wrap">
+    <section>
+      <h2 class="fade-in">La curva que<br/>nadie está mirando</h2>
+      <p class="fade-in">
+        Un grupo de investigadores independientes lleva años midiendo cuánto puede hacer el AI en tareas del mundo real — como las que hace un médico, un abogado o un ingeniero. Sus números más recientes:
+      </p>
+
+      <div class="stat-row fade-in">
+        <div class="stat-card">
+          <span class="stat-num">5h</span>
+          <span class="stat-label">Tareas que antes tomaban 5 horas a un experto</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">×2</span>
+          <span class="stat-label">Duplica su capacidad cada 4 a 7 meses</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">&lt;3</span>
+          <span class="stat-label">Años para proyectos autónomos de semanas enteras</span>
+        </div>
+      </div>
+
+      <p class="fade-in">
+        OpenAI lo confirmó en documentación técnica: GPT-5.3 Codex <strong>fue parte del equipo que creó su propio sucesor</strong>. El AI ya está escribiendo el código de la próxima versión del AI. Los investigadores llaman a eso <em>intelligence explosion</em>. Ya está ocurriendo.
+      </p>
+
+    </section>
+  </div>
+
+  <!-- INCERTIDUMBRE -->
+  <div class="content-wrap">
+    <section class="fade-in">
+      <h2>Y la verdad es que<br/><em>nadie sabe qué viene.</em></h2>
+      <p>
+        Todo lo que escribí tiene fundamento. Los datos son reales. Las proyecciones son serias.
+      </p>
+      <p>
+        Pero nadie sabe exactamente cómo va a quedar el mundo en 5 años. Qué trabajos van a existir. Qué sectores van a sobrevivir. Cómo va a cambiar la forma en que nos relacionamos, en que construimos cosas, en que nos enamoramos.
+      </p>
+      <p>
+        El AI va a transformar todo eso — eso sí es seguro. Pero cómo exactamente, nadie lo sabe todavía. Ni los que lo construyen. Ni los que lo estudian. Ni yo.
+      </p>
+      <p>
+        Y eso aplica también para lo personal. No sé qué conversaciones van a ocurrir. No sé qué proyectos van a funcionar. No sé qué relaciones van a sobrevivir el ritmo de todo esto o cuáles van a nacer en medio del caos.
+      </p>
+      <p>
+        Lo que sí sé es lo de siempre: <strong>esperar sin moverte no es una estrategia.</strong> En el trabajo no. En los proyectos no. En la vida no.
+      </p>
+    </section>
+  </div>
+
+  <!-- SECTION: EMPLEOS -->
+  <div class="content-wrap">
+    <section>
+      <h2 class="fade-in">Lo que esto<br/>significa para <em>tu trabajo</em></h2>
+
+      <div class="warning-block fade-in">
+        <p>"El AI va a eliminar el 50% de los empleos de nivel inicial en trabajos de oficina en los próximos 1 a 5 años."</p>
+        <cite>— Dario Amodei, CEO de Anthropic</cite>
+      </div>
+
+      <p class="fade-in">
+        No en 20 años. En <strong>1 a 5</strong>. Y los empleos más en riesgo no son los manuales. Son los de oficina — los que siempre parecieron seguros:
+      </p>
+
+      <div class="jobs-grid fade-in">
+        <div class="job-item">Análisis financiero</div>
+        <div class="job-item">Contabilidad</div>
+        <div class="job-item">Trabajo legal</div>
+        <div class="job-item">Redacción y comunicaciones</div>
+        <div class="job-item">Servicio al cliente</div>
+        <div class="job-item">Ingeniería de software</div>
+        <div class="job-item">Análisis médico</div>
+        <div class="job-item">Mercadeo y publicidad</div>
+        <div class="job-item">Recursos humanos</div>
+        <div class="job-item">Investigación y reportes</div>
+        <div class="job-item">Diseño básico</div>
+        <div class="job-item">Soporte técnico</div>
+      </div>
+
+      <!-- TABLA_DESPIDOS_INICIO -->
+      <p class="fade-in">Esto no es proyección. Ya está pasando:</p>
+
+      <div class="fade-in" style="overflow-x:auto; margin:1.2rem 0;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--ink);">
+              <th style="text-align:left; padding:0.5rem 0.6rem; font-size:0.68rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--light);">Empresa</th>
+              <th style="text-align:left; padding:0.5rem 0.6rem; font-size:0.68rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--light);">Industria</th>
+              <th style="text-align:right; padding:0.5rem 0.6rem; font-size:0.68rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--light);">Empleos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Amazon</td>
+              <td style="padding:0.6rem; color:var(--gray);">E-commerce / Nube</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">27.000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Meta</td>
+              <td style="padding:0.6rem; color:var(--gray);">Redes sociales</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">21.000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">BT Group</td>
+              <td style="padding:0.6rem; color:var(--gray);">Telecomunicaciones</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">18.000 ✦</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Google</td>
+              <td style="padding:0.6rem; color:var(--gray);">Tecnología</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">12.000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">UPS</td>
+              <td style="padding:0.6rem; color:var(--gray);">Logística</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">12.000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Microsoft</td>
+              <td style="padding:0.6rem; color:var(--gray);">Tecnología</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">10.000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">IBM</td>
+              <td style="padding:0.6rem; color:var(--gray);">Tecnología</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">7.800 ✦</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Salesforce</td>
+              <td style="padding:0.6rem; color:var(--gray);">Software empresarial</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">7.000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--cream);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Klarna</td>
+              <td style="padding:0.6rem; color:var(--gray);">Fintech</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">700 ✦</td>
+            </tr>
+            <tr style="border-bottom:2px solid var(--ink);">
+              <td style="padding:0.6rem; font-weight:500; color:var(--ink);">Duolingo</td>
+              <td style="padding:0.6rem; color:var(--gray);">Educación</td>
+              <td style="padding:0.6rem; text-align:right; color:var(--gray);">10% planta ✦</td>
+            </tr>
+            <tr style="background:var(--cream);">
+              <td colspan="2" style="padding:0.6rem; font-weight:500; color:var(--ink);">Total documentado</td>
+              <td style="padding:0.6rem; text-align:right; font-weight:500; color:var(--red);">+115.000</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.72rem; color:var(--light); margin-top:0.6rem;">✦ AI citado explícitamente como razón principal · Los demás: reestructuración donde AI fue factor.</p>
+      </div>
+      <!-- TABLA_DESPIDOS_FIN -->
+
+      <p class="fade-in">
+        En cada revolución anterior había una salida: te pasabas a otro campo. <strong>Esta vez no hay campo al que pasarse.</strong> El AI mejora en todos los campos cognitivos al mismo tiempo.
+      </p>
+    </section>
+  </div>
+
+  <!-- SECTION: ACCIONES -->
+  <div class="content-wrap">
+    <section>
+      <h2 class="fade-in">Qué hacer <em>ahora</em></h2>
+      <p class="fade-in">
+        La pregunta no es si va a pasar. Ya está pasando. La pregunta es qué vas a hacer con lo que sabes ahora.
+      </p>
+
+      <div class="actions">
+        <div class="action-item">
+          <span class="action-num">01</span>
+          <div class="action-body">
+            <h3>Usa AI de verdad en tu trabajo — no solo por curiosidad</h3>
+            <p>La diferencia entre "le pregunté algo una vez" y usarlo en tu trabajo todos los días es enorme. Las empresas van a preferir a quien ya sabe cómo usarlo. Eso ya está pasando.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <span class="action-num">02</span>
+          <div class="action-body">
+            <h3>Usa las herramientas de pago, no solo las gratuitas</h3>
+            <p>Los modelos gratuitos son una fracción del real. $20 USD al mes por Claude Pro o ChatGPT Plus cambia la calidad por completo. Para lo que está en juego en tu carrera, es la inversión más obvia que existe.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <span class="action-num">03</span>
+          <div class="action-body">
+            <h3>No aprendas una herramienta. Aprende a adaptarte.</h3>
+            <p>Las herramientas cambian cada 6 meses. Lo que importa es que puedas absorber tecnología nueva rápido. Eso vale más que cualquier título o certificación.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <span class="action-num">04</span>
+          <div class="action-body">
+            <h3>Dedica una hora al día a experimentar</h3>
+            <p>No para hacer un curso. Para usarlo en cosas que ya haces — tu trabajo, tus proyectos, lo que sea. Así se desarrolla el instinto, no estudiando.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <span class="action-num">05</span>
+          <div class="action-body">
+            <h3>Construye ese proyecto que siempre postergaste</h3>
+            <p>Las barreras técnicas para arrancar algo propio casi desaparecieron. Ese negocio, esa app, ese servicio que siempre postergaste — hoy se puede hacer con mucho menos tiempo, plata y conocimiento técnico que antes.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <span class="action-num">06</span>
+          <div class="action-body">
+            <h3>Construye un colchón financiero mientras puedas</h3>
+            <p>Mientras tu empleo sigue estable, ahorra. La incertidumbre va a ser real. Quien tenga espacio económico va a tener más opciones cuando lleguen los cambios.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JUBILADOS -->
+  <div class="content-wrap">
+    <div class="jubilados-wrap fade-in">
+      <div class="jubilados-tag">Para los que ya construyeron su patrimonio</div>
+      <div class="jubilados-box">
+        <h2>Para papás y personas<br/><em>jubiladas con inversiones</em></h2>
+        <p>
+          Si tienes ahorros, propiedades o pensión, esto también te afecta. No de la misma forma. Pero te afecta.
+        </p>
+        <p>
+          No es que tengas que aprender AI. Es entender qué le va a pasar al valor de lo que ya construiste.
+        </p>
+
+        <p><strong>¿Tus inversiones están en sectores vulnerables?</strong></p>
+
+        <table class="risk-table">
+          <thead>
+            <tr>
+              <th>Sector / Activo</th>
+              <th>Impacto esperado</th>
+              <th>Riesgo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sector">Finca raíz de oficinas</td>
+              <td>Menos demanda de espacio físico a medida que el trabajo automatizado reduce nómina y presencia</td>
+              <td><span class="badge badge-high">Alto</span></td>
+            </tr>
+            <tr>
+              <td class="sector">Acciones de BPO / call centers</td>
+              <td>El AI reemplaza el 80–90% de estas funciones. Empresas enteras en riesgo de desaparecer en 3 años</td>
+              <td><span class="badge badge-high">Alto</span></td>
+            </tr>
+            <tr>
+              <td class="sector">Fondos de pensiones tradicionales</td>
+              <td>Dependen de mercados laborales estables. Si el empleo cae masivamente, los aportes caen también</td>
+              <td><span class="badge badge-med">Medio</span></td>
+            </tr>
+            <tr>
+              <td class="sector">Finca raíz residencial</td>
+              <td>Más estable — pero ciudades con economías basadas en empleo de oficina podrían perder valor</td>
+              <td><span class="badge badge-med">Medio</span></td>
+            </tr>
+            <tr>
+              <td class="sector">Empresas de tecnología / AI</td>
+              <td>Las que fabrican o usan AI tienen viento a favor. Alto potencial de crecimiento</td>
+              <td><span class="badge badge-low">Oportunidad</span></td>
+            </tr>
+            <tr>
+              <td class="sector">Sector salud y cuidado</td>
+              <td>El AI va a transformar diagnóstico, pero el cuidado humano directo sigue siendo irreemplazable</td>
+              <td><span class="badge badge-low">Estable</span></td>
+            </tr>
+            <tr>
+              <td class="sector">Dólares y activos en USD</td>
+              <td>Si Estados Unidos lidera la revolución AI, el dólar mantiene fortaleza. Diversificar en USD tiene sentido</td>
+              <td><span class="badge badge-low">Estable</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          No estoy diciendo que muevas todo mañana. Estoy diciendo: <strong>revisa si tu asesor entiende lo que está pasando.</strong> Muchos no lo están procesando todavía.
+        </p>
+
+        <div class="jubilados-tips">
+          <div class="jub-tip">
+            <span class="jub-tip-icon">🔍</span>
+            <h4>Pregúntale a tu asesor</h4>
+            <p>"¿Qué parte de mi portafolio está en sectores que el AI va a desplazar en 3 años?" Si tu asesor no tiene respuesta, hay un problema.</p>
+          </div>
+          <div class="jub-tip">
+            <span class="jub-tip-icon">🌍</span>
+            <h4>Diversifica geografía</h4>
+            <p>Todo en Colombia o en un solo sector es más riesgo del que parece. El AI va a golpear diferente por región y por industria.</p>
+          </div>
+          <div class="jub-tip">
+            <span class="jub-tip-icon">💵</span>
+            <h4>Liquidez sobre todo</h4>
+            <p>Cuando el cambio es rápido, el efectivo disponible vale más que el rendimiento máximo. Flexibilidad primero.</p>
+          </div>
+          <div class="jub-tip">
+            <span class="jub-tip-icon">👨‍👩‍👧</span>
+            <h4>Tus hijos son tu mejor activo</h4>
+            <p>Que los tuyos entiendan y usen el AI es la inversión con mejor retorno que puedes hacer hoy. No hay ninguna otra que se le acerque.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:1.5rem;">
+          No hay que entrar en pánico. Sí hay que estar informado. El AI también va a crear oportunidades grandes — en salud, en productividad, en calidad de vida. <strong>La clave es no quedar del lado equivocado cuando cambie el tablero.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LADO OSCURO -->
+  <div class="content-wrap">
+    <section class="fade-in">
+      <h2>Pero si esto no queda<br/>en <em>buenas manos...</em></h2>
+
+      <p>
+        Hasta ahora hablé de oportunidades. De adaptarse. De moverse. Pero sería deshonesto no decir lo otro.
+      </p>
+
+      <div class="warning-block fade-in">
+        <p>"El AI es potencialmente la amenaza de seguridad nacional más seria que existe hoy. Y al mismo tiempo, la mayor oportunidad que ha tenido la humanidad."</p>
+        <cite>— Dario Amodei, CEO de Anthropic</cite>
+      </div>
+
+      <p>
+        Esas dos cosas son ciertas al mismo tiempo. Y la diferencia entre una y otra es quién controla esto y con qué intención.
+      </p>
+
+      <p>
+        Acá está lo que puede salir muy mal:
+      </p>
+
+      <div class="actions" style="margin-top:1rem;">
+        <div class="action-item visible" style="opacity:1;transform:none;">
+          <span class="action-num" style="-webkit-text-stroke-color:var(--red);">01</span>
+          <div class="action-body">
+            <h3>Concentración de poder sin precedente</h3>
+            <p>Si tres o cuatro empresas — o tres o cuatro países — controlan el AI más avanzado, el resto del mundo queda a su merced. No es exageración. Es la lógica de quien tiene la herramienta más poderosa de la historia.</p>
+          </div>
+        </div>
+        <div class="action-item visible" style="opacity:1;transform:none;">
+          <span class="action-num" style="-webkit-text-stroke-color:var(--red);">02</span>
+          <div class="action-body">
+            <h3>Vigilancia y control a escala masiva</h3>
+            <p>El AI permite monitorear conversaciones, predecir comportamientos y manipular información a una velocidad que ningún gobierno o empresa podía antes. En manos autoritarias, eso es una dictadura con esteroides.</p>
+          </div>
+        </div>
+        <div class="action-item visible" style="opacity:1;transform:none;">
+          <span class="action-num" style="-webkit-text-stroke-color:var(--red);">03</span>
+          <div class="action-body">
+            <h3>Desempleo masivo sin red de protección</h3>
+            <p>Si el 50% de los trabajos de oficina desaparecen en 5 años y los gobiernos no tienen un plan, el resultado no es progreso — es crisis social. Históricamente eso termina mal.</p>
+          </div>
+        </div>
+        <div class="action-item visible" style="opacity:1;transform:none;">
+          <span class="action-num" style="-webkit-text-stroke-color:var(--red);">04</span>
+          <div class="action-body">
+            <h3>Desinformación imposible de detectar</h3>
+            <p>Videos falsos, voces clonadas, noticias generadas en segundos. Ya existe. Va a empeorar. La capacidad de distinguir lo real de lo fabricado va a ser una habilidad crítica — y la mayoría no la tiene.</p>
+          </div>
+        </div>
+        <div class="action-item visible" style="opacity:1;transform:none;">
+          <span class="action-num" style="-webkit-text-stroke-color:var(--red);">05</span>
+          <div class="action-body">
+            <h3>Armas autónomas</h3>
+            <p>Drones que deciden solos a quién atacar. Sistemas militares que operan sin intervención humana. Varios países ya están desarrollando esto. El problema no es ciencia ficción — es un tratado internacional que todavía no existe.</p>
+          </div>
+        </div>
+        <div class="action-item visible" style="opacity:1;transform:none;">
+          <span class="action-num" style="-webkit-text-stroke-color:var(--red);">06</span>
+          <div class="action-body">
+            <h3>Un AI que nadie entiende tomando decisiones</h3>
+            <p>Los modelos más avanzados ya toman decisiones que sus propios creadores no pueden explicar completamente. Si esos sistemas controlan infraestructura crítica — energía, finanzas, salud — un error puede escalar sin que nadie lo detenga a tiempo.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:2rem;">
+        No cuento esto para generar miedo. Lo cuento porque <strong>el escenario bueno y el escenario malo dependen de las mismas decisiones que se están tomando ahora</strong> — en empresas, en gobiernos, en universidades, en startups.
+      </p>
+      <p>
+        Y en parte también dependen de cuánta gente entiende lo que está pasando. Porque el AI en manos de personas informadas, críticas y activas es diferente al AI en manos de personas que no saben que existe.
+      </p>
+      <p>
+        Por eso escribí esto.
+      </p>
+    </section>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="content-wrap">
+    <section class="fade-in" style="border-bottom:none; padding:3rem 0 2rem;">
+      <p style="font-family:'DM Serif Display',serif; font-size:1.5rem; color:var(--ink); line-height:1.4;">
+        Los quiero mucho. Por eso escribí esto.
+      </p>
+    </section>
+  </div>
+
+  <!-- FOTO -->
+  <div style="background:var(--ink); padding:3rem 2rem 0; text-align:center;">
+    <div style="width:260px; height:320px; margin:0 auto; overflow:hidden;">
+      <img
+        src="milo.jpg"
+        alt="Milo"
+        style="width:100%; height:100%; object-fit:cover; object-position:center 20%; transform:scale(1.3); transform-origin:center 20%; filter:grayscale(10%);"
+      />
+    </div>
+  </div>
+
+  <!-- CTA WHATSAPP -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-kicker">¿Quieres empezar?</div>
+      <h2>Escríbeme.<br/>Te ayudo a <em>usarlo.</em></h2>
+      <p>
+        Sin cursos. Sin teoría. Directamente en lo que tú ya haces.<br/>
+        Respondo yo.
+      </p>
+      <a
+        class="wa-btn"
+        href="https://wa.me/573158968278?text=Hola%20Emiliano!%20Vi%20tu%20post%20sobre%20el%20AI%20y%20me%20interesa%20aprender.%20%C2%BFMe%20puedes%20ayudar%3F"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribirme por WhatsApp
+      </a>
+      <p class="cta-note">Sin spam. Sin ventas. Solo si quieres aprender.</p>
+    </div>
+  </div>
+
+  <!-- MANUELA — LO ÚLTIMO -->
+  <div class="content-wrap">
+    <div class="manuela-wrap fade-in">
+      <div class="manuela-tag">Una nota al margen</div>
+      <div class="manuela-box">
+        <h2>Para las que<br/><em>alguna vez fueron</em></h2>
+        <p>
+          Escribí todo esto sobre el AI y sobre lo que viene. Y en algún punto me di cuenta de que el argumento central sirve para todo: <strong>cuando el mundo cambia rápido, lo que dejaste sin decir empieza a pesar.</strong>
+        </p>
+        <p>
+          Si alguna vez fuiste importante para mí — y lo fuiste — esto también va para ti.
+        </p>
+        <p>
+          Siempre estuve dispuesto a trabajar las cosas. A conversar, a revisar lo que fuera necesario. Cometí errores. Los reconozco. En una relación las responsabilidades nunca son de una sola persona.
+        </p>
+        <p>
+          No guardo rencor. Te perdono — no porque tenga que decirlo, sino porque es real.
+        </p>
+        <p>
+          Todo lo de arriba es sobre no esperar a que el cambio te encuentre sin haberte movido. Eso aplica en el trabajo, en los proyectos, en la vida. Y también en lo que quedó sin resolver entre personas.
+        </p>
+        <p>
+          Sigo bien. <strong>Y te deseo lo mismo.</strong>
+        </p>
+        <p style="margin-top:1.5rem; font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--ink);">Milo</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Escrito por Emiliano Bojanini · Marzo 2026 · Basado en <a href="https://shumer.dev/something-big-is-happening" target="_blank">shumer.dev</a></p>
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, entry.target.dataset.delay || 0);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in, .tl-item, .action-item').forEach((el, i) => {
+      el.dataset.delay = (i % 4) * 80;
+      observer.observe(el);
+    });
+  </script>
+
+  <!-- PLAYER FIJO -->
+  <div id="yt-bar" style="position:fixed; bottom:0; left:0; right:0; background:#0d0d0d; border-top:1px solid #222; z-index:9998; display:flex; align-items:center; padding:0.6rem 1.2rem; gap:1rem;">
+    <div style="flex-shrink:0;">
+      <iframe
+        id="yt-iframe"
+        width="1"
+        height="1"
+        src="https://www.youtube-nocookie.com/embed/alvqiUvkopc?enablejsapi=1&controls=0&rel=0"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        style="position:absolute; opacity:0; pointer-events:none;">
+      </iframe>
+      <button onclick="togglePlay()" id="play-btn"
+        style="background:none; border:1px solid #444; color:#f5f0e8; font-size:1rem; width:36px; height:36px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        ▶
+      </button>
+    </div>
+    <div style="flex:1; min-width:0;">
+      <p style="margin:0; font-size:0.78rem; color:#f5f0e8; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">If the World Was Ending</p>
+      <p style="margin:0; font-size:0.68rem; color:#666;">Evaluna Montaner</p>
+    </div>
+    <button onclick="document.getElementById('yt-bar').style.display='none'"
+      style="background:none; border:none; color:#444; font-size:1.1rem; cursor:pointer; flex-shrink:0; padding:0.2rem 0.4rem;">✕</button>
+  </div>
+
+  <script>
+    var playing = false;
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('yt-iframe', {
+        videoId: 'alvqiUvkopc',
+        playerVars: { rel: 0, controls: 0, modestbranding: 1 },
+        events: { onStateChange: onStateChange }
+      });
+    }
+
+    function onStateChange(e) {
+      playing = e.data === 1;
+      document.getElementById('play-btn').textContent = playing ? '⏸' : '▶';
+    }
+
+    function togglePlay() {
+      if (!player) return;
+      playing ? player.pauseVideo() : player.playVideo();
+    }
+
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+  </script>
+
+</body>
+</html>
