@@ -81,10 +81,10 @@ fi
 echo "Encrypted: $CLIENT/index.html"
 
 # --- Git commit & push ---
-git add "$CLIENT/index.html" .staticrypt.json
+git add "$CLIENT/index.html" && git add -f .staticrypt.json 2>/dev/null || true
 git commit -m "deploy: ${CLIENT} proposal (encrypted)"
 git push origin main
 
 echo ""
-echo "Deployed: https://prop.doceprojects.com/${CLIENT}/"
+echo "Deployed: https://props.doceprojects.com/${CLIENT}/"
 echo "Password: ${PASSWORD}"
