@@ -834,6 +834,42 @@ nav {
 .subtle { color:var(--text-muted); font-size:0.85em; }
 
 </style>
+
+<style id="mobile-fixes">
+@media (max-width: 768px) {
+  table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    font-size: 0.78rem !important;
+  }
+  th, td { white-space: nowrap !important; padding: 8px 10px !important; }
+  [class*="grid"], [class*="stats-grid"], [class*="promise-grid"],
+  [class*="card-grid"], [class*="bench-grid"], [class*="rem-grid"],
+  [class*="calc-results"] { grid-template-columns: 1fr !important; }
+  .cards-grid, .card-grid { grid-template-columns: 1fr !important; }
+  [class*="tab-bar"], [class*="tabs"], .nav-tabs {
+    overflow-x: auto !important; flex-wrap: nowrap !important; white-space: nowrap !important;
+  }
+  [class*="tab-btn"], [class*="tab-item"] {
+    flex-shrink: 0 !important; font-size: 0.72rem !important; padding: 8px 12px !important;
+  }
+  .container, [class*="container"] { padding: 0 16px !important; }
+  section, .section { padding: 52px 0 !important; }
+  [class*="panel"] { padding: 24px 16px !important; }
+  [class*="card"]:not(table):not(th):not(td) { padding: 20px 16px !important; }
+  .calc-box, .rem-box { padding: 22px 16px !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr !important; }
+  .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+  h1 { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
+  h2 { font-size: clamp(1.2rem, 5vw, 1.8rem) !important; }
+  h3 { font-size: clamp(1rem, 4vw, 1.3rem) !important; }
+  .hero-logo .entre, .hero-logo .nos { font-size: clamp(2.8rem, 14vw, 5rem) !important; }
+  .fund-benefits { gap: 12px !important; }
+  .benefit { padding: 16px 18px !important; }
+}
+</style>
 </head>
 <body>
 
