@@ -41,6 +41,19 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 
 ---
 
+## Regla de responsive (OBLIGATORIO)
+
+**Todo documento o propuesta publicado en doceprojects.com DEBE verse correctamente en celular y tablet. Sin excepción.**
+
+- Usar `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+- `@media (max-width: 768px)` para tablet
+- `@media (max-width: 480px)` para celular
+- Antes de hacer deploy, probar en Chrome DevTools modo móvil (iPhone SE + iPad)
+- Grids siempre colapsan a 1 columna en móvil
+- Texto mínimo 14px en móvil, botones mínimo 44px de alto
+
+---
+
 ## Regla de deployment de propuestas (OBLIGATORIO)
 
 **Toda propuesta comercial DEBE deployarse en el hub centralizado. Sin excepción.**
