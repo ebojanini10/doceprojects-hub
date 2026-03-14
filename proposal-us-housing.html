@@ -822,6 +822,171 @@
     }
 
     @page { margin: 14mm 12mm; }
+
+    /* ══════════════════════════════════════════════════ */
+    /* US HOUSING — Trustworthy / Aspirational Theme      */
+    /* Clean blues, warm whites, solid American structure */
+    /* ══════════════════════════════════════════════════ */
+
+    /* -- US Housing Brand Variables -- */
+    :root {
+      --ush-blue: #1A3A5C;
+      --ush-blue-mid: #2563EB;
+      --ush-blue-light: #DBEAFE;
+      --ush-warm-white: #F8F7F4;
+      --ush-slate: #475569;
+      --ush-blue-rule: rgba(37, 99, 235, 0.18);
+      --ush-grid-line: rgba(37, 99, 235, 0.08);
+    }
+
+    /* Hero: trustworthy dark navy with blueprint-style background texture */
+    .hero {
+      background: var(--ush-blue) !important;
+    }
+    /* Blueprint grid overlay on hero (::after layered above kraft texture) */
+    .hero::before {
+      background:
+        linear-gradient(var(--ush-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ush-grid-line) 1px, transparent 1px),
+        linear-gradient(rgba(26,58,92,0.82) 0%, rgba(26,58,92,0.95) 100%) !important;
+      background-size: 40px 40px, 40px 40px, 100% 100% !important;
+      opacity: 1 !important;
+    }
+    /* Subtle blueprint cross-hatch lines via ::after */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 110%, rgba(37,99,235,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse at 10% 0%, rgba(255,255,255,0.04) 0%, transparent 40%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
+    /* Hero h1: clean white on navy */
+    .hero h1 {
+      color: #FFFFFF !important;
+      letter-spacing: 3px;
+    }
+    .hero h1 span {
+      color: #60A5FA !important;
+    }
+    .hero-label {
+      color: rgba(219,234,254,0.85) !important;
+    }
+    .hero-tagline {
+      color: rgba(219,234,254,0.75) !important;
+    }
+
+    /* Doc header: deep navy */
+    .doc-header {
+      background: var(--ush-blue) !important;
+      border-bottom: 2px solid var(--ush-blue-rule);
+    }
+
+    /* Countdown: navy theme */
+    .countdown-section {
+      background: var(--ush-blue) !important;
+      border-bottom-color: var(--ush-blue-mid) !important;
+    }
+    .countdown-label { color: #60A5FA !important; }
+    .countdown-progress-bar { background: var(--ush-blue-mid) !important; }
+    .section-number { color: var(--ush-blue-mid) !important; }
+
+    /* Section h2 underline accent */
+    .section h2 {
+      color: var(--ush-blue) !important;
+    }
+
+    /* Solution / module cards: hover with blue left-border + lift */
+    .solution-card {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+      cursor: default;
+    }
+    .solution-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px rgba(37,99,235,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      border-color: var(--ush-blue-mid) !important;
+    }
+    .solution-card:hover .solution-header {
+      background: var(--ush-blue-light) !important;
+    }
+    .solution-card:hover .solution-header h4 {
+      color: var(--ush-blue) !important;
+    }
+
+    /* Timeline dots: blue pulse on hover */
+    .timeline-dot {
+      transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .timeline-phase:hover .timeline-dot {
+      background: var(--ush-blue-mid) !important;
+      border-color: var(--ush-blue-mid) !important;
+      color: #fff !important;
+      transform: scale(1.15);
+      box-shadow: 0 0 0 6px rgba(37,99,235,0.12);
+    }
+
+    /* Pain list: subtle slide-in on hover */
+    .pain-list li {
+      transition: padding-left 0.2s ease, color 0.2s ease;
+      cursor: default;
+    }
+    .pain-list li:hover {
+      padding-left: 10px;
+      color: var(--ush-blue) !important;
+    }
+
+    /* ── ENTRANCE ANIMATION SYSTEM ── */
+    @keyframes ush-fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ush-fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes ush-slide-right {
+      from { opacity: 0; transform: translateX(-22px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes ush-scale-in {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .ush-animate {
+      opacity: 0;
+    }
+
+    .ush-animate.ush-visible {
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+      animation-duration: 0.65s;
+    }
+
+    .ush-animate.ush-visible.ush-anim-fade-up     { animation-name: ush-fade-up; }
+    .ush-animate.ush-visible.ush-anim-fade-in     { animation-name: ush-fade-in; }
+    .ush-animate.ush-visible.ush-anim-slide-right { animation-name: ush-slide-right; }
+    .ush-animate.ush-visible.ush-anim-scale-in    { animation-name: ush-scale-in; }
+
+    .ush-delay-1 { animation-delay: 0.08s !important; }
+    .ush-delay-2 { animation-delay: 0.18s !important; }
+    .ush-delay-3 { animation-delay: 0.30s !important; }
+    .ush-delay-4 { animation-delay: 0.42s !important; }
+    .ush-delay-5 { animation-delay: 0.54s !important; }
+    .ush-delay-6 { animation-delay: 0.66s !important; }
+
+    /* Hero elements animate on load */
+    .hero .hero-label   { animation: ush-fade-up 0.65s cubic-bezier(0.22,0.61,0.36,1) 0.1s both; }
+    .hero h1            { animation: ush-fade-up 0.75s cubic-bezier(0.22,0.61,0.36,1) 0.28s both; }
+    .hero .hero-tagline { animation: ush-fade-up 0.65s cubic-bezier(0.22,0.61,0.36,1) 0.46s both; }
+
   </style>
 </head>
 <body>
@@ -1319,6 +1484,50 @@
 
     tick();
     setInterval(tick, 1000);
+  })();
+</script>
+
+<script>
+  /* ── US HOUSING: Staggered Scroll-Reveal via IntersectionObserver ── */
+  (function() {
+    var animMap = [
+      { selector: '.section',          anim: 'ush-anim-fade-up' },
+      { selector: '.solution-card',    anim: 'ush-anim-scale-in' },
+      { selector: '.timeline-phase',   anim: 'ush-anim-slide-right' },
+      { selector: '.pain-list li',     anim: 'ush-anim-fade-up' },
+      { selector: '.investment-table', anim: 'ush-anim-fade-in' },
+      { selector: '.maintenance-card', anim: 'ush-anim-scale-in' },
+    ];
+
+    var delays = ['ush-delay-1','ush-delay-2','ush-delay-3','ush-delay-4','ush-delay-5','ush-delay-6'];
+
+    animMap.forEach(function(item) {
+      var els = document.querySelectorAll(item.selector);
+      els.forEach(function(el, i) {
+        el.classList.add('ush-animate', item.anim);
+        if (i < delays.length) el.classList.add(delays[i]);
+      });
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.ush-animate').forEach(function(el) {
+        el.style.opacity = '1';
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ush-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.ush-animate').forEach(function(el) {
+      observer.observe(el);
+    });
   })();
 </script>
 

@@ -710,6 +710,197 @@
     }
 
     @page { margin: 14mm 12mm; }
+
+    /* =====================================================
+       ALINEA SPORTS — KINETIC DESIGN LAYER
+       Energetic · Dynamic · Performance-Driven
+       ===================================================== */
+
+    /* --- Entrance animation keyframes --- */
+    @keyframes as-fadeUp {
+      from { opacity: 0; transform: translateY(28px) skewY(1deg); }
+      to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
+    }
+
+    @keyframes as-fadeLeft {
+      from { opacity: 0; transform: translateX(-32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes as-scaleIn {
+      from { opacity: 0; transform: scaleX(0.92) scaleY(0.96); }
+      to   { opacity: 1; transform: scaleX(1)    scaleY(1); }
+    }
+
+    @keyframes as-slashReveal {
+      from { opacity: 0; transform: translateX(-16px) skewX(-8deg); }
+      to   { opacity: 1; transform: translateX(0)     skewX(0deg); }
+    }
+
+    /* Speed-line stripes behind hero — motion blur effect */
+    @keyframes as-speedPulse {
+      0%   { opacity: 0.07; }
+      50%  { opacity: 0.12; }
+      100% { opacity: 0.07; }
+    }
+
+    /* Hero speed-lines pseudo-element */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -72deg,
+        transparent 0px,
+        transparent 18px,
+        rgba(106,27,154,0.18) 18px,
+        rgba(106,27,154,0.18) 19px,
+        transparent 19px,
+        transparent 38px
+      );
+      z-index: 0;
+      pointer-events: none;
+      animation: as-speedPulse 3.5s ease-in-out infinite;
+    }
+
+    /* Diagonal accent divider between sections */
+    .section + .section::before,
+    .section + div.section::before {
+      content: none;
+    }
+
+    /* Angular diagonal top-edge on hero */
+    .hero {
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 32px), 0 100%);
+      margin-bottom: -1px; /* close gap from clip-path */
+    }
+
+    /* Angular clip on CTA section */
+    .cta-section {
+      clip-path: polygon(0 32px, 100% 0, 100% 100%, 0 100%);
+      padding-top: 96px !important;
+    }
+
+    /* Diagonal purple accent bar between countdown and sections */
+    .section:first-of-type {
+      border-top: 3px solid var(--purple);
+      position: relative;
+    }
+
+    /* --- Scroll-reveal: elements start hidden, JS adds .as-visible --- */
+    .as-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .as-reveal.as-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays for siblings — applied via JS data-as-delay attribute */
+    .as-reveal[data-as-delay="1"] { transition-delay: 0.08s; }
+    .as-reveal[data-as-delay="2"] { transition-delay: 0.16s; }
+    .as-reveal[data-as-delay="3"] { transition-delay: 0.24s; }
+    .as-reveal[data-as-delay="4"] { transition-delay: 0.32s; }
+    .as-reveal[data-as-delay="5"] { transition-delay: 0.40s; }
+    .as-reveal[data-as-delay="6"] { transition-delay: 0.48s; }
+
+    /* Slash reveal for section numbers */
+    .section-number {
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* --- Kinetic hover effects on solution cards --- */
+    .solution-card {
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.25s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.2s ease;
+      will-change: transform, box-shadow;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-4px) scale(1.008);
+      box-shadow: 0 12px 40px rgba(106,27,154,0.16), 0 2px 8px rgba(0,0,0,0.06);
+      border-color: rgba(106,27,154,0.35);
+    }
+
+    .solution-card:hover .solution-header {
+      background: #EDE8F3;
+    }
+
+    /* Timeline phase hover */
+    .timeline-phase {
+      transition: transform 0.2s ease;
+    }
+
+    .timeline-phase:hover {
+      transform: translateX(4px);
+    }
+
+    .timeline-phase:hover .timeline-dot {
+      background: var(--purple);
+      color: var(--white);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    /* Pain list items — subtle hover */
+    .pain-list li {
+      transition: background 0.2s ease, padding-left 0.2s ease;
+      border-radius: 2px;
+    }
+
+    .pain-list li:hover {
+      background: rgba(106,27,154,0.04);
+      padding-left: 8px;
+    }
+
+    /* Btn hover — stronger kinetic lift */
+    .btn-accept {
+      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn-accept:hover {
+      transform: translateY(-3px) skewX(-2deg) !important;
+      box-shadow: 0 8px 24px rgba(106,27,154,0.35);
+    }
+
+    /* Investment table row hover */
+    .investment-table tbody tr {
+      transition: background 0.18s ease;
+    }
+
+    .investment-table tbody tr:hover {
+      background: rgba(106,27,154,0.04);
+    }
+
+    /* Diagonal divider element between major sections */
+    .section-divider-slash {
+      height: 8px;
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple) 50%, transparent 50%);
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 0 100%);
+      }
+      .cta-section {
+        clip-path: polygon(0 16px, 100% 0, 100% 100%, 0 100%);
+        padding-top: 72px !important;
+      }
+    }
+
+    @media print {
+      .as-reveal { opacity: 1 !important; transform: none !important; }
+      .hero::after { display: none; }
+      .hero { clip-path: none; }
+      .cta-section { clip-path: none; padding-top: 64px !important; }
+    }
   </style>
 </head>
 <body>
@@ -1085,6 +1276,55 @@
   </svg>
   Escr&iacute;beme
 </a>
+
+<script>
+  /* =====================================================
+     ALINEA SPORTS — Scroll Reveal (IntersectionObserver)
+     ===================================================== */
+  (function() {
+    // Mark elements for staggered reveal
+    var revealSelectors = [
+      '.section-number',
+      '.section h2',
+      '.section > p',
+      '.pain-list li',
+      '.solution-card',
+      '.timeline-phase',
+      '.investment-table',
+      '.investment-note',
+      '.cta-step',
+      '.maintenance-card'
+    ];
+
+    revealSelectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el, i) {
+        el.classList.add('as-reveal');
+        // Stagger siblings within the same parent
+        var siblings = el.parentElement
+          ? el.parentElement.querySelectorAll(sel.split(' ').pop())
+          : [];
+        var sibIndex = Array.prototype.indexOf.call(siblings, el);
+        if (sibIndex > 0 && sibIndex <= 6) {
+          el.setAttribute('data-as-delay', String(sibIndex));
+        }
+      });
+    });
+
+    // Intersection observer — trigger when 15% of element is visible
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('as-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('.as-reveal').forEach(function(el) {
+      io.observe(el);
+    });
+  })();
+</script>
 
 <script>
   (function() {

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matilda → AI Company | 12:12 Projects</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,7 +25,7 @@
 
   html, body {
     width: 100%; height: 100%;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     background: var(--navy);
     color: var(--text);
     overflow: hidden;
@@ -91,7 +91,7 @@
     border-radius: 24px;
     cursor: pointer;
     font-size: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 500;
     backdrop-filter: blur(10px);
     transition: all 0.2s;
@@ -623,6 +623,99 @@
     .highlight-box { padding: 14px 16px; }
     .logo-img { height: 28px; }
   }
+
+  /* ══════════════════════════════════════════════════ */
+  /* MATILDA — Chic / Editorial / Modern Feminine       */
+  /* Soft contrast, DM Serif Display headings, refined  */
+  /* ══════════════════════════════════════════════════ */
+
+  /* -- Matilda Typography Upgrade: DM Serif Display for headings -- */
+  h1, h2, h3, .xl, .xxl, .number-big, .stat-number {
+    font-family: 'DM Serif Display', Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Italicise the big hero headline for editorial flair */
+  h1 { font-style: italic; }
+
+  /* Gradient text uses the accent warm palette already defined */
+  .gradient-text {
+    background: linear-gradient(135deg, #c96b3e, #e8956b) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+  }
+
+  /* Card hover: delicate lift + border warmth */
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(224,124,82,0.14), 0 2px 8px rgba(0,0,0,0.1);
+    border-color: rgba(224,124,82,0.4) !important;
+  }
+
+  /* Pillar cards already have hover; refine to match editorial feel */
+  .pillar-card {
+    transition: all 0.35s cubic-bezier(0.22,0.61,0.36,1);
+  }
+  .pillar-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 14px 44px rgba(224,124,82,0.16);
+    border-color: rgba(224,124,82,0.55) !important;
+    background: rgba(224,124,82,0.07) !important;
+  }
+
+  /* Nav button: softer serif feel */
+  .nav button {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── ENTRANCE ANIMATION SYSTEM ── */
+  @keyframes mt-fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes mt-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes mt-slide-left {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes mt-scale-in {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .mt-animate {
+    opacity: 0;
+  }
+
+  .mt-animate.mt-visible {
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    animation-duration: 0.6s;
+  }
+
+  .mt-animate.mt-visible.mt-anim-fade-up   { animation-name: mt-fade-up; }
+  .mt-animate.mt-visible.mt-anim-fade-in   { animation-name: mt-fade-in; }
+  .mt-animate.mt-visible.mt-anim-slide-left { animation-name: mt-slide-left; }
+  .mt-animate.mt-visible.mt-anim-scale-in  { animation-name: mt-scale-in; }
+
+  .mt-delay-1 { animation-delay: 0.06s !important; }
+  .mt-delay-2 { animation-delay: 0.14s !important; }
+  .mt-delay-3 { animation-delay: 0.22s !important; }
+  .mt-delay-4 { animation-delay: 0.32s !important; }
+  .mt-delay-5 { animation-delay: 0.42s !important; }
+  .mt-delay-6 { animation-delay: 0.54s !important; }
 
 </style>
 </head>
@@ -1452,6 +1545,90 @@
   });
 
   updateUI();
+
+  /* ── MATILDA: Slide entrance animations ── */
+  (function() {
+    var staggerTargets = [
+      '.logo-area',
+      '.tag', '.tag-blue', '.tag-green', '.tag-gold', '.tag-red',
+      'h1', 'h2', 'h3', 'h4',
+      '.divider',
+      'p',
+      '.card', '.pillar-card', '.stat-card',
+      '.timeline',
+      '.check-list li',
+      '.x-list li',
+      '.pill-row',
+      '.highlight-box',
+      '.two-col > *',
+      '.grid-2 > *', '.grid-3 > *', '.grid-5 > *',
+      '.roadmap-row > *',
+      '.stat-row > *',
+      '.big-number-row > *',
+    ];
+
+    var animClasses = ['mt-anim-fade-up', 'mt-anim-scale-in', 'mt-anim-fade-in', 'mt-anim-slide-left'];
+    var delays = ['mt-delay-1','mt-delay-2','mt-delay-3','mt-delay-4','mt-delay-5','mt-delay-6'];
+
+    function getAnimClass(el) {
+      if (el.matches('h1,h2,h3,h4,p,.divider,.tag,.logo-area')) return 'mt-anim-fade-up';
+      if (el.matches('.card,.pillar-card,.stat-card,.grid-2>*,.grid-3>*,.grid-5>*')) return 'mt-anim-scale-in';
+      if (el.matches('.two-col>*,.roadmap-row>*,.stat-row>*,.big-number-row>*')) return 'mt-anim-slide-left';
+      return 'mt-anim-fade-in';
+    }
+
+    function animateSlide(slideEl) {
+      // Clear previously animated children
+      slideEl.querySelectorAll('.mt-animate').forEach(function(el) {
+        el.classList.remove('mt-animate','mt-visible','mt-anim-fade-up','mt-anim-scale-in','mt-anim-fade-in','mt-anim-slide-left');
+        delays.forEach(function(d) { el.classList.remove(d); });
+        el.style.opacity = '';
+      });
+
+      var targets = [];
+      staggerTargets.forEach(function(sel) {
+        slideEl.querySelectorAll(sel).forEach(function(el) {
+          if (!targets.includes(el)) targets.push(el);
+        });
+      });
+
+      // Sort by DOM order (rough approximation)
+      targets.sort(function(a, b) {
+        return a.compareDocumentPosition(b) & 4 ? -1 : 1;
+      });
+
+      targets.forEach(function(el, i) {
+        el.classList.add('mt-animate', getAnimClass(el));
+        if (i < delays.length) el.classList.add(delays[i]);
+      });
+
+      // Trigger after one frame so transition picks up
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          targets.forEach(function(el) {
+            el.classList.add('mt-visible');
+          });
+        });
+      });
+    }
+
+    // Patch goTo to trigger animation on new slide
+    var _origGoTo = goTo;
+    goTo = function(index) {
+      _origGoTo(index);
+      var activeSlide = document.querySelectorAll('.slide')[index];
+      if (activeSlide) {
+        setTimeout(function() { animateSlide(activeSlide); }, 60);
+      }
+    };
+
+    // Animate the first slide on load
+    var firstSlide = document.querySelectorAll('.slide')[0];
+    if (firstSlide) {
+      firstSlide.classList.add('active');
+      setTimeout(function() { animateSlide(firstSlide); }, 80);
+    }
+  })();
 </script>
 </body>
 </html>

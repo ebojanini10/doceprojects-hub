@@ -884,6 +884,255 @@
       font-style: italic;
     }
 
+    /* =====================================================
+       FORTALEZA — FORTRESS DESIGN LAYER
+       Solid · Trustworthy · Protective · Geometric
+       ===================================================== */
+
+    /* --- Entrance animation keyframes --- */
+    @keyframes ft-riseUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ft-slideRight {
+      from { opacity: 0; transform: translateX(-24px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes ft-fortressIn {
+      from { opacity: 0; transform: scaleY(0.94); transform-origin: bottom; }
+      to   { opacity: 1; transform: scaleY(1); }
+    }
+
+    @keyframes ft-gridPulse {
+      0%   { opacity: 0.04; }
+      50%  { opacity: 0.09; }
+      100% { opacity: 0.04; }
+    }
+
+    /* --- Shield/grid background texture on white sections --- */
+    .proposal {
+      background: var(--white);
+      position: relative;
+    }
+
+    /* Subtle grid/fortress texture layered on body of document */
+    .proposal::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(4,30,65,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(4,30,65,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: ft-gridPulse 6s ease-in-out infinite;
+    }
+
+    /* Ensure all proposal children sit above the grid texture */
+    .proposal > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Deep navy top border accent on doc-header */
+    .doc-header {
+      border-top: 4px solid var(--fortaleza-gold);
+    }
+
+    /* Gold accent line below credibility bar — reinforce geometric form */
+    .credibility-bar {
+      position: relative;
+    }
+
+    /* Strong geometric divider after credibility bar — steel band */
+    .credibility-bar::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--fortaleza-navy) 0%,
+        var(--fortaleza-gold) 40%,
+        var(--fortaleza-navy) 100%
+      );
+    }
+
+    /* Shield pattern on hero::after — hexagonal lattice overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66z' fill='none' stroke='rgba(255,225,116,0.08)' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-size: 56px 100px;
+      opacity: 0.9;
+    }
+
+    /* Shield pattern on CTA section */
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66z' fill='none' stroke='rgba(255,225,116,0.10)' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-size: 56px 100px;
+    }
+
+    /* Strong left-side fortress bar on module base section */
+    .section[style*="background: #F9FAFB"] {
+      border-left-width: 5px !important;
+    }
+
+    /* --- Scroll-reveal: elements start hidden --- */
+    .ft-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ft-reveal.ft-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .ft-reveal[data-ft-delay="1"] { transition-delay: 0.09s; }
+    .ft-reveal[data-ft-delay="2"] { transition-delay: 0.18s; }
+    .ft-reveal[data-ft-delay="3"] { transition-delay: 0.27s; }
+    .ft-reveal[data-ft-delay="4"] { transition-delay: 0.36s; }
+    .ft-reveal[data-ft-delay="5"] { transition-delay: 0.45s; }
+    .ft-reveal[data-ft-delay="6"] { transition-delay: 0.54s; }
+    .ft-reveal[data-ft-delay="7"] { transition-delay: 0.63s; }
+    .ft-reveal[data-ft-delay="8"] { transition-delay: 0.72s; }
+
+    /* --- Hover effects on solution cards --- */
+    .solution-card {
+      transition: transform 0.28s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.28s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.22s ease;
+      will-change: transform, box-shadow;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(4,30,65,0.14), 0 4px 12px rgba(0,0,0,0.07);
+      border-color: rgba(4,30,65,0.28);
+    }
+
+    .solution-card:hover .solution-header {
+      background: #EAF0F8;
+    }
+
+    /* Pricing / maintenance card hover */
+    .maintenance-card {
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .maintenance-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(4,30,65,0.12);
+    }
+
+    /* Investment table row hover — steel highlight */
+    .investment-table tbody tr {
+      transition: background 0.18s ease;
+    }
+
+    .investment-table tbody tr:hover {
+      background: rgba(4,30,65,0.04);
+    }
+
+    /* Pain list item hover — fortress solidity */
+    .pain-list li {
+      transition: background 0.2s ease, border-left 0.2s ease;
+      border-radius: 2px;
+    }
+
+    .pain-list li:hover {
+      background: rgba(4,30,65,0.03);
+      border-left: 3px solid var(--fortaleza-navy);
+      padding-left: 12px;
+    }
+
+    /* Timeline phase hover */
+    .timeline-phase {
+      transition: transform 0.22s ease;
+    }
+
+    .timeline-phase:hover {
+      transform: translateX(5px);
+    }
+
+    .timeline-phase:hover .timeline-dot {
+      background: var(--fortaleza-navy);
+      border-color: var(--fortaleza-navy);
+      color: var(--fortaleza-gold);
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Cred items hover */
+    .cred-item {
+      transition: transform 0.2s ease;
+      cursor: default;
+    }
+
+    .cred-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .cred-item:hover .cred-number {
+      color: var(--white);
+      text-shadow: 0 0 20px rgba(255,225,116,0.6);
+    }
+
+    /* Agents table row hover */
+    .agents-table tbody tr {
+      transition: background 0.18s ease;
+    }
+
+    .agents-table tbody tr:hover {
+      background: rgba(4,30,65,0.05);
+    }
+
+    /* Strong btn hover */
+    .btn-accept {
+      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn-accept:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 10px 28px rgba(106,27,154,0.38);
+    }
+
+    /* IG comparison widget hover */
+    .ig-account {
+      transition: transform 0.22s ease;
+    }
+
+    .ig-account:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      .proposal::before { background-size: 32px 32px; }
+    }
+
+    @media print {
+      .ft-reveal { opacity: 1 !important; transform: none !important; }
+      .proposal::before { display: none; }
+      .hero::after { display: none; }
+      .cta-section::after { display: none; }
+    }
+
     /* Agents table */
     .agents-table {
       width: 100%;
@@ -1535,6 +1784,60 @@
   </svg>
   Escr&iacute;beme
 </a>
+
+<script>
+  /* =====================================================
+     FORTALEZA — Scroll Reveal (IntersectionObserver)
+     Staggered entrance per section
+     ===================================================== */
+  (function() {
+    var revealSelectors = [
+      '.section-number',
+      '.section h2',
+      '.section > p',
+      '.pain-list li',
+      '.solution-card',
+      '.timeline-phase',
+      '.investment-table',
+      '.investment-note',
+      '.maintenance-card',
+      '.agents-table',
+      '.cred-item',
+      '.ig-account',
+      '.ig-gap-label'
+    ];
+
+    revealSelectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.classList.add('ft-reveal');
+        // Assign stagger based on position among same-type siblings
+        var tagName = el.tagName;
+        var className = el.className.split(' ')[0];
+        var parent = el.parentElement;
+        if (parent) {
+          var siblings = parent.querySelectorAll('.' + className);
+          var idx = Array.prototype.indexOf.call(siblings, el);
+          if (idx > 0 && idx <= 8) {
+            el.setAttribute('data-ft-delay', String(idx));
+          }
+        }
+      });
+    });
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ft-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -28px 0px' });
+
+    document.querySelectorAll('.ft-reveal').forEach(function(el) {
+      io.observe(el);
+    });
+  })();
+</script>
 
 <script>
   (function() {

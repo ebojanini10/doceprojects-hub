@@ -806,6 +806,140 @@
     }
 
     @page { margin: 14mm 12mm; }
+
+    /* ══════════════════════════════════════════════════ */
+    /* REDITUS — Sophisticated / Wealth-Adjacent Theme    */
+    /* Deep charcoal, gold accents, editorial precision  */
+    /* ══════════════════════════════════════════════════ */
+
+    /* -- Reditus Brand Variables Override -- */
+    :root {
+      --reditus-charcoal: #1C1C1E;
+      --reditus-charcoal2: #2A2A2D;
+      --reditus-gold: #C9A84C;
+      --reditus-gold-light: #E0C278;
+      --reditus-gold-dim: rgba(201, 168, 76, 0.15);
+      --reditus-rule: rgba(201, 168, 76, 0.25);
+    }
+
+    /* Hero override: dark charcoal base, gold h1 accent */
+    .hero {
+      background: var(--reditus-charcoal) !important;
+    }
+    .hero::before {
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat !important;
+      opacity: 0.06 !important;
+    }
+    .hero h1 {
+      color: var(--reditus-gold) !important;
+      text-shadow: 0 2px 24px rgba(201,168,76,0.18);
+    }
+    .hero-label,
+    .hero-tagline {
+      color: rgba(255,255,255,0.65) !important;
+    }
+
+    /* Doc header with charcoal and gold bottom rule */
+    .doc-header {
+      background: var(--reditus-charcoal) !important;
+      border-bottom: 2px solid var(--reditus-rule);
+    }
+
+    /* Countdown: gold accent instead of purple */
+    .countdown-section {
+      background: var(--reditus-charcoal2) !important;
+      border-bottom-color: var(--reditus-gold) !important;
+    }
+    .countdown-label { color: var(--reditus-gold) !important; }
+    .countdown-progress-bar { background: var(--reditus-gold) !important; }
+    .section-number { color: var(--reditus-gold) !important; }
+
+    /* Solution cards: refined hover with gold left border reveal */
+    .solution-card {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+      cursor: default;
+    }
+    .solution-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.12), 0 2px 8px rgba(0,0,0,0.08);
+      border-color: var(--reditus-gold) !important;
+    }
+    .solution-card:hover .solution-header {
+      background: var(--reditus-gold-dim) !important;
+    }
+
+    /* Timeline dots: gold on hover */
+    .timeline-dot {
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .timeline-phase:hover .timeline-dot {
+      background: var(--reditus-gold) !important;
+      border-color: var(--reditus-gold) !important;
+      color: var(--reditus-charcoal) !important;
+      transform: scale(1.12);
+    }
+
+    /* Pain list items: subtle gold accent on hover */
+    .pain-list li {
+      transition: padding-left 0.2s ease, color 0.2s ease;
+      cursor: default;
+    }
+    .pain-list li:hover {
+      padding-left: 8px;
+      color: #374151 !important;
+    }
+
+    /* ── ENTRANCE ANIMATION SYSTEM ── */
+    @keyframes rd-fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes rd-fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes rd-slide-right {
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes rd-scale-in {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Animated state: invisible before JS fires */
+    .rd-animate {
+      opacity: 0;
+    }
+
+    /* Once visible class applied, run animation */
+    .rd-animate.rd-visible {
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+      animation-duration: 0.65s;
+    }
+
+    .rd-animate.rd-visible.rd-anim-fade-up    { animation-name: rd-fade-up; }
+    .rd-animate.rd-visible.rd-anim-fade-in    { animation-name: rd-fade-in; }
+    .rd-animate.rd-visible.rd-anim-slide-right { animation-name: rd-slide-right; }
+    .rd-animate.rd-visible.rd-anim-scale-in   { animation-name: rd-scale-in; }
+
+    /* Stagger delays */
+    .rd-delay-1 { animation-delay: 0.08s !important; }
+    .rd-delay-2 { animation-delay: 0.18s !important; }
+    .rd-delay-3 { animation-delay: 0.28s !important; }
+    .rd-delay-4 { animation-delay: 0.40s !important; }
+    .rd-delay-5 { animation-delay: 0.52s !important; }
+    .rd-delay-6 { animation-delay: 0.64s !important; }
+
+    /* Hero children animate on load (no IO needed) */
+    .hero .hero-label   { animation: rd-fade-up 0.6s cubic-bezier(0.22,0.61,0.36,1) 0.1s both; }
+    .hero h1            { animation: rd-fade-up 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.25s both; }
+    .hero .hero-tagline { animation: rd-fade-up 0.6s cubic-bezier(0.22,0.61,0.36,1) 0.42s both; }
+
   </style>
 </head>
 <body>
@@ -1328,6 +1462,52 @@
 
     tick();
     setInterval(tick, 1000);
+  })();
+</script>
+
+<script>
+  /* ── REDITUS: Staggered Scroll-Reveal via IntersectionObserver ── */
+  (function() {
+    // Assign animation classes to key elements
+    var animMap = [
+      { selector: '.section',          anim: 'rd-anim-fade-up' },
+      { selector: '.solution-card',    anim: 'rd-anim-scale-in' },
+      { selector: '.timeline-phase',   anim: 'rd-anim-slide-right' },
+      { selector: '.pain-list li',     anim: 'rd-anim-fade-up' },
+      { selector: '.investment-table', anim: 'rd-anim-fade-in' },
+      { selector: '.maintenance-card', anim: 'rd-anim-scale-in' },
+    ];
+
+    var delays = ['rd-delay-1','rd-delay-2','rd-delay-3','rd-delay-4','rd-delay-5','rd-delay-6'];
+
+    animMap.forEach(function(item) {
+      var els = document.querySelectorAll(item.selector);
+      els.forEach(function(el, i) {
+        el.classList.add('rd-animate', item.anim);
+        if (i < delays.length) el.classList.add(delays[i]);
+      });
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: show everything immediately
+      document.querySelectorAll('.rd-animate').forEach(function(el) {
+        el.style.opacity = '1';
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('rd-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.rd-animate').forEach(function(el) {
+      observer.observe(el);
+    });
   })();
 </script>
 

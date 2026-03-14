@@ -1387,6 +1387,210 @@
 
 
 
+    /* ── EQR ENTRANCE ANIMATIONS ── */
+    @keyframes eqrFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(26px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes petalDrift {
+      0%   { opacity: 0.50; transform: scale(1)    translate(0, 0)     rotate(0deg); }
+      30%  { opacity: 0.70; transform: scale(1.06) translate(12px, -10px) rotate(2deg); }
+      65%  { opacity: 0.55; transform: scale(1.03) translate(-8px, 7px)  rotate(-1deg); }
+      100% { opacity: 0.50; transform: scale(1)    translate(0, 0)     rotate(0deg); }
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Organic petal/floral ambient glow on hero */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 75% 55% at 15% 85%, rgba(139,61,101,0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 50% at 85% 20%, rgba(80,120,80,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200,170,130,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      animation: petalDrift 9s ease-in-out infinite;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
+    /* Hero content entrance */
+    .hero-label   { animation: heroFade 0.7s ease both; animation-delay: 0.08s; }
+    .hero h1      { animation: heroFade 0.75s ease both; animation-delay: 0.20s; }
+    .hero-divider { animation: heroFade 0.5s ease both; animation-delay: 0.34s; }
+    .hero-meta    { animation: heroFade 0.5s ease both; animation-delay: 0.44s; }
+    .hero-note    { animation: heroFade 0.6s ease both; animation-delay: 0.56s; }
+
+    /* Organic petal texture on proposal body — very subtle */
+    .proposal {
+      background-image:
+        radial-gradient(ellipse 30% 20% at 95% 8%,  rgba(139,61,101,0.04) 0%, transparent 100%),
+        radial-gradient(ellipse 25% 18% at 5%  92%, rgba(80,120,80,0.04)  0%, transparent 100%);
+      background-attachment: fixed;
+    }
+
+    /* Section reveal — JS adds .is-visible */
+    .section {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.52s ease, transform 0.52s ease;
+    }
+    .section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered children */
+    .section.is-visible .client-info-card:nth-child(1) { animation: eqrFadeUp 0.4s ease both; animation-delay: 0.05s; }
+    .section.is-visible .client-info-card:nth-child(2) { animation: eqrFadeUp 0.4s ease both; animation-delay: 0.14s; }
+    .section.is-visible .timeline-phase:nth-child(1) { animation: eqrFadeUp 0.42s ease both; animation-delay: 0.05s; }
+    .section.is-visible .timeline-phase:nth-child(2) { animation: eqrFadeUp 0.42s ease both; animation-delay: 0.13s; }
+    .section.is-visible .timeline-phase:nth-child(3) { animation: eqrFadeUp 0.42s ease both; animation-delay: 0.21s; }
+    .section.is-visible .timeline-phase:nth-child(4) { animation: eqrFadeUp 0.42s ease both; animation-delay: 0.29s; }
+    .section.is-visible .timeline-phase:nth-child(5) { animation: eqrFadeUp 0.42s ease both; animation-delay: 0.37s; }
+    .section.is-visible .cta-step:nth-child(1) { animation: eqrFadeUp 0.4s ease both; animation-delay: 0.06s; }
+    .section.is-visible .cta-step:nth-child(2) { animation: eqrFadeUp 0.4s ease both; animation-delay: 0.16s; }
+    .section.is-visible .cta-step:nth-child(3) { animation: eqrFadeUp 0.4s ease both; animation-delay: 0.26s; }
+    .section.is-visible .nda-sign-grid > * { animation: eqrFadeUp 0.45s ease both; animation-delay: 0.1s; }
+
+    /* ── SOLUTION CARD STYLES + HOVER ── */
+    .solutions { display: flex; flex-direction: column; gap: 16px; }
+
+    .solution-card {
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .solution-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(139,61,101,0.10);
+      border-color: var(--eqr-rose);
+    }
+
+    .solution-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--grid-gray);
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .solution-header h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 0.2px;
+    }
+    .solution-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+    .solution-tag.automation {
+      background: rgba(139,61,101,0.10);
+      color: var(--eqr-rose);
+    }
+
+    .solution-body { padding: 20px; }
+
+    .solution-problem {
+      background: #FFF8F8;
+      border-left: 3px solid var(--eqr-rose);
+      padding: 12px 14px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .solution-problem-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--eqr-rose);
+      margin-bottom: 6px;
+    }
+
+    .solution-deliverable-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #6B7280;
+      margin-bottom: 10px;
+      margin-top: 14px;
+    }
+    .solution-body p {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .solution-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .solution-spec {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      background: #F0F4F0;
+      color: #3A5A3A;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #CDDACD;
+    }
+
+    /* Client info card hover */
+    .client-info-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .client-info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(139,61,101,0.08);
+    }
+
+    /* Timeline phase hover */
+    .timeline-phase {
+      transition: transform 0.18s ease;
+    }
+    .timeline-phase:hover {
+      transform: translateX(4px);
+    }
+    .timeline-phase:hover .timeline-dot {
+      box-shadow: 0 0 0 4px rgba(106,27,154,0.14);
+      transition: box-shadow 0.18s ease;
+    }
+
+    /* Demo box hover */
+    .demo-box {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .demo-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(106,27,154,0.12);
+    }
+
     @media print {
 
       body { background: white; }
@@ -2515,6 +2719,28 @@
 
   }
 
+</script>
+
+<script>
+  (function() {
+    var sections = document.querySelectorAll('.section');
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach(function(s) { s.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+    sections.forEach(function(s, i) {
+      s.style.transitionDelay = (i * 0.03) + 's';
+      observer.observe(s);
+    });
+  })();
 </script>
 
 
