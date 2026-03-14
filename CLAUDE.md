@@ -41,6 +41,14 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 
 ---
 
+## Regla de diseño frontend (OBLIGATORIO)
+
+**Siempre usar el skill `frontend-design` al diseñar o modificar páginas, propuestas, dashboards o cualquier documento HTML en DoceProjects.**
+
+Invocar con: `/frontend-design` antes de arrancar cualquier trabajo de UI.
+
+---
+
 ## Regla de responsive (OBLIGATORIO)
 
 **Todo documento o propuesta publicado en doceprojects.com DEBE verse correctamente en celular y tablet. Sin excepción.**
