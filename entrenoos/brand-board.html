@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntreNos — Brand Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ══════════════════════════════════════════════════
+     ENTRENOS — BRAND BOARD
+     Tipografía: Fraunces (display) + Plus Jakarta Sans (UI)
+     Revisado: 2026-03-14
+  ══════════════════════════════════════════════════ */
+
+  :root {
+    /* ─── Paleta principal ─── */
+    --negro:      #070810;
+    --negro-2:    #0C0D18;
+    --negro-3:    #111220;
+    --negro-4:    #181A2A;
+    --oro:        #C9A84C;
+    --oro-claro:  #E2C06E;
+    --oro-oscuro: #9E7E2E;
+    --oro-dim:    rgba(201,168,76,0.12);
+    --oro-glow:   rgba(201,168,76,0.06);
+    --crema:      #F5EDD8;
+    --crema-2:    #EDE3CB;
+    --blanco:     #FAFAF7;
+    /* ─── Colores funcionales ─── */
+    --verde:      #3CC48A;
+    --verde-bg:   rgba(60,196,138,0.08);
+    --ambar:      #E8A23D;
+    --ambar-bg:   rgba(232,162,61,0.08);
+    --rojo:       #E85555;
+    --azul:       #4AA8E8;
+    /* ─── Texto ─── */
+    --text:       #EAE8E0;
+    --text-dim:   #8A8578;
+    --text-muted: #3E3C36;
+    /* ─── UI ─── */
+    --border:     rgba(201,168,76,0.15);
+    --border-2:   rgba(255,255,255,0.06);
+
+    --ff-display: 'Fraunces', Georgia, serif;
+    --ff-ui:      'Plus Jakarta Sans', system-ui, sans-serif;
+    --ff-mono:    'Fira Code', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--text);
+    font-family: var(--ff-ui);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── GRAIN OVERLAY ─── */
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events:none;
+    z-index:9999;
+  }
+
+  /* ─── LAYOUT ─── */
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 48px 120px;
+  }
+
+  /* ─── SECTION SPACING ─── */
+  .brand-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-2);
+  }
+
+  .brand-section:last-child { border-bottom: none; }
+
+  /* ─── SECTION LABELS ─── */
+  .s-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .s-label::after {
+    content:'';
+    flex:1;
+    height:1px;
+    background: var(--border);
+  }
+
+  /* ══════════════════════════════════════════════════
+     01 — HERO / PORTADA
+  ══════════════════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 80px;
+  }
+
+  /* Arcos decorativos de fondo */
+  .hero-arc {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    pointer-events: none;
+  }
+
+  .arc-1 {
+    width: 900px; height: 900px;
+    right: -300px; top: 50%;
+    transform: translateY(-50%);
+    border-color: rgba(201,168,76,0.08);
+  }
+
+  .arc-2 {
+    width: 600px; height: 600px;
+    right: -100px; top: 50%;
+    transform: translateY(-50%);
+    border-color: rgba(201,168,76,0.06);
+  }
+
+  .arc-3 {
+    width: 300px; height: 300px;
+    right: 100px; top: 50%;
+    transform: translateY(-50%);
+    border-color: rgba(201,168,76,0.1);
+  }
+
+  /* Línea dorada vertical */
+  .hero::before {
+    content:'';
+    position:absolute;
+    left: 0; top: 80px; bottom: 80px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--oro), transparent);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+    padding-left: 24px;
+  }
+
+  .hero-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-entre {
+    font-family: var(--ff-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(72px, 12vw, 144px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--crema);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .logo-nos {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-style: normal;
+    font-size: clamp(72px, 12vw, 144px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--oro);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .hero-tagline {
+    font-family: var(--ff-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: var(--text-dim);
+    margin-top: 32px;
+    padding-left: 24px;
+    font-variation-settings: 'opsz' 32;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 64px;
+    padding-left: 24px;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hm-label {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .hm-value {
+    font-family: var(--ff-ui);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+
+  /* ══════════════════════════════════════════════════
+     02 — COLORES
+  ══════════════════════════════════════════════════ */
+  .palette-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 800px) {
+    .palette-row { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  .swatch {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-2);
+  }
+
+  .swatch-color {
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  .swatch-color.tall { aspect-ratio: 0.6; }
+
+  .swatch-meta {
+    padding: 12px 14px;
+    background: var(--negro-2);
+  }
+
+  .swatch-name {
+    font-family: var(--ff-ui);
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .swatch-hex {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .swatch-use {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── Muestras de uso ─── */
+  .color-usage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .color-usage { grid-template-columns: 1fr; }
+  }
+
+  .usage-card {
+    border: 1px solid var(--border-2);
+    border-radius: 6px;
+    padding: 24px;
+    background: var(--negro-2);
+  }
+
+  .usage-label {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  /* ══════════════════════════════════════════════════
+     03 — TIPOGRAFÍA
+  ══════════════════════════════════════════════════ */
+  .type-specimen {
+    margin-bottom: 48px;
+  }
+
+  .type-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-2);
+  }
+
+  .type-family {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--oro);
+  }
+
+  .type-role {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .specimen-display {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    font-variation-settings: 'opsz' 80;
+  }
+
+  .specimen-display-italic {
+    font-family: var(--ff-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 80px;
+    line-height: 0.9;
+    color: var(--text-dim);
+    font-variation-settings: 'opsz' 80;
+  }
+
+  .specimen-ui {
+    font-family: var(--ff-ui);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--negro-2);
+    border-radius: 6px;
+    border: 1px solid var(--border-2);
+  }
+
+  .scale-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border-2);
+    padding-bottom: 14px;
+  }
+
+  .scale-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .scale-label {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-top: 4px;
+  }
+
+  /* ══════════════════════════════════════════════════
+     04 — LOGO VARIACIONES
+  ══════════════════════════════════════════════════ */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .logo-grid { grid-template-columns: 1fr; }
+  }
+
+  .logo-variant {
+    border-radius: 6px;
+    padding: 48px 40px;
+    border: 1px solid var(--border-2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    position: relative;
+  }
+
+  .lv-label {
+    position: absolute;
+    top: 14px; right: 14px;
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .lv-dark { background: var(--negro); }
+  .lv-dark-card { background: var(--negro-3); }
+  .lv-light { background: var(--crema); }
+  .lv-gold { background: var(--oro); }
+
+  .logo-sm { gap: 0; }
+
+  .logo-sm .logo-entre {
+    font-size: 40px;
+    color: var(--crema);
+  }
+
+  .logo-sm .logo-nos {
+    font-size: 40px;
+    color: var(--oro);
+  }
+
+  .logo-sm-light .logo-entre {
+    color: var(--negro);
+    opacity: 0.6;
+  }
+
+  .logo-sm-light .logo-nos {
+    color: var(--negro);
+  }
+
+  .logo-sm-gold .logo-entre {
+    color: rgba(7,8,16,0.6);
+  }
+
+  .logo-sm-gold .logo-nos {
+    color: var(--negro);
+  }
+
+  /* Horizontal logo */
+  .logo-horizontal {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+
+  .logo-h-entre {
+    font-family: var(--ff-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-variation-settings: 'opsz' 48;
+  }
+
+  .logo-h-nos {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 48;
+  }
+
+  .logo-lockup {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo-tagline-sm {
+    font-family: var(--ff-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    font-variation-settings: 'opsz' 14;
+    color: var(--text-muted);
+  }
+
+  /* ══════════════════════════════════════════════════
+     05 — VOZ Y TONO
+  ══════════════════════════════════════════════════ */
+  .personality-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 32px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--border-2);
+  }
+
+  @media (max-width: 700px) {
+    .personality-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .trait-card {
+    background: var(--negro-2);
+    padding: 28px 22px;
+  }
+
+  .trait-emoji {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .trait-name {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 4px;
+    font-variation-settings: 'opsz' 20;
+  }
+
+  .trait-not {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-decoration: line-through;
+    margin-bottom: 8px;
+  }
+
+  .trait-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .copy-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .copy-compare { grid-template-columns: 1fr; }
+  }
+
+  .copy-card {
+    border-radius: 6px;
+    padding: 24px;
+    border: 1px solid var(--border-2);
+  }
+
+  .copy-bad {
+    background: rgba(232,85,85,0.04);
+    border-color: rgba(232,85,85,0.15);
+  }
+
+  .copy-good {
+    background: rgba(60,196,138,0.04);
+    border-color: rgba(60,196,138,0.15);
+  }
+
+  .copy-verdict {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .copy-no { color: var(--rojo); background: rgba(232,85,85,0.1); }
+  .copy-yes { color: var(--verde); background: rgba(60,196,138,0.1); }
+
+  .copy-text {
+    font-family: var(--ff-display);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.4;
+    font-variation-settings: 'opsz' 20;
+    margin-bottom: 12px;
+  }
+
+  .copy-bad .copy-text { color: rgba(234,232,224,0.5); }
+  .copy-good .copy-text { color: var(--text); }
+
+  .copy-note {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════════════════
+     06 — ELEMENTOS VISUALES
+  ══════════════════════════════════════════════════ */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 700px) {
+    .elements-grid { grid-template-columns: 1fr; }
+  }
+
+  .element-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .el-title {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-2);
+  }
+
+  /* Radius demo */
+  .radius-demo {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .r-box {
+    width: 48px; height: 48px;
+    background: var(--negro-3);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+  }
+
+  /* Shadow demo */
+  .shadow-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .s-box {
+    height: 40px;
+    background: var(--negro-3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+  }
+
+  /* Motion demo */
+  .motion-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .m-bar {
+    height: 6px;
+    background: linear-gradient(to right, var(--oro), var(--oro-claro));
+    border-radius: 3px;
+    animation: pulse-width 2.5s ease-in-out infinite;
+  }
+
+  .m-bar:nth-child(2) { animation-delay: 0.3s; opacity: 0.7; }
+  .m-bar:nth-child(3) { animation-delay: 0.6s; opacity: 0.4; }
+
+  @keyframes pulse-width {
+    0%, 100% { width: 100%; }
+    50% { width: 60%; }
+  }
+
+  .m-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--oro);
+    animation: pulse-dot 2s ease-in-out infinite;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .m-note {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════════════════
+     07 — APLICACIONES
+  ══════════════════════════════════════════════════ */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 700px) {
+    .apps-grid { grid-template-columns: 1fr; }
+  }
+
+  /* App mockup - tarjeta */
+  .mockup-card {
+    background: linear-gradient(135deg, #1A1530 0%, #0D0B18 100%);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border-2);
+    aspect-ratio: 1.6;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mockup-card::before {
+    content:'';
+    position:absolute;
+    top:-60px; right:-60px;
+    width:200px; height:200px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  }
+
+  .card-chip {
+    width: 28px; height: 22px;
+    background: linear-gradient(135deg, var(--oro-oscuro), var(--oro-claro));
+    border-radius: 4px;
+    opacity: 0.8;
+  }
+
+  .card-brand {
+    position: absolute;
+    top: 28px; right: 28px;
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--crema);
+    opacity: 0.9;
+    font-variation-settings: 'opsz' 22;
+  }
+
+  .card-brand span {
+    color: var(--oro);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .card-bottom {}
+
+  .card-number {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: rgba(245,237,216,0.5);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+
+  .card-holder {
+    font-family: var(--ff-ui);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--crema);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .card-rate {
+    position: absolute;
+    bottom: 28px; right: 28px;
+    text-align: right;
+  }
+
+  .rate-label {
+    font-family: var(--ff-mono);
+    font-size: 8px;
+    color: rgba(245,237,216,0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .rate-value {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--oro-claro);
+    font-variation-settings: 'opsz' 22;
+    line-height: 1;
+  }
+
+  /* App mockup - pantalla */
+  .mockup-screen {
+    background: var(--negro-2);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border-2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .screen-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .screen-greeting {
+    font-family: var(--ff-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-dim);
+    font-variation-settings: 'opsz' 14;
+  }
+
+  .screen-greeting strong {
+    font-weight: 700;
+    font-style: normal;
+    color: var(--text);
+  }
+
+  .screen-notif {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--negro-3);
+    border: 1px solid var(--border-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+
+  .screen-balance {
+    background: linear-gradient(135deg, var(--negro-3), var(--negro-4));
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .bal-label {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .bal-amount {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 32px;
+    color: var(--crema);
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 32;
+    line-height: 1;
+  }
+
+  .bal-cop {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .screen-rate-bar {
+    background: var(--negro-3);
+    border: 1px solid var(--verde-bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .srb-text {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.3;
+  }
+
+  .srb-rate {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--verde);
+    font-variation-settings: 'opsz' 20;
+  }
+
+  .screen-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .action-btn {
+    background: var(--negro-3);
+    border: 1px solid var(--border-2);
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .action-btn:hover { border-color: var(--border); }
+
+  .ab-icon { font-size: 16px; margin-bottom: 4px; }
+
+  .ab-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .screen-msg {
+    background: var(--negro-3);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .msg-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--oro-dim);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .msg-content {}
+
+  .msg-sender {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    color: var(--oro);
+    letter-spacing: 0.1em;
+    margin-bottom: 3px;
+  }
+
+  .msg-text {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  /* ══════════════════════════════════════════════════
+     08 — PRINCIPIOS
+  ══════════════════════════════════════════════════ */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--border-2);
+  }
+
+  @media (max-width: 700px) {
+    .principles-grid { grid-template-columns: 1fr; }
+  }
+
+  .principle-card {
+    background: var(--negro-2);
+    padding: 32px 28px;
+  }
+
+  .principle-num {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 48px;
+    color: var(--oro-dim);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-variation-settings: 'opsz' 48;
+  }
+
+  .principle-name {
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+    font-variation-settings: 'opsz' 22;
+  }
+
+  .principle-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ══════════════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════════════ */
+  .brand-footer {
+    margin-top: 80px;
+    padding: 40px 0 0;
+    border-top: 1px solid var(--border-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .bf-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+
+  .bf-meta {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  /* ══════════════════════════════════════════════════
+     ANIMATIONS
+  ══════════════════════════════════════════════════ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .hero-logo { animation: fadeUp 0.8s ease 0.1s forwards; opacity:0; }
+  .hero-tagline { animation: fadeUp 0.8s ease 0.3s forwards; opacity:0; }
+  .hero-meta { animation: fadeUp 0.8s ease 0.5s forwards; opacity:0; }
+  .hero-eyebrow { animation: fadeUp 0.8s ease 0s forwards; opacity:0; }
+
+  /* ══════════════════════════════════════════════════
+     DIVIDER
+  ══════════════════════════════════════════════════ */
+  .rule { width:100%; height:1px; background: var(--border-2); margin: 32px 0; }
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════════ HERO ══════════ -->
+  <div class="hero">
+    <div class="hero-arc arc-1"></div>
+    <div class="hero-arc arc-2"></div>
+    <div class="hero-arc arc-3"></div>
+
+    <div class="hero-eyebrow">EntreNos — Banco AI · Brand Identity · 2026</div>
+
+    <div class="hero-logo">
+      <div class="logo-entre">entre</div>
+      <div class="logo-nos">nos</div>
+      <div class="hero-tagline">el dinero vuelve a ser de la gente</div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hm-label">Tipografía Display</div>
+        <div class="hm-value">Fraunces (Variable)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Tipografía UI</div>
+        <div class="hm-value">Plus Jakarta Sans</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">Color Alma</div>
+        <div class="hm-value" style="color:var(--oro);">#C9A84C</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hm-label">País</div>
+        <div class="hm-value">Colombia</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ PALETA ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">02 — Paleta de Color</div>
+
+    <!-- Fila principal -->
+    <div class="palette-row">
+      <div class="swatch">
+        <div class="swatch-color tall" style="background:var(--negro); border-bottom:1px solid rgba(255,255,255,0.05);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Negro Profundo</div>
+          <div class="swatch-hex">#070810</div>
+          <div class="swatch-use">Fondo principal</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color tall" style="background:var(--oro);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Oro</div>
+          <div class="swatch-hex">#C9A84C</div>
+          <div class="swatch-use">Color alma</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color tall" style="background:var(--crema);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Crema</div>
+          <div class="swatch-hex">#F5EDD8</div>
+          <div class="swatch-use">Texto, luz</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color tall" style="background:var(--negro-3);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Superficie</div>
+          <div class="swatch-hex">#111220</div>
+          <div class="swatch-use">Cards, modales</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color tall" style="background:var(--negro-4);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Elevado</div>
+          <div class="swatch-hex">#181A2A</div>
+          <div class="swatch-use">Hover, activo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila funcional -->
+    <div class="palette-row" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--verde);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Verde</div>
+          <div class="swatch-hex">#3CC48A</div>
+          <div class="swatch-use">Salud comunidad</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--ambar);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Ámbar</div>
+          <div class="swatch-hex">#E8A23D</div>
+          <div class="swatch-use">Alertas, aviso</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--rojo);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Rojo</div>
+          <div class="swatch-hex">#E85555</div>
+          <div class="swatch-use">Error, mora</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--azul);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Azul</div>
+          <div class="swatch-hex">#4AA8E8</div>
+          <div class="swatch-use">Info, links</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--oro-oscuro);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Oro Oscuro</div>
+          <div class="swatch-hex">#9E7E2E</div>
+          <div class="swatch-use">Sombras, profundidad</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--oro-claro);"></div>
+        <div class="swatch-meta">
+          <div class="swatch-name">Oro Claro</div>
+          <div class="swatch-hex">#E2C06E</div>
+          <div class="swatch-use">Highlights, gradientes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Uso de color -->
+    <div class="color-usage">
+      <div class="usage-card">
+        <div class="usage-label">Combinación primaria — documentos internos</div>
+        <div style="height:60px; background:var(--negro); border-radius:4px; border:1px solid var(--border); display:flex; align-items:center; padding:0 20px; gap:12px; margin-bottom:8px;">
+          <span style="font-family:var(--ff-display); font-weight:800; font-size:20px; color:var(--crema); font-variation-settings:'opsz' 20;">entre</span>
+          <span style="font-family:var(--ff-display); font-weight:800; font-size:20px; color:var(--oro); font-variation-settings:'opsz' 20;">nos</span>
+          <span style="flex:1; height:1px; background:var(--border);"></span>
+          <span style="font-family:var(--ff-mono); font-size:9px; color:var(--text-dim);">Negro + Oro + Crema</span>
+        </div>
+        <p style="font-size:11.5px; color:var(--text-muted); line-height:1.5;">El fondo negro profundo crea autoridad y sofisticación. El oro es el corazón — aparece con moderación para mantener su poder.</p>
+      </div>
+      <div class="usage-card">
+        <div class="usage-label">Combinación externa — materiales de cara al cliente</div>
+        <div style="height:60px; background:var(--crema); border-radius:4px; border:1px solid rgba(0,0,0,0.1); display:flex; align-items:center; padding:0 20px; gap:12px; margin-bottom:8px;">
+          <span style="font-family:var(--ff-display); font-weight:300; font-style:italic; font-size:20px; color:rgba(7,8,16,0.5); font-variation-settings:'opsz' 20;">entre</span>
+          <span style="font-family:var(--ff-display); font-weight:800; font-size:20px; color:var(--negro); font-variation-settings:'opsz' 20;">nos</span>
+          <span style="flex:1; height:1px; background:rgba(0,0,0,0.1);"></span>
+          <span style="font-family:var(--ff-mono); font-size:9px; color:var(--text-muted);">Crema + Negro</span>
+        </div>
+        <p style="font-size:11.5px; color:var(--text-muted); line-height:1.5;">La versión crema sobre fondo claro transmite calidez y cercanía. Usar en materiales publicitarios, app onboarding, y comunicaciones al cliente.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ TIPOGRAFÍA ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">03 — Tipografía</div>
+
+    <!-- FRAUNCES -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <span class="type-family">Fraunces</span>
+        <span class="type-role">— Display · Alma de la marca · Variable (opsz, wght)</span>
+      </div>
+      <div class="specimen-display" style="font-variation-settings:'opsz' 80;">EntreNos</div>
+      <div class="specimen-display-italic" style="margin-top:8px;">el dinero vuelve a ser de la gente</div>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:16px; line-height:1.6;">
+        Fraunces es una fuente variable "Grotesque meets Old Style" — sofisticada pero con alma. El eje óptico (opsz) permite que funcione desde 9px en cuerpo de texto hasta 144px en portadas. La cursiva es especialmente poderosa y distintiva. <strong style="color:var(--text-dim);">Se usa para: logotipo, headings principales, taglines, grandes cifras, pull quotes.</strong>
+      </p>
+    </div>
+
+    <!-- PLUS JAKARTA SANS -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <span class="type-family">Plus Jakarta Sans</span>
+        <span class="type-role">— UI · Funcional · Humanista</span>
+      </div>
+      <div class="specimen-ui">Claridad.</div>
+      <p style="font-family:var(--ff-ui); font-size:16px; color:var(--text-dim); margin-top:12px; line-height:1.7; max-width:600px;">
+        Diseñada para interfaces digitales. Humanista sin ser informal. Funciona excepcionalmente bien en cuerpo de texto, navegación, formularios y datos. Variable de 200 a 800.
+      </p>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:10px; line-height:1.6;">
+        <strong style="color:var(--text-dim);">Se usa para: body text, UI, labels, botones, formularios, navegación, todo lo que no es display.</strong>
+      </p>
+    </div>
+
+    <!-- FIRA CODE -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <span class="type-family">Fira Code</span>
+        <span class="type-role">— Mono · Datos · Tasas · Código</span>
+      </div>
+      <div style="font-family:var(--ff-mono); font-size:40px; color:var(--oro); letter-spacing:0.05em; line-height:1;">
+        12% E.A.
+      </div>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:12px; line-height:1.6;">
+        <strong style="color:var(--text-dim);">Se usa para: tasas de interés, NITs, fechas, códigos, labels técnicos, datos en tablas.</strong> El monoespaciado da rigor y credibilidad a los números financieros.
+      </p>
+    </div>
+
+    <!-- ESCALA TIPOGRÁFICA -->
+    <div class="type-scale">
+      <div class="scale-row">
+        <div class="scale-label">Display XL</div>
+        <div style="font-family:var(--ff-display); font-weight:800; font-size:72px; line-height:0.9; color:var(--text); letter-spacing:-0.03em; font-variation-settings:'opsz' 72;">Nosotros</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Display L</div>
+        <div style="font-family:var(--ff-display); font-weight:300; font-style:italic; font-size:48px; line-height:1; color:var(--text-dim); font-variation-settings:'opsz' 48;">el banco que te cuida</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Heading 1</div>
+        <div style="font-family:var(--ff-ui); font-weight:700; font-size:32px; line-height:1.1; color:var(--text); letter-spacing:-0.02em;">Tu tasa bajó 0.2% este mes</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Heading 2</div>
+        <div style="font-family:var(--ff-ui); font-weight:600; font-size:22px; line-height:1.2; color:var(--text);">Comunidad: 94.7% pagó a tiempo</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Body</div>
+        <div style="font-family:var(--ff-ui); font-size:15px; line-height:1.7; color:var(--text-dim); max-width:600px;">Cuando pagas a tiempo, no solo cuidas tus finanzas. Cuidas las de 3,847 personas en la comunidad que comparten contigo el costo del riesgo.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Caption</div>
+        <div style="font-family:var(--ff-mono); font-size:10px; color:var(--text-muted); letter-spacing:0.12em; text-transform:uppercase;">NIT 901502301 · SFC Vigilada · Fogafín</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ LOGO VARIACIONES ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">04 — Logo y Variaciones</div>
+
+    <div class="logo-grid">
+      <!-- Dark bg (primario) -->
+      <div class="logo-variant lv-dark">
+        <div class="lv-label">Primario — fondo oscuro</div>
+        <div class="logo-lockup">
+          <div class="logo-sm">
+            <div class="logo-entre" style="font-size:52px;">entre</div>
+            <div class="logo-nos" style="font-size:52px;">nos</div>
+          </div>
+          <div class="logo-tagline-sm" style="color:var(--text-muted);">el dinero vuelve a ser de la gente</div>
+        </div>
+      </div>
+
+      <!-- Horizontal -->
+      <div class="logo-variant lv-dark-card">
+        <div class="lv-label">Horizontal</div>
+        <div class="logo-lockup">
+          <div class="logo-horizontal">
+            <span class="logo-h-entre" style="color:rgba(245,237,216,0.6);">entre</span>
+            <span class="logo-h-nos" style="color:var(--oro);">nos</span>
+          </div>
+          <div class="logo-tagline-sm" style="margin-top:4px;">el dinero vuelve a ser de la gente</div>
+        </div>
+      </div>
+
+      <!-- Light bg -->
+      <div class="logo-variant lv-light">
+        <div class="lv-label" style="color:rgba(7,8,16,0.4);">Sobre fondo claro</div>
+        <div class="logo-lockup logo-sm-light">
+          <div class="logo-sm">
+            <div class="logo-entre" style="font-size:52px; color:rgba(7,8,16,0.45);">entre</div>
+            <div class="logo-nos" style="font-size:52px; color:var(--negro);">nos</div>
+          </div>
+          <div class="logo-tagline-sm" style="color:rgba(7,8,16,0.4);">el dinero vuelve a ser de la gente</div>
+        </div>
+      </div>
+
+      <!-- Gold bg -->
+      <div class="logo-variant lv-gold">
+        <div class="lv-label" style="color:rgba(7,8,16,0.5);">Sobre oro (acento)</div>
+        <div class="logo-lockup logo-sm-gold">
+          <div class="logo-sm">
+            <div class="logo-entre" style="font-size:52px; color:rgba(7,8,16,0.5);">entre</div>
+            <div class="logo-nos" style="font-size:52px; color:var(--negro);">nos</div>
+          </div>
+          <div class="logo-tagline-sm" style="color:rgba(7,8,16,0.5);">el dinero vuelve a ser de la gente</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:12.5px; color:var(--text-muted); margin-top:16px; line-height:1.6; font-family:var(--ff-mono); padding:14px 18px; border:1px solid var(--border-2); border-radius:4px; background:var(--negro-2);">
+      <strong style="color:var(--text-dim);">Regla de construcción del logotipo:</strong><br>
+      "entre" siempre en Fraunces weight 300, italic, opsz 48+, color secundario (crema/60% o negro/45%)<br>
+      "nos" siempre en Fraunces weight 800, normal, mismo tamaño, color primario (oro sobre oscuro / negro sobre claro)<br>
+      La tensión entre lo delicado ("entre") y lo contundente ("nos") es la identidad visual central.
+    </p>
+  </div>
+
+
+  <!-- ══════════ VOZ Y TONO ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">05 — Voz y Tono</div>
+
+    <div class="personality-grid">
+      <div class="trait-card">
+        <div class="trait-emoji">🤝</div>
+        <div class="trait-name">Honesto</div>
+        <div class="trait-not">no: diplomático</div>
+        <div class="trait-desc">Dice lo que es — aunque duela. "Tu banco te cobra 25%. Nosotros cobramos 12%. La diferencia es real."</div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-emoji">🧠</div>
+        <div class="trait-name">Inteligente</div>
+        <div class="trait-not">no: pedante</div>
+        <div class="trait-desc">El banco más listo de la sala, pero nunca lo hace sentir. Explica con claridad, sin jerga innecesaria.</div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-emoji">🌿</div>
+        <div class="trait-name">Cálido</div>
+        <div class="trait-not">no: folklórico</div>
+        <div class="trait-desc">Siente como un amigo que sabe de plata. No como un banco. No como una ONG. Como alguien que te cuida.</div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-emoji">🇨🇴</div>
+        <div class="trait-name">Colombiano</div>
+        <div class="trait-not">no: localista</div>
+        <div class="trait-desc">Entiende el contexto colombiano profundamente pero aspira a estándares globales de excelencia (DBS, Nubank).</div>
+      </div>
+    </div>
+
+    <div class="copy-compare">
+      <div class="copy-card copy-bad">
+        <div class="copy-verdict copy-no">✗ No así</div>
+        <div class="copy-text">"Estimado cliente: Su solicitud de crédito ha sido aprobada conforme a los parámetros establecidos en nuestra política de riesgo crediticio."</div>
+        <div class="copy-note">Frío, impersonal, distante. El cliente siente que está tratando con una institución, no con alguien que lo conoce.</div>
+      </div>
+      <div class="copy-card copy-good">
+        <div class="copy-verdict copy-yes">✓ Así</div>
+        <div class="copy-text">"¡Listo! Te aprobamos $1.5M a 12% E.A. Pagás $54,000 menos al mes que en tu banco actual. ¿Activamos?"</div>
+        <div class="copy-note">Directo, concreto, con beneficio claro. El cliente siente que el banco está de su lado y sabe lo que hace.</div>
+      </div>
+      <div class="copy-card copy-bad">
+        <div class="copy-verdict copy-no">✗ No así</div>
+        <div class="copy-text">"Detectamos una irregularidad en su cuenta. Por favor comuníquese con nuestro departamento de riesgo."</div>
+        <div class="copy-note">Genera miedo y desconfianza. No da información. No ofrece solución. El cliente se siente en problemas.</div>
+      </div>
+      <div class="copy-card copy-good">
+        <div class="copy-verdict copy-yes">✓ Así</div>
+        <div class="copy-text">"Hola Camila, notamos algo inusual en tu cuenta — una transacción de $450K a las 3am. ¿Fuiste tú? [Sí, fui yo] [No, bloquear]"</div>
+        <div class="copy-note">Específico, transparente, ofrece control. El cliente se siente protegido, no perseguido.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ APLICACIONES ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">06 — Aplicaciones</div>
+
+    <div class="apps-grid">
+      <!-- Tarjeta débito -->
+      <div>
+        <div style="font-family:var(--ff-mono); font-size:9px; color:var(--text-muted); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px;">Tarjeta débito virtual</div>
+        <div class="mockup-card">
+          <div class="card-chip"></div>
+          <div class="card-brand"><span>entre</span>nos</div>
+          <div class="card-bottom">
+            <div class="card-number">•••• •••• •••• 4821</div>
+            <div class="card-holder">Emiliano Bojanini</div>
+          </div>
+          <div class="card-rate">
+            <div class="rate-label">ahorro E.A.</div>
+            <div class="rate-value">8.5%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App screen -->
+      <div>
+        <div style="font-family:var(--ff-mono); font-size:9px; color:var(--text-muted); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px;">App móvil — pantalla principal</div>
+        <div class="mockup-screen">
+          <div class="screen-header">
+            <div class="screen-greeting">Hola, <strong>Emiliano</strong> 👋</div>
+            <div class="screen-notif">🔔</div>
+          </div>
+          <div class="screen-balance">
+            <div class="bal-label">Saldo disponible</div>
+            <div class="bal-amount">$2'847.320</div>
+            <div class="bal-cop">COP · Cuenta Inteligente</div>
+          </div>
+          <div class="screen-rate-bar">
+            <div class="srb-text">
+              <strong style="color:var(--text);">Comunidad: 94.7% a tiempo</strong><br>
+              <span style="font-size:10.5px; color:var(--text-muted);">Tu tasa bajó 0.2% este mes</span>
+            </div>
+            <div class="srb-rate">12% E.A.</div>
+          </div>
+          <div class="screen-actions">
+            <div class="action-btn">
+              <div class="ab-icon">💸</div>
+              <div class="ab-label">Transferir</div>
+            </div>
+            <div class="action-btn">
+              <div class="ab-icon">💳</div>
+              <div class="ab-label">Pagar</div>
+            </div>
+            <div class="action-btn">
+              <div class="ab-icon">🌍</div>
+              <div class="ab-label">Remesas</div>
+            </div>
+          </div>
+          <div class="screen-msg">
+            <div class="msg-avatar">✨</div>
+            <div class="msg-content">
+              <div class="msg-sender">EntreNos AI</div>
+              <div class="msg-text">Llevas $180K sin usar 30 días. ¿Los movemos al FIC? Ganarías $1,530/mes extra.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ ELEMENTOS VISUALES ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">07 — Elementos Visuales</div>
+
+    <div class="elements-grid">
+      <div class="element-block">
+        <div class="el-title">Border Radius</div>
+        <div class="radius-demo">
+          <div class="r-box" style="border-radius:2px;"><span>2px</span></div>
+          <div class="r-box" style="border-radius:4px;"><span>4px</span></div>
+          <div class="r-box" style="border-radius:6px;"><span>6px</span></div>
+          <div class="r-box" style="border-radius:10px;"><span>10px</span></div>
+          <div class="r-box" style="border-radius:16px;"><span>16px</span></div>
+          <div class="r-box" style="border-radius:50%;"><span>50%</span></div>
+        </div>
+        <p style="font-size:11.5px; color:var(--text-muted); line-height:1.5; margin-top:8px;">2-4px para elementos de datos (tablas, chips, badges). 6-10px para cards. 16px para tarjetas físicas y modales grandes. Sin bordes redondeados excesivos — la marca es precisa, no blanda.</p>
+      </div>
+
+      <div class="element-block">
+        <div class="el-title">Sombras y Elevación</div>
+        <div class="shadow-demo">
+          <div class="s-box" style="box-shadow:0 1px 3px rgba(0,0,0,0.4);">Nivel 1 — subtle</div>
+          <div class="s-box" style="box-shadow:0 4px 16px rgba(0,0,0,0.5);">Nivel 2 — card</div>
+          <div class="s-box" style="box-shadow:0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.1);">Nivel 3 — modal</div>
+          <div class="s-box" style="box-shadow:0 0 40px rgba(201,168,76,0.15), 0 4px 16px rgba(0,0,0,0.5);">Oro glow — acento especial</div>
+        </div>
+      </div>
+
+      <div class="element-block">
+        <div class="el-title">Animación y Movimiento</div>
+        <div class="motion-demo">
+          <div style="font-size:11.5px; color:var(--text-dim); margin-bottom:8px;">Ease: <span style="font-family:var(--ff-mono); font-size:10px; color:var(--oro);">cubic-bezier(0.16, 1, 0.3, 1)</span></div>
+          <div class="m-bar" style="width:100%;"></div>
+          <div class="m-bar" style="width:70%;"></div>
+          <div class="m-bar" style="width:45%;"></div>
+          <div style="margin-top:8px;">
+            <span class="m-dot"></span>
+            <span style="font-size:11.5px; color:var(--text-dim);">Pulsing: 2s ease-in-out infinite</span>
+          </div>
+        </div>
+        <p style="font-size:11.5px; color:var(--text-muted); line-height:1.5; margin-top:12px;">Duraciones: 200ms hover, 350ms transiciones, 600ms entradas de página. Usar staggered delay (0.1s entre elementos) para revelar listas. Nunca más de 800ms para UX crítico.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ PRINCIPIOS ══════════ -->
+  <div class="brand-section">
+    <div class="s-label">08 — Principios de Diseño</div>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-num">01</div>
+        <div class="principle-name">El dinero habla claro</div>
+        <div class="principle-desc">Cada número en la interfaz tiene contexto. "12% E.A." siempre va con su comparativo: "el mercado cobra 25%". La transparencia no es un feature — es el producto.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">02</div>
+        <div class="principle-name">Calma en el caos</div>
+        <div class="principle-desc">Las finanzas generan ansiedad. El diseño de EntreNos debe ser el antídoto: espacio amplio, jerarquía clara, información progresiva. Nunca abrumar — guiar.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">03</div>
+        <div class="principle-name">Preciso como un reloj</div>
+        <div class="principle-desc">Sin bordes irregulares, sin colores que no pertenecen al sistema, sin tipografía fuera de escala. La precisión visual comunica confianza financiera antes de que el usuario lea una sola palabra.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">04</div>
+        <div class="principle-name">Oro con moderación</div>
+        <div class="principle-desc">El oro es el color más poderoso de la paleta — por eso aparece poco. CTAs principales, el logotipo, datos de alta importancia. Si todo brilla, nada brilla.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">05</div>
+        <div class="principle-name">La cursiva es emoción</div>
+        <div class="principle-desc">En Fraunces, la cursiva representa la voz humana, el lado emocional del banco. El negrita representa la solidez, la confianza. Los mensajes más poderosos mezclan ambos.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">06</div>
+        <div class="principle-name">Diseñado para crecer</div>
+        <div class="principle-desc">El sistema visual debe escalar de una app con 1,000 usuarios a 1,500,000. Tokens de diseño primero, componentes después. La consistencia es la mejor feature.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <div class="brand-footer">
+    <div class="bf-logo">
+      <span style="font-family:var(--ff-display); font-weight:300; font-style:italic; font-size:28px; color:rgba(245,237,216,0.5); font-variation-settings:'opsz' 28;">entre</span>
+      <span style="font-family:var(--ff-display); font-weight:800; font-size:28px; color:var(--oro); font-variation-settings:'opsz' 28;">nos</span>
+    </div>
+    <div style="font-family:var(--ff-display); font-style:italic; font-weight:300; font-size:16px; color:var(--text-muted); font-variation-settings:'opsz' 16; flex:1; text-align:center;">
+      el dinero vuelve a ser de la gente
+    </div>
+    <div class="bf-meta">
+      Brand Identity · v1.0<br>
+      12:12 Projects · 2026-03-14<br>
+      Confidencial
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

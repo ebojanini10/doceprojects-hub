@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntreNos — Modelo Financiero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #070810;
+    --surface: #0C0D17;
+    --surface2: #111220;
+    --border: rgba(201,168,76,0.1);
+    --gold: #C9A84C;
+    --gold-light: #E4C977;
+    --gold-dim: rgba(201,168,76,0.25);
+    --white: #ECE8DE;
+    --gray: #636070;
+    --gray-m: #8C879C;
+    --green: #4CAF7D;
+    --red: #C94C5A;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --serif: 'Playfair Display', serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--sans);
+    min-height: 100vh;
+  }
+
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7,8,16,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .brand {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--gold);
+  }
+
+  .doc-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0 40px;
+    position: sticky;
+    top: 56px;
+    z-index: 40;
+    gap: 0;
+  }
+
+  .tab {
+    padding: 14px 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab:hover { color: var(--white); }
+
+  .panel { display: none; padding: 40px; max-width: 1200px; margin: 0 auto; }
+  .panel.active { display: block; }
+
+  /* KPI CARDS */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 40px;
+  }
+
+  .kpi {
+    background: var(--surface);
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .kpi:hover::after { opacity: 1; }
+
+  .kpi-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-m);
+    margin-bottom: 10px;
+  }
+
+  .kpi-value {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--gold-light);
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+
+  .kpi-sub {
+    font-size: 10px;
+    color: var(--gray);
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .section-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray-m);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  /* FINANCIAL TABLES */
+  .fin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-bottom: 40px;
+  }
+
+  .fin-table thead tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .fin-table th {
+    text-align: right;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 12px;
+    font-weight: 500;
+  }
+
+  .fin-table th:first-child { text-align: left; color: var(--gray-m); }
+
+  .fin-table td {
+    padding: 9px 12px;
+    text-align: right;
+    color: var(--gray-m);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .fin-table td:first-child {
+    text-align: left;
+    color: rgba(236,232,222,0.7);
+    font-size: 11px;
+  }
+
+  .fin-table tr.section-row td {
+    color: var(--gray);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-top: 18px;
+    border-bottom: none;
+  }
+
+  .fin-table tr.highlight td {
+    color: var(--gold-light);
+    font-weight: 500;
+    border-top: 1px solid var(--border);
+  }
+
+  .fin-table tr.highlight td:first-child { color: var(--white); }
+
+  .fin-table td.pos { color: var(--green); }
+  .fin-table td.neg { color: var(--red); }
+  .fin-table td.gold { color: var(--gold); }
+
+  /* PROGRESS BARS */
+  .bar-section { margin-bottom: 32px; }
+
+  .bar-item {
+    margin-bottom: 14px;
+  }
+
+  .bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .bar-name {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(236,232,222,0.75);
+  }
+
+  .bar-val {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    border-radius: 2px;
+  }
+
+  .bar-fill.green { background: linear-gradient(90deg, rgba(76,175,125,0.3), #4CAF7D); }
+  .bar-fill.red { background: linear-gradient(90deg, rgba(201,76,90,0.3), #C94C5A); }
+
+  /* SCENARIO GRID */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 40px;
+  }
+
+  .scenario-card {
+    background: var(--surface);
+    padding: 28px 24px;
+  }
+
+  .scenario-card.base { background: var(--surface2); border-top: 2px solid var(--gold); }
+
+  .scenario-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .scenario-label.p { color: var(--red); }
+  .scenario-label.b { color: var(--gold); }
+  .scenario-label.o { color: var(--green); }
+
+  .scenario-metric {
+    margin-bottom: 12px;
+  }
+
+  .sm-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-m);
+    margin-bottom: 3px;
+  }
+
+  .sm-value {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .sm-value.p { color: #D66; }
+  .sm-value.b { color: var(--gold-light); }
+  .sm-value.o { color: var(--green); }
+
+  /* UNIT ECONOMICS */
+  .ue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .ue-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .ue-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ue-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .ue-row:last-child { border: none; }
+
+  .ue-row .label { color: var(--gray-m); font-size: 11px; }
+  .ue-row .value { color: var(--white); font-weight: 500; }
+  .ue-row .value.highlight { color: var(--gold-light); font-size: 16px; }
+
+  /* INVESTOR TABLE */
+  .inv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-bottom: 40px;
+  }
+
+  .inv-table th {
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  .inv-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: rgba(236,232,222,0.8);
+  }
+
+  .inv-table td.irr { color: var(--gold-light); font-weight: 500; font-size: 14px; }
+  .inv-table td.mult { color: var(--green); font-weight: 500; }
+
+  /* FUNNEL */
+  .funnel {
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+
+  .funnel-step {
+    text-align: center;
+    margin-bottom: 2px;
+    position: relative;
+  }
+
+  .funnel-bar {
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin: 0 auto;
+    transition: width 0.3s;
+  }
+
+  .funnel-bar span {
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .funnel-bar .fl { color: var(--gray-m); }
+  .funnel-bar .fr { color: var(--gold); font-weight: 500; }
+
+  .funnel-arrow {
+    text-align: center;
+    color: var(--gold-dim);
+    font-size: 14px;
+    margin: 4px 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray);
+  }
+
+  /* COMPARISON */
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 40px;
+  }
+
+  .cmp-table th {
+    padding: 10px 12px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cmp-table th:first-child { text-align: left; color: var(--gray-m); }
+  .cmp-table th:not(:first-child) { text-align: center; color: var(--gold); }
+
+  .cmp-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-align: center;
+    color: var(--gray-m);
+  }
+
+  .cmp-table td:first-child { text-align: left; color: rgba(236,232,222,0.75); }
+  .cmp-table td.ours { color: var(--gold-light); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">EntreNos</div>
+  <div class="doc-meta">Modelo Financiero · 5 años · Confidencial · Marzo 2026</div>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('pl')">P&L</button>
+  <button class="tab" onclick="showTab('unit')">Unit Economics</button>
+  <button class="tab" onclick="showTab('scenarios')">Escenarios</button>
+  <button class="tab" onclick="showTab('capital')">Capital</button>
+  <button class="tab" onclick="showTab('investors')">Retornos</button>
+  <button class="tab" onclick="showTab('assumptions')">Supuestos</button>
+</div>
+
+<!-- P&L -->
+<div class="panel active" id="tab-pl">
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">Cartera Año 5</div>
+      <div class="kpi-value">$2.72T</div>
+      <div class="kpi-sub">COP bruto</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ingresos Año 5</div>
+      <div class="kpi-value">$250B</div>
+      <div class="kpi-sub">COP / año</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">EBITDA Año 5</div>
+      <div class="kpi-value">$128B</div>
+      <div class="kpi-sub">COP / 51% margen</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Cost-to-Income Año 5</div>
+      <div class="kpi-value">49%</div>
+      <div class="kpi-sub">vs. 60% banca CO</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">ROE Año 5</div>
+      <div class="kpi-value">28%</div>
+      <div class="kpi-sub">Positivo</div>
+    </div>
+  </div>
+
+  <div class="section-title">Estado de Resultados — Año 1 mensual</div>
+  <div class="section-sub">Primer 12 meses post-licencia · millones de COP</div>
+
+  <table class="fin-table">
+    <thead>
+      <tr>
+        <th>Concepto</th><th>M1</th><th>M3</th><th>M6</th><th>M9</th><th>M12</th><th>Total Año 1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="section-row"><td colspan="7">VOLUMEN</td></tr>
+      <tr>
+        <td>Usuarios acumulados</td>
+        <td>500</td><td>3,000</td><td>12,000</td><td>25,000</td><td>40,000</td><td>—</td>
+      </tr>
+      <tr>
+        <td>Créditos activos</td>
+        <td>50</td><td>600</td><td>3,600</td><td>10,000</td><td>18,000</td><td>—</td>
+      </tr>
+      <tr>
+        <td>Cartera bruta (M COP)</td>
+        <td>400</td><td>4,800</td><td>28,800</td><td>80,000</td><td>144,000</td><td>—</td>
+      </tr>
+      <tr class="section-row"><td colspan="7">INGRESOS</td></tr>
+      <tr>
+        <td>Intereses cartera</td>
+        <td>4</td><td>48</td><td>288</td><td>800</td><td>1,440</td><td>5,530</td>
+      </tr>
+      <tr>
+        <td>Interchange + fees</td>
+        <td>3</td><td>15</td><td>60</td><td>125</td><td>200</td><td>870</td>
+      </tr>
+      <tr>
+        <td>Comisión remesas</td>
+        <td>1</td><td>5</td><td>20</td><td>42</td><td>67</td><td>290</td>
+      </tr>
+      <tr class="highlight">
+        <td>Total ingresos</td>
+        <td>8</td><td>68</td><td>368</td><td>967</td><td>1,707</td><td class="gold">6,690</td>
+      </tr>
+      <tr class="section-row"><td colspan="7">COSTOS</td></tr>
+      <tr>
+        <td>Costo fondeo (intereses ahorro)</td>
+        <td>4</td><td>23</td><td>90</td><td>188</td><td>300</td><td>1,300</td>
+      </tr>
+      <tr>
+        <td>Provisiones (5.5% NPL)</td>
+        <td>2</td><td>22</td><td>132</td><td>367</td><td>660</td><td>2,530</td>
+      </tr>
+      <tr>
+        <td>Nómina (12 personas)</td>
+        <td>96</td><td>96</td><td>96</td><td>100</td><td>104</td><td>1,180</td>
+      </tr>
+      <tr>
+        <td>Tecnología + cloud</td>
+        <td>25</td><td>30</td><td>40</td><td>50</td><td>60</td><td>480</td>
+      </tr>
+      <tr>
+        <td>AI inference (Claude API)</td>
+        <td>0.4</td><td>2.6</td><td>10</td><td>21</td><td>34</td><td>145</td>
+      </tr>
+      <tr>
+        <td>Marketing + CAC</td>
+        <td>10</td><td>40</td><td>60</td><td>50</td><td>40</td><td>500</td>
+      </tr>
+      <tr>
+        <td>Legal + compliance + auditoría</td>
+        <td>20</td><td>15</td><td>15</td><td>15</td><td>15</td><td>195</td>
+      </tr>
+      <tr>
+        <td>Otros (oficina, seguros, misc)</td>
+        <td>10</td><td>10</td><td>12</td><td>12</td><td>15</td><td>140</td>
+      </tr>
+      <tr class="highlight">
+        <td>Total costos</td>
+        <td>167</td><td>239</td><td>455</td><td>803</td><td>1,228</td><td class="gold">6,470</td>
+      </tr>
+      <tr class="section-row"><td colspan="7">RESULTADO</td></tr>
+      <tr class="highlight">
+        <td>EBITDA</td>
+        <td class="neg">(159)</td><td class="neg">(171)</td><td class="neg">(87)</td>
+        <td class="pos">164</td><td class="pos">479</td><td class="gold">220</td>
+      </tr>
+      <tr>
+        <td>Margen EBITDA</td>
+        <td class="neg">-1988%</td><td class="neg">-251%</td><td class="neg">-24%</td>
+        <td class="pos">+17%</td><td class="pos">+28%</td><td>3%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Resumen Anual 5 años</div>
+  <div class="section-sub">Millones de COP</div>
+
+  <table class="fin-table">
+    <thead>
+      <tr>
+        <th>Métrica</th><th>Año 1</th><th>Año 2</th><th>Año 3</th><th>Año 4</th><th>Año 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Usuarios totales (K)</td><td>40</td><td>130</td><td>250</td><td>400</td><td>600</td></tr>
+      <tr><td>Cartera bruta (B COP)</td><td>144</td><td>520</td><td>1,080</td><td>1,760</td><td>2,720</td></tr>
+      <tr><td>Ingresos</td><td>6,690</td><td>38,000</td><td>85,000</td><td>155,000</td><td>250,000</td></tr>
+      <tr class="highlight"><td>EBITDA</td>
+        <td>220</td><td class="gold">13,200</td><td class="gold">40,000</td><td class="gold">78,000</td><td class="gold">128,000</td>
+      </tr>
+      <tr><td>Utilidad neta</td>
+        <td class="neg">(2,500)</td><td class="pos">6,000</td><td class="pos">25,000</td><td class="pos">52,000</td><td class="pos">88,000</td>
+      </tr>
+      <tr><td>Cost-to-income</td>
+        <td class="neg">97%</td><td>65%</td><td>53%</td><td>50%</td><td class="gold">49%</td>
+      </tr>
+      <tr><td>ROE</td>
+        <td class="neg">neg</td><td>4%</td><td>14%</td><td>22%</td><td class="gold">28%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="padding: 20px 24px; border: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 11px; color: var(--gray-m); line-height: 1.8;">
+    Nota: Breakeven operativo ~Mes 8. Utilidad neta positiva desde Año 2. Los números de Año 1 son inversión — cada COP de pérdida genera datos para el modelo de scoring que reduce NPL a largo plazo.
+  </div>
+</div>
+
+<!-- UNIT ECONOMICS -->
+<div class="panel" id="tab-unit">
+  <div class="section-title">Unit Economics por usuario</div>
+  <div class="section-sub">Supuestos base · Año 3 estabilizado</div>
+
+  <div class="ue-grid">
+    <div class="ue-card">
+      <div class="ue-title">Adquisición</div>
+      <div class="ue-row"><span class="label">CAC promedio ponderado</span><span class="value highlight">$20,000 COP</span></div>
+      <div class="ue-row"><span class="label">→ Waitlist existente (CAC)</span><span class="value">$0</span></div>
+      <div class="ue-row"><span class="label">→ Referidos (35% del total)</span><span class="value">$8,000 COP</span></div>
+      <div class="ue-row"><span class="label">→ WhatsApp guerrilla (25%)</span><span class="value">$15,000 COP</span></div>
+      <div class="ue-row"><span class="label">→ Social media (20%)</span><span class="value">$35,000 COP</span></div>
+      <div class="ue-row"><span class="label">→ Alianzas nómina (5%)</span><span class="value">$25,000 COP</span></div>
+    </div>
+
+    <div class="ue-card">
+      <div class="ue-title">Revenue & Rentabilidad</div>
+      <div class="ue-row"><span class="label">ARPU mensual</span><span class="value">$18,500 COP</span></div>
+      <div class="ue-row"><span class="label">→ Spread crédito</span><span class="value">$8,000</span></div>
+      <div class="ue-row"><span class="label">→ Interchange</span><span class="value">$5,500</span></div>
+      <div class="ue-row"><span class="label">→ Fees + remesas</span><span class="value">$5,000</span></div>
+      <div class="ue-row"><span class="label">Costo servicing/mes</span><span class="value">$4,250 COP</span></div>
+      <div class="ue-row"><span class="label">Margen bruto/usuario/mes</span><span class="value">$14,250 COP</span></div>
+      <div class="ue-row"><span class="label">Provisión mensual/usuario</span><span class="value">$3,700 COP</span></div>
+      <div class="ue-row"><span class="label">Contribución neta/mes</span><span class="value">$10,550 COP</span></div>
+    </div>
+
+    <div class="ue-card">
+      <div class="ue-title">LTV & Payback</div>
+      <div class="ue-row"><span class="label">Vida útil promedio</span><span class="value">42 meses</span></div>
+      <div class="ue-row"><span class="label">Churn mensual</span><span class="value">1.5%</span></div>
+      <div class="ue-row"><span class="label">LTV</span><span class="value highlight">$443,000 COP</span></div>
+      <div class="ue-row"><span class="label">LTV / CAC</span><span class="value highlight">22×</span></div>
+      <div class="ue-row"><span class="label">Payback</span><span class="value highlight">1.9 meses</span></div>
+    </div>
+
+    <div class="ue-card">
+      <div class="ue-title">vs. Benchmarks de industria</div>
+      <table class="cmp-table" style="margin:0">
+        <thead><tr><th>Métrica</th><th>EntreNos</th><th>Nubank</th><th>Banco Trad.</th></tr></thead>
+        <tbody>
+          <tr><td>CAC</td><td class="ours">$20K COP</td><td>$25-40K</td><td>$200K+</td></tr>
+          <tr><td>LTV/CAC</td><td class="ours">22×</td><td>15-20×</td><td>5-8×</td></tr>
+          <tr><td>Payback</td><td class="ours">2 meses</td><td>4-6 meses</td><td>12-24 meses</td></tr>
+          <tr><td>Costo/cliente/mes</td><td class="ours">$4,250</td><td>$3,400</td><td>$25,000+</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">Funnel de clientes — Año 1</div>
+  <div class="section-sub">De waitlist a crédito activo</div>
+
+  <div class="funnel">
+    <div class="funnel-step">
+      <div class="funnel-bar" style="width:100%">
+        <span class="fl">Waitlist pre-licencia</span>
+        <span class="fr">10,000</span>
+      </div>
+    </div>
+    <div class="funnel-arrow">↓ 60% conversión a cuenta de ahorro</div>
+    <div class="funnel-step">
+      <div class="funnel-bar" style="width:88%">
+        <span class="fl">Usuarios registrados (Mes 1)</span>
+        <span class="fr">6,000</span>
+      </div>
+    </div>
+    <div class="funnel-arrow">↓ +3-5K nuevos/mes (referidos + digital)</div>
+    <div class="funnel-step">
+      <div class="funnel-bar" style="width:72%">
+        <span class="fl">Usuarios activos (Mes 12)</span>
+        <span class="fr">40,000</span>
+      </div>
+    </div>
+    <div class="funnel-arrow">↓ 45% aplican a crédito</div>
+    <div class="funnel-step">
+      <div class="funnel-bar" style="width:55%">
+        <span class="fl">Solicitudes de crédito</span>
+        <span class="fr">18,000</span>
+      </div>
+    </div>
+    <div class="funnel-arrow">↓ 70% aprobados (AI underwriting)</div>
+    <div class="funnel-step">
+      <div class="funnel-bar" style="width:38%">
+        <span class="fl">Créditos activos fin Año 1</span>
+        <span class="fr">12,600</span>
+      </div>
+    </div>
+    <div class="funnel-arrow">↓ 85% retienen al año (churn 1.5%/mes)</div>
+    <div class="funnel-step">
+      <div class="funnel-bar" style="width:28%">
+        <span class="fl">Base para Año 2</span>
+        <span class="fr">34K+ nuevos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ESCENARIOS -->
+<div class="panel" id="tab-scenarios">
+  <div class="section-title">Análisis de escenarios</div>
+  <div class="section-sub">Año 3 · Año 5 · Stress test NPL</div>
+
+  <div style="margin-bottom: 28px;">
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;">Variables de entrada</div>
+    <table class="fin-table" style="margin-bottom:0">
+      <thead><tr><th>Variable</th><th>Pesimista</th><th>Base</th><th>Optimista</th></tr></thead>
+      <tbody>
+        <tr><td>Crecimiento usuarios/mes</td><td class="neg">2,500</td><td class="gold">3,500</td><td class="pos">5,000</td></tr>
+        <tr><td>NPL (cartera vencida)</td><td class="neg">8.0%</td><td class="gold">5.5%</td><td class="pos">3.5%</td></tr>
+        <tr><td>Tasa colocación</td><td>14% E.A.</td><td class="gold">12% E.A.</td><td>11% E.A.</td></tr>
+        <tr><td>Churn mensual</td><td class="neg">2.5%</td><td class="gold">1.5%</td><td class="pos">1.0%</td></tr>
+        <tr><td>CAC</td><td class="neg">$30K COP</td><td class="gold">$20K COP</td><td class="pos">$12K COP</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;">Impacto en P&L — Año 3</div>
+  <div class="scenario-grid">
+    <div class="scenario-card">
+      <div class="scenario-label p">Pesimista</div>
+      <div class="scenario-metric"><div class="sm-label">Usuarios</div><div class="sm-value p">130K</div></div>
+      <div class="scenario-metric"><div class="sm-label">Cartera</div><div class="sm-value p">$500B COP</div></div>
+      <div class="scenario-metric"><div class="sm-label">EBITDA</div><div class="sm-value p">$8,000M</div></div>
+      <div class="scenario-metric"><div class="sm-label">Utilidad neta</div><div class="sm-value p">$2,000M</div></div>
+      <div class="scenario-metric"><div class="sm-label">ROE</div><div class="sm-value p">1%</div></div>
+    </div>
+    <div class="scenario-card base">
+      <div class="scenario-label b">Base ★</div>
+      <div class="scenario-metric"><div class="sm-label">Usuarios</div><div class="sm-value b">250K</div></div>
+      <div class="scenario-metric"><div class="sm-label">Cartera</div><div class="sm-value b">$1,080B COP</div></div>
+      <div class="scenario-metric"><div class="sm-label">EBITDA</div><div class="sm-value b">$40,000M</div></div>
+      <div class="scenario-metric"><div class="sm-label">Utilidad neta</div><div class="sm-value b">$25,000M</div></div>
+      <div class="scenario-metric"><div class="sm-label">ROE</div><div class="sm-value b">14%</div></div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-label o">Optimista</div>
+      <div class="scenario-metric"><div class="sm-label">Usuarios</div><div class="sm-value o">400K</div></div>
+      <div class="scenario-metric"><div class="sm-label">Cartera</div><div class="sm-value o">$1,800B COP</div></div>
+      <div class="scenario-metric"><div class="sm-label">EBITDA</div><div class="sm-value o">$82,000M</div></div>
+      <div class="scenario-metric"><div class="sm-label">Utilidad neta</div><div class="sm-value o">$58,000M</div></div>
+      <div class="scenario-metric"><div class="sm-label">ROE</div><div class="sm-value o">26%</div></div>
+    </div>
+  </div>
+
+  <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;margin-top:40px;">Stress Test NPL Extremo — Año 3</div>
+
+  <div class="bar-section">
+    <div class="bar-item">
+      <div class="bar-header"><span class="bar-name">NPL 3.5% — Excelente</span><span class="bar-val">+35% vs base</span></div>
+      <div class="bar-track"><div class="bar-fill green" style="width:100%"></div></div>
+    </div>
+    <div class="bar-item">
+      <div class="bar-header"><span class="bar-name">NPL 5.5% — Base</span><span class="bar-val">base</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:74%"></div></div>
+    </div>
+    <div class="bar-item">
+      <div class="bar-header"><span class="bar-name">NPL 8.0% — Marginal</span><span class="bar-val">-60% vs base</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:45%"></div></div>
+    </div>
+    <div class="bar-item">
+      <div class="bar-header"><span class="bar-name">NPL 10.0% — Riesgo</span><span class="bar-val">-85% vs base</span></div>
+      <div class="bar-track"><div class="bar-fill red" style="width:20%"></div></div>
+    </div>
+    <div class="bar-item">
+      <div class="bar-header"><span class="bar-name">NPL 12.0% — No viable</span><span class="bar-val">Pérdida neta</span></div>
+      <div class="bar-track"><div class="bar-fill red" style="width:5%"></div></div>
+    </div>
+  </div>
+
+  <div style="padding: 16px 20px; border: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 11px; color: var(--gray-m); line-height: 1.8;">
+    El modelo es viable hasta NPL de 10%. Con AI underwriting y datos de Open Finance, proyectamos NPL de 3.5-5.5% — comparable con Nubank (5.5%). El NPL de 10% requeriría una crisis sistémica de Colombia.
+  </div>
+</div>
+
+<!-- CAPITAL -->
+<div class="panel" id="tab-capital">
+  <div class="section-title">Requerimientos de capital</div>
+  <div class="section-sub">Fases de financiamiento · Pre-Serie A</div>
+
+  <div class="kpi-row" style="grid-template-columns: repeat(3,1fr)">
+    <div class="kpi">
+      <div class="kpi-label">Fase 0 — Bootstrapped</div>
+      <div class="kpi-value">$450M</div>
+      <div class="kpi-sub">COP · Pre-seed</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Fase 1 — Seed</div>
+      <div class="kpi-value">$6,180M</div>
+      <div class="kpi-sub">COP · Aplicación regulatoria</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Fase 2 — Seed/Pre-A</div>
+      <div class="kpi-value">$44,276M</div>
+      <div class="kpi-sub">COP · Licencia + lanzamiento</div>
+    </div>
+  </div>
+
+  <table class="fin-table">
+    <thead><tr><th>Fase</th><th>Concepto</th><th>Monto COP</th><th>Monto USD</th></tr></thead>
+    <tbody>
+      <tr class="section-row"><td colspan="4">FASE 0 — Pre-Seed (Q1-Q2 2026)</td></tr>
+      <tr><td>—</td><td>Equipo founding (6 meses, 4 personas)</td><td>$200M</td><td>—</td></tr>
+      <tr><td>—</td><td>Tecnología y prototipo</td><td>$80M</td><td>—</td></tr>
+      <tr><td>—</td><td>Legal (constitución, asesoría regulatoria)</td><td>$120M</td><td>—</td></tr>
+      <tr><td>—</td><td>Marketing (waitlist)</td><td>$50M</td><td>—</td></tr>
+      <tr class="highlight"><td colspan="2">Total Fase 0</td><td class="gold">$450M COP</td><td>$107K USD</td></tr>
+      <tr class="section-row"><td colspan="4">FASE 1 — Seed (Q3-Q4 2026)</td></tr>
+      <tr><td>—</td><td>Equipo (8 personas, 6 meses)</td><td>$480M</td><td>—</td></tr>
+      <tr><td>—</td><td>Core banking setup (Mambu)</td><td>$300M</td><td>—</td></tr>
+      <tr><td>—</td><td>Compliance + auditoría externa</td><td>$200M</td><td>—</td></tr>
+      <tr><td>—</td><td>Capital regulatorio (depósito SFC)</td><td>$5,000M</td><td>—</td></tr>
+      <tr class="highlight"><td colspan="2">Total Fase 1</td><td class="gold">$6,180M COP</td><td>~$1.5M USD</td></tr>
+      <tr class="section-row"><td colspan="4">FASE 2 — Pre-A (Q1-Q2 2027)</td></tr>
+      <tr><td>—</td><td>Capital regulatorio restante (patrimonio técnico)</td><td>$40,000M</td><td>—</td></tr>
+      <tr><td>—</td><td>Cartera inicial de crédito</td><td>$3,000M</td><td>—</td></tr>
+      <tr><td>—</td><td>Equipo (12 personas, 6 meses)</td><td>$576M</td><td>—</td></tr>
+      <tr><td>—</td><td>Tecnología e infraestructura</td><td>$400M</td><td>—</td></tr>
+      <tr><td>—</td><td>Marketing lanzamiento</td><td>$300M</td><td>—</td></tr>
+      <tr class="highlight"><td colspan="2">Total Fase 2</td><td class="gold">$44,276M COP</td><td>~$10.5M USD</td></tr>
+      <tr class="highlight"><td colspan="2">TOTAL PRE-SERIE A</td><td class="gold">$50,906M COP</td><td>~$12.1M USD</td></tr>
+    </tbody>
+  </table>
+
+  <div style="padding: 20px 24px; border: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 11px; color: var(--gray-m); line-height: 1.8; margin-top: 24px;">
+    Los $50B COP del capital fundador cubren exactamente el Pre-Serie A. El capital regulatorio mínimo ($44.4B) queda inmovilizado como colchón de solvencia Basel III (9%). Los $5.6B restantes cubren los primeros meses operativos, con gap de ~$4B que requiere bridge.
+  </div>
+</div>
+
+<!-- INVESTORS -->
+<div class="panel" id="tab-investors">
+  <div class="section-title">Retornos para inversionistas</div>
+  <div class="section-sub">Serie A post-licencia · Múltiples escenarios de exit</div>
+
+  <div class="kpi-row" style="grid-template-columns: repeat(4,1fr); margin-bottom:40px;">
+    <div class="kpi">
+      <div class="kpi-label">Inversión Serie A</div>
+      <div class="kpi-value">$100B</div>
+      <div class="kpi-sub">COP (~$24M USD)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Valoración pre-money</div>
+      <div class="kpi-value">$300B</div>
+      <div class="kpi-sub">COP (~$71M USD)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Participación Serie A</div>
+      <div class="kpi-value">25%</div>
+      <div class="kpi-sub">del equity post-money</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Revenue Año 5 (base)</div>
+      <div class="kpi-value">$250B</div>
+      <div class="kpi-sub">COP (~$60M USD)</div>
+    </div>
+  </div>
+
+  <table class="inv-table">
+    <thead>
+      <tr><th>Escenario de Exit</th><th>Año</th><th>Múltiplo Revenue</th><th>Valoración Exit</th><th>Retorno Serie A</th><th>IRR aprox.</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Acqui-hire (banco grande compra)</td>
+        <td>Año 6-7</td>
+        <td>3-5×</td>
+        <td>$750B-1,250B COP</td>
+        <td class="mult">1.8-3×</td>
+        <td class="irr">12-20%</td>
+      </tr>
+      <tr>
+        <td>M&A Estratégico (fintech regional)</td>
+        <td>Año 7-8</td>
+        <td>8-12×</td>
+        <td>$2,000B-3,000B COP</td>
+        <td class="mult">5-7×</td>
+        <td class="irr">30-40%</td>
+      </tr>
+      <tr>
+        <td>IPO BVC (listing local)</td>
+        <td>Año 7-8</td>
+        <td>10-15×</td>
+        <td>$2,500B-3,750B COP</td>
+        <td class="mult">6-9×</td>
+        <td class="irr">35-45%</td>
+      </tr>
+      <tr>
+        <td>IPO NYSE / Nasdaq (estilo Nubank)</td>
+        <td>Año 8-10</td>
+        <td>15-25×</td>
+        <td>$3,750B-6,250B COP</td>
+        <td class="mult">9-15×</td>
+        <td class="irr">45-60%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;margin-top:40px;">Comparación con Nubank</div>
+
+  <table class="cmp-table">
+    <thead><tr><th>Métrica</th><th>Nubank (real)</th><th>EntreNos (proyectado)</th></tr></thead>
+    <tbody>
+      <tr><td>Año 0 → IPO</td><td>8 años (2013→2021)</td><td class="ours">Target 7-10 años</td></tr>
+      <tr><td>Revenue al IPO</td><td>$1.7B USD</td><td class="ours">$60M USD (Año 5 base)</td></tr>
+      <tr><td>Valoración IPO</td><td>$45B USD</td><td class="ours">$500M-1.5B USD target</td></tr>
+      <tr><td>Serie A → IPO retorno</td><td>~200×</td><td class="ours">Target 9-15×</td></tr>
+    </tbody>
+  </table>
+
+  <div style="padding: 20px 24px; border: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 11px; color: var(--gray-m); line-height: 1.8; margin-top: 24px;">
+    Nota honesta: Colombia no es Brasil (7× población, 10× PIB). No proyectamos los números de Nubank. Pero un exit de $500M-1.5B USD para el primer banco AI-native de Colombia es realista con buena ejecución. Comparable: Lulo Bank levantó $78M USD en Serie B.
+  </div>
+</div>
+
+<!-- SUPUESTOS -->
+<div class="panel" id="tab-assumptions">
+  <div class="section-title">Tabla de supuestos</div>
+  <div class="section-sub">Variables de entrada · Base case</div>
+
+  <table class="fin-table">
+    <thead><tr><th>Variable</th><th>Valor base</th><th>Fuente / Racional</th></tr></thead>
+    <tbody>
+      <tr class="section-row"><td colspan="3">TASAS</td></tr>
+      <tr><td>Tasa colocación (crédito consumo)</td><td class="gold">12% E.A.</td><td>Target medio (rango 10-14%)</td></tr>
+      <tr><td>Tasa captación (ahorro)</td><td>9% E.A.</td><td>Target medio (rango 8.5-10%)</td></tr>
+      <tr><td>Spread neto de intermediación</td><td class="gold">3 pp</td><td>12% - 9% (conservador)</td></tr>
+      <tr><td>Tasa de usura referencia</td><td>24.36% E.A.</td><td>SFC enero 2026</td></tr>
+      <tr class="section-row"><td colspan="3">RIESGO</td></tr>
+      <tr><td>NPL (cartera vencida) — base</td><td>5.5%</td><td>Promedio sistema financiero colombiano</td></tr>
+      <tr><td>NPL — optimista</td><td class="pos">3.5%</td><td>Con AI underwriting mejorado</td></tr>
+      <tr><td>NPL — pesimista</td><td class="neg">8.0%</td><td>Escenario estrés</td></tr>
+      <tr><td>Provisión sobre NPL</td><td>100%</td><td>Cobertura total</td></tr>
+      <tr class="section-row"><td colspan="3">COSTOS</td></tr>
+      <tr><td>Costo por cliente (servicing)</td><td>$3,400 COP/mes</td><td>~$0.80 USD (benchmark Nubank)</td></tr>
+      <tr><td>Costo AI inference/cliente/mes</td><td>$850 COP</td><td>~$0.20 USD (Claude API)</td></tr>
+      <tr><td>CAC promedio</td><td class="gold">$20,000 COP</td><td>~$4.75 USD (WA guerrilla + referidos)</td></tr>
+      <tr class="section-row"><td colspan="3">NEGOCIO</td></tr>
+      <tr><td>ARPU mensual</td><td>$18,500 COP</td><td>Spread + interchange + fees</td></tr>
+      <tr><td>Churn mensual</td><td>1.5%</td><td>Industria fintech LatAm</td></tr>
+      <tr><td>Crédito promedio por usuario</td><td>$8M COP</td><td>Crédito consumo promedio target</td></tr>
+      <tr><td>Plazo promedio crédito</td><td>36 meses</td><td>Estándar consumo</td></tr>
+      <tr><td>Comisión remesas</td><td>1%</td><td>vs. 6% mercado actual</td></tr>
+      <tr><td>% usuarios que usan remesas</td><td>8%</td><td>Estimado conservador</td></tr>
+      <tr><td>Remesa promedio mensual</td><td>$500 USD</td><td>Promedio BanRep</td></tr>
+      <tr class="section-row"><td colspan="3">HEADCOUNT</td></tr>
+      <tr><td>Empleados Año 1</td><td class="gold">12 personas</td><td>5 tech, 2 risk/compliance, 2 ops, 1 legal, 1 marketing, 1 CEO</td></tr>
+      <tr><td>Empleados Año 3</td><td>35 personas</td><td>Escala moderada</td></tr>
+      <tr><td>Empleados Año 5</td><td>65 personas</td><td>Con expansión de productos</td></tr>
+      <tr><td>Salario promedio equipo</td><td>$8M COP/mes</td><td>Promedio ponderado (tech + ops)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntreNos — Checklist Regulatorio SFC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #070A0F;
+    --surface: #0D1018;
+    --surface2: #131620;
+    --border: rgba(201,168,76,0.12);
+    --gold: #C9A84C;
+    --gold-light: #DDB960;
+    --gold-dim: rgba(201,168,76,0.2);
+    --white: #E8E4DA;
+    --gray: #5A5E6A;
+    --gray-m: #8A8E9A;
+    --green: #3AAA6A;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: rgba(7,10,15,0.97);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(10px);
+  }
+
+  .brand { font-family: var(--mono); font-size: 16px; color: var(--gold); letter-spacing: 2px; }
+  .doc-title { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; color: var(--gray-m); text-transform: uppercase; }
+  .conf { font-family: var(--mono); font-size: 10px; color: var(--gray); border: 1px solid var(--border); padding: 3px 10px; }
+
+  /* LAYOUT */
+  .layout {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+    padding: 24px 0;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+
+  .sidebar-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 0 20px 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-item:hover { background: rgba(201,168,76,0.05); }
+  .nav-item.active { border-left-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+  .nav-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    width: 20px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .nav-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--gray-m);
+    line-height: 1.3;
+  }
+
+  .nav-item.active .nav-label { color: var(--white); }
+
+  .nav-progress {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gray);
+    flex-shrink: 0;
+  }
+
+  .nav-progress.done { color: var(--green); }
+
+  /* PROGRESS BAR */
+  .progress-section {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+
+  .progress-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .progress-track {
+    height: 3px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px;
+    max-width: 900px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: var(--gray-m);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* CHECKLIST ITEMS */
+  .checklist-group {
+    margin-bottom: 32px;
+  }
+
+  .group-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .check-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 2px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border: 1px solid transparent;
+    align-items: flex-start;
+  }
+
+  .check-item:hover { background: rgba(255,255,255,0.02); }
+  .check-item.checked { background: rgba(58,170,106,0.05); border-color: rgba(58,170,106,0.1); }
+
+  .checkbox {
+    width: 16px; height: 16px;
+    border: 1px solid var(--gray);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-size: 10px;
+    color: var(--green);
+  }
+
+  .check-item.checked .checkbox {
+    background: rgba(58,170,106,0.15);
+    border-color: var(--green);
+  }
+
+  .check-text {
+    font-size: 13px;
+    color: rgba(232,228,218,0.8);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .check-text strong { color: var(--white); font-weight: 500; }
+  .check-text em { color: var(--gold); font-style: normal; font-family: var(--mono); font-size: 11px; }
+  .check-item.checked .check-text { color: rgba(232,228,218,0.45); text-decoration: line-through; text-decoration-color: rgba(58,170,106,0.3); }
+
+  /* INFO BOXES */
+  .info-box {
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--gray-m);
+  }
+
+  .info-box.warning { border-color: rgba(200,140,40,0.3); background: rgba(200,140,40,0.04); }
+  .info-box.warning strong { color: var(--gold-light); }
+
+  /* TABLES */
+  .reg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .reg-table th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  .reg-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: rgba(232,228,218,0.75);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .reg-table td:first-child { color: var(--white); font-weight: 500; font-family: var(--mono); font-size: 11px; }
+  .reg-table td.gold { color: var(--gold); font-family: var(--mono); }
+  .reg-table td.red { color: #D06060; font-family: var(--mono); }
+  .reg-table td.green { color: var(--green); font-family: var(--mono); }
+
+  /* TIMELINE */
+  .timeline-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 32px;
+  }
+
+  .timeline-step {
+    display: flex;
+    gap: 20px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: var(--mono);
+    font-size: 20px;
+    color: var(--gold-dim);
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 32px;
+  }
+
+  .step-content {}
+
+  .step-title {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .step-duration {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .step-tasks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .step-tasks li {
+    font-size: 12px;
+    color: var(--gray-m);
+    line-height: 1.5;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .step-tasks li::before {
+    content: '›';
+    position: absolute;
+    left: 2px;
+    color: var(--gold-dim);
+  }
+
+  /* CONTACTS */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-bottom: 32px;
+  }
+
+  .contact-card {
+    background: var(--surface);
+    padding: 24px;
+  }
+
+  .contact-name {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .contact-role {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .contact-data {
+    font-size: 12px;
+    color: var(--gray-m);
+    line-height: 1.7;
+    font-family: var(--mono);
+  }
+
+  .contact-data a { color: var(--gold); text-decoration: none; }
+
+  /* CAPITAL TABLE */
+  .capital-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  .capital-table th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  .capital-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: rgba(232,228,218,0.8);
+  }
+
+  .capital-table td:first-child { color: var(--white); font-weight: 500; }
+  .capital-table td.gold { color: var(--gold); font-family: var(--mono); font-size: 15px; font-weight: 500; }
+
+  .route-compare {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 32px;
+    font-size: 12px;
+  }
+
+  .rc-cell {
+    background: var(--surface);
+    padding: 16px 14px;
+  }
+
+  .rc-header {
+    background: var(--surface2);
+    padding: 12px 14px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .rc-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+
+  .rc-value {
+    font-size: 12px;
+    color: rgba(232,228,218,0.8);
+    line-height: 1.4;
+  }
+
+  .rc-value.best { color: var(--green); font-weight: 500; }
+  .rc-value.worst { color: #D06060; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">EntreNos_</div>
+  <div class="doc-title">Checklist Regulatorio SFC · Licencia Bancaria</div>
+  <div class="conf">CONFIDENCIAL</div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-title">Secciones</div>
+    <div class="nav-item active" onclick="showSection('A')">
+      <div class="nav-id">A</div>
+      <div class="nav-label">Capital y Solvencia</div>
+      <div class="nav-progress" id="prog-A">0/4</div>
+    </div>
+    <div class="nav-item" onclick="showSection('B')">
+      <div class="nav-id">B</div>
+      <div class="nav-label">Documentos SFC</div>
+      <div class="nav-progress" id="prog-B">0/7</div>
+    </div>
+    <div class="nav-item" onclick="showSection('C')">
+      <div class="nav-id">C</div>
+      <div class="nav-label">Timeline y Proceso</div>
+      <div class="nav-progress" id="prog-C">0/5</div>
+    </div>
+    <div class="nav-item" onclick="showSection('D')">
+      <div class="nav-id">D</div>
+      <div class="nav-label">Idoneidad (Fit & Proper)</div>
+      <div class="nav-progress" id="prog-D">0/7</div>
+    </div>
+    <div class="nav-item" onclick="showSection('E')">
+      <div class="nav-id">E</div>
+      <div class="nav-label">SARLAFT</div>
+      <div class="nav-progress" id="prog-E">0/8</div>
+    </div>
+    <div class="nav-item" onclick="showSection('F')">
+      <div class="nav-id">F</div>
+      <div class="nav-label">SARC — Riesgo Crédito</div>
+      <div class="nav-progress" id="prog-F">0/6</div>
+    </div>
+    <div class="nav-item" onclick="showSection('G')">
+      <div class="nav-id">G</div>
+      <div class="nav-label">Sandbox InnovaSFC</div>
+      <div class="nav-progress" id="prog-G">0/4</div>
+    </div>
+    <div class="nav-item" onclick="showSection('H')">
+      <div class="nav-id">H</div>
+      <div class="nav-label">Rutas Alternativas</div>
+      <div class="nav-progress" id="prog-H">—</div>
+    </div>
+    <div class="nav-item" onclick="showSection('I')">
+      <div class="nav-id">I</div>
+      <div class="nav-label">Contactos Clave</div>
+      <div class="nav-progress" id="prog-I">—</div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-label">
+        <span>Progreso total</span>
+        <span id="total-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="global-bar" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECCIÓN A -->
+    <div class="section active" id="section-A">
+      <div class="section-header">
+        <div class="section-id">Sección A</div>
+        <div class="section-title">Capital y Solvencia</div>
+        <p class="section-sub">Requisitos de capital mínimo según tipo de entidad. Actualizado anualmente por IPC mediante resolución SFC.</p>
+      </div>
+
+      <div class="info-box warning">
+        <strong>⚠ Importante:</strong> Los montos se actualizan cada año. Consultar la resolución vigente 2026 en superfinanciera.gov.co → Capital Mínimo Requerido.
+      </div>
+
+      <table class="capital-table">
+        <thead><tr><th>Tipo de entidad</th><th>Capital mínimo</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr><td>Establecimiento Bancario</td><td class="gold">~$45,085M COP</td><td>Ajustado anualmente por IPC</td></tr>
+          <tr><td>Corporación Financiera</td><td class="gold">~$24,810M COP</td><td>Ajustado anualmente por IPC</td></tr>
+          <tr><td>Compañía de Financiamiento</td><td class="gold">~$14,845M COP</td><td>Ajustado anualmente por IPC</td></tr>
+          <tr><td>SEDPE</td><td class="gold">~$5,500-6,000M COP</td><td>Verificar resolución vigente 2026</td></tr>
+        </tbody>
+      </table>
+
+      <div class="checklist-group">
+        <div class="group-title">A.2 Estructura del capital</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Capital debe ser <strong>100% equity</strong> (acciones) — no se acepta deuda subordinada como capital mínimo</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Capital suscrito y pagado <strong>completamente disponible</strong> al momento de la solicitud</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Demostrar <strong>origen lícito</strong> de los fondos — declaraciones patrimoniales de todos los accionistas</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Accionistas con participación <em>≥10%</em> deben presentar información detallada sobre beneficiarios finales</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">A.3 Relación de solvencia (Basel III)</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Relación de solvencia mínima: <em>9%</em> (patrimonio técnico / activos ponderados por riesgo)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Patrimonio adicional (Tier 2) no puede superar el 100% del patrimonio básico (Tier 1)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Colchón de conservación: <em>1.5%</em> adicional (capital ordinario Nivel 1)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Provisiones de cartera según modelo de referencia de la SFC (SARC)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN B -->
+    <div class="section" id="section-B">
+      <div class="section-header">
+        <div class="section-id">Sección B</div>
+        <div class="section-title">Documentos para Solicitud ante SFC</div>
+        <p class="section-sub">Art. 53 EOSF. Claude redacta, firma legal valida. Ahorro estimado: $200-300M COP vs. proceso tradicional.</p>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">B.1 Documentos societarios</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Proyecto de estatutos sociales</strong> — objeto social exclusivo, composición Junta Directiva, gobierno corporativo, control interno, procedimiento aumento de capital</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Monto de capital</strong> indicando la forma de pago y suscripciones comprometidas</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Acta de constitución</strong> (minuta de escritura pública)</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">B.2 Plan de viabilidad (20-40 páginas)</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Descripción del modelo de negocio + análisis de mercado objetivo</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Proyecciones financieras a 5 años (P&L, balance, flujo de caja)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Estrategia de captación de depósitos + estrategia de colocación de cartera</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Plan de canales (digital, físico, corresponsales) + plan de tecnología</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Modelo de riesgos (crédito, mercado, operacional, liquidez)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Organigrama + plan de recursos humanos + cronograma de implementación</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">B.3 Información de directivos y accionistas</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Hojas de vida</strong> de todos los directivos, miembros de Junta y representantes legales — mínimo 5 años de experiencia en sector financiero</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Declaraciones patrimoniales</strong> de Junta Directiva, accionistas ≥5%, representantes legales, Revisor Fiscal</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Antecedentes judiciales</strong> (Policía Nacional), CIFIN/DataCrédito, listas restrictivas (OFAC, ONU, UE) de cada persona</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Beneficiarios finales</strong> — para accionistas ≥10%: cadena de propiedad hasta personas naturales + declaraciones patrimoniales + origen de fondos</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">B.4-B.7 Otros documentos requeridos</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Planes de gestión de riesgos: <strong>SARLAFT, SARC, SARM, SARL, SARO, BCP, DRP</strong></div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Manual de gobierno corporativo + comités (Auditoría, Riesgos, GC) + código de conducta</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Plan de infraestructura tecnológica: core bancario, canales digitales, seguridad, integraciones</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Revisor Fiscal + Oficial Cumplimiento + Defensor Consumidor + Constancia depósito capital mínimo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN C -->
+    <div class="section" id="section-C">
+      <div class="section-header">
+        <div class="section-id">Sección C</div>
+        <div class="section-title">Proceso y Timeline SFC</div>
+        <p class="section-sub">5 pasos para obtener la licencia. El reloj se reinicia con cada solicitud de información adicional.</p>
+      </div>
+
+      <div class="timeline-steps">
+        <div class="timeline-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Preparación</div>
+            <div class="step-duration">3-6 meses · Riesgo: Alto en SARLAFT y SARC</div>
+            <ul class="step-tasks">
+              <li>Constituir sociedad promotora (2-4 semanas)</li>
+              <li>Contratar abogados especializados — Brigard Urrutia, PHR, Baker McKenzie (1-2 semanas)</li>
+              <li>Elaborar plan de viabilidad (6-8 semanas)</li>
+              <li>Preparar planes de riesgo — SARLAFT, SARC, etc. (8-12 semanas)</li>
+              <li>Recaudar capital mínimo (variable)</li>
+              <li>Preparar CVs, antecedentes, declaraciones patrimoniales (4-6 semanas)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Pre-radicación</div>
+            <div class="step-duration">1-2 meses · Riesgo: Medio</div>
+            <ul class="step-tasks">
+              <li>Reunión informal con SFC — RECOMENDADO (1-2 semanas para agendar)</li>
+              <li>Revisión interna de documentación (2-3 semanas)</li>
+              <li>Ajustes post-reunión SFC (2-4 semanas)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Radicación formal</div>
+            <div class="step-duration">1 día · Riesgo: Bajo</div>
+            <ul class="step-tasks">
+              <li>Entregar toda la documentación ante la SFC</li>
+              <li>Pagar tasa de radicación (~$18M COP)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Evaluación SFC</div>
+            <div class="step-duration">4-12 meses · Riesgo: Alto — "caja negra"</div>
+            <ul class="step-tasks">
+              <li>SFC revisa documentación (completitud) — 2-4 semanas</li>
+              <li>SFC solicita información adicional — múltiples rondas, 2-4 semanas c/u</li>
+              <li>SFC autoriza publicación en diario (Art. 53) — 5 días hábiles</li>
+              <li>Publicación en diario amplia circulación (2 avisos, 7 días entre ellos)</li>
+              <li>Período de oposición de terceros — 10 días hábiles</li>
+              <li>Evaluación de fondo por SFC — 2-6 meses</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Post-autorización</div>
+            <div class="step-duration">2-4 meses · Riesgo: Bajo-Medio</div>
+            <ul class="step-tasks">
+              <li>Otorgar escritura pública de constitución (1-2 semanas)</li>
+              <li>Registro en Cámara de Comercio (1 semana)</li>
+              <li>SFC verifica constitución e infraestructura (2-4 semanas)</li>
+              <li>Certificado de autorización de funcionamiento (5 días hábiles)</li>
+              <li>Afiliación a Fogafín (2-4 semanas)</li>
+              <li>Conexión a ACH, PSE, redes (4-8 semanas)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Checklist pre-radicación</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Capital mínimo reunido y depositado</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Firma de abogados contratada (regulación financiera)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Plan de viabilidad completo (20-40 páginas)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Reunión informal con SFC realizada (recomendado)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">SARLAFT, SARC, SARM, SARL, SARO diseñados</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN D -->
+    <div class="section" id="section-D">
+      <div class="section-header">
+        <div class="section-id">Sección D</div>
+        <div class="section-title">Requisitos de Idoneidad (Fit & Proper)</div>
+        <p class="section-sub">Lo que evalúa la SFC para directivos, accionistas y administradores. Crítico para la aprobación.</p>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">D.1 Idoneidad profesional</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Título universitario en finanzas, economía, derecho, ingeniería o administración</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text"><strong>Experiencia mínima de 5 años</strong> en cargos directivos en sector financiero</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Conocimiento demostrable del marco regulatorio colombiano</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Para el Representante Legal: experiencia previa como directivo de entidad vigilada (ideal)</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">D.1 Honorabilidad</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">No haber sido condenado por delitos contra: patrimonio económico, orden económico social, lavado de activos, administración pública</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">No haber sido sancionado por la SFC en los últimos 5 años</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">No haber sido directivo de entidad intervenida o liquidada por la SFC</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">No estar reportado en listas OFAC, ONU, o listas restrictivas internacionales</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">No tener procesos judiciales activos por delitos financieros</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">D.2 Verificaciones que realiza la SFC</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">CIFIN / TransUnion / DataCrédito</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Antecedentes: judiciales (Rama Judicial), disciplinarios (Procuraduría), fiscales (Contraloría)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Listas restrictivas internacionales: OFAC, ONU, UE, Interpol</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Base de datos interna SFC (sanciones previas)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Verificación de títulos académicos + referencias laborales</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN E -->
+    <div class="section" id="section-E">
+      <div class="section-header">
+        <div class="section-id">Sección E</div>
+        <div class="section-title">Requisitos SARLAFT</div>
+        <p class="section-sub">Circular Externa 027 de 2020 (SARLAFT 4.0) · Circular Básica Jurídica — Título IV, Capítulo IV</p>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Políticas requeridas</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de conocimiento del cliente (KYC)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de conocimiento del mercado + del empleado + de la contraparte</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de debida diligencia intensificada para clientes de alto riesgo (PEPs)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de monitoreo de operaciones</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de reporte de operaciones sospechosas (ROS)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de conservación de documentos (mínimo 5 años)</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Procedimientos y estructura</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Procedimiento de vinculación de clientes: simplificada, estándar, intensificada (PEPs)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Procedimiento de monitoreo continuo + detección ROS para UIAF</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Reportes obligatorios a UIAF</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Reporte de Operaciones Sospechosas (ROS) → UIAF</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Reporte de Transacciones en Efectivo (RTE) ≥ $10 millones → UIAF</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Reportes periódicos a Junta Directiva</div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Oficial de Cumplimiento:</strong> Empleado de alto rango con relación laboral directa. Capacidad de decisión. Identificable en toda la organización. <strong>No puede tener funciones comerciales.</strong> Este rol es obligatorio para la licencia.
+      </div>
+    </div>
+
+    <!-- SECCIÓN F -->
+    <div class="section" id="section-F">
+      <div class="section-header">
+        <div class="section-id">Sección F</div>
+        <div class="section-title">SARC — Riesgo de Crédito</div>
+        <p class="section-sub">Circular Básica Contable y Financiera — Capítulo II · Modelos de referencia SFC para provisiones</p>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Políticas de crédito</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de otorgamiento — criterios de aprobación, scoring, niveles de aprobación</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Política de garantías admisibles + reestructuración + castigos de cartera</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Límites de concentración por deudor, sector, geografía</div>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Modelo de calificación y provisiones</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Modelo de scoring para personas naturales + integración DataCrédito + análisis capacidad de pago</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Calificación de cartera: A (Normal), B (Aceptable), C (Apreciable), D (Significativo), E (Irrecuperable)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Provisiones según modelo SFC consumo: General 1% + Individual según PD × LGD</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Cumplimiento topes de usura — verificación automática AI en cada desembolso</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Seguimiento de cosechas (vintage analysis) + stress testing de cartera</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Reportes periódicos a Junta Directiva y SFC sobre calidad de cartera</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN G -->
+    <div class="section" id="section-G">
+      <div class="section-header">
+        <div class="section-id">Sección G</div>
+        <div class="section-title">Sandbox InnovaSFC</div>
+        <p class="section-sub">Circular Externa 006 de 2025, Parte I, Título I, Capítulo VIII · Contacto: innovasfc@superfinanciera.gov.co</p>
+      </div>
+
+      <div class="info-box">
+        El sandbox permite operar con dispensa regulatoria temporal. <strong>Para EntreNos:</strong> probar el modelo de crédito AI-native antes de obtener licencia completa, generar track record regulatorio, y demostrar ante la SFC que el modelo funciona. No reemplaza la licencia definitiva.
+      </div>
+
+      <div class="checklist-group">
+        <div class="group-title">Proceso de aplicación</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Acercarse a <strong>elHub</strong> — Email: <em>innovasfc@superfinanciera.gov.co</em> — presentar proyecto, modelo de negocio, innovación propuesta, riesgos identificados</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Evaluación por la SFC — determinan si cumple requisitos mínimos para laArenera o Espacio Controlado</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Radicación formal de solicitud (para laArenera o Espacio Controlado de Prueba)</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">Obtención de <strong>Certificado de Operación Temporal</strong> (para Espacio Controlado)</div>
+        </div>
+      </div>
+
+      <table class="reg-table">
+        <thead><tr><th>Mecanismo</th><th>Descripción</th><th>Dispensa</th></tr></thead>
+        <tbody>
+          <tr><td>elHub</td><td>Oficina de innovación SFC. Primer contacto.</td><td class="green">No requiere</td></tr>
+          <tr><td>laArenera</td><td>Pruebas en entorno seguro bajo supervisión</td><td class="gold">Dispensa normas SFC</td></tr>
+          <tr><td>Espacio Controlado</td><td>Pruebas con clientes reales, certificado temporal</td><td class="gold">Dispensa SFC + otras</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECCIÓN H -->
+    <div class="section" id="section-H">
+      <div class="section-header">
+        <div class="section-id">Sección H</div>
+        <div class="section-title">Rutas Alternativas</div>
+        <p class="section-sub">Comparación de las 4 rutas posibles para operar. EntreNos corre Ruta A y Ruta B en paralelo.</p>
+      </div>
+
+      <div class="route-compare">
+        <div class="rc-header">Criterio</div>
+        <div class="rc-header">Estab. Bancario</div>
+        <div class="rc-header">CF</div>
+        <div class="rc-header">SEDPE</div>
+
+        <div class="rc-cell" style="background:var(--surface2)"><div class="rc-label">Capital mínimo</div></div>
+        <div class="rc-cell"><div class="rc-value">~$45,085M COP</div></div>
+        <div class="rc-cell"><div class="rc-value">~$14,845M COP</div></div>
+        <div class="rc-cell"><div class="rc-value best">~$5,500-6,000M COP</div></div>
+
+        <div class="rc-cell" style="background:var(--surface2)"><div class="rc-label">Puede captar ahorro</div></div>
+        <div class="rc-cell"><div class="rc-value best">Sí — cuentas + CDTs</div></div>
+        <div class="rc-cell"><div class="rc-value">Solo CDTs</div></div>
+        <div class="rc-cell"><div class="rc-value worst">Solo depósitos bajo monto</div></div>
+
+        <div class="rc-cell" style="background:var(--surface2)"><div class="rc-label">Puede otorgar crédito</div></div>
+        <div class="rc-cell"><div class="rc-value best">Todos los tipos</div></div>
+        <div class="rc-cell"><div class="rc-value best">Todos los tipos</div></div>
+        <div class="rc-cell"><div class="rc-value worst">No puede</div></div>
+
+        <div class="rc-cell" style="background:var(--surface2)"><div class="rc-label">Timeline</div></div>
+        <div class="rc-cell"><div class="rc-value worst">12-24 meses</div></div>
+        <div class="rc-cell"><div class="rc-value">10-18 meses</div></div>
+        <div class="rc-cell"><div class="rc-value">8-14 meses</div></div>
+
+        <div class="rc-cell" style="background:var(--surface2)"><div class="rc-label">Adquisición CF existente</div></div>
+        <div class="rc-cell"><div class="rc-value">—</div></div>
+        <div class="rc-cell"><div class="rc-value best">6-12 meses</div></div>
+        <div class="rc-cell"><div class="rc-value">—</div></div>
+      </div>
+
+      <div class="info-box">
+        <strong>Estrategia EntreNos:</strong> Correr Ruta A (licencia nueva) y Ruta B (adquisición Bancar Tecnología CO) en paralelo. Priorizar la que llegue primero. Si Ruta B se concreta, Ruta A se para. Ahorro potencial: 12-14 meses y $5-7B COP en costos operativos.
+      </div>
+    </div>
+
+    <!-- SECCIÓN I -->
+    <div class="section" id="section-I">
+      <div class="section-header">
+        <div class="section-id">Sección I</div>
+        <div class="section-title">Contactos y Recursos Clave</div>
+        <p class="section-sub">Firmas de abogados, banca de inversión, y entidades regulatorias.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-name">Brigard Urrutia</div>
+          <div class="contact-role">Firma líder regulación financiera</div>
+          <div class="contact-data">
+            Partner: Carlos Fradique-Méndez<br>
+            Partner: César Felipe Rodríguez<br>
+            Tel: +57 1 346 2011<br>
+            Reconocida: Chambers & Partners + Legal 500
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Posse Herrera Ruiz (PHR Legal)</div>
+          <div class="contact-role">+15 años regulación financiera SFC</div>
+          <div class="contact-data">
+            Partner: Natalia Escobar<br>
+            Web: phrlegal.com<br>
+            Premio: Colombian Law Firm of the Year 2018<br>
+            Especialidad: banca, asset mgmt, fintech
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Inverlink / IMAP Colombia</div>
+          <div class="contact-role">M&A · Asesoró deal Crezcamos</div>
+          <div class="contact-data">
+            Managing Partner: Mauricio Saldarriaga<br>
+            Email: <a href="mailto:msaldarriaga@inverlink.com">msaldarriaga@inverlink.com</a><br>
+            Tel: +57 601 748 9000<br>
+            AK 7 #71-52, Torre B, Piso 15, Bogotá
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Baker McKenzie Colombia</div>
+          <div class="contact-role">Banking & Finance · M&A regulado</div>
+          <div class="contact-data">
+            Partner Banking: Ricardo Trejos Robledo<br>
+            Co-head depto. Banking & Finance<br>
+            Especialidad: acquisition finance, regulación SFC<br>
+            90+ profesionales en Colombia
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Superintendencia Financiera</div>
+          <div class="contact-role">Regulador · Licencias bancarias</div>
+          <div class="contact-data">
+            Dirección: Calle 7 No. 4-49, Bogotá<br>
+            Tel: (601) 594 0200<br>
+            Web: superfinanciera.gov.co<br>
+            InnovaSFC: <a href="mailto:innovasfc@superfinanciera.gov.co">innovasfc@superfinanciera.gov.co</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-name">Gómez-Pinzón Abogados (GPA)</div>
+          <div class="contact-role">Banking · Capital Markets · M&A</div>
+          <div class="contact-data">
+            Partner: Adriana Moreno Márquez<br>
+            Especialidad: créditos sindicados, regulación bancaria<br>
+            Alianza: Pérez-Llorca (iberoamericana)<br>
+            Oficinas: Bogotá + Medellín
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;">Otros recursos clave</div>
+        <table class="reg-table">
+          <thead><tr><th>Organización</th><th>Relevancia</th><th>Contacto</th></tr></thead>
+          <tbody>
+            <tr><td>Fogafín</td><td>Afiliación obligatoria para entidades vigiladas SFC</td><td>fogafin.gov.co</td></tr>
+            <tr><td>UIAF</td><td>Receptor de reportes SARLAFT (ROS, RTE)</td><td>uiaf.gov.co</td></tr>
+            <tr><td>ACH Colombia</td><td>Afiliación para pagos Bre-B y transferencias</td><td>achcolombia.com.co</td></tr>
+            <tr><td>Asobancaria</td><td>Gremio bancario — benchmarks y regulación</td><td>asobancaria.com</td></tr>
+            <tr><td>Banco de la República</td><td>Regulación de encaje y operaciones de cambio</td><td>banrep.gov.co</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /layout -->
+
+<script>
+  const sections = ['A','B','C','D','E','F','G','H','I'];
+  let totalChecked = 0;
+  let totalItems = 0;
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('section-' + id).classList.add('active');
+
+    // Find nav item by text
+    document.querySelectorAll('.nav-item').forEach(n => {
+      if (n.querySelector('.nav-id').textContent === id) {
+        n.classList.add('active');
+      }
+    });
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    if (el.classList.contains('checked')) {
+      el.querySelector('.checkbox').textContent = '✓';
+    } else {
+      el.querySelector('.checkbox').textContent = '';
+    }
+    updateProgress();
+  }
+
+  function updateProgress() {
+    totalChecked = document.querySelectorAll('.check-item.checked').length;
+    totalItems = document.querySelectorAll('.check-item').length;
+
+    // Per section
+    sections.forEach(id => {
+      const sec = document.getElementById('section-' + id);
+      if (!sec) return;
+      const items = sec.querySelectorAll('.check-item');
+      const done = sec.querySelectorAll('.check-item.checked');
+      const prog = document.getElementById('prog-' + id);
+      if (prog && items.length > 0) {
+        prog.textContent = done.length + '/' + items.length;
+        prog.classList.toggle('done', done.length === items.length && items.length > 0);
+      }
+    });
+
+    // Global
+    const pct = Math.round((totalChecked / totalItems) * 100);
+    document.getElementById('total-pct').textContent = pct + '%';
+    document.getElementById('global-bar').style.width = pct + '%';
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>

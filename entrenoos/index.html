@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EntreNos — Centro de Documentación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,900;1,9..144,300&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:    #060708;
+            --card:  #0d0e10;
+            --gold:  #C9A84C;
+            --cream: #F5EDD8;
+            --verde: #3CC48A;
+            --text:  #8C8F99;
+            --border: #1a1b1f;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--cream);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            padding: 60px 28px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+        .logo .entre {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 2.2rem;
+            color: var(--gold);
+        }
+        .logo .nos {
+            font-family: 'Fraunces', serif;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: var(--cream);
+            letter-spacing: -0.04em;
+        }
+
+        .tagline {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text);
+            margin-top: 32px;
+            font-style: italic;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .doc-card {
+            display: block;
+            text-decoration: none;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px;
+            transition: border-color 0.25s, transform 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .doc-card::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: var(--accent, var(--gold));
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+        .doc-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-3px); }
+        .doc-card:hover::after { opacity: 1; }
+
+        .doc-tag {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent, var(--gold));
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+
+        .doc-card h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .doc-card p {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .doc-arrow {
+            position: absolute;
+            bottom: 28px; right: 28px;
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .doc-card:hover .doc-arrow {
+            opacity: 1;
+            transform: translate(2px, -2px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            color: #2e2f34;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <span class="entre">entre</span><span class="nos">Nos</span>
+    </div>
+    <div class="tagline">el dinero vuelve a ser de la gente</div>
+    <h1>Centro de documentación interna — 12:12 Projects</h1>
+</header>
+
+<div class="grid">
+
+    <a href="pitch-deck.html" class="doc-card" style="--accent: #C9A84C">
+        <div class="doc-tag">01 — Estrategia</div>
+        <h2>Pitch Deck</h2>
+        <p>La historia completa del banco: el problema, la solución, el modelo de negocio y el equipo. Para inversionistas y stakeholders.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="cronograma.html" class="doc-card" style="--accent: #3CC48A">
+        <div class="doc-tag">02 — Ejecución</div>
+        <h2>Cronograma Regulatorio</h2>
+        <p>Fases 0–4 con hitos, responsables y dependencias. Desde la pre-constitución hasta el lanzamiento del MVP.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="financial-model.html" class="doc-card" style="--accent: #6B9FE4">
+        <div class="doc-tag">03 — Finanzas</div>
+        <h2>Modelo Financiero</h2>
+        <p>P&L a 5 años, estructura de capital, fondeo, cost-to-income proyectado y comparación vs. benchmarks LatAm.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="regulatory-checklist.html" class="doc-card" style="--accent: #E0A852">
+        <div class="doc-tag">04 — Regulatorio</div>
+        <h2>Checklist SFC</h2>
+        <p>Lista completa de documentos y requisitos para radicación ante la Superintendencia Financiera de Colombia. EOSF Art. 53.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="cf-research.html" class="doc-card" style="--accent: #E05252">
+        <div class="doc-tag">05 — M&A</div>
+        <h2>Inteligencia CF</h2>
+        <p>Análisis de Compañías de Financiamiento disponibles para adquisición. Targets: Bancar, Iris CF, Crezcamos. Asesores M&A.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="brand-board.html" class="doc-card" style="--accent: #C9A84C">
+        <div class="doc-tag">06 — Identidad</div>
+        <h2>Brand Board</h2>
+        <p>Sistema de identidad visual: paleta de colores, tipografía, variaciones de logo, voz y tono, aplicaciones del sistema.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="brand-book.html" class="doc-card" style="--accent: #A89CC8">
+        <div class="doc-tag">07 — Filosofía</div>
+        <h2>Brand Book</h2>
+        <p>El manifiesto filosófico del banco. Psicoanálisis del dinero, la línea del tiempo cósmica, el arquetipo del Cuidador y la promesa profunda.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+    <a href="landing.html" class="doc-card" style="--accent: #3CC48A">
+        <div class="doc-tag">↗ Landing Page</div>
+        <h2>Página de Lanzamiento</h2>
+        <p>Landing pre-launch con calculadora de ahorro, comparador de remesas, registro Fundador y contador en tiempo real.</p>
+        <span class="doc-arrow">↗</span>
+    </a>
+
+</div>
+
+<footer>
+    EntreNos × 12:12 Projects — Confidencial — 2026
+</footer>
+
+</body>
+</html>

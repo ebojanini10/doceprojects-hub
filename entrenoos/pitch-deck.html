@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntreNos — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #060608;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #7A5E28;
+    --white: #F5F0E8;
+    --gray: #8A8475;
+    --red-dark: #2A0A0A;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Instrument Sans', sans-serif;
+    overflow: hidden;
+  }
+
+  /* DECK CONTAINER */
+  #deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .slide.exit-up {
+    opacity: 0;
+    transform: translateY(-60px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* NAV */
+  #nav {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    border-radius: 40px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  #nav button {
+    background: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #nav button:hover { background: var(--gold); color: var(--black); }
+
+  #slide-counter {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 15px;
+    letter-spacing: 3px;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  #slide-dots {
+    display: flex; gap: 6px;
+  }
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dot.active { background: var(--gold); transform: scale(1.4); }
+
+  /* DECORATIVE LINE */
+  .rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px auto;
+  }
+  .rule.left { margin: 24px 0; }
+
+  /* TYPOGRAPHY */
+  .overline {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  h1.display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 10vw, 140px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    color: var(--gold-light);
+    text-align: center;
+  }
+
+  h2.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  h2.section-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  p.body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.75);
+    max-width: 680px;
+  }
+
+  /* SLIDE LAYOUTS */
+  .slide-cover {
+    background: var(--black);
+    text-align: center;
+  }
+
+  .slide-cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .slide-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* PROBLEM SLIDE */
+  .slide-problem {
+    background: linear-gradient(135deg, #0a0205 0%, #0a0a0f 60%);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.15);
+    margin: 32px 0;
+    max-width: 900px;
+  }
+
+  .stat-card {
+    background: #060608;
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+
+  /* BULLETS */
+  .wounds {
+    list-style: none;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 700px;
+  }
+
+  .wounds li {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.5;
+  }
+
+  .wounds li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .wounds li strong { color: var(--white); }
+
+  /* THREE COLUMNS */
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+    max-width: 1000px;
+    margin-top: 40px;
+  }
+
+  .col-card {
+    background: #060608;
+    padding: 40px 28px;
+  }
+
+  .col-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .col-title {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .col-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .col-items li {
+    font-size: 13px;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.5;
+    padding-left: 12px;
+    border-left: 1px solid var(--gold-dim);
+  }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 32px;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    font-weight: 500;
+  }
+
+  .data-table td {
+    padding: 14px 16px;
+    color: rgba(245,240,232,0.8);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .data-table td:first-child { color: var(--white); font-weight: 500; }
+  .data-table td.gold { color: var(--gold); font-weight: 500; }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* COMPARISON TABLE */
+  .compare-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 900px;
+    width: 100%;
+    background: rgba(201,168,76,0.1);
+    margin-top: 32px;
+  }
+
+  .compare-side {
+    background: #060608;
+    padding: 32px;
+  }
+
+  .compare-side.ours {
+    background: #08090C;
+    border-left: 2px solid var(--gold);
+  }
+
+  .compare-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .compare-label.trad { color: #8A4040; }
+  .compare-label.ours-l { color: var(--gold); }
+
+  .compare-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+  }
+
+  .compare-row:last-child { border: none; }
+  .compare-row span:first-child { color: var(--gray); }
+  .compare-row span:last-child { color: var(--white); font-weight: 500; }
+  .compare-side.ours .compare-row span:last-child { color: var(--gold-light); }
+
+  /* TEAM SLIDE */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 900px;
+    width: 100%;
+    background: rgba(201,168,76,0.1);
+    margin-top: 32px;
+  }
+
+  .team-card {
+    background: #060608;
+    padding: 40px;
+  }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 24px;
+  }
+
+  .team-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .team-items li {
+    font-size: 13px;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .team-items li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 1px;
+    background: var(--gold);
+  }
+
+  /* FINANCIAL TABLE */
+  .fin-table {
+    width: 100%;
+    max-width: 980px;
+    border-collapse: collapse;
+    margin-top: 28px;
+    font-size: 12px;
+  }
+
+  .fin-table th {
+    text-align: right;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    font-weight: 500;
+  }
+
+  .fin-table th:first-child { text-align: left; }
+
+  .fin-table td {
+    padding: 10px 14px;
+    text-align: right;
+    color: rgba(245,240,232,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .fin-table td:first-child {
+    text-align: left;
+    color: var(--gray);
+    font-size: 12px;
+  }
+
+  .fin-table tr.highlight td {
+    color: var(--gold-light);
+    font-weight: 500;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .fin-table tr.highlight td:first-child { color: var(--white); }
+
+  /* ASK SLIDE */
+  .ask-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    max-width: 900px;
+    width: 100%;
+    margin: 32px 0;
+  }
+
+  .ask-item {
+    background: #060608;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .ask-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .ask-desc {
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .ask-sub { color: rgba(245,240,232,0.5); }
+
+  /* RETURNS TABLE */
+  .returns-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 13px;
+  }
+
+  .returns-table th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    font-weight: 500;
+  }
+
+  .returns-table td {
+    padding: 12px 14px;
+    color: rgba(245,240,232,0.8);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .returns-table td.irr { color: var(--gold-light); font-weight: 500; }
+
+  /* CHECKLIST ITEMS */
+  .check-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+    max-width: 700px;
+  }
+
+  .check-list li {
+    display: flex;
+    gap: 14px;
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.5;
+  }
+
+  .check-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  /* ROUTE SLIDE */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 960px;
+    width: 100%;
+    background: rgba(201,168,76,0.1);
+    margin-top: 32px;
+  }
+
+  .route-card {
+    background: #060608;
+    padding: 36px;
+  }
+
+  .route-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .route-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .route-steps li {
+    font-size: 12px;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .route-steps li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 9px;
+    width: 5px; height: 1px;
+    background: var(--gold-dim);
+  }
+
+  .route-steps li strong { color: var(--gold); }
+
+  /* FINAL SLIDE */
+  .slide-final {
+    text-align: center;
+  }
+
+  .final-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(100px, 18vw, 200px);
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -4px;
+    opacity: 0.15;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* SLIDE NUMBER INDICATOR */
+  #slide-label {
+    position: fixed;
+    top: 40px;
+    right: 48px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    z-index: 100;
+  }
+
+  #brand {
+    position: fixed;
+    top: 40px;
+    left: 48px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    z-index: 100;
+    font-weight: 400;
+  }
+
+  /* CONFIDENTIEL */
+  #conf {
+    position: fixed;
+    bottom: 20px;
+    right: 48px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(138,132,117,0.4);
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<div id="brand">EntreNos</div>
+<div id="slide-label">CONFIDENCIAL · MARZO 2026</div>
+<div id="conf">12:12 Projects</div>
+
+<div id="deck">
+
+  <!-- SLIDE 1: PORTADA -->
+  <div class="slide slide-cover active" data-index="0">
+    <div class="overline">El banco que Colombia nunca tuvo</div>
+    <h1 class="display">EntreNos</h1>
+    <div class="rule"></div>
+    <p class="tagline">el dinero vuelve a ser de la gente</p>
+    <div style="margin-top: 60px; font-size: 12px; letter-spacing: 4px; color: var(--gold-dim); text-transform: uppercase;">Marzo 2026 · Confidencial</div>
+  </div>
+
+  <!-- SLIDE 2: EL PROBLEMA -->
+  <div class="slide slide-problem" data-index="1">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">El problema</div>
+      <h2 class="section-title">Los colombianos tienen los peores bancos del mundo.<br><em>Y nadie hace nada.</em></h2>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">2,600,000</div>
+          <div class="stat-label">Quejas bancarias<br>en 2024</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">+73%</div>
+          <div class="stat-label">Más que el<br>año anterior</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">35.5%</div>
+          <div class="stat-label">Adultos con<br>acceso a crédito</div>
+        </div>
+      </div>
+      <ul class="wounds">
+        <li><strong>Servicio:</strong> Call centers que no resuelven. Apps que fallan. 2 horas en sucursal.</li>
+        <li><strong>Precio:</strong> Crédito de consumo al 17-25% E.A. Tasa usura vigente: 24.36% E.A.</li>
+        <li><strong>Exclusión:</strong> Sin nómina formal, no existes. 25 millones invisibles.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: LA OPORTUNIDAD -->
+  <div class="slide" data-index="2" style="background: var(--black);">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">La oportunidad</div>
+      <h2 class="section-title">$189 billones de pesos.<br><em>25 millones de personas invisibles.</em></h2>
+      <div class="rule left"></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 24px;">
+        <div>
+          <p class="body">Colombia tiene uno de los índices de bancarización más altos de LatAm (96%) pero uno de los más bajos de acceso a crédito (35.5%). El sistema captó el ahorro. Se negó a prestar.</p>
+          <div style="margin-top: 32px;">
+            <div style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;">El timing es ahora</div>
+            <ul class="wounds">
+              <li>Bre-B lanzó en septiembre 2025 — infraestructura lista</li>
+              <li>Open Finance obligatorio — datos disponibles</li>
+              <li>Revolut entró a Colombia 2026 — el mercado reconoce el espacio</li>
+              <li>AI 2026: construir un banco cuesta 10× menos que en 2015</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(201,168,76,0.1);">
+            <div style="background: #060608; padding: 28px 20px; text-align: center;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--gold); line-height: 1;">$189T</div>
+              <div style="font-size: 11px; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 2px;">COP cartera consumo</div>
+            </div>
+            <div style="background: #060608; padding: 28px 20px; text-align: center;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--gold); line-height: 1;">25M</div>
+              <div style="font-size: 11px; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 2px;">Sin crédito formal</div>
+            </div>
+            <div style="background: #060608; padding: 28px 20px; text-align: center;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--gold); line-height: 1;">9M</div>
+              <div style="font-size: 11px; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 2px;">Receptores remesas</div>
+            </div>
+            <div style="background: #060608; padding: 28px 20px; text-align: center;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--gold); line-height: 1;">6%</div>
+              <div style="font-size: 11px; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 2px;">Comisión promedio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: LA SOLUCIÓN -->
+  <div class="slide" data-index="3">
+    <div style="max-width: 1000px; width: 100%;">
+      <div class="overline">La solución</div>
+      <h2 class="section-title">El primer banco colombiano<br><em>construido de cero con inteligencia artificial.</em></h2>
+      <div class="three-col">
+        <div class="col-card">
+          <span class="col-icon">◈</span>
+          <div class="col-title">Servicio Excepcional</div>
+          <ul class="col-items">
+            <li>Agente IA disponible 24/7</li>
+            <li>Responde en 47 segundos</li>
+            <li>Resuelve el 97% de casos sin humano</li>
+            <li>Benchmark: Bunq (Holanda)</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <span class="col-icon">◎</span>
+          <div class="col-title">Tasas Mínimas</div>
+          <ul class="col-items">
+            <li>Crédito: <strong style="color:var(--gold)">10-14% E.A.</strong> (mercado: 17-25%)</li>
+            <li>Ahorro: <strong style="color:var(--gold)">8.5-10% E.A.</strong> (bancos: 0.5-2%)</li>
+            <li>Remesas: <strong style="color:var(--gold)">1% comisión</strong> (mercado: 6%)</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <span class="col-icon">◉</span>
+          <div class="col-title">Acompañamiento Real</div>
+          <ul class="col-items">
+            <li>No te damos plata y ya</li>
+            <li>IA ayuda a presupuestar</li>
+            <li>Scoring conductual proactivo</li>
+            <li>El banco gana cuando tú ganas</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 32px; padding: 24px; border: 1px solid rgba(201,168,76,0.15); max-width: 700px;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold-light); font-style: italic; line-height: 1.5;">"El mejor servicio. Las tasas más bajas. Y te ayudamos a usar bien tu dinero. Tres cosas que ningún banco en Colombia hace juntas hoy."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: POR QUÉ PODEMOS COBRAR MENOS -->
+  <div class="slide" data-index="4">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">La ventaja estructural</div>
+      <h2 class="section-title">Aritmética, no magia.<br><em>La estructura que hace posible las tasas más bajas.</em></h2>
+      <div class="compare-wrap">
+        <div class="compare-side">
+          <div class="compare-label trad">Banca Tradicional</div>
+          <div class="compare-row"><span>Sucursales (600-1,200)</span><span>25-30%</span></div>
+          <div class="compare-row"><span>Nómina (miles)</span><span>20-25%</span></div>
+          <div class="compare-row"><span>IT legacy + mantenimiento</span><span>10-15%</span></div>
+          <div class="compare-row"><span>Call centers</span><span>8-12%</span></div>
+          <div class="compare-row"><span style="color:var(--white);font-weight:500">Cost-to-income total</span><span style="color:#B05050;font-size:18px;font-family:'Cormorant Garamond',serif">55-65%</span></div>
+        </div>
+        <div class="compare-side ours">
+          <div class="compare-label ours-l">EntreNos</div>
+          <div class="compare-row"><span>0 sucursales</span><span>0%</span></div>
+          <div class="compare-row"><span>10-15 personas (año 1)</span><span>15-20%</span></div>
+          <div class="compare-row"><span>Cloud-native (AWS + SaaS)</span><span>8-10%</span></div>
+          <div class="compare-row"><span>IA maneja 97% servicio</span><span>5-8%</span></div>
+          <div class="compare-row"><span style="color:var(--white);font-weight:500">Cost-to-income objetivo</span><span style="color:var(--gold);font-size:18px;font-family:'Cormorant Garamond',serif">32-38%</span></div>
+        </div>
+      </div>
+      <div style="margin-top: 24px; display: flex; gap: 32px; max-width: 700px;">
+        <div style="text-align:center; flex:1; padding: 16px; border: 1px solid rgba(201,168,76,0.1);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold)">26%</div>
+          <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:2px;margin-top:4px">DBS Bank tras AI</div>
+        </div>
+        <div style="text-align:center; flex:1; padding: 16px; border: 1px solid rgba(201,168,76,0.1);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold)">29.9%</div>
+          <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:2px;margin-top:4px">Nubank hoy</div>
+        </div>
+        <div style="text-align:center; flex:1; padding: 16px; border: 1px solid rgba(201,168,76,0.1);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#B05050">60%</div>
+          <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:2px;margin-top:4px">Banca Colombia avg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: EL MODELO PROBADO -->
+  <div class="slide" data-index="5">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">El modelo probado</div>
+      <h2 class="section-title">No inventamos nada.<br><em>Lo mejor de los cinco bancos más eficientes del mundo.</em></h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Banco</th>
+            <th>País</th>
+            <th>Lo que probaron</th>
+            <th>Número clave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--gold)">Nubank</td>
+            <td>Brasil</td>
+            <td>Crédito conductual + onboarding viral</td>
+            <td class="gold">$0.80 USD/cliente/mes</td>
+          </tr>
+          <tr>
+            <td style="color:var(--gold)">DBS Bank</td>
+            <td>Singapur</td>
+            <td>AI en CADA función, no como feature</td>
+            <td class="gold">26% cost-to-income</td>
+          </tr>
+          <tr>
+            <td style="color:var(--gold)">Bunq</td>
+            <td>Holanda</td>
+            <td>97% soporte automatizado con Claude</td>
+            <td class="gold">Rentable sin cartera masiva</td>
+          </tr>
+          <tr>
+            <td style="color:var(--gold)">Tinkoff</td>
+            <td>Rusia</td>
+            <td>Cero sucursales desde 2006</td>
+            <td class="gold">35% cost-to-income</td>
+          </tr>
+          <tr>
+            <td style="color:var(--gold)">Lulo Bank</td>
+            <td>Colombia</td>
+            <td>SFC aprueba neobancos; accionista = licencia</td>
+            <td class="gold">600K usuarios, 310 empleados</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 28px; padding: 20px; border-left: 2px solid var(--gold); max-width: 700px;">
+        <p style="font-size: 14px; color: rgba(245,240,232,0.8); line-height: 1.7;">DBS tardó <strong style="color:var(--white)">14 años</strong> en transformarse porque tenía 22,000 empleados y sistemas legacy. Nosotros instanciamos lo que a ellos les tomó una década. <strong style="color:var(--gold)">Lo que DBS construyó en 14 años, nosotros lo configuramos en semanas.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: MODELO DE CRÉDITO AI -->
+  <div class="slide" data-index="6">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">El modelo de crédito AI</div>
+      <h2 class="section-title">Aprueba a quienes los bancos rechazan.<br><em>Con menor mora.</em></h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(201,168,76,0.1); margin-top: 32px;">
+        <div style="background: #060608; padding: 28px;">
+          <div style="font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px;">Fase 1 — sub-30 seg</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--white); margin-bottom:12px;">Decisión inicial</div>
+          <p style="font-size:12px; color:var(--gray); line-height:1.7;">Cédula + biometría + Datacrédito → XGBoost → Límite mínimo $200K-$1M COP</p>
+          <div style="margin-top:16px; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold)">≈ todos</div>
+          <div style="font-size:11px; color:var(--gray);">aprobados, con poco</div>
+        </div>
+        <div style="background: #060608; padding: 28px; border-left: 1px solid rgba(201,168,76,0.1); border-right: 1px solid rgba(201,168,76,0.1);">
+          <div style="font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px;">Fase 2 — Semanal</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--white); margin-bottom:12px;">Scoring conductual</div>
+          <p style="font-size:12px; color:var(--gray); line-height:1.7;">Comportamiento app + Open Finance (Nequi, Transfiya, servicios) → ML reentrenamiento semanal</p>
+          <div style="margin-top:16px; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold)">cada 7 días</div>
+          <div style="font-size:11px; color:var(--gray);">límite ajustado</div>
+        </div>
+        <div style="background: #060608; padding: 28px;">
+          <div style="font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px;">Fase 3 — Automático</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--white); margin-bottom:12px;">Expansión sin humano</div>
+          <p style="font-size:12px; color:var(--gray); line-height:1.7;">3 cuotas a tiempo + score > 700 → límite +50% automático. Sin revisión humana < $10M COP</p>
+          <div style="margin-top:16px; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold)">44%</div>
+          <div style="font-size:11px; color:var(--gray);">más aprobaciones (Upstart)</div>
+        </div>
+      </div>
+      <div style="margin-top: 24px; padding: 18px 24px; border: 1px solid rgba(201,168,76,0.15);">
+        <p style="font-size: 13px; color: rgba(245,240,232,0.75); line-height: 1.7;">El ciclo virtuoso: <strong style="color:var(--white)">Más clientes → más datos → mejor modelo → menos defaults → tasas más bajas → más clientes.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: EL EQUIPO -->
+  <div class="slide" data-index="7">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">El equipo</div>
+      <h2 class="section-title">La dupla que ningún banco<br><em>puede replicar.</em></h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-name">Emiliano Bojanini</div>
+          <div class="team-role">CEO & Fundador — La visión y la ejecución</div>
+          <ul class="team-items">
+            <li>Fundador de 12:12 Projects — AI en producción para 10+ empresas colombianas</li>
+            <li>Arquitectura multi-agente Claude ya construida y funcionando hoy</li>
+            <li>8 automatizaciones AI desplegadas para cliente real (Sky Flowers)</li>
+            <li>Todo el stack que necesita el banco: bots, scoring, compliance AI</li>
+          </ul>
+        </div>
+        <div class="team-card" style="border-left: 1px solid rgba(201,168,76,0.15);">
+          <div class="team-name">[Padre]</div>
+          <div class="team-role">Presidente de Junta — Lo que el dinero no puede comprar</div>
+          <ul class="team-items">
+            <li>Ex-presidente Grupo Sura</li>
+            <li>Ex-miembro junta directiva Bancolombia</li>
+            <li>Red directa con la Superintendencia Financiera</li>
+            <li>30+ años de experiencia ejecutiva en banca colombiana</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 2px; background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.1); padding: 24px 32px;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size: 22px; color: var(--gold)">Claude (Anthropic)</div>
+          <div style="font-size: 11px; color: var(--gray); letter-spacing: 3px; text-transform: uppercase;">El tercer integrante del equipo</div>
+        </div>
+        <p style="font-size: 13px; color: rgba(245,240,232,0.6); margin-top: 10px; line-height: 1.6;">Analiza regulación artículo por artículo · Diseña el modelo de crédito · Operará el 97% del servicio · Genera reportes regulatorios automáticamente. Costo: una fracción de McKinsey.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: MODELO DE NEGOCIO -->
+  <div class="slide" data-index="8">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">El modelo de negocio</div>
+      <h2 class="section-title">Ganamos cuando tú ganas.<br><em>El único modelo que tiene sentido en 2026.</em></h2>
+      <table class="data-table" style="margin-top: 28px;">
+        <thead>
+          <tr>
+            <th>Fuente</th>
+            <th>Mecánica</th>
+            <th>Escala</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NIM — Crédito</td>
+            <td>12% cobrado − 8.5% fondeo = <strong style="color:var(--gold)">3.5% spread neto</strong></td>
+            <td class="gold">Principal</td>
+          </tr>
+          <tr>
+            <td>Suscripción Premium</td>
+            <td>$15,000-20,000 COP/mes</td>
+            <td class="gold">Desde usuario 1</td>
+          </tr>
+          <tr>
+            <td>Remesas</td>
+            <td>1% comisión (vs. 6% mercado)</td>
+            <td class="gold">9M receptores</td>
+          </tr>
+          <tr>
+            <td>Interchange</td>
+            <td>Tarjeta débito Visa/MC: 1.5-2%</td>
+            <td class="gold">Escala con actividad</td>
+          </tr>
+          <tr>
+            <td>FIC Automático</td>
+            <td>Comisión gestión 0.5-1%</td>
+            <td class="gold">Crece con ahorro</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px;">
+        <div style="padding: 16px; border: 1px solid rgba(201,168,76,0.1);">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">LTV/CAC objetivo</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:36px; color:var(--gold)">22×</div>
+          <div style="font-size:11px; color:var(--gray); margin-top:4px;">Payback: 1.9 meses</div>
+        </div>
+        <div style="padding: 16px; border: 1px solid rgba(201,168,76,0.1);">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">CAC promedio</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:36px; color:var(--gold)">$20K</div>
+          <div style="font-size:11px; color:var(--gray); margin-top:4px;">COP (~$4.75 USD)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: PROYECCIONES -->
+  <div class="slide" data-index="9">
+    <div style="max-width: 980px; width: 100%;">
+      <div class="overline">Proyecciones financieras</div>
+      <h2 class="section-title">El camino al primer banco<br><em>verdaderamente rentable de Colombia.</em></h2>
+      <table class="fin-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Año 1</th>
+            <th>Año 2</th>
+            <th>Año 3</th>
+            <th>Año 4</th>
+            <th>Año 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Usuarios (K)</td>
+            <td>40</td><td>130</td><td>250</td><td>400</td><td>600</td>
+          </tr>
+          <tr>
+            <td>Cartera bruta (B COP)</td>
+            <td>144</td><td>520</td><td>1,080</td><td>1,760</td><td>2,720</td>
+          </tr>
+          <tr>
+            <td>Ingresos (M COP)</td>
+            <td>6,690</td><td>38,000</td><td>85,000</td><td>155,000</td><td>250,000</td>
+          </tr>
+          <tr class="highlight">
+            <td>EBITDA (M COP)</td>
+            <td>(2,500)</td><td>6,000</td><td>25,000</td><td>52,000</td><td>88,000</td>
+          </tr>
+          <tr>
+            <td>Cost-to-income</td>
+            <td>97%</td><td>65%</td><td>53%</td><td>50%</td>
+            <td style="color:var(--gold);font-weight:500">49%</td>
+          </tr>
+          <tr>
+            <td>ROE</td>
+            <td style="color:#B05050">neg</td><td>4%</td><td>14%</td><td>22%</td>
+            <td style="color:var(--gold);font-weight:500">28%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 12px; color: var(--gray);">
+        <div>· Lulo Bank: 600K usuarios en 4 años en Colombia</div>
+        <div>· Nubank tardó 9 años — hoy vale $15B USD en bolsa</div>
+        <div>· Las pérdidas iniciales = inversión en datos y scoring</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: RUTA AL MERCADO -->
+  <div class="slide" data-index="10">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">La ruta al mercado</div>
+      <h2 class="section-title">Dos caminos, en paralelo.<br><em>El más rápido gana.</em></h2>
+      <div class="two-col">
+        <div class="route-card">
+          <div class="route-title">RUTA A — Licencia Nueva</div>
+          <ul class="route-steps">
+            <li><strong>Hoy — Mes 3:</strong> Equipo fundador + $50B COP capital</li>
+            <li><strong>Mes 3 — 6:</strong> Documentación SFC (AI redacta, firma valida)</li>
+            <li><strong>Mes 6:</strong> Radicación formal ante SFC</li>
+            <li><strong>Mes 6 — 14:</strong> Investigación SFC (máx 4 meses)</li>
+            <li><strong>Mes 14 — 18:</strong> Resolución de autorización</li>
+            <li><strong>Mes 18 — 24:</strong> Escritura pública + operación</li>
+          </ul>
+          <div style="margin-top: 20px; font-size: 11px; color: var(--gold-dim); letter-spacing: 2px; text-transform: uppercase;">Capital mínimo: ~$45B COP</div>
+        </div>
+        <div class="route-card" style="border-left: 1px solid rgba(201,168,76,0.1);">
+          <div class="route-title">RUTA B — Adquisición CF (6-12 meses)</div>
+          <ul class="route-steps">
+            <li><strong>Hoy — Mes 2:</strong> Due diligence Bancar Tecnología CO</li>
+            <li><strong>Mes 2 — 4:</strong> Negociación y firma SPA</li>
+            <li><strong>Mes 4 — 10:</strong> Aprobación SFC cambio de control</li>
+            <li><strong>Mes 10 — 12:</strong> OPERACIÓN</li>
+          </ul>
+          <div style="margin-top: 16px; padding: 12px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.1); font-size: 12px; color: var(--gray);">Sector CF Colombia: ROE de -20.56% en 2024. Hay vendedores motivados. Referencia: Banco W / Caja Social — cerrado en 7 meses.</div>
+        </div>
+      </div>
+      <div style="margin-top: 2px; padding: 20px 32px; background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.1); max-width: 960px; width: 100%;">
+        <div style="font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">Mientras tanto — empieza hoy</div>
+        <p style="font-size: 13px; color: rgba(245,240,232,0.7); line-height: 1.6;">Bot WhatsApp activo (puerto 5025) · Landing page con pre-registros · Meta: <strong style="color:var(--white)">50,000 Fundadores</strong> antes de la apertura · Sandbox InnovaSFC</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: EL ASK -->
+  <div class="slide" data-index="11">
+    <div style="max-width: 960px; width: 100%;">
+      <div class="overline">El ask</div>
+      <h2 class="section-title">$100-150 mil millones de pesos.<br><em>Para el banco que Colombia nunca tuvo.</em></h2>
+      <div style="margin-top: 28px; display: flex; gap: 16px; font-size: 12px; color: rgba(245,240,232,0.5); flex-wrap: wrap;">
+        <div style="color:var(--gold)">✓ $50B COP capital fundador</div>
+        <div style="color:var(--gold)">✓ Tech team AI en producción</div>
+        <div style="color:var(--gold)">✓ Bot WhatsApp activo</div>
+        <div style="color:var(--gold)">✓ Modelo financiero y regulatorio completo</div>
+        <div style="color:var(--gold)">✓ Targets adquisición identificados</div>
+      </div>
+      <div class="ask-grid">
+        <div class="ask-item">
+          <div class="ask-pct">65%</div>
+          <div class="ask-desc">Cartera de crédito</div>
+          <div class="ask-sub" style="font-size:11px; margin-top:4px;">$65-97B COP</div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-pct">15%</div>
+          <div class="ask-desc">Marketing y adquisición</div>
+          <div class="ask-sub" style="font-size:11px; margin-top:4px;">$15-22B COP</div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-pct">12%</div>
+          <div class="ask-desc">Equipo tech y C-suite</div>
+          <div class="ask-sub" style="font-size:11px; margin-top:4px;">$12-18B COP</div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-pct">8%</div>
+          <div class="ask-desc">Legal y regulatorio</div>
+          <div class="ask-sub" style="font-size:11px; margin-top:4px;">$8-12B COP</div>
+        </div>
+      </div>
+      <table class="returns-table">
+        <thead>
+          <tr><th>Escenario</th><th>Múltiplo</th><th>IRR aprox.</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Conservador — Adquisición estratégica (año 6-7)</td>
+            <td>3-4×</td><td class="irr">22-28%</td>
+          </tr>
+          <tr>
+            <td>Base — Expansión LatAm (año 7-8)</td>
+            <td>6-8×</td><td class="irr">32-38%</td>
+          </tr>
+          <tr>
+            <td>Optimista — IPO BVC o Nasdaq (año 8-10)</td>
+            <td>12-15×</td><td class="irr">45%+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SLIDE FINAL -->
+  <div class="slide slide-final" data-index="12">
+    <div class="final-logo">EntreNos</div>
+    <div style="position: relative; z-index: 2; text-align: center;">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(20px,3vw,36px); font-weight:300; font-style:italic; color:var(--gold-light); line-height:1.5; max-width:700px; margin: 0 auto;">
+        "Colombia tiene 50 millones de personas. La mitad no tiene crédito. Los que lo tienen, pagan el doble. Y cuando llaman a su banco, nadie contesta."
+      </p>
+      <div class="rule" style="margin: 40px auto;"></div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,52px); color:var(--gold); font-style:italic; font-weight:300;">el dinero vuelve a ser de la gente.</p>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<div id="nav">
+  <button id="prev" onclick="changeSlide(-1)">←</button>
+  <div id="slide-dots"></div>
+  <div id="slide-counter">1 / 13</div>
+  <button id="next" onclick="changeSlide(1)">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.getElementById('slide-dots');
+  const counter = document.getElementById('slide-counter');
+  let current = 0;
+  let isAnimating = false;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dots.appendChild(d);
+  });
+
+  function updateUI() {
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function goTo(index) {
+    if (isAnimating || index === current) return;
+    isAnimating = true;
+
+    const prev = slides[current];
+    prev.classList.add('exit-up');
+
+    setTimeout(() => {
+      prev.classList.remove('active', 'exit-up');
+      current = index;
+      slides[current].classList.add('active');
+      updateUI();
+      setTimeout(() => { isAnimating = false; }, 700);
+    }, 400);
+  }
+
+  function changeSlide(dir) {
+    const next = current + dir;
+    if (next >= 0 && next < slides.length) goTo(next);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      changeSlide(1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      changeSlide(-1);
+    }
+  });
+
+  // Touch/swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+  });
+
+  updateUI();
+</script>
+</body>
+</html>
