@@ -163,10 +163,16 @@
       "order": 4
     },
     {
+      "id": "final",
+      "label": "Final",
+      "color": "#F97316",
+      "order": 5
+    },
+    {
       "id": "interno",
       "label": "Interno",
       "color": "#6B7280",
-      "order": 5
+      "order": 6
     }
   ],
   "projects": [
