@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntreNos — CF Research: Targets de Adquisición</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #05080F;
+    --surface:  #080D18;
+    --card:     #0B1220;
+    --card2:    #0E1628;
+    --border:   #162035;
+    --border2:  #1E2E48;
+    --gold:     #C9A84C;
+    --gold-dim: rgba(201,168,76,0.12);
+    --gold-glow:rgba(201,168,76,0.06);
+    --green:    #3CC48A;
+    --green-bg: rgba(60,196,138,0.08);
+    --amber:    #E8A23D;
+    --amber-bg: rgba(232,162,61,0.08);
+    --red:      #E85555;
+    --red-bg:   rgba(232,85,85,0.08);
+    --blue:     #4AA8E8;
+    --text:     #C8D8EE;
+    --text-dim: #6A839E;
+    --text-muted:#3A5070;
+    --mono-blue:#5BB8E0;
+    --nav-h:    52px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCAN-LINE TEXTURE ─── */
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(5,20,50,0.04) 2px,
+      rgba(5,20,50,0.04) 4px
+    );
+    pointer-events:none;
+    z-index:9999;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(5,8,15,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 100;
+    gap: 24px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border2);
+  }
+
+  .nav-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: var(--gold-glow);
+  }
+
+  .nav-badge {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 3px 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  main {
+    padding-top: calc(var(--nav-h) + 60px);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 100px;
+  }
+
+  /* ─── HEADER SECTION ─── */
+  .header-section {
+    margin-bottom: 64px;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .header-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: var(--gold-glow);
+  }
+
+  .header-date {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .header-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border2), transparent);
+  }
+
+  .page-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #EAF0F8;
+    margin-bottom: 20px;
+  }
+
+  .page-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .page-subtitle {
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-id {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── VERDICT BAR ─── */
+  .verdict-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 32px;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--border2);
+  }
+
+  .verdict-item {
+    padding: 20px 24px;
+    background: var(--card);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .verdict-item.best {
+    background: rgba(60,196,138,0.05);
+  }
+
+  .verdict-rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .verdict-item.best .verdict-rank { color: var(--green); }
+  .verdict-item.second .verdict-rank { color: var(--amber); }
+  .verdict-item.third .verdict-rank { color: var(--text-muted); }
+
+  .verdict-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .verdict-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .verdict-reason {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .verdict-pill {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .pill-green { background: var(--green-bg); color: var(--green); border: 1px solid rgba(60,196,138,0.25); }
+  .pill-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(232,162,61,0.25); }
+  .pill-red   { background: var(--red-bg);   color: var(--red);   border: 1px solid rgba(232,85,85,0.25); }
+  .pill-blue  { background: rgba(74,168,232,0.08); color: var(--blue); border: 1px solid rgba(74,168,232,0.2); }
+  .pill-gold  { background: var(--gold-glow); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+
+  /* ─── TARGET CARDS ─── */
+  .target-card {
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: var(--card);
+    transition: border-color 0.2s;
+  }
+
+  .target-card:hover {
+    border-color: var(--border2);
+  }
+
+  .target-card.target-best { border-color: rgba(60,196,138,0.3); }
+  .target-card.target-best:hover { border-color: rgba(60,196,138,0.5); }
+
+  .card-header {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+    background: var(--card2);
+  }
+
+  .card-prob {
+    width: 5px;
+    flex-shrink: 0;
+  }
+
+  .prob-green { background: var(--green); }
+  .prob-amber { background: var(--amber); }
+  .prob-red   { background: var(--red); }
+
+  .card-header-content {
+    flex: 1;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .card-name-block {}
+
+  .card-nit {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #EAF0F8;
+  }
+
+  .card-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .prob-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .prob-green-text { color: var(--green); }
+  .prob-amber-text { color: var(--amber); }
+  .prob-red-text   { color: var(--red); }
+
+  .card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  @media (max-width: 700px) {
+    .card-body { grid-template-columns: 1fr; }
+  }
+
+  .card-data {
+    padding: 24px;
+    border-right: 1px solid var(--border);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .data-table tr {
+    border-bottom: 1px solid rgba(22,32,53,0.8);
+  }
+
+  .data-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .data-table td {
+    padding: 7px 0;
+    vertical-align: top;
+    font-size: 12.5px;
+  }
+
+  .data-table .dk {
+    color: var(--text-muted);
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    padding-right: 16px;
+    width: 130px;
+  }
+
+  .data-table .dv {
+    color: var(--text);
+    font-size: 12.5px;
+  }
+
+  .data-table .dv strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .card-right {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .unknowns-title, .how-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .unknowns-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .unknowns-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  .unknowns-list li::before {
+    content: '□';
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .how-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    counter-reset: how;
+  }
+
+  .how-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    counter-increment: how;
+  }
+
+  .how-list li::before {
+    content: counter(how);
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    font-weight: 500;
+  }
+
+  .card-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .card-footer strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── COMPARISON TABLE ─── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .compare-table thead tr {
+    background: var(--card2);
+    border-bottom: 2px solid var(--border2);
+  }
+
+  .compare-table th {
+    padding: 14px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--text-dim);
+  }
+
+  .compare-table th.col-best {
+    color: var(--green);
+    background: rgba(60,196,138,0.05);
+  }
+
+  .compare-table td {
+    padding: 11px 18px;
+    font-size: 12.5px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .compare-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .compare-table td:first-child {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .compare-table td.col-best {
+    background: rgba(60,196,138,0.04);
+  }
+
+  .compare-table tr:hover td {
+    background: rgba(255,255,255,0.01);
+  }
+
+  .compare-table tr:hover td.col-best {
+    background: rgba(60,196,138,0.06);
+  }
+
+  .tag-best {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--green);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* ─── CONTACTS GRID ─── */
+  .contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 2px;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--border2);
+  }
+
+  .contact-card {
+    background: var(--card);
+    padding: 22px 22px;
+    transition: background 0.2s;
+  }
+
+  .contact-card.featured {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .contact-firm {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .firm-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .contact-data {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 11.5px;
+  }
+
+  .contact-key {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    width: 52px;
+    padding-top: 1px;
+  }
+
+  .contact-val {
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  .contact-val a {
+    color: var(--mono-blue);
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+  }
+
+  .contact-val a:hover {
+    color: var(--gold);
+  }
+
+  .contact-relevance {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── SANDBOX SECTION ─── */
+  .sandbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .sandbox-grid { grid-template-columns: 1fr; }
+  }
+
+  .sandbox-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--border2);
+  }
+
+  .sandbox-step {
+    background: var(--card);
+    padding: 18px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+
+  .step-content {}
+
+  .step-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .step-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .sandbox-contact-box {
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .sandbox-contact-header {
+    background: var(--card2);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+  }
+
+  .scb-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .scb-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .sandbox-contact-body {
+    background: var(--card);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sandbox-use-cases {
+    background: var(--card);
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .sandbox-uc-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .sandbox-uc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sandbox-uc-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  .sandbox-uc-list li::before {
+    content: '→';
+    font-family: 'Fira Code', monospace;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ─── CAPITAL TABLE ─── */
+  .capital-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .capital-table thead {
+    background: var(--card2);
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .capital-table th {
+    padding: 12px 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+  }
+
+  .capital-table td {
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .capital-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .capital-table td:first-child {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .capital-table td.amount {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  .capital-table td.source {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .capital-note {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .capital-note::before {
+    content: '!';
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── ACTION PLAN ─── */
+  .action-weeks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .action-weeks { grid-template-columns: 1fr; }
+  }
+
+  .action-week {
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .action-week-header {
+    background: var(--card2);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .awk-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .action-items {
+    background: var(--card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .action-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    background: var(--gold-glow);
+    border-radius: 2px;
+    padding: 2px 6px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .action-text strong {
+    color: var(--text);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ─── SANCTION BADGE ─── */
+  .sanction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232,85,85,0.08);
+    border: 1px solid rgba(232,85,85,0.2);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--red);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border2), transparent);
+    margin: 8px 0;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .footer-meta {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+
+  .footer-sources {
+    font-family: 'Fira Code', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+    max-width: 600px;
+    flex: 1;
+    text-align: center;
+  }
+
+  /* ─── ENTRY ANIMATION ─── */
+  .section {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.15s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.25s; }
+  .section:nth-child(5) { animation-delay: 0.3s; }
+  .section:nth-child(6) { animation-delay: 0.35s; }
+  .section:nth-child(7) { animation-delay: 0.4s; }
+
+  .header-section {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.5s ease 0.05s forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── HIGHLIGHT ─── */
+  .hl-gold { color: var(--gold); font-weight: 600; }
+  .hl-green { color: var(--green); font-weight: 600; }
+  .hl-amber { color: var(--amber); font-weight: 600; }
+  .hl-red   { color: var(--red); font-weight: 600; }
+  .hl-blue  { color: var(--blue); }
+
+  .mono { font-family: 'Fira Code', monospace; font-size: 11px; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">EntreNos</div>
+    <div class="nav-divider"></div>
+    <div class="nav-title">CF Research — Investigación de Targets</div>
+  </div>
+  <div class="nav-links">
+    <a href="#veredicto"   class="nav-link">Veredicto</a>
+    <a href="#targets"     class="nav-link">Targets</a>
+    <a href="#comparativa" class="nav-link">Comparativa</a>
+    <a href="#asesores"    class="nav-link">Asesores</a>
+    <a href="#sandbox"     class="nav-link">InnovaSFC</a>
+    <a href="#accion"      class="nav-link">Acción</a>
+  </div>
+  <div class="nav-badge">Confidencial</div>
+</nav>
+
+<main>
+
+  <!-- HEADER -->
+  <div class="header-section">
+    <div class="header-meta">
+      <div class="header-tag">Inteligencia de Mercado</div>
+      <div class="header-date">2026-03-13 · 12:12 Projects</div>
+      <div class="header-line"></div>
+    </div>
+    <h1 class="page-title">Targets de<br><em>Adquisición</em></h1>
+    <p class="page-subtitle">
+      Investigación de Compañías de Financiamiento disponibles como ruta alternativa a licencia bancaria nueva ante la SFC. Ruta B: 6–12 meses vs. 18–24 meses de la Ruta A.
+    </p>
+  </div>
+
+  <!-- VEREDICTO -->
+  <div class="section" id="veredicto">
+    <div class="section-label">
+      <span class="section-id">01</span>
+      <span class="section-title">Veredicto Ejecutivo</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="verdict-bar">
+      <div class="verdict-item best">
+        <div class="verdict-rank">1</div>
+        <div class="verdict-info">
+          <div class="verdict-name">Bancar Tecnología CO</div>
+          <div class="verdict-reason">NIT 901502301 · ~50 empleados · 2021</div>
+        </div>
+        <div class="verdict-pill pill-green">Mejor Opción</div>
+      </div>
+      <div class="verdict-item second">
+        <div class="verdict-rank">2</div>
+        <div class="verdict-info">
+          <div class="verdict-name">Iris CF</div>
+          <div class="verdict-reason">NIT 811007729 · $111.5B patrimonio · 1996</div>
+        </div>
+        <div class="verdict-pill pill-amber">Posible</div>
+      </div>
+      <div class="verdict-item third">
+        <div class="verdict-rank">3</div>
+        <div class="verdict-info">
+          <div class="verdict-name">Crezcamos S.A.</div>
+          <div class="verdict-reason">~$400B activos · Bucaramanga · Recién vendida</div>
+        </div>
+        <div class="verdict-pill pill-red">Descartar (cp)</div>
+      </div>
+    </div>
+    <p style="font-size:12.5px; color:var(--text-dim); line-height:1.6;">
+      <strong style="color:var(--text);">Conclusión:</strong> Bancar Tecnología CO es el target más interesante por su tamaño manejable (~50 empleados), licencia SFC reciente (2021) con ADN tecnológico, y accionista extranjero (Bancar Technologies Limited) que podría tener apetito de salida. Iris CF es segunda opción por posicionamiento digital. Crezcamos fue adquirida por Tree Capital en junio 2024 — improbable venta a corto plazo.
+    </p>
+  </div>
+
+  <!-- TARGETS -->
+  <div class="section" id="targets">
+    <div class="section-label">
+      <span class="section-id">02</span>
+      <span class="section-title">Dossier de Targets</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <!-- TARGET 1: BANCAR (BEST) -->
+    <div class="target-card target-best">
+      <div class="card-header">
+        <div class="card-prob prob-green"></div>
+        <div class="card-header-content">
+          <div class="card-name-block">
+            <div class="card-nit">NIT 901502301 · Bogotá · Licencia SFC Res. 1522/2021</div>
+            <div class="card-name">Bancar Tecnología CO</div>
+          </div>
+          <div class="card-badges">
+            <div class="verdict-pill pill-green">★ Mejor Target</div>
+            <div class="verdict-pill pill-blue">Accionista Extranjero</div>
+            <span class="prob-label prob-green-text">Prob. Adquisición: MEDIA-ALTA</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-data">
+          <table class="data-table">
+            <tr><td class="dk">Razón social</td><td class="dv">Bancar Tecnología CO S.A. Compañía de Financiamiento</td></tr>
+            <tr><td class="dk">Fundación</td><td class="dv">9 julio 2021 (Escritura 1177, Notaría 67 Bogotá)</td></tr>
+            <tr><td class="dk">Sede</td><td class="dv">Cra. 7 No. 71-52 Torre B, Piso 9 — Bogotá D.C.</td></tr>
+            <tr><td class="dk">Empleados</td><td class="dv"><strong>~50 personas (2025)</strong></td></tr>
+            <tr><td class="dk">Accionista</td><td class="dv"><strong>Bancar Technologies Limited</strong> (empresa extranjera)</td></tr>
+            <tr><td class="dk">Licencia SFC</td><td class="dv"><strong>Resolución 1522 — 17 dic 2021</strong></td></tr>
+            <tr><td class="dk">Actividad</td><td class="dv">Intermediación crediticia — captación de depósitos</td></tr>
+            <tr><td class="dk">Financieros</td><td class="dv">Disponibles: junio 2024 y dic 2024 (portal SFC)</td></tr>
+            <tr><td class="dk">Supervisión</td><td class="dv">SFC vigilada · Fogafín</td></tr>
+          </table>
+        </div>
+        <div class="card-right">
+          <div>
+            <div class="unknowns-title">Lo que no sabemos</div>
+            <ul class="unknowns-list">
+              <li>Situación financiera real (¿rentable o en pérdidas?)</li>
+              <li>Identidad y UBOs de Bancar Technologies Limited</li>
+              <li>Volumen de cartera y captaciones</li>
+              <li>Si hay interés de venta del accionista</li>
+              <li>Sanciones SFC pendientes (si las hay)</li>
+              <li>Core bancario utilizado</li>
+            </ul>
+          </div>
+          <div class="divider"></div>
+          <div>
+            <div class="how-title">Cómo averiguar más</div>
+            <ol class="how-list">
+              <li>Descargar estados financieros (SFC portal — jun/dic 2024)</li>
+              <li>RUES / Cámara de Comercio — composición accionaria</li>
+              <li>LinkedIn — empleados clave y gerencia</li>
+              <li>Inverlink — screening informal, ¿hay mandato de venta?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <strong>¿Por qué es el mejor target?</strong> (1) Tamaño pequeño y manejable financieramente. (2) Licencia SFC relativamente reciente — infraestructura tecnológica presumiblemente moderna. (3) ADN fintech desde la constitución. (4) Accionista extranjero que podría querer salir del mercado colombiano si la operación no ha escalado. <strong>Riesgo principal:</strong> si está en etapa temprana, puede tener pérdidas acumuladas.
+      </div>
+    </div>
+
+    <!-- TARGET 2: IRIS CF -->
+    <div class="target-card">
+      <div class="card-header">
+        <div class="card-prob prob-amber"></div>
+        <div class="card-header-content">
+          <div class="card-name-block">
+            <div class="card-nit">NIT 811007729 · Medellín · 30 años en mercado</div>
+            <div class="card-name">Iris CF — Compañía de Financiamiento S.A.</div>
+          </div>
+          <div class="card-badges">
+            <div class="verdict-pill pill-amber">Segunda Opción</div>
+            <div class="verdict-pill pill-blue">Neofinanciera Digital</div>
+            <span class="prob-label prob-amber-text">Prob. Adquisición: MEDIA</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-data">
+          <table class="data-table">
+            <tr><td class="dk">Razón social</td><td class="dv">Iris CF — Compañía de Financiamiento S.A.</td></tr>
+            <tr><td class="dk">Nombre anterior</td><td class="dv">Financiera Dann Regional</td></tr>
+            <tr><td class="dk">Fundación</td><td class="dv">1996 (~30 años en el mercado)</td></tr>
+            <tr><td class="dk">Sede</td><td class="dv">Cra. 43A No. 7-50, Piso 17 — Medellín</td></tr>
+            <tr><td class="dk">Teléfono</td><td class="dv">604 604 0222</td></tr>
+            <tr><td class="dk">Patrimonio</td><td class="dv"><strong>~$111.509 millones COP (~$111.5B)</strong></td></tr>
+            <tr><td class="dk">Rango ventas</td><td class="dv">$20.000–$100.000 millones COP (2025)</td></tr>
+            <tr><td class="dk">Posicionamiento</td><td class="dv"><strong>Se autodescribe como "neofinanciera"</strong> — plataforma digital sin sucursales pesadas</td></tr>
+            <tr><td class="dk">Supervisión</td><td class="dv">SFC vigilada · Fogafín</td></tr>
+            <tr><td class="dk">Accionistas</td><td class="dv">Sección en iris.com.co — <em>verificar directamente</em></td></tr>
+          </table>
+        </div>
+        <div class="card-right">
+          <div>
+            <div class="unknowns-title">Lo que no sabemos</div>
+            <ul class="unknowns-list">
+              <li>Identidad de los accionistas principales</li>
+              <li>Estados financieros detallados (cartera, NPL, ROE, ROA)</li>
+              <li>Si han recibido sanciones de la SFC</li>
+              <li>Si existe interés de venta de accionistas</li>
+              <li>Tecnología: ¿core bancario propio o tercerizado?</li>
+            </ul>
+          </div>
+          <div class="divider"></div>
+          <div>
+            <div class="how-title">Cómo averiguar más</div>
+            <ol class="how-list">
+              <li>iris.com.co → "Nuestros Accionistas" + informe gov. corporativo</li>
+              <li>SFC — estados financieros públicos</li>
+              <li>Contacto directo: 604 604 0222 → gerencia general</li>
+              <li>Inverlink / firma M&A — due diligence informal</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <strong>¿Por qué considerar Iris?</strong> 30 años de operación = historial regulatorio limpio. Posicionamiento como "neofinanciera" sugiere infraestructura tecnológica adecuada. Patrimonio de ~$111.5B es tamaño manejable. <strong>Si los accionistas son familias o fondos con horizonte cumplido, puede haber apetito de venta.</strong> El nombre Iris — no tan conocido — puede ser relanzado bajo la marca EntreNos.
+      </div>
+    </div>
+
+    <!-- TARGET 3: CREZCAMOS -->
+    <div class="target-card">
+      <div class="card-header">
+        <div class="card-prob prob-red"></div>
+        <div class="card-header-content">
+          <div class="card-name-block">
+            <div class="card-nit">Bucaramanga · Segundo mayor jugador microfinanzas no bancario</div>
+            <div class="card-name">Crezcamos S.A. Compañía de Financiamiento</div>
+          </div>
+          <div class="card-badges">
+            <div class="verdict-pill pill-red">Descartar a CP</div>
+            <div class="verdict-pill pill-red" style="background:transparent; border-color:transparent; padding:0;">
+              <span class="sanction-badge">Multa SFC $60M COP</span>
+            </div>
+            <span class="prob-label prob-red-text">Prob. Adquisición: BAJA</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-data">
+          <table class="data-table">
+            <tr><td class="dk">Fundación</td><td class="dv">~2007 (más de 17 años operación)</td></tr>
+            <tr><td class="dk">Segmento</td><td class="dv">Microfinanzas — 2.° mayor jugador no bancario en Colombia</td></tr>
+            <tr><td class="dk">Sede</td><td class="dv">Bucaramanga, Santander</td></tr>
+            <tr><td class="dk">Cartera aprox.</td><td class="dv"><strong>~$380.000M COP</strong> (históricamente 90% microcrédito)</td></tr>
+            <tr><td class="dk">Activos aprox.</td><td class="dv">~$400.000M COP</td></tr>
+            <tr><td class="dk">Propietario actual</td><td class="dv"><strong>Tree Capital</strong> (adquirió jun 2024 de Southern Cross)</td></tr>
+            <tr><td class="dk">Asesor del deal</td><td class="dv"><strong>Inverlink/IMAP Colombia</strong></td></tr>
+            <tr><td class="dk">Multa SFC</td><td class="dv"><strong>$60M COP</strong> — tasas incorrectas en 127 operaciones de microcrédito</td></tr>
+            <tr><td class="dk">Expansión</td><td class="dv">Planes Bogotá + Barranquilla; diversificación a consumo/vivienda</td></tr>
+          </table>
+        </div>
+        <div class="card-right">
+          <div>
+            <div class="unknowns-title">Lo que no sabemos</div>
+            <ul class="unknowns-list">
+              <li>Precio pagado por Tree Capital a Southern Cross</li>
+              <li>Estructura accionaria actual exacta (% Tree Capital, Osorio Capital)</li>
+              <li>Estados financieros detallados 2024-2025 (NPL real)</li>
+              <li>Contacto directo de Tree Capital (sede: Ginebra, Suiza)</li>
+              <li>Si hay accionistas minoritarios dispuestos a vender</li>
+            </ul>
+          </div>
+          <div class="divider"></div>
+          <div>
+            <div class="how-title">Si se decide explorar igual</div>
+            <ol class="how-list">
+              <li>SFC — estados financieros públicos</li>
+              <li>Inverlink / Mauricio Saldarriaga — conocen a Tree Capital</li>
+              <li>Tree Capital LinkedIn — acercamiento directo (Ginebra)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <strong>¿Por qué descartar?</strong> Tree Capital compró la participación de Southern Cross en <strong>junio 2024</strong> — hace apenas 9 meses. Es altamente improbable que quieran salir tan pronto. Si Tree Capital es un fondo PE con horizonte de 5-7 años, la ventana de salida sería 2029-2031. Además, el tamaño (~$400B activos) y el foco en microfinanzas rural no encaja con el modelo de banco AI urbano. <strong>Revisitar en 3-4 años.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARATIVA -->
+  <div class="section" id="comparativa">
+    <div class="section-label">
+      <span class="section-id">03</span>
+      <span class="section-title">Tabla Comparativa</span>
+      <div class="section-rule"></div>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:160px;">Criterio</th>
+          <th class="col-best">★ Bancar Tecnología CO</th>
+          <th>Iris CF</th>
+          <th>Crezcamos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tamaño</td>
+          <td class="col-best"><span class="hl-green">Pequeño (~50 empleados)</span></td>
+          <td>Mediano (~$111B patrimonio)</td>
+          <td><span class="hl-amber">Grande (~$400B activos)</span></td>
+        </tr>
+        <tr>
+          <td>Edad / Antigüedad</td>
+          <td class="col-best"><span class="hl-green">4 años (2021)</span></td>
+          <td>30 años (1996)</td>
+          <td>17+ años (2007)</td>
+        </tr>
+        <tr>
+          <td>ADN Digital</td>
+          <td class="col-best"><span class="hl-green">Nativa tecnológica</span> <span class="tag-best">✓ CF Tech</span></td>
+          <td>Se posiciona como "neofinanciera"</td>
+          <td>En transformación digital</td>
+        </tr>
+        <tr>
+          <td>Prob. Venta</td>
+          <td class="col-best"><span class="hl-green">Media-Alta</span></td>
+          <td><span class="hl-amber">Media</span></td>
+          <td><span class="hl-red">Baja (recién comprada)</span></td>
+        </tr>
+        <tr>
+          <td>Precio estimado</td>
+          <td class="col-best"><span class="hl-green">Bajo-Medio</span></td>
+          <td>Medio</td>
+          <td>Alto</td>
+        </tr>
+        <tr>
+          <td>Licencia SFC</td>
+          <td class="col-best">Activa (2021)</td>
+          <td>Activa (1996)</td>
+          <td>Activa (2007)</td>
+        </tr>
+        <tr>
+          <td>Sanción SFC</td>
+          <td class="col-best"><span class="hl-green">Sin confirmar</span></td>
+          <td>Sin confirmar</td>
+          <td><span class="hl-red">$60M COP multa confirmada</span></td>
+        </tr>
+        <tr>
+          <td>Foco actual</td>
+          <td class="col-best">Crédito / intermediación</td>
+          <td>Crédito empresas y emprendedores</td>
+          <td>Microcrédito popular / rural</td>
+        </tr>
+        <tr>
+          <td>Accionista</td>
+          <td class="col-best"><span class="hl-amber">Extranjero (posible salida)</span></td>
+          <td>Desconocido (verificar)</td>
+          <td>Tree Capital (PE, Ginebra)</td>
+        </tr>
+        <tr>
+          <td>Fit para banco AI</td>
+          <td class="col-best"><span class="hl-green">★ Mejor opción</span></td>
+          <td>Posible</td>
+          <td><span class="hl-red">No (demasiado grande, rural)</span></td>
+        </tr>
+        <tr>
+          <td>Aceleración timeline</td>
+          <td class="col-best">6–12 meses para operar</td>
+          <td>6–12 meses para operar</td>
+          <td>6–12 meses, pero integración compleja</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ASESORES M&A -->
+  <div class="section" id="asesores">
+    <div class="section-label">
+      <span class="section-id">04</span>
+      <span class="section-title">Firmas de Asesoría M&A y Contactos</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="contacts-grid">
+      <!-- Inverlink -->
+      <div class="contact-card featured">
+        <div class="contact-firm">
+          <div>
+            <div class="firm-name">Inverlink / IMAP</div>
+            <span class="verdict-pill pill-gold" style="margin-top:6px; display:inline-block;">Primer contacto recomendado</span>
+          </div>
+        </div>
+        <div class="contact-data">
+          <div class="contact-row">
+            <div class="contact-key">Partner</div>
+            <div class="contact-val"><strong style="color:var(--text);">Mauricio Saldarriaga</strong> — Managing Partner</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Email</div>
+            <div class="contact-val"><a href="mailto:msaldarriaga@inverlink.com">msaldarriaga@inverlink.com</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Tel</div>
+            <div class="contact-val"><span class="mono">+57 (601) 748 9000</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Dirección</div>
+            <div class="contact-val">AK 7 # 71-52, Torre B, Piso 15 — Bogotá</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Socios</div>
+            <div class="contact-val">Nicolás Gómez, Felipe Camacho, Enrique Vargas</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Dirs.</div>
+            <div class="contact-val">Felipe Gaviria, Santiago Cárdenas, Marcelo Modai</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Red</div>
+            <div class="contact-val">IMAP — International M&A Partners (+250 transacciones)</div>
+          </div>
+        </div>
+        <div class="contact-relevance">
+          <strong style="color:var(--gold);">Deal relevante:</strong> Asesor exclusivo de Tree Capital en la compra de participación de Southern Cross en Grupo Crezcamos (2024). Conocen el mercado de CFs en Colombia directamente. Pueden hacer screening de targets, due diligence informal, y contactar a Bancar Technologies Limited.
+        </div>
+      </div>
+
+      <!-- Baker McKenzie -->
+      <div class="contact-card">
+        <div class="contact-firm">
+          <div class="firm-name">Baker McKenzie Colombia</div>
+        </div>
+        <div class="contact-data">
+          <div class="contact-row">
+            <div class="contact-key">Partner</div>
+            <div class="contact-val"><strong style="color:var(--text);">Ricardo Trejos Robledo</strong> — Co-head Banking &amp; Finance</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Asociado</div>
+            <div class="contact-val">Sebastián Boada — MSc Banking Law (LSE)</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Fundación</div>
+            <div class="contact-val">1937 en Colombia · +90 profesionales</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Especialidad</div>
+            <div class="contact-val">Project finance, acquisition finance, DCM, PE, regulación financiera</div>
+          </div>
+        </div>
+        <div class="contact-relevance">
+          Experiencia directa en M&A financiero regulado ante la SFC. Asesoraron deals en el mercado de CF colombiano. Asesores anteriores en Crezcamos.
+        </div>
+      </div>
+
+      <!-- Brigard Urrutia -->
+      <div class="contact-card">
+        <div class="contact-firm">
+          <div class="firm-name">Brigard Urrutia</div>
+        </div>
+        <div class="contact-data">
+          <div class="contact-row">
+            <div class="contact-key">Managing P.</div>
+            <div class="contact-val"><strong style="color:var(--text);">Carlos Fradique-Méndez</strong> — derecho financiero</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Otros P.</div>
+            <div class="contact-val">César Felipe Rodríguez, Felipe Alarcón</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Tel</div>
+            <div class="contact-val"><span class="mono">+57 1 346 2011</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Dirección</div>
+            <div class="contact-val">Calle 70A #4-41, Bogotá (+ Cali, Medellín, Baq)</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Fundación</div>
+            <div class="contact-val">1934 — firma líder en regulación financiera colombiana</div>
+          </div>
+        </div>
+        <div class="contact-relevance">
+          Firma líder en regulación financiera y fintechs ante la SFC. Reconocida por Chambers &amp; Partners y Legal 500. Asesora a entidades financieras y nuevos entrantes.
+        </div>
+      </div>
+
+      <!-- GPA -->
+      <div class="contact-card">
+        <div class="contact-firm">
+          <div class="firm-name">Gómez-Pinzón (GPA)</div>
+        </div>
+        <div class="contact-data">
+          <div class="contact-row">
+            <div class="contact-key">Partner</div>
+            <div class="contact-val"><strong style="color:var(--text);">Adriana Moreno Márquez</strong> — regulación bancaria</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Fundación</div>
+            <div class="contact-val">1992 (Bogotá + Medellín)</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Integración</div>
+            <div class="contact-val">Fusión con Pérez-Llorca — 11 ciudades iberoamerica</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Especialidad</div>
+            <div class="contact-val">Banking, Finance &amp; Capital Markets, M&amp;A, créditos sindicados</div>
+          </div>
+        </div>
+        <div class="contact-relevance">
+          Sólida práctica en regulación financiera y cross-border finance. Acceso a red iberoamericana para estructurar capital extranjero (Kaszek, IFC, etc.).
+        </div>
+      </div>
+
+      <!-- PHR Legal -->
+      <div class="contact-card">
+        <div class="contact-firm">
+          <div class="firm-name">Posse Herrera Ruiz (PHR)</div>
+        </div>
+        <div class="contact-data">
+          <div class="contact-row">
+            <div class="contact-key">Partner</div>
+            <div class="contact-val"><strong style="color:var(--text);">Natalia Escobar</strong> — +15 años regulación financiera</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Web</div>
+            <div class="contact-val"><a href="#">phrlegal.com</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Speciality</div>
+            <div class="contact-val">Instituciones financieras, SFC: banca, fondos, seguros, fintech</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Premios</div>
+            <div class="contact-val">Chambers &amp; Partners — Colombian Law Firm of the Year 2018</div>
+          </div>
+        </div>
+        <div class="contact-relevance">
+          Expertise específico en constitución de entidades ante la SFC y regulación de plataformas fintech. Ideal para el proceso de licencia nueva (Ruta A) o validación legal de adquisición (Ruta B).
+        </div>
+      </div>
+
+      <!-- Valoracción -->
+      <div class="contact-card">
+        <div class="contact-firm">
+          <div>
+            <div class="firm-name">VALORACCIÓN</div>
+            <span class="verdict-pill pill-amber" style="margin-top:6px; display:inline-block; font-size:8px;">Verificar presencia Colombia</span>
+          </div>
+        </div>
+        <div class="contact-data">
+          <div class="contact-row">
+            <div class="contact-key">Email</div>
+            <div class="contact-val"><a href="mailto:info@valoraccion.com">info@valoraccion.com</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Web</div>
+            <div class="contact-val"><a href="#">valoraccion.com</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-key">Nota</div>
+            <div class="contact-val" style="color:var(--text-muted);">No se encontró "Valora Consultores" con ese nombre exacto. Verificar también <span class="mono">valora-partners.com</span></div>
+          </div>
+        </div>
+        <div class="contact-relevance">
+          Servicios analíticos M&A — alternativa como segundo asesor para due diligence financiero de los targets de CF.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INNOVASFC -->
+  <div class="section" id="sandbox">
+    <div class="section-label">
+      <span class="section-id">05</span>
+      <span class="section-title">InnovaSFC — Sandbox Regulatorio</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="sandbox-grid">
+      <div>
+        <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px; line-height:1.6;">
+          El sandbox de la SFC permite operar con <strong style="color:var(--text);">dispensa regulatoria temporal</strong> antes de obtener la licencia completa. Es la herramienta más estratégica para validar el modelo de scoring AI ante el regulador.
+        </p>
+        <div class="sandbox-steps">
+          <div class="sandbox-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-name">elHub — Primer contacto</div>
+              <div class="step-desc">Oficina de innovación de la SFC. Cualquier proyecto innovador inicia aquí. Enviar email a <span class="mono" style="color:var(--mono-blue);">innovasfc@superfinanciera.gov.co</span> con pitch ejecutivo del modelo.</div>
+            </div>
+          </div>
+          <div class="sandbox-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-name">laArenera — Sandbox del Supervisor</div>
+              <div class="step-desc">Para innovaciones que requieren dispensa de normas expedidas por la SFC. La SFC evalúa el proyecto y confirma si cumple requisitos mínimos.</div>
+            </div>
+          </div>
+          <div class="sandbox-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-name">Espacio Controlado de Prueba</div>
+              <div class="step-desc">Sandbox regulatorio para innovaciones que requieren dispensa de otras autoridades. Se emite un <strong style="color:var(--gold);">Certificado de Operación Temporal</strong>. Normativa: Circular Externa 006 de 2025, Parte I, Título I, Capítulo VIII.</div>
+            </div>
+          </div>
+          <div class="sandbox-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-name">Radicación formal</div>
+              <div class="step-desc">Solicitud formal ante SFC para laArenera o Espacio Controlado. Incluir: modelo de scoring AI, datos de entrenamiento, métricas de desempeño, y análisis PURO (Purposeful, Unsurprising, Respectful, Explainable).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sandbox-contact-box">
+          <div class="sandbox-contact-header">
+            <div class="scb-title">Contacto InnovaSFC</div>
+            <div class="scb-name">innovasfc@superfinanciera.gov.co</div>
+          </div>
+          <div class="sandbox-contact-body">
+            <div class="contact-row">
+              <div class="contact-key">Email</div>
+              <div class="contact-val"><a href="mailto:innovasfc@superfinanciera.gov.co">innovasfc@superfinanciera.gov.co</a></div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-key">Web</div>
+              <div class="contact-val"><span class="mono" style="color:var(--blue); font-size:10px;">superfinanciera.gov.co → InnovaSFC</span></div>
+            </div>
+          </div>
+          <div class="sandbox-use-cases">
+            <div class="sandbox-uc-title">Qué probar en el Sandbox</div>
+            <ul class="sandbox-uc-list">
+              <li>Modelo de crédito AI-native — validar antes de licencia completa</li>
+              <li>Generar track record regulatorio para fortalecer solicitud de licencia</li>
+              <li>Demostrar ante la SFC que el scoring AI es explainable y fair</li>
+              <li>Construir relación con el supervisor antes de la radicación formal</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:11.5px; color:var(--text-muted); margin-top:12px; line-height:1.5; font-family:'Fira Code', monospace;">
+          Referencia: DBS Bank (Singapur) validó su modelo de crédito AI con el regulador local antes de lanzarlo a escala. El sandbox de la SFC es el equivalente colombiano. Aplicar en paralelo con la solicitud de licencia — no en lugar de ella.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPITAL MÍNIMO -->
+  <div class="section" id="capital">
+    <div class="section-label">
+      <span class="section-id">06</span>
+      <span class="section-title">Capital Mínimo Requerido</span>
+      <div class="section-rule"></div>
+    </div>
+    <table class="capital-table">
+      <thead>
+        <tr>
+          <th>Tipo de Entidad</th>
+          <th>Capital Mínimo</th>
+          <th>Actualización</th>
+          <th>Fuente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Establecimiento Bancario</td>
+          <td class="amount">~$45.085M COP</td>
+          <td>Anualmente por IPC — resolución SFC</td>
+          <td class="source">EOSF Art. 80 + ajuste SFC 2026</td>
+        </tr>
+        <tr>
+          <td>Compañía de Financiamiento</td>
+          <td class="amount">~$14.845M COP</td>
+          <td>Anualmente por IPC — resolución SFC</td>
+          <td class="source">EOSF + SFC 2026</td>
+        </tr>
+        <tr>
+          <td>SEDPE</td>
+          <td class="amount">~$5.500–6.000M COP</td>
+          <td>Verificar resolución vigente 2026</td>
+          <td class="source">Estimación — consultar SFC directamente</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="capital-note">
+      Los montos se actualizan anualmente por IPC mediante resolución de la SFC. Consultar la resolución vigente 2026 en: superfinanciera.gov.co → Capital Mínimo Requerido. La ruta SEDPE permite operar depósitos y pagos sin crédito — capital más bajo pero menor capacidad de negocio. La ruta CF (~$14.8B) es 3× más barata que banco pleno y permite crédito.
+    </div>
+  </div>
+
+  <!-- ACCIÓN -->
+  <div class="section" id="accion">
+    <div class="section-label">
+      <span class="section-id">07</span>
+      <span class="section-title">Plan de Acción</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="action-weeks">
+      <div class="action-week">
+        <div class="action-week-header">
+          <div class="awk-title">Semana 1 — Acción Inmediata</div>
+          <div class="verdict-pill pill-red">Urgente</div>
+        </div>
+        <div class="action-items">
+          <div class="action-item">
+            <div class="action-num">01</div>
+            <div class="action-text">
+              <strong>Contactar Inverlink — Mauricio Saldarriaga</strong>
+              <span>msaldarriaga@inverlink.com / +57 601 748 9000. Pedir: lista de CFs disponibles, valoración del mercado, estado de Bancar Tecnología CO.</span>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-num">02</div>
+            <div class="action-text">
+              <strong>Descargar estados financieros SFC</strong>
+              <span>Portal SFC → Bancar Tecnología CO (jun y dic 2024) + Iris CF. Analizar cartera, NPL, patrimonio.</span>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-num">03</div>
+            <div class="action-text">
+              <strong>Verificar accionistas Iris CF</strong>
+              <span>iris.com.co/sitio-institucional/nuestros-accionistas/ e informes de gobierno corporativo públicos.</span>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-num">04</div>
+            <div class="action-text">
+              <strong>Investigar Bancar Technologies Limited</strong>
+              <span>LinkedIn + búsqueda de UBOs. ¿Quiénes son? ¿Por qué entraron a Colombia? ¿Hay operación activa?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="action-week">
+        <div class="action-week-header">
+          <div class="awk-title">Semana 2–3 — Corto Plazo</div>
+          <div class="verdict-pill pill-amber">Importante</div>
+        </div>
+        <div class="action-items">
+          <div class="action-item">
+            <div class="action-num">05</div>
+            <div class="action-text">
+              <strong>Reunión con firma de abogados bancarios</strong>
+              <span>Brigard Urrutia o PHR Legal. Confirmar: viabilidad legal de adquisición, proceso cambio de control SFC, timeline realista (benchmark: Banco W ≈ 7 meses).</span>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-num">06</div>
+            <div class="action-text">
+              <strong>Aplicar a elHub / InnovaSFC</strong>
+              <span>innovasfc@superfinanciera.gov.co — iniciar conversación sobre el modelo de banco AI. Construir relación con el supervisor antes de la radicación formal.</span>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-num">07</div>
+            <div class="action-text">
+              <strong>Presentar a papá — ambas rutas</strong>
+              <span>"Papá, hay una CF disponible que puede recortarnos 12-18 meses del proceso regulatorio. Necesito tu opinión y tus contactos para validar el due diligence."</span>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-num">08</div>
+            <div class="action-text">
+              <strong>Correr ambas rutas en paralelo</strong>
+              <span>Ruta A (licencia nueva SFC) + Ruta B (adquisición CF) — no son mutuamente excluyentes. Si surge target limpio a buen precio: Ruta B. Si no: Ruta A ya avanzó.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">EntreNos — el dinero vuelve a ser de la gente</div>
+  <div class="footer-sources">
+    Fuentes: IMAP.com · SFC Colombia · LAVCA · La República · Bloomberg Línea · EMIS · DataCrédito Empresas · LinkedIn · InformaColombia
+  </div>
+  <div class="footer-meta">
+    CF Research<br>
+    Confidencial — 12:12 Projects<br>
+    2026-03-13
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntreNos — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════════════════
+   ENTRENOS — BRAND BOOK
+   Un manifiesto filosófico sobre el dinero, el tiempo, y el otro.
+   Tipografía: Fraunces + Plus Jakarta Sans
+   2026 · 12:12 Projects
+═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --negro:      #060708;
+  --negro-2:    #0C0D12;
+  --negro-3:    #111318;
+  --negro-4:    #181A22;
+  --oro:        #C9A84C;
+  --oro-claro:  #E2C06E;
+  --oro-oscuro: #8A6B28;
+  --oro-glow:   rgba(201,168,76,0.07);
+  --crema:      #F5EDD8;
+  --crema-2:    #E8DFC8;
+  --text:       #DDD8CC;
+  --text-dim:   #7A7468;
+  --text-muted: #3A3830;
+  --border:     rgba(201,168,76,0.12);
+  --border-2:   rgba(255,255,255,0.05);
+  --azul-banco: #1A4F8C;
+  --verde-fn:   #2E7D52;
+
+  --ff-d: 'Fraunces', Georgia, serif;
+  --ff-u: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --ff-m: 'Fira Code', monospace;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--negro);
+  color: var(--text);
+  font-family: var(--ff-u);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── GRAIN ─── */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events:none;
+  z-index:9998;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVEGACIÓN
+═══════════════════════════════════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0;
+  height:52px;
+  background: rgba(6,7,8,0.9);
+  border-bottom: 1px solid var(--border-2);
+  backdrop-filter: blur(16px);
+  display:flex; align-items:center;
+  justify-content:space-between;
+  padding: 0 48px;
+  z-index:100;
+}
+
+.nav-logo {
+  display:flex; align-items:baseline;
+}
+
+.nav-en {
+  font-family: var(--ff-d);
+  font-weight:300; font-style:italic;
+  font-size:18px; color:rgba(245,237,216,0.5);
+  font-variation-settings:'opsz' 18;
+}
+
+.nav-nos {
+  font-family: var(--ff-d);
+  font-weight:800; font-size:18px;
+  color:var(--oro);
+  font-variation-settings:'opsz' 18;
+}
+
+.nav-links {
+  display:flex; gap:4px;
+}
+
+.nav-link {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  text-decoration:none;
+  padding:5px 10px;
+  border-radius:3px;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color:var(--oro); }
+
+.nav-badge {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  border: 1px solid var(--border-2);
+  padding:3px 10px; border-radius:2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT BASE
+═══════════════════════════════════════════════════════════════ */
+.chapter {
+  min-height: 100vh;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  padding: 120px 0 100px;
+  border-bottom: 1px solid var(--border-2);
+  position:relative;
+  overflow:hidden;
+}
+
+.chapter:last-child { border-bottom:none; }
+
+.col-center {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width:100%;
+}
+
+.col-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width:100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   00 — PORTADA
+═══════════════════════════════════════════════════════════════ */
+.cover {
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:flex-start;
+  padding: 0 0 0 96px;
+  position:relative; overflow:hidden;
+}
+
+/* Círculos concéntricos */
+.cover-circle {
+  position:absolute;
+  border-radius:50%;
+  border: 1px solid rgba(201,168,76,0.06);
+  pointer-events:none;
+}
+
+.c1 { width:1600px; height:1600px; right:-600px; top:50%; transform:translateY(-50%); }
+.c2 { width:1100px; height:1100px; right:-350px; top:50%; transform:translateY(-50%); border-color:rgba(201,168,76,0.08); }
+.c3 { width:700px; height:700px; right:-100px; top:50%; transform:translateY(-50%); border-color:rgba(201,168,76,0.1); }
+.c4 { width:350px; height:350px; right:100px; top:50%; transform:translateY(-50%); border-color:rgba(201,168,76,0.15); }
+
+.cover-line {
+  position:absolute;
+  left:0; top:80px; bottom:80px;
+  width:2px;
+  background: linear-gradient(to bottom, transparent, var(--oro) 30%, var(--oro) 70%, transparent);
+}
+
+.cover-eyebrow {
+  font-family: var(--ff-m);
+  font-size:10px; letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:48px;
+  position:relative; z-index:1;
+}
+
+.cover-wordmark {
+  position:relative; z-index:1;
+  margin-bottom:48px;
+}
+
+.wm-entre {
+  font-family: var(--ff-d);
+  font-weight:200; font-style:italic;
+  font-size:clamp(80px,14vw,160px);
+  line-height:0.85;
+  color:rgba(245,237,216,0.35);
+  letter-spacing:-0.02em;
+  display:block;
+  font-variation-settings:'opsz' 144;
+}
+
+.wm-nos {
+  font-family: var(--ff-d);
+  font-weight:900;
+  font-size:clamp(80px,14vw,160px);
+  line-height:0.85;
+  color:var(--crema);
+  letter-spacing:-0.04em;
+  display:block;
+  font-variation-settings:'opsz' 144;
+}
+
+.cover-sub {
+  font-family: var(--ff-d);
+  font-weight:300; font-style:italic;
+  font-size:clamp(16px,2vw,22px);
+  color:var(--text-dim);
+  font-variation-settings:'opsz' 24;
+  margin-bottom:64px;
+  position:relative; z-index:1;
+}
+
+.cover-meta {
+  display:flex; gap:48px;
+  position:relative; z-index:1;
+}
+
+.cm-item {
+  display:flex; flex-direction:column; gap:4px;
+}
+
+.cm-label {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+
+.cm-val {
+  font-family: var(--ff-u);
+  font-size:13px; font-weight:500;
+  color:var(--text-dim);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CHAPTER LABELS
+═══════════════════════════════════════════════════════════════ */
+.ch-label {
+  display:flex; align-items:center;
+  gap:16px; margin-bottom:56px;
+}
+
+.ch-num {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--oro);
+}
+
+.ch-title {
+  font-family: var(--ff-m);
+  font-size:10px; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-muted);
+}
+
+.ch-rule {
+  flex:1; height:1px;
+  background:var(--border);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TIPOGRAFÍA EDITORIAL
+═══════════════════════════════════════════════════════════════ */
+
+/* Pull quote */
+.pull {
+  font-family: var(--ff-d);
+  font-weight:300; font-style:italic;
+  font-size:clamp(28px,4vw,46px);
+  line-height:1.25;
+  color:var(--crema);
+  letter-spacing:-0.01em;
+  font-variation-settings:'opsz' 48;
+  border-left: 2px solid var(--oro);
+  padding-left:32px;
+  margin: 48px 0;
+}
+
+/* Body editorial */
+.body-text {
+  font-family: var(--ff-u);
+  font-size:16px; line-height:1.8;
+  color:var(--text-dim);
+  max-width:640px;
+}
+
+.body-text + .body-text { margin-top: 24px; }
+
+.body-text strong {
+  color:var(--text);
+  font-weight:600;
+}
+
+.body-text em {
+  font-style:italic;
+  color:var(--text);
+}
+
+/* Heading grande */
+.h1 {
+  font-family: var(--ff-d);
+  font-weight:800;
+  font-size:clamp(40px,6vw,72px);
+  line-height:1;
+  letter-spacing:-0.03em;
+  color:var(--text);
+  margin-bottom:32px;
+  font-variation-settings:'opsz' 72;
+}
+
+.h2 {
+  font-family: var(--ff-d);
+  font-weight:700;
+  font-size:clamp(28px,3vw,40px);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  color:var(--text);
+  margin-bottom:24px;
+  font-variation-settings:'opsz' 40;
+}
+
+.h3 {
+  font-family: var(--ff-u);
+  font-weight:700;
+  font-size:18px;
+  color:var(--text);
+  margin-bottom:12px;
+  letter-spacing:-0.01em;
+}
+
+/* Épigraphe */
+.epigraph {
+  border-left: 2px solid var(--border);
+  padding-left:24px;
+  margin: 32px 0;
+}
+
+.epigraph p {
+  font-family: var(--ff-d);
+  font-style:italic; font-weight:300;
+  font-size:17px; line-height:1.6;
+  color:var(--text-dim);
+  font-variation-settings:'opsz' 18;
+}
+
+.epigraph cite {
+  display:block; margin-top:10px;
+  font-family: var(--ff-m);
+  font-size:10px; font-style:normal;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TIMELINE COSMICO
+═══════════════════════════════════════════════════════════════ */
+.timeline-cosmic {
+  display:flex; flex-direction:column;
+  gap:0; margin:48px 0;
+  border-left: 1px solid var(--border);
+  padding-left:32px;
+}
+
+.tl-event {
+  display:flex; gap:24px;
+  align-items:flex-start;
+  padding:20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  position:relative;
+}
+
+.tl-event::before {
+  content:'';
+  position:absolute;
+  left:-37px; top:26px;
+  width:8px; height:8px;
+  border-radius:50%;
+  border: 1px solid var(--border);
+  background:var(--negro);
+}
+
+.tl-event.highlight::before {
+  background:var(--oro);
+  border-color:var(--oro);
+  box-shadow:0 0 12px rgba(201,168,76,0.4);
+}
+
+.tl-time {
+  font-family: var(--ff-m);
+  font-size:10px; letter-spacing:0.08em;
+  color:var(--text-muted); font-weight:500;
+  flex-shrink:0; width:160px;
+  padding-top:2px;
+}
+
+.tl-content {}
+
+.tl-name {
+  font-family: var(--ff-u);
+  font-weight:600; font-size:14px;
+  color:var(--text); margin-bottom:3px;
+}
+
+.tl-event.highlight .tl-name { color:var(--oro); }
+
+.tl-desc {
+  font-size:13px; color:var(--text-dim); line-height:1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ARQUETIPO JUNG
+═══════════════════════════════════════════════════════════════ */
+.archetypes-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2px; margin:40px 0;
+  border-radius:6px; overflow:hidden;
+  background:var(--border-2);
+}
+
+@media (max-width:640px) { .archetypes-grid { grid-template-columns:1fr; } }
+
+.archetype-card {
+  background:var(--negro-2);
+  padding:32px 28px;
+}
+
+.archetype-card.featured {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius:4px;
+}
+
+.arch-symbol {
+  font-size:32px; margin-bottom:16px;
+  line-height:1;
+}
+
+.arch-name {
+  font-family: var(--ff-d);
+  font-weight:800; font-size:22px;
+  color:var(--text);
+  margin-bottom:4px;
+  font-variation-settings:'opsz' 22;
+}
+
+.archetype-card.featured .arch-name { color:var(--oro); }
+
+.arch-sub {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--text-muted); margin-bottom:16px;
+}
+
+.arch-desc {
+  font-size:13.5px; color:var(--text-dim);
+  line-height:1.6;
+}
+
+.arch-banks {
+  margin-top:16px; padding-top:14px;
+  border-top:1px solid var(--border-2);
+  font-family: var(--ff-m);
+  font-size:9px; color:var(--text-muted);
+  letter-spacing:0.08em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEORÍA DEL COLOR EN BANCA
+═══════════════════════════════════════════════════════════════ */
+.color-theory-grid {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:2px; margin:40px 0;
+  border-radius:6px; overflow:hidden;
+  background:var(--border-2);
+}
+
+@media (max-width:700px) { .color-theory-grid { grid-template-columns:1fr 1fr; } }
+
+.ct-card {
+  display:flex; flex-direction:column;
+}
+
+.ct-swatch {
+  height:120px; position:relative;
+  overflow:hidden;
+}
+
+.ct-swatch::after {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5));
+}
+
+.ct-body {
+  background:var(--negro-2);
+  padding:18px 16px; flex:1;
+  display:flex; flex-direction:column;
+}
+
+.ct-color-name {
+  font-family: var(--ff-u);
+  font-weight:700; font-size:13px;
+  color:var(--text); margin-bottom:4px;
+}
+
+.ct-emotion {
+  font-family: var(--ff-d);
+  font-style:italic; font-weight:300;
+  font-size:14px; color:var(--text-dim);
+  margin-bottom:10px;
+  font-variation-settings:'opsz' 14;
+}
+
+.ct-banks {
+  font-family: var(--ff-m);
+  font-size:9px; color:var(--text-muted);
+  letter-spacing:0.06em; line-height:1.7;
+}
+
+.ct-meaning {
+  font-size:11.5px; color:var(--text-dim);
+  line-height:1.5; margin-top:8px;
+}
+
+/* Card de análisis de color */
+.color-analysis {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:12px; margin:32px 0;
+}
+
+@media (max-width:640px) { .color-analysis { grid-template-columns:1fr; } }
+
+.ca-card {
+  padding:28px;
+  border-radius:6px;
+  border: 1px solid var(--border-2);
+}
+
+.ca-card.ca-them {
+  background:var(--negro-2);
+  border-color: rgba(26,79,140,0.3);
+}
+
+.ca-card.ca-us {
+  background: rgba(201,168,76,0.04);
+  border-color: rgba(201,168,76,0.2);
+}
+
+.ca-verdict {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.15em;
+  text-transform:uppercase;
+  margin-bottom:16px; padding:3px 8px;
+  border-radius:2px; display:inline-block;
+}
+
+.v-them { color:#6B9ED4; background:rgba(26,79,140,0.15); }
+.v-us { color:var(--oro); background:var(--oro-glow); }
+
+.ca-title {
+  font-family: var(--ff-d);
+  font-weight:700; font-size:22px;
+  margin-bottom:10px;
+  font-variation-settings:'opsz' 22;
+}
+
+.ca-card.ca-them .ca-title { color:var(--text); }
+.ca-card.ca-us .ca-title { color:var(--oro); }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROFUNDIDAD DEL COLOR ENTRENOS
+═══════════════════════════════════════════════════════════════ */
+.deep-color-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr;
+  gap:2px; margin:40px 0;
+  border-radius:8px; overflow:hidden;
+  background:var(--border-2);
+}
+
+@media (max-width:700px) { .deep-color-grid { grid-template-columns:1fr; } }
+
+.dc-card {
+  position:relative; overflow:hidden;
+}
+
+.dc-visual {
+  height:200px; position:relative;
+}
+
+.dc-body {
+  background:var(--negro-2);
+  padding:24px;
+}
+
+.dc-name {
+  font-family: var(--ff-d);
+  font-weight:800; font-size:20px;
+  color:var(--text); margin-bottom:4px;
+  font-variation-settings:'opsz' 20;
+}
+
+.dc-hex {
+  font-family: var(--ff-m);
+  font-size:10px; color:var(--text-muted);
+  letter-spacing:0.1em; margin-bottom:10px;
+}
+
+.dc-story {
+  font-size:12.5px; color:var(--text-dim);
+  line-height:1.6;
+}
+
+.dc-associations {
+  margin-top:14px; display:flex;
+  flex-wrap:wrap; gap:6px;
+}
+
+.dc-tag {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.08em;
+  color:var(--text-muted);
+  border:1px solid var(--border-2);
+  padding:2px 8px; border-radius:2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PSICOANÁLISIS DEL DINERO
+═══════════════════════════════════════════════════════════════ */
+.psych-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2px; margin:40px 0;
+  border-radius:6px; overflow:hidden;
+  background:var(--border-2);
+}
+
+@media (max-width:640px) { .psych-grid { grid-template-columns:1fr; } }
+
+.psych-card {
+  background:var(--negro-2);
+  padding:32px 28px;
+}
+
+.psych-author {
+  font-family: var(--ff-m);
+  font-size:9px; letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--oro); margin-bottom:12px;
+}
+
+.psych-concept {
+  font-family: var(--ff-d);
+  font-weight:700; font-size:20px;
+  color:var(--text); margin-bottom:12px;
+  font-variation-settings:'opsz' 20;
+  line-height:1.2;
+}
+
+.psych-exp {
+  font-size:13.5px; color:var(--text-dim);
+  line-height:1.65;
+}
+
+.psych-apply {
+  margin-top:16px; padding-top:14px;
+  border-top:1px solid var(--border-2);
+  font-size:12.5px; color:var(--text-dim);
+  line-height:1.5;
+}
+
+.psych-apply strong { color:var(--oro); font-weight:600; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROMESA FINAL
+═══════════════════════════════════════════════════════════════ */
+.promise-section {
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  text-align:center;
+  padding:120px 48px;
+  position:relative; overflow:hidden;
+  background:var(--negro);
+}
+
+.promise-glow {
+  position:absolute;
+  width:600px; height:600px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.promise-title {
+  font-family: var(--ff-d);
+  font-weight:300; font-style:italic;
+  font-size:clamp(48px,8vw,100px);
+  line-height:1;
+  color:var(--crema);
+  letter-spacing:-0.02em;
+  font-variation-settings:'opsz' 100;
+  margin-bottom:0;
+  position:relative; z-index:1;
+}
+
+.promise-title-2 {
+  font-family: var(--ff-d);
+  font-weight:900;
+  font-size:clamp(48px,8vw,100px);
+  line-height:1;
+  color:var(--oro);
+  letter-spacing:-0.04em;
+  font-variation-settings:'opsz' 100;
+  position:relative; z-index:1;
+}
+
+.promise-tagline {
+  font-family: var(--ff-d);
+  font-weight:300; font-style:italic;
+  font-size:clamp(16px,2vw,22px);
+  color:var(--text-dim);
+  margin:32px 0 64px;
+  font-variation-settings:'opsz' 24;
+  position:relative; z-index:1;
+}
+
+.promise-commitments {
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  gap:1px; background:var(--border-2);
+  border-radius:6px; overflow:hidden;
+  width:100%; max-width:900px;
+  position:relative; z-index:1;
+}
+
+@media (max-width:700px) {
+  .promise-commitments { grid-template-columns:1fr; }
+}
+
+.commitment {
+  background:var(--negro-2);
+  padding:32px 24px;
+}
+
+.comm-num {
+  font-family: var(--ff-d);
+  font-weight:800; font-size:56px;
+  color:rgba(201,168,76,0.12);
+  line-height:1; margin-bottom:16px;
+  font-variation-settings:'opsz' 56;
+}
+
+.comm-title {
+  font-family: var(--ff-d);
+  font-weight:700; font-size:18px;
+  color:var(--text); margin-bottom:8px;
+  font-variation-settings:'opsz' 18;
+  line-height:1.2;
+}
+
+.comm-desc {
+  font-size:12.5px; color:var(--text-dim);
+  line-height:1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DIVIDER DECORATIVO
+═══════════════════════════════════════════════════════════════ */
+.ornament {
+  display:flex; align-items:center;
+  gap:16px; margin:48px 0;
+}
+
+.ornament::before, .ornament::after {
+  content:''; flex:1; height:1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.ornament-center {
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--oro);
+  opacity:0.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMACIONES DE ENTRADA (INTERSECTION OBSERVER)
+═══════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity:0;
+  transform:translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal-delay-1 { transition-delay:0.15s; }
+.reveal-delay-2 { transition-delay:0.3s; }
+.reveal-delay-3 { transition-delay:0.45s; }
+.reveal-delay-4 { transition-delay:0.6s; }
+
+/* Cover entrada */
+.cover-eyebrow { animation: fadeUp 1s ease 0.1s both; }
+.cover-wordmark { animation: fadeUp 1s ease 0.3s both; }
+.cover-sub { animation: fadeUp 1s ease 0.6s both; }
+.cover-meta { animation: fadeUp 1s ease 0.9s both; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* Highlight inline */
+.hl { color:var(--oro); }
+.hl-crema { color:var(--crema); }
+.subtle { color:var(--text-muted); font-size:0.85em; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-en">entre</span>
+    <span class="nav-nos">nos</span>
+  </div>
+  <div class="nav-links">
+    <a href="#tiempo" class="nav-link">El Tiempo</a>
+    <a href="#otro" class="nav-link">El Otro</a>
+    <a href="#arquetipo" class="nav-link">El Arquetipo</a>
+    <a href="#color" class="nav-link">El Color</a>
+    <a href="#paleta" class="nav-link">La Paleta</a>
+    <a href="#promesa" class="nav-link">La Promesa</a>
+  </div>
+  <div class="nav-badge">Brand Book · v1.0</div>
+</nav>
+
+
+<!-- ═══════════ 00 — PORTADA ═══════════ -->
+<div class="cover">
+  <div class="cover-circle c1"></div>
+  <div class="cover-circle c2"></div>
+  <div class="cover-circle c3"></div>
+  <div class="cover-circle c4"></div>
+  <div class="cover-line"></div>
+
+  <div class="cover-eyebrow">EntreNos — Banco AI · Brand Book · Colombia · 2026</div>
+
+  <div class="cover-wordmark">
+    <span class="wm-entre">entre</span>
+    <span class="wm-nos">nos</span>
+  </div>
+
+  <div class="cover-sub">el dinero vuelve a ser de la gente</div>
+
+  <div class="cover-meta">
+    <div class="cm-item">
+      <div class="cm-label">Tipo</div>
+      <div class="cm-val">Brand Identity Manual</div>
+    </div>
+    <div class="cm-item">
+      <div class="cm-label">Versión</div>
+      <div class="cm-val">1.0 — Fundadores</div>
+    </div>
+    <div class="cm-item">
+      <div class="cm-label">Fecha</div>
+      <div class="cm-val">Marzo 2026</div>
+    </div>
+    <div class="cm-item">
+      <div class="cm-label">Preparado por</div>
+      <div class="cm-val">12:12 Projects</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ 01 — EL TIEMPO ═══════════ -->
+<div class="chapter" id="tiempo">
+  <div class="col-center">
+
+    <div class="ch-label reveal">
+      <span class="ch-num">01</span>
+      <span class="ch-title">El Tiempo — De Dónde Venimos</span>
+      <div class="ch-rule"></div>
+    </div>
+
+    <h1 class="h1 reveal">
+      13.800.000.000<br>años.
+    </h1>
+
+    <p class="body-text reveal reveal-delay-1">
+      Eso tiene el universo. La Tierra: 4.500 millones. Los primeros homínidos: 7 millones. El <em>Homo sapiens</em> moderno —  nosotros, con este cerebro capaz de imaginar el futuro y recordar el pasado — apenas 300.000 años.
+    </p>
+
+    <div class="pull reveal reveal-delay-1">
+      En 13.800 millones de años de cosmos, somos un parpadeo. En ese parpadeo, todo lo que importa ocurre en el encuentro entre dos personas.
+    </div>
+
+    <p class="body-text reveal">
+      La primera transacción económica de la historia humana no fue un intercambio de bienes. Fue un acto de <strong>confianza entre desconocidos</strong>. Alguien le entregó comida a alguien que no era su familia, esperando algo a cambio, creyendo —sin pruebas— que ese alguien cumpliría.
+    </p>
+
+    <p class="body-text reveal">
+      Ese gesto primitivo es el origen del crédito. Del sistema bancario. De EntreNos. Llevamos 300.000 años perfeccionando ese acto de fe.
+    </p>
+
+    <div class="timeline-cosmic reveal">
+      <div class="tl-event">
+        <div class="tl-time">13.800 M años</div>
+        <div class="tl-content">
+          <div class="tl-name">El Big Bang</div>
+          <div class="tl-desc">El universo surge de la nada. En el principio no hay tiempo, ni espacio, ni "nosotros". Solo energía pura en expansión.</div>
+        </div>
+      </div>
+      <div class="tl-event">
+        <div class="tl-time">4.500 M años</div>
+        <div class="tl-content">
+          <div class="tl-name">La Tierra</div>
+          <div class="tl-desc">Polvo de estrellas que explotaron colisionan, se funden y forman un planeta. El oro que hay en la Tierra proviene de colisiones de estrellas de neutrones hace miles de millones de años.</div>
+        </div>
+      </div>
+      <div class="tl-event">
+        <div class="tl-time">300.000 años</div>
+        <div class="tl-content">
+          <div class="tl-name">Homo sapiens</div>
+          <div class="tl-desc">El primer ser capaz de cooperar con desconocidos a través de mitos compartidos — religión, dinero, naciones. La cooperación a gran escala es nuestra única ventaja evolutiva.</div>
+        </div>
+      </div>
+      <div class="tl-event">
+        <div class="tl-time">10.000 años</div>
+        <div class="tl-content">
+          <div class="tl-name">Las primeras monedas de trigo</div>
+          <div class="tl-desc">En Mesopotamia, los templos almacenan grano y emiten recibos de arcilla. El primer banco de la historia era una institución religiosa. El dinero nació del ritual.</div>
+        </div>
+      </div>
+      <div class="tl-event">
+        <div class="tl-time">2.600 años</div>
+        <div class="tl-content">
+          <div class="tl-name">Las primeras monedas de oro</div>
+          <div class="tl-desc">En Lidia (hoy Turquía), el rey Creso acuña las primeras monedas de electro — una aleación de oro y plata. El oro como valor universal es un consenso de 2.600 años.</div>
+        </div>
+      </div>
+      <div class="tl-event">
+        <div class="tl-time">500 años</div>
+        <div class="tl-content">
+          <div class="tl-name">La banca moderna</div>
+          <div class="tl-desc">Los Medici en Florencia inventan la carta de crédito y el sistema de compensación. La banca como la conocemos hoy tiene 500 años — el 0.00001% de la historia humana.</div>
+        </div>
+      </div>
+      <div class="tl-event">
+        <div class="tl-time">30 años</div>
+        <div class="tl-content">
+          <div class="tl-name">La banca digital</div>
+          <div class="tl-desc">Internet democratiza el acceso pero los bancos siguen funcionando igual. Tarifas de un siglo atrás. Atención como si el tiempo fuera de ellos, no del cliente.</div>
+        </div>
+      </div>
+      <div class="tl-event highlight">
+        <div class="tl-time">Ahora — 2026</div>
+        <div class="tl-content">
+          <div class="tl-name">EntreNos</div>
+          <div class="tl-desc">Un banco que nace sabiendo todo lo que vino antes — y elige hacer lo contrario. Un banco construido sobre la premisa más antigua del mundo: <em>si me cuidas, te cuido.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="epigraph reveal">
+      <p>"Somos una manera del cosmos de conocerse a sí mismo."</p>
+      <cite>— Carl Sagan, Cosmos (1980)</cite>
+    </div>
+
+    <p class="body-text reveal">
+      Esta consciencia de la escala — de lo breve y extraordinaria que es la existencia humana — es la primera razón de ser de EntreNos. <strong>No somos un banco que usa tecnología para optimizar márgenes.</strong> Somos un banco que usa tecnología para recuperar algo que la banca tradicional perdió hace 200 años: la certeza de que <em>el dinero existe al servicio de la vida, no al revés.</em>
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ═══════════ 02 — EL OTRO ═══════════ -->
+<div class="chapter" id="otro">
+  <div class="col-center">
+
+    <div class="ch-label reveal">
+      <span class="ch-num">02</span>
+      <span class="ch-title">El Otro — Psicoanálisis del Dinero</span>
+      <div class="ch-rule"></div>
+    </div>
+
+    <h1 class="h1 reveal">Lo único que existe<br>es el ahora<br>y <span class="hl">el otro.</span></h1>
+
+    <p class="body-text reveal reveal-delay-1">
+      Sigmund Freud enseñó que el ser humano es profundamente irracional con el dinero — que lo que decimos querer y lo que realmente buscamos casi nunca coincide. <strong>Nadie quiere dinero. Quieren lo que el dinero representa:</strong> seguridad, amor, poder, libertad, reconocimiento.
+    </p>
+
+    <div class="pull reveal">
+      Toda transacción financiera es un acto de confianza en un futuro que no puedes ver, protagonizado por un yo que aún no eres.
+    </div>
+
+    <div class="psych-grid reveal">
+      <div class="psych-card">
+        <div class="psych-author">Sigmund Freud · Psicoanalista</div>
+        <div class="psych-concept">El dinero como sustituto simbólico</div>
+        <div class="psych-exp">
+          Freud observó que el dinero tiene una carga emocional que trasciende su valor instrumental. Las personas acumulan, gastan, pierden dinero con la misma intensidad que viven sus vínculos afectivos más profundos. La avaricia y la prodigalidad son síntomas — no caracteres.
+        </div>
+        <div class="psych-apply">
+          <strong>En EntreNos:</strong> Entendemos que cuando alguien pide un crédito no pide dinero — pide una oportunidad. Cuando ahorra, no guarda billetes — construye seguridad. Nuestro lenguaje lo reconoce.
+        </div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-author">Carl Gustav Jung · Psicólogo analítico</div>
+        <div class="psych-concept">El arquetipo del Guardián Comunitario</div>
+        <div class="psych-exp">
+          Jung identificó patrones universales del inconsciente colectivo — los arquetipos. Las marcas más poderosas de la historia encarnan uno. El Cuidador (Caregiver) representa protección, altruismo, servicio desinteresado. Es el arquetipo de las instituciones que la gente ama.
+        </div>
+        <div class="psych-apply">
+          <strong>En EntreNos:</strong> Somos el Cuidador. No la institución distante. No el experto arrogante. El amigo que te cuida cuando más lo necesitas y que gana cuando tú ganas.
+        </div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-author">Jacques Lacan · Psicoanalista</div>
+        <div class="psych-concept">El deseo es siempre deseo del Otro</div>
+        <div class="psych-exp">
+          Lacan propuso que el deseo humano es fundamentalmente relacional — no deseamos objetos, sino el reconocimiento del otro. El dinero como mediador del deseo: lo que compramos es siempre, en algún nivel, lo que queremos que el otro vea en nosotros.
+        </div>
+        <div class="psych-apply">
+          <strong>En EntreNos:</strong> No vendemos productos financieros. Ofrecemos pertenencia a una comunidad donde ser un buen pagador tiene significado social y beneficio concreto.
+        </div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-author">D.W. Winnicott · Pediatra y psicoanalista</div>
+        <div class="psych-concept">El objeto transicional</div>
+        <div class="psych-exp">
+          Winnicott describió cómo los niños usan objetos (un peluche, una cobija) para transitar entre la seguridad del hogar y el mundo incierto. El dinero es el objeto transicional de los adultos — lo que nos permite navegar la brecha entre lo que tenemos y lo que queremos ser.
+        </div>
+        <div class="psych-apply">
+          <strong>En EntreNos:</strong> El crédito no es deuda — es un puente. El ahorro no es restricción — es la promesa que te haces a ti mismo. Nuestro agente AI lo entiende y lo dice así.
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament reveal">
+      <div class="ornament-center"></div>
+    </div>
+
+    <h2 class="h2 reveal">El ahora como único tiempo real</h2>
+
+    <p class="body-text reveal">
+      La física cuántica y la fenomenología de Husserl coinciden en algo que los niños saben instintivamente: <strong>el único tiempo que existe es el presente.</strong> El pasado es memoria. El futuro es anticipación. Solo el ahora es real.
+    </p>
+
+    <p class="body-text reveal">
+      Los bancos tradicionales te venden miedo al futuro (seguros, pensiones, reservas) o culpa del pasado (moras, historiales crediticios). <strong>EntreNos vive en el presente.</strong> La pregunta no es "¿qué hiciste antes?" sino "¿quién eres ahora y hacia dónde vas?"
+    </p>
+
+    <div class="epigraph reveal">
+      <p>"Entre tú y yo existe un espacio. Y en ese espacio está nuestro poder de elegir nuestra respuesta. En esa respuesta está nuestro crecimiento y nuestra libertad."</p>
+      <cite>— Viktor Frankl, El hombre en busca de sentido (1946)</cite>
+    </div>
+
+    <p class="body-text reveal">
+      El nombre <span class="hl-crema"><strong>EntreNos</strong></span> nombra ese espacio. El espacio que existe entre dos personas — entre el banco y el cliente, entre un miembro de la comunidad y otro — es donde ocurre la confianza, la transacción, la vida financiera real. <strong>Ese espacio es nuestra marca.</strong>
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ═══════════ 03 — EL ARQUETIPO ═══════════ -->
+<div class="chapter" id="arquetipo">
+  <div class="col-wide">
+
+    <div class="ch-label reveal">
+      <span class="ch-num">03</span>
+      <span class="ch-title">El Arquetipo — Quién Es EntreNos</span>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div style="max-width:760px; margin:0 auto 48px;">
+      <h2 class="h2 reveal">Los bancos tienen alma.<br>La mayoría eligió la equivocada.</h2>
+      <p class="body-text reveal">
+        Toda marca exitosa encarna un arquetipo junguiano — un patrón universal del inconsciente colectivo. Los bancos más poderosos del mundo eligieron El Gobernante (autoridad, control, estatus). Eso funcionó durante 200 años de capitalismo industrial. En 2026, ese arquetipo genera 2.6 millones de quejas anuales en Colombia.
+      </p>
+    </div>
+
+    <div class="archetypes-grid reveal">
+      <div class="archetype-card">
+        <div class="arch-symbol">👑</div>
+        <div class="arch-name">El Gobernante</div>
+        <div class="arch-sub">Arquetipo: control, poder, autoridad</div>
+        <div class="arch-desc">Proyecta estabilidad a través de la distancia. La institución es más grande que tú. Sus reglas no se negocian. Su poder viene de ser inamovible. Inspirador para los accionistas — alienante para los clientes.</div>
+        <div class="arch-banks">Bancolombia · BBVA · Chase · HSBC · Deutsche Bank</div>
+      </div>
+      <div class="archetype-card">
+        <div class="arch-symbol">🧙</div>
+        <div class="arch-name">El Mago</div>
+        <div class="arch-sub">Arquetipo: transformación, visión</div>
+        <div class="arch-desc">Promete transformación. "Haz realidad tus sueños." El discurso es poderoso pero con frecuencia vacío — la promesa de transformación sin los medios reales para lograrla genera desconfianza.</div>
+        <div class="arch-banks">Davivienda · Mastercard · American Express</div>
+      </div>
+      <div class="archetype-card">
+        <div class="arch-symbol">🌱</div>
+        <div class="arch-name">El Hombre Común</div>
+        <div class="arch-sub">Arquetipo: pertenencia, igualdad</div>
+        <div class="arch-desc">Habla el idioma del cliente. "Somos como tú." Nubank lo usa con habilidad — el banco que se pone del lado del cliente contra el sistema. Efectivo pero puede sonar condescendiente.</div>
+        <div class="arch-banks">Nubank · Monzo · Chime</div>
+      </div>
+      <div class="archetype-card featured">
+        <div class="arch-symbol">🤝</div>
+        <div class="arch-name">El Cuidador</div>
+        <div class="arch-sub">Arquetipo de EntreNos — protección, comunidad, servicio</div>
+        <div class="arch-desc">El Cuidador existe para servir a otros. Su propósito no es el poder — es el bienestar. Genera lealtad profunda porque su éxito está estructuralmente alineado con el éxito de quien sirve. Es el arquetipo de las marcas que la gente defiende.</div>
+        <div class="arch-banks">EntreNos · DBS Bank (AI-era) · Grameen Bank (origen)</div>
+      </div>
+    </div>
+
+    <div style="max-width:760px; margin:32px auto 0;">
+      <p class="body-text reveal">
+        El Cuidador no es sinónimo de debilidad. La Cruz Roja es Cuidadora — y opera en zonas de guerra. El Grameen Bank es Cuidador — y cambió la economía de Bangladesh. <strong>El Cuidador es implacable en su servicio, no en su ambición.</strong>
+      </p>
+
+      <div class="pull reveal">
+        EntreNos es el banco que pierde cuando el cliente falla. Y por eso, es el único banco que genuinamente necesita que al cliente le vaya bien.
+      </div>
+
+      <p class="body-text reveal">
+        Este alineamiento de incentivos — que no es marketing sino estructura financiera — es lo que distingue al Cuidador de los demás arquetipos. Ningún banco colombiano puede copiar esto porque hacerlo requeriría cambiar el modelo de negocio completo. <strong>Nosotros nacemos con ese modelo en el código.</strong>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════ 04 — EL COLOR EN LA BANCA ═══════════ -->
+<div class="chapter" id="color">
+  <div class="col-wide">
+
+    <div class="ch-label reveal">
+      <span class="ch-num">04</span>
+      <span class="ch-title">El Color — Psicología y Poder en la Banca</span>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div style="max-width:760px; margin:0 auto 48px;">
+      <h2 class="h2 reveal">Los bancos eligieron el azul.<br>No fue un accidente.</h2>
+      <p class="body-text reveal reveal-delay-1">
+        Desde finales del siglo XIX, las instituciones financieras del mundo convergieron en el azul. No por azar estético — por un cálculo psicológico preciso. El azul comunica <em>autoridad sin agresión, poder sin amenaza, confianza sin calidez</em>. Es el color de las instituciones que quieren ser percibidas como más permanentes que los individuos que las usan.
+      </p>
+    </div>
+
+    <div class="color-theory-grid reveal">
+      <div class="ct-card">
+        <div class="ct-swatch" style="background:linear-gradient(135deg, #003087, #0066CC);"></div>
+        <div class="ct-body">
+          <div class="ct-color-name">Azul Institucional</div>
+          <div class="ct-emotion">Confianza fría</div>
+          <div class="ct-banks">Chase · Citi · BBVA<br>Bancolombia · Barclays</div>
+          <div class="ct-meaning">Autoridad, estabilidad, distancia. "Somos sólidos como el cielo." Efectivo para generar percepción de seguridad. Pero frío — el cliente no siente que le importa al banco.</div>
+        </div>
+      </div>
+      <div class="ct-card">
+        <div class="ct-swatch" style="background:linear-gradient(135deg, #CC0000, #FF3333);"></div>
+        <div class="ct-body">
+          <div class="ct-color-name">Rojo Agresivo</div>
+          <div class="ct-emotion">Urgencia, poder</div>
+          <div class="ct-banks">Bank of America<br>Wells Fargo · Scotiabank</div>
+          <div class="ct-meaning">Acción, urgencia, pasión. Usado para captar atención y generar acción de compra. En banca puede percibirse como agresivo — el banco que "viene por ti".</div>
+        </div>
+      </div>
+      <div class="ct-card">
+        <div class="ct-swatch" style="background:linear-gradient(135deg, #2E7D32, #4CAF50);"></div>
+        <div class="ct-body">
+          <div class="ct-color-name">Verde Genérico</div>
+          <div class="ct-emotion">Crecimiento, dinero</div>
+          <div class="ct-banks">TD Bank · Lloyds<br>Mercantil · Itaú</div>
+          <div class="ct-meaning">Asociado con el dinero y el crecimiento. Frecuentemente elegido por bancos que buscan posicionarse como "amigables". Sobreusado — difícil de diferenciar.</div>
+        </div>
+      </div>
+      <div class="ct-card">
+        <div class="ct-swatch" style="background:linear-gradient(135deg, #6B21A8, #9333EA);"></div>
+        <div class="ct-body">
+          <div class="ct-color-name">Púrpura Digital</div>
+          <div class="ct-emotion">Innovación genérica</div>
+          <div class="ct-banks">Nubank · Brex<br>Mercury · Revolut (parte)</div>
+          <div class="ct-meaning">El color del fintech de 2015-2025. Señaliza "no somos un banco tradicional". Ahora sobreusado — la mayoría de fintechs ya lo usa. Perdió diferenciación.</div>
+        </div>
+      </div>
+      <div class="ct-card" style="border:1px solid rgba(201,168,76,0.3);">
+        <div class="ct-swatch" style="background:linear-gradient(135deg, #1A1530, #070810);"></div>
+        <div class="ct-body">
+          <div class="ct-color-name" style="color:var(--oro);">Negro + Oro</div>
+          <div class="ct-emotion" style="color:var(--oro-claro);">Valor eterno · Calidez</div>
+          <div class="ct-banks" style="color:var(--oro);">EntreNos · JP Morgan Private<br>Goldman Private · Amex Centurion</div>
+          <div class="ct-meaning">En banca privada: exclusividad fría. En EntreNos: <strong style="color:var(--crema);">el oro es calor ancestral</strong> — lo que los humanos han valorado durante 5.000 años. El negro es profundidad, no muerte.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-analysis reveal">
+      <div class="ca-card ca-them">
+        <div class="ca-verdict v-them">La banca tradicional</div>
+        <div class="ca-title">El azul como distancia deliberada</div>
+        <p class="body-text" style="font-size:14px;">
+          El azul en banca no es estético — es estratégico. Una institución azul comunica: "somos permanentes, somos seguros, estamos por encima de las emociones individuales." El cliente se siente protegido por algo mayor que él mismo.
+        </p>
+        <p class="body-text" style="font-size:14px; margin-top:16px;">
+          El problema en 2026: esa distancia que generaba confianza ahora genera fricción. Los colombianos registraron <strong style="color:var(--crema);">2.6 millones de quejas bancarias en 2024</strong> (+73% YoY). La confianza institucional azul se rompió.
+        </p>
+      </div>
+      <div class="ca-card ca-us">
+        <div class="ca-verdict v-us">EntreNos</div>
+        <div class="ca-title">El oro como calidez ancestral</div>
+        <p class="body-text" style="font-size:14px;">
+          El oro no es un color de lujo — es el color más antiguo del valor humano. En todas las culturas, en todos los continentes, durante 5.000 años, el oro ha significado lo mismo: <em>esto vale, esto dura, esto es real.</em>
+        </p>
+        <p class="body-text" style="font-size:14px; margin-top:16px;">
+          En EntreNos el oro no señaliza exclusividad — señaliza <strong>verdad</strong>. "Lo que te decimos sobre tus finanzas es tan real como el oro." El negro no es muerte — es el horizonte infinito, la noche del Pacífico colombiano, el cielo desde la Sabana de Bogotá.
+        </p>
+      </div>
+    </div>
+
+    <div style="max-width:760px; margin:0 auto;">
+      <div class="epigraph reveal">
+        <p>"El oro tiene un color que ningún otro tiene: cálido y frío al mismo tiempo, como el fuego que no quema y la lluvia que no moja."</p>
+        <cite>— Anónimo, observación sobre la psicología del color</cite>
+      </div>
+
+      <p class="body-text reveal">
+        La decisión de usar <span class="hl">negro profundo + oro</span> en lugar de los azules, verdes y púrpuras del fintech contemporáneo es una declaración filosófica. <strong>No somos un banco digital que imita la innovación.</strong> Somos una institución que honra el valor más antiguo que el ser humano ha reconocido — y lo hace accesible para todos, no solo para quienes ya tienen mucho.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════ 05 — LA PALETA PROFUNDA ═══════════ -->
+<div class="chapter" id="paleta">
+  <div class="col-wide">
+
+    <div class="ch-label reveal">
+      <span class="ch-num">05</span>
+      <span class="ch-title">La Paleta — Significado Profundo de Cada Color</span>
+      <div class="ch-rule"></div>
+    </div>
+
+    <div class="deep-color-grid reveal">
+      <!-- Negro -->
+      <div class="dc-card">
+        <div class="dc-visual" style="background: radial-gradient(ellipse at 30% 30%, #181A2A, #060708); position:relative;">
+          <div style="position:absolute; bottom:20px; left:24px; font-family:var(--ff-d); font-weight:200; font-style:italic; font-size:40px; color:rgba(245,237,216,0.15); font-variation-settings:'opsz' 40; line-height:1;">infinito</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-name">Negro Profundo</div>
+          <div class="dc-hex">#060708</div>
+          <div class="dc-story">
+            El negro de EntreNos no es el negro del luto ni del vacío. Es el negro del cielo de madrugada sobre los Andes — lleno de posibilidad, de estrellas que no hemos descubierto. Es el color del potencial sin forma todavía.
+            <br><br>
+            En psicología del color, el negro comunica <em>misterio, sofisticación, y permanencia</em>. Cuando una marca lo usa bien, no intimida — profundiza. El cliente siente que está entrando a algo que vale la pena conocer.
+          </div>
+          <div class="dc-associations">
+            <span class="dc-tag">Infinito</span>
+            <span class="dc-tag">Cielo nocturno</span>
+            <span class="dc-tag">Profundidad</span>
+            <span class="dc-tag">Potencial</span>
+            <span class="dc-tag">Sofisticación</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oro -->
+      <div class="dc-card">
+        <div class="dc-visual" style="background: radial-gradient(ellipse at center, #E2C06E, #9E7E2E);"></div>
+        <div class="dc-body">
+          <div class="dc-name">Oro</div>
+          <div class="dc-hex">#C9A84C</div>
+          <div class="dc-story">
+            El oro de EntreNos proviene de estrellas que explotaron hace miles de millones de años. Todo el oro de la Tierra llegó del cosmos. No hay nada más antiguo ni más universal como símbolo de valor.
+            <br><br>
+            Usamos el oro con moderación deliberada. Cuando aparece — en el logotipo, en los CTAs, en los datos importantes — el cliente siente que algo vale.
+          </div>
+          <div class="dc-associations">
+            <span class="dc-tag">5.000 años</span>
+            <span class="dc-tag">Valor real</span>
+            <span class="dc-tag">Verdad</span>
+            <span class="dc-tag">Calor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Crema -->
+      <div class="dc-card">
+        <div class="dc-visual" style="background: radial-gradient(ellipse at center, #F5EDD8, #C8BC9E);"></div>
+        <div class="dc-body">
+          <div class="dc-name">Crema</div>
+          <div class="dc-hex">#F5EDD8</div>
+          <div class="dc-story">
+            El crema es la humanidad del sistema. Es el color del papel escrito a mano, de la piel colombiana bajo el sol, del café con leche de las mañanas en Medellín. Suaviza el negro, calienta el oro.
+            <br><br>
+            En texto, el crema es más legible que el blanco puro sobre negro — y más cálido. Cada palabra de EntreNos escrita en crema lleva esa calidez implícita.
+          </div>
+          <div class="dc-associations">
+            <span class="dc-tag">Humanidad</span>
+            <span class="dc-tag">Calidez</span>
+            <span class="dc-tag">Papel</span>
+            <span class="dc-tag">Piel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segunda fila: colores funcionales -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; background:var(--border-2); margin:2px 0 40px; border-radius:0 0 8px 8px; overflow:hidden;">
+
+      <div class="dc-card">
+        <div class="dc-visual" style="height:100px; background:linear-gradient(135deg, #1A2A1E, #0A180D);">
+          <div style="width:100%; height:4px; background:var(--verde); margin-top:48px;"></div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-name" style="font-size:16px;">Verde Comunidad</div>
+          <div class="dc-hex">#3CC48A</div>
+          <div class="dc-story" style="font-size:12px;">El verde aparece cuando la comunidad está sana: mora baja, pagos a tiempo, tasa descendiendo. Es el color de la recompensa colectiva. En la naturaleza, verde = vida. En EntreNos, verde = comunidad próspera.</div>
+        </div>
+      </div>
+
+      <div class="dc-card">
+        <div class="dc-visual" style="height:100px; background:linear-gradient(135deg, #2A1E0A, #180D00);">
+          <div style="width:100%; height:4px; background:var(--ambar); margin-top:48px;"></div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-name" style="font-size:16px;">Ámbar Atención</div>
+          <div class="dc-hex">#E8A23D</div>
+          <div class="dc-story" style="font-size:12px;">El ámbar es la advertencia cálida — no el rojo de la alarma, sino el naranja del amanecer. Algo requiere atención, pero todavía hay tiempo. Es el color de la oportunidad de corregir antes de que sea tarde.</div>
+        </div>
+      </div>
+
+      <div class="dc-card">
+        <div class="dc-visual" style="height:100px; background:linear-gradient(135deg, #2A0A0A, #180000);">
+          <div style="width:100%; height:4px; background:var(--rojo); margin-top:48px;"></div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-name" style="font-size:16px;">Rojo Urgente</div>
+          <div class="dc-hex">#E85555</div>
+          <div class="dc-story" style="font-size:12px;">El rojo es urgencia genuina — mora activa, fraude detectado, decisión crítica. Aparece poco, precisamente para que cuando aparezca, el cliente entienda que esto es diferente. La rareza le da poder.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:760px; margin:0 auto;">
+      <div class="ornament reveal"><div class="ornament-center"></div></div>
+
+      <h3 class="h3 reveal">La regla del oro (literal)</h3>
+      <p class="body-text reveal">
+        El oro aparece en: el logotipo, los CTAs principales, los datos más importantes (tasas de ahorro, porcentaje de comunidad sana), y los momentos de celebración (nivel alcanzado, cuota pagada, límite aumentado).
+        <br><br>
+        <strong>El oro no aparece en:</strong> texto de cuerpo, backgrounds de secciones completas, elementos decorativos sin significado, ni en más del 15% de cualquier pantalla o página. Si el oro es omnipresente, deja de significar algo.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════ 06 — TIPOGRAFÍA Y VOZ ═══════════ -->
+<div class="chapter">
+  <div class="col-center">
+
+    <div class="ch-label reveal">
+      <span class="ch-num">06</span>
+      <span class="ch-title">La Tipografía — Estructura y Alma</span>
+      <div class="ch-rule"></div>
+    </div>
+
+    <h2 class="h2 reveal">Dos voces.<br>Una personalidad.</h2>
+
+    <p class="body-text reveal reveal-delay-1">
+      <strong>Fraunces</strong> es el alma de EntreNos. Una fuente variable diseñada entre 2019 y 2021 por Undercase Type — "grotesque meets old style." Tiene caracteres únicos (la "y" con cola, la "f" decorativa, las formas ópticas que cambian con el tamaño) que la hacen unmistakable. La cursiva es particularmente poderosa: cálida, inteligente, expresiva.
+    </p>
+
+    <div style="margin:40px 0; padding:40px; background:var(--negro-2); border-radius:6px; border:1px solid var(--border-2);">
+      <div style="font-family:var(--ff-d); font-weight:300; font-style:italic; font-size:52px; line-height:1.1; color:var(--crema); font-variation-settings:'opsz' 52; margin-bottom:8px;">
+        el dinero vuelve<br>a ser de la gente
+      </div>
+      <div style="font-family:var(--ff-d); font-weight:800; font-size:52px; line-height:1.1; color:var(--oro); font-variation-settings:'opsz' 52;">
+        EntreNos.
+      </div>
+    </div>
+
+    <p class="body-text reveal">
+      <strong>Plus Jakarta Sans</strong> es la estructura. Diseñada para interfaces digitales, humanista sin ser informal, funcional sin ser fría. Hace lo que la tipografía de UI debe hacer: desaparecer para que el contenido brille. La usamos en todo lo que no es display — botones, formularios, texto de cuerpo, navegación.
+    </p>
+
+    <div style="margin:40px 0; padding:40px; background:var(--negro-2); border-radius:6px; border:1px solid var(--border-2);">
+      <div style="font-family:var(--ff-u); font-weight:700; font-size:32px; line-height:1.1; color:var(--text); margin-bottom:12px; letter-spacing:-0.02em;">
+        Tu tasa bajó 0.2% este mes.
+      </div>
+      <div style="font-family:var(--ff-u); font-size:16px; color:var(--text-dim); line-height:1.7; max-width:480px;">
+        Gracias a que el 94.7% de la comunidad pagó a tiempo en enero, tu tasa de crédito pasó de 12.2% a 12.0% E.A. Eso son $8.400 menos en intereses al año.
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      La cursiva de Fraunces es la emoción. La mayúscula de Plus Jakarta es la razón. EntreNos habla con las dos voces al mismo tiempo.
+    </div>
+
+    <p class="body-text reveal">
+      <strong>Fira Code</strong> es la precisión. Monoespaciada, diseñada para código pero perfecta para datos financieros: tasas, NITs, fechas, valores exactos. Cuando algo aparece en Fira Code, el cliente entiende: esto es un número real, verificable, exacto. No estimado. No aproximado.
+    </p>
+
+    <div style="margin:32px 0; padding:24px 28px; background:var(--negro-2); border-radius:4px; border:1px solid var(--border-2); font-family:var(--ff-m); font-size:14px; color:var(--oro); letter-spacing:0.05em;">
+      12.00% E.A. · $2.847.320 COP · NIT 901502301-7
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════ 07 — PROMESA FINAL ═══════════ -->
+<div class="promise-section" id="promesa">
+  <div class="promise-glow"></div>
+
+  <p style="font-family:var(--ff-m); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:40px; position:relative; z-index:1;">
+    07 — La Promesa
+  </p>
+
+  <div class="promise-title reveal">el banco que</div>
+  <div class="promise-title-2 reveal reveal-delay-1">te cuida.</div>
+  <div class="promise-tagline reveal reveal-delay-2">
+    el dinero vuelve a ser de la gente — marzo 2026
+  </div>
+
+  <div class="promise-commitments reveal reveal-delay-2">
+    <div class="commitment">
+      <div class="comm-num">01</div>
+      <div class="comm-title">Somos honestos<br>hasta que duela</div>
+      <div class="comm-desc">Te decimos exactamente cuánto te estamos cobrando, cuánto te cobra tu banco actual, y cuál es la diferencia. Sin letra pequeña. Sin eufemismos.</div>
+    </div>
+    <div class="commitment">
+      <div class="comm-num">02</div>
+      <div class="comm-title">Ganamos cuando<br>tú ganas</div>
+      <div class="comm-desc">Nuestro modelo de negocio requiere que pagues bien, que crezcas, que te quedes. El conflicto de interés que tiene cada banco del mundo — nosotros lo eliminamos por diseño.</div>
+    </div>
+    <div class="commitment">
+      <div class="comm-num">03</div>
+      <div class="comm-title">Estamos aquí<br>en el ahora</div>
+      <div class="comm-desc">No te juzgamos por lo que pasó antes. No te vendemos miedo a lo que puede pasar después. La pregunta es: ¿quién eres hoy y hacia dónde quieres ir?</div>
+    </div>
+    <div class="commitment">
+      <div class="comm-num">04</div>
+      <div class="comm-title">La comunidad<br>es el producto</div>
+      <div class="comm-desc">Eres parte de algo más grande que una cuenta bancaria. Cada vez que pagas a tiempo, cuidas a 3.847 personas. Eso es real. Lo hacemos visible.</div>
+    </div>
+    <div class="commitment">
+      <div class="comm-num">05</div>
+      <div class="comm-title">La IA trabaja<br>para ti</div>
+      <div class="comm-desc">Usamos la inteligencia artificial más avanzada del mundo no para optimizar nuestros márgenes — para entenderte mejor, atenderte más rápido, y prestarte más barato.</div>
+    </div>
+    <div class="commitment">
+      <div class="comm-num">06</div>
+      <div class="comm-title">Colombia merece<br>un banco así</div>
+      <div class="comm-desc">2.6 millones de quejas en 2024. Tasas del 25% en un país donde el salario mínimo no alcanza. Llegamos tarde — pero llegamos.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:80px; display:flex; align-items:baseline; gap:0; position:relative; z-index:1; opacity:0.6;">
+    <span style="font-family:var(--ff-d); font-weight:300; font-style:italic; font-size:32px; color:var(--crema); font-variation-settings:'opsz' 32;">entre</span>
+    <span style="font-family:var(--ff-d); font-weight:900; font-size:32px; color:var(--oro); font-variation-settings:'opsz' 32;">nos</span>
+  </div>
+  <p style="font-family:var(--ff-m); font-size:9px; letter-spacing:0.1em; color:var(--text-muted); margin-top:8px; position:relative; z-index:1;">
+    Brand Book v1.0 · 12:12 Projects · Colombia · 2026
+  </p>
+
+</div>
+
+
+<script>
+// Intersection Observer para reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
