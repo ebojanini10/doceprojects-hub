@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EntreNos — Estás en la lista</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --negro:  #060708;
+      --card:   #0d0e10;
+      --oro:    #C9A84C;
+      --oro-hi: #E8C96A;
+      --crema:  #F5EDD8;
+      --verde:  #3CC48A;
+      --text:   #8C8F99;
+      --border: #1a1b1f;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--negro);
+      color: var(--crema);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* grain */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+    }
+
+    /* radial glow */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(60,196,138,0.06) 0%, transparent 70%);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes checkDraw {
+      from { stroke-dashoffset: 60; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes ringPulse {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    /* ── logo ── */
+    .logo {
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative; z-index: 1;
+      animation: fadeUp 0.5s ease both;
+    }
+    .logo a { text-decoration: none; }
+    .logo .entre {
+      font-family: 'Fraunces', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.9rem, 7vw, 2.6rem);
+      color: var(--oro);
+    }
+    .logo .nos {
+      font-family: 'Fraunces', serif;
+      font-style: normal; font-weight: 900;
+      font-size: clamp(1.9rem, 7vw, 2.6rem);
+      color: var(--crema);
+      letter-spacing: -0.05em;
+    }
+    .tagline {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-top: 6px;
+    }
+
+    /* ── card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 2px solid rgba(60,196,138,0.4);
+      border-radius: 20px;
+      padding: 44px 36px;
+      width: 100%; max-width: 440px;
+      text-align: center;
+      position: relative; z-index: 1;
+      animation: scaleIn 0.55s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    /* ── check icon ── */
+    .check-wrap {
+      position: relative;
+      width: 72px; height: 72px;
+      margin: 0 auto 28px;
+    }
+    .check-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: rgba(60,196,138,0.15);
+      border: 1px solid rgba(60,196,138,0.3);
+      animation: scaleIn 0.4s 0.3s ease both;
+    }
+    .check-ring-pulse {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(60,196,138,0.4);
+      animation: ringPulse 1.2s 0.6s ease-out both;
+    }
+    .check-icon {
+      position: relative; z-index: 1;
+      width: 72px; height: 72px;
+    }
+    .check-icon circle {
+      fill: rgba(60,196,138,0.12);
+      stroke: var(--verde);
+      stroke-width: 1.5;
+    }
+    .check-icon path {
+      fill: none;
+      stroke: var(--verde);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: checkDraw 0.5s 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+
+    /* ── headline ── */
+    .headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.7rem, 6vw, 2.2rem);
+      font-weight: 900;
+      color: var(--crema);
+      line-height: 1.1;
+      margin-bottom: 12px;
+      animation: fadeUp 0.5s 0.35s ease both;
+    }
+    .sub {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.4s ease both;
+    }
+
+    /* ── position badge ── */
+    .position-wrap {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s 0.45s ease both;
+    }
+    .position-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .position-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--oro);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    /* ── fundador badge ── */
+    .fundador-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--oro-hi);
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.5s ease both;
+    }
+    .fundador-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--oro);
+    }
+
+    /* ── divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 28px;
+      animation: fadeUp 0.5s 0.55s ease both;
+    }
+
+    /* ── what's next ── */
+    .next-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+      animation: fadeUp 0.5s 0.58s ease both;
+    }
+    .next-items {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.6s ease both;
+    }
+    .next-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .next-items li:last-child { border-bottom: none; }
+    .next-items .step-num {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      color: var(--oro);
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 6px;
+      padding: 2px 7px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── back link ── */
+    .back-link {
+      display: inline-block;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+      animation: fadeUp 0.5s 0.65s ease both;
+    }
+    .back-link:hover { color: var(--crema); }
+    .back-link::before { content: '← '; }
+
+    /* mobile */
+    @media (max-width: 480px) {
+      .card { padding: 32px 20px; }
+      .position-num { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <a href="landing.html">
+      <span class="entre">entre</span><span class="nos">Nos</span>
+    </a>
+    <div class="tagline">el dinero vuelve a ser de la gente</div>
+  </div>
+
+  <div class="card">
+
+    <div class="check-wrap">
+      <div class="check-ring"></div>
+      <div class="check-ring-pulse"></div>
+      <svg class="check-icon" viewBox="0 0 72 72">
+        <circle cx="36" cy="36" r="34"/>
+        <path d="M22 37l10 10 18-20"/>
+      </svg>
+    </div>
+
+    <h1 class="headline">Estás en la lista.</h1>
+    <p class="sub">Te avisamos cuando abramos las puertas.<br>Gracias por creer antes que los demás.</p>
+
+    <div class="position-wrap">
+      <div class="position-label">// tu posición en la lista</div>
+      <div class="position-num" id="posNum">#—</div>
+    </div>
+
+    <div class="fundador-badge">
+      <div class="fundador-dot"></div>
+      Miembro Fundador
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="next-title">// qué sigue</div>
+    <ul class="next-items">
+      <li>
+        <span class="step-num">01</span>
+        <span>Cuando estemos listos para lanzar te escribimos al WhatsApp que nos dejaste.</span>
+      </li>
+      <li>
+        <span class="step-num">02</span>
+        <span>Como Fundador tienes tasa garantizada del 8% E.A. — para siempre, sin importar cuándo actives tu cuenta.</span>
+      </li>
+      <li>
+        <span class="step-num">03</span>
+        <span>Comparte con alguien que odie los bancos. Cada persona que traigas sube tu posición en la lista.</span>
+      </li>
+    </ul>
+
+    <a href="landing.html" class="back-link">Volver a la landing</a>
+
+  </div>
+
+</body>
+<script>
+  // Show a realistic position number
+  const base = 847;
+  const extra = Math.floor(Math.random() * 312);
+  const pos = base + extra;
+  document.getElementById('posNum').textContent = '#' + pos.toLocaleString('es-CO');
+</script>
+</html>

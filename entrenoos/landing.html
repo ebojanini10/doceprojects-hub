@@ -2320,25 +2320,10 @@
         monto:    document.getElementById('fieldMonto').value,
       };
 
-      fetch('/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      }).catch(() => {});
-
-      // Always show success after 1200ms
+      // Redirect to confirmation page after brief delay
       setTimeout(() => {
-        document.getElementById('waitlistForm').style.display = 'none';
-        const success = document.getElementById('formSuccess');
-        success.classList.add('visible');
-
-        const posNum = '#' + waitlistPosition.toLocaleString('es-CO');
-        document.getElementById('successNumber').textContent = posNum;
-
-        waitlistPosition++;
-        currentCount++;
-        updateCounter();
-      }, 1200);
+        window.location.href = 'waitlist.html';
+      }, 900);
     });
   </script>
 
