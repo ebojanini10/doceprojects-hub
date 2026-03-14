@@ -607,4 +607,56 @@ El Brand Manual de DOCEPROJECTS (`brand-manual.html`) ya incluye los fundamentos
 
 ---
 
+## 20. STACK DE HERRAMIENTAS IA — PRESUPUESTO OPERATIVO
+
+**Última actualización:** 2026-03-14
+
+### Herramientas activas
+
+| Herramienta | Tengo | Precio/mes (USD) | Límite práctico mensual |
+|---|---|---|---|
+| **Claude Max** (Anthropic) | ✅ | $200 | Conversaciones ilimitadas (uso muy alto) · Proyectos sin límite |
+| **ChatGPT Plus** (OpenAI) | ✅ | $20 | Sora 2: ~50 videos prioritarios hasta 20 seg · +ilimitados en cola lenta |
+| **Gemini Advanced** (Google) | ✅ | $20 | Veo 3.1: ~5-10 videos/día en AI Studio · Más = $0.15/seg aparte |
+| **ElevenLabs Creator** | ✅ | $22 | 30 voces clonadas · 30.000 caracteres → ~20 narraciones de comercial/mes |
+| **Grok** (xAI / X Premium) | ✅ | ~$16-30 | Chat + búsqueda en tiempo real · Aurora: ~150 imágenes/mes |
+| **Gamma Pro** | ✅ | ~$20 | Presentaciones IA ilimitadas · Docs y landing pages |
+
+**Total stack actual:** ~$298-$312 USD/mes (~$1.2M COP/mes)
+
+### Herramientas nuevas — Generador de Contenido IA
+
+| Herramienta | Tengo | Precio/mes (USD) | Límite práctico mensual |
+|---|---|---|---|
+| **Kling 3.0** | ❌ | $6.99 | 660 créditos → ~16 comerciales completos/mes (clips hook + social) |
+| **HeyGen 4** | ❌ | $29 | 5 min → 20 escenas de portavoz de 15 seg/mes |
+| **Midjourney** | ❌ | $10 | ~200 imágenes → 10+ personajes de marca únicos |
+
+**Inversión adicional mínima:** $6.99/mes (solo Kling — suficiente para arrancar)
+**Stack completo:** +$45.99 USD/mes → ~$358 USD/mes total (~$1.45M COP/mes)
+
+### Costo real por comercial producido
+
+| Herramienta | Costo por video | Modelo |
+|---|---|---|
+| Claude, ElevenLabs, Sora 2 | $0 adicional | Mensual fijo (ya incluido) |
+| Kling 3.0 | ~$1.50 (5 créditos) | Mensual fijo |
+| Veo 3.1 | ~$3.00 (20 seg × $0.15) | Pay-per-use |
+| HeyGen 4 (si hay portavoz) | ~$1.45 (15 seg) | Mensual fijo |
+| **Total por comercial** | **~$5-6 USD (~$20.000 COP)** | |
+
+**Precio de venta mínimo:** $800.000 COP → **margen >97%**
+
+### Herramienta: Generador de Contenido IA
+
+- **Categoría:** Ventas & Marketing
+- **Puerto local:** 5030
+- **Directorio:** `infrastructure/generador-contenido/`
+- **Pipeline:** Brief → Claude (guión + prompts) → ElevenLabs (voz) → Kling + Sora + Veo (video) → CapCut (ensamble)
+- **Tiempo de producción:** 3-4 horas por comercial de 60 seg
+- **Formatos de entrega:** 16:9 (YouTube/LinkedIn) + 9:16 (TikTok/Reels/Stories)
+- **Flujo creativo:** Cliente propone idea → se analiza y perfecciona → Claude genera 2 ideas alternativas → cliente escoge → se produce
+
+---
+
 *Este documento es la fuente de verdad para la metodología y el journey de DOCEPROJECTS. Se mantiene sincronizado con el Brand Manual y sirve como guía para la generación de propuestas consistentes.*

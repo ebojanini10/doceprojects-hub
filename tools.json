@@ -313,6 +313,28 @@
         "📈 Clientes atendidos por vendedor: +3x",
         "💰 Ventas adicionales: $3-8M COP/semana en disponibles que antes no se comunicaban"
       ]
+    },
+    {
+      "id": "generador-contenido",
+      "name": "Generador de Contenido IA",
+      "tagline": "Brief → video comercial hiper-realista en 4 horas",
+      "category": "ventas",
+      "industries": ["gastronomia", "agro", "construccion", "inmobiliaria", "servicios", "retail", "educacion", "salud"],
+      "status": "implementacion",
+      "deployedAt": [],
+      "problem": "Producir un video comercial de calidad cuesta $2-5M COP y tarda semanas entre agencia, grabación y edición. Las pymes no pueden competir en contenido con marcas que tienen presupuesto de producción.",
+      "solution": [
+        "Claude genera el guión de 60 seg y los prompts cinematográficos por escena (hook, hero shot, demo, social proof, CTA)",
+        "ElevenLabs produce la narración con voz premium o clonada del cliente en 15 minutos",
+        "Kling 3.0, Sora 2 y Veo 3.1 generan los clips en paralelo según el rol de cada escena",
+        "Exporta en 16:9 (YouTube/LinkedIn) y 9:16 (TikTok/Instagram/Reels) listos para publicar"
+      ],
+      "savings": [
+        "⏱ Antes: 2-4 semanas de producción + $2-5M COP por video",
+        "⚡ Después: 4 horas de producción, $60.000-120.000 COP de costo real",
+        "📈 Volumen posible: 4-8 videos/mes por cliente con consistencia de marca",
+        "💰 Margen del servicio: >90% — costo $15-30 USD, precio $800K-4.5M COP/mes"
+      ]
     }
   ]
 }

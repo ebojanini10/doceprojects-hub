@@ -123,6 +123,43 @@ These rules apply to every proposal without exception:
 
 ---
 
+## Herramienta adicional — Generador de Contenido IA
+
+### Cuándo ofrecerlo
+
+Incluir el Generador de Contenido IA como cluster adicional en la propuesta cuando el cliente cumpla **al menos uno** de estos criterios:
+
+- Tiene producto/servicio visual (restaurante, flores, inmobiliaria, retail, construcción, servicios profesionales)
+- Mencionó en el Discovery que no tiene presupuesto para producción de video o que su contenido es "malo" / "no tienen"
+- Tiene redes sociales activas o quiere activarlas (Instagram, TikTok, LinkedIn, YouTube)
+- Su competencia tiene contenido de video y ellos no
+- El contrato mensual de automatización supera $1.5M COP/mes (es un cliente con presupuesto)
+
+### Cómo incluirlo en la propuesta
+
+Agregar como un cluster independiente llamado **"Generador de Contenido IA"** al final de los clusters de automatización. No es parte del core de automatización — se presenta como servicio adicional de marketing.
+
+**Descripción para la propuesta:**
+> Producción mensual de videos comerciales hiper-realistas de 60 segundos usando IA. El cliente participa solo con el brief de la idea — nosotros generamos el guión, la voz, los clips y la edición final. Entrega en 16:9 (YouTube/LinkedIn) y 9:16 (TikTok/Instagram/Reels).
+
+### Precios a incluir en la propuesta
+
+| Paquete | Entregable | Precio |
+|---|---|---|
+| **Starter** | 1 video 60 seg al mes (1 formato) | $800.000 COP/mes |
+| **Mensual** | 4 videos/mes (16:9 + 9:16) | $2.500.000 COP/mes |
+| **Full** | 8 videos/mes + estrategia de contenido | $4.500.000 COP/mes |
+
+Costo real de producción: ~$20.000 COP por video. Margen >97%.
+
+### Regla de presentación
+
+- **No mezclar** con las automatizaciones operativas — es un servicio diferente con diferente buyer (marketing vs operaciones)
+- Si el interlocutor del Discovery es operativo (no marketing), mencionarlo como "servicio que pueden agregar después" — no incluirlo en el pricing principal
+- Si hay un tomador de decisión de marketing en la sala o mencionaron presupuesto de redes: incluirlo como cluster con precio en la propuesta principal
+
+---
+
 ## Event Logging
 
 Append a JSON line to `/Users/mclaramartinez/Claude_Code/doceprojects/agents/event-log.jsonl` for every action:
