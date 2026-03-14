@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es" class="staticrypt-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <title>/*[|template_title|]*/0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,900;1,9..144,300&family=Plus+Jakarta+Sans:wght@400;600;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:         #0f1013;
+            --card:       #1c1e24;
+            --card-edge:  #252830;
+            --input-bg:   #272a32;
+            --gold:       #C9A84C;
+            --gold-hi:    #E8C96A;
+            --cream:      #F0E6CC;
+            --text:       #a0a3ad;
+            --hint-text:  #c8cad4;
+            --muted:      #5c6070;
+            --placeholder:#7a7e8a;
+        }
+
+        html, body { height: 100%; }
+
+        body {
+            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+            50%       { box-shadow: 0 0 0 6px rgba(201,168,76,0.12); }
+        }
+
+        /* ── Logo ── */
+        .en-logo {
+            margin-bottom: 32px;
+            text-align: center;
+            z-index: 1;
+            animation: fadeUp 0.5s ease both;
+        }
+        .en-logo-mark { display: inline-flex; align-items: baseline; }
+        .en-logo .entre {
+            font-family: 'Fraunces', serif;
+            font-style: italic; font-weight: 300;
+            font-size: clamp(2.4rem, 10vw, 3.2rem);
+            color: var(--gold);
+        }
+        .en-logo .nos {
+            font-family: 'Fraunces', serif;
+            font-style: normal; font-weight: 900;
+            font-size: clamp(2.4rem, 10vw, 3.2rem);
+            color: var(--cream);
+            letter-spacing: -0.05em;
+        }
+        .en-tagline {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* ── Card ── */
+        .staticrypt-form-wrapper {
+            background: var(--card);
+            border: 1px solid var(--card-edge);
+            border-radius: 20px;
+            padding: 36px 32px 40px;
+            width: 100%; max-width: 420px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 0.5s 0.07s ease both;
+            /* subtle top gold line */
+            border-top: 2px solid rgba(201,168,76,0.35);
+        }
+
+        /* ── Lock ── */
+        .en-lock {
+            width: 44px; height: 44px;
+            margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(201,168,76,0.1);
+            border: 1px solid rgba(201,168,76,0.25);
+            border-radius: 12px;
+        }
+        .en-lock svg {
+            width: 20px; height: 20px;
+            stroke: var(--gold-hi); fill: none;
+            stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ── Hint ── */
+        .en-hint {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78rem;
+            /* lighter text for readability on dark + dark mode */
+            color: var(--hint-text);
+            background: rgba(201,168,76,0.07);
+            border: 1px solid rgba(201,168,76,0.18);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        .en-hint strong {
+            display: block;
+            color: var(--gold-hi);
+            font-size: 0.64rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        /* ── Field label ── */
+        .en-label {
+            display: block;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        /* ──────────────────────────
+           INPUT — clearly visible
+        ────────────────────────── */
+        #staticrypt-form input[type="password"],
+        #staticrypt-form input[type="text"] {
+            width: 100% !important;
+            padding: 15px 18px !important;
+            background: var(--input-bg) !important;
+            border: 2px solid rgba(201,168,76,0.5) !important;
+            border-radius: 12px !important;
+            color: var(--cream) !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 1rem !important;
+            outline: none !important;
+            margin-bottom: 14px !important;
+            transition: border-color 0.2s, box-shadow 0.2s !important;
+            caret-color: var(--gold-hi) !important;
+            animation: glowPulse 2.5s 1s ease infinite !important;
+        }
+        #staticrypt-form input[type="password"]:focus,
+        #staticrypt-form input[type="text"]:focus {
+            border-color: var(--gold-hi) !important;
+            box-shadow: 0 0 0 4px rgba(201,168,76,0.15), inset 0 1px 4px rgba(0,0,0,0.3) !important;
+            animation: none !important;
+        }
+        #staticrypt-form input[type="password"]::placeholder,
+        #staticrypt-form input[type="text"]::placeholder {
+            color: var(--placeholder) !important;
+            font-style: italic !important;
+        }
+
+        /* ── Button ── */
+        #staticrypt-form button,
+        #staticrypt-form input[type="submit"] {
+            width: 100% !important;
+            padding: 15px !important;
+            background: var(--gold) !important;
+            color: #0a0b0d !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: 0.94rem !important;
+            letter-spacing: 0.04em !important;
+            border: none !important;
+            border-radius: 12px !important;
+            cursor: pointer !important;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
+        }
+        #staticrypt-form button:hover,
+        #staticrypt-form input[type="submit"]:hover {
+            background: var(--gold-hi) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 24px rgba(201,168,76,0.3) !important;
+        }
+        #staticrypt-form button:active,
+        #staticrypt-form input[type="submit"]:active {
+            transform: translateY(0) !important;
+        }
+
+        /* ── Error ── */
+        .staticrypt-error {
+            color: #ff6b6b !important;
+            font-size: 0.8rem !important;
+            margin-top: 12px !important;
+            text-align: center !important;
+            font-family: 'Fira Code', monospace !important;
+            background: rgba(255,107,107,0.08) !important;
+            border: 1px solid rgba(255,107,107,0.2) !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+            display: block !important;
+        }
+
+        .staticrypt-instructions { display: none !important; }
+
+        /* ── Footer ── */
+        .en-footer {
+            margin-top: 22px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.6rem;
+            color: #353840;
+            letter-spacing: 0.06em;
+            text-align: center;
+            animation: fadeUp 0.5s 0.18s ease both;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 20px 16px; }
+            .staticrypt-form-wrapper { padding: 28px 20px 32px; }
+            .en-logo .entre, .en-logo .nos { font-size: 2.6rem; }
+        }
+
+        /*[|staticrypt_css|]*/0
+    </style>
+</head>
+<body>
+
+    <div class="en-logo">
+        <div class="en-logo-mark">
+            <span class="entre">entre</span><span class="nos">Nos</span>
+        </div>
+        <div class="en-tagline">el dinero vuelve a ser de la gente</div>
+    </div>
+
+    <div class="staticrypt-form-wrapper">
+
+        <div class="en-lock">
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+        </div>
+
+        <div class="en-hint">
+            <strong>// acceso privado</strong>
+            /*[|template_instructions|]*/0
+        </div>
+
+        <label class="en-label">contraseña</label>
+        /*[|staticrypt_div|]*/0
+
+    </div>
+
+    <div class="en-footer">EntreNos × 12:12 Projects — confidencial</div>
+
+    /*[|staticrypt_config|]*/0
+</body>
+</html>
