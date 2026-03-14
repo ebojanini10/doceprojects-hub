@@ -580,22 +580,34 @@
     }
     .card-progress-bar {
       flex: 1;
-      height: 3px;
+      height: 6px;
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 2px;
+      border-radius: 3px;
       overflow: hidden;
     }
     .card-progress-fill {
       height: 100%;
-      border-radius: 2px;
+      border-radius: 3px;
       transition: width 0.3s ease-out;
     }
     .card-progress-label {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       white-space: nowrap;
-      min-width: 28px;
+      min-width: 34px;
       text-align: right;
+      padding-left: 2px;
+    }
+    .card-progress-notasks {
+      font-size: 11px;
+      color: #4B5563;
+      font-style: italic;
+    }
+    .column-avg {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+      margin-left: 4px;
     }
 
     .tasks-chevron {
@@ -1923,12 +1935,18 @@
           ? stageProjects.map(p => renderCard(p, data.industries)).join('')
           : '<div class="column-empty">No hay proyectos</div>';
 
+        const withTasks = stageProjects.filter(p => (p.tasks||[]).length > 0);
+        const avgPct = withTasks.length
+          ? Math.round(withTasks.reduce((s, p) => s + calcPct(p), 0) / withTasks.length)
+          : null;
+
         html += `
           <div class="column">
             <div class="column-header">
               <div class="column-title-group">
                 <div class="column-dot" style="background:${stage.color}"></div>
                 <span class="column-title">${stage.label}</span>
+                ${avgPct !== null ? `<span class="column-avg">${avgPct}% avg</span>` : ''}
               </div>
               <span class="column-count">${stageProjects.length}</span>
             </div>
@@ -2075,14 +2093,13 @@
             ${pendingBadge}${propIcon}${reposBadge}
             <span class="card-date">${formatDate(project.createdAt)}</span>
           </div>
-          ${totalCount > 0 ? `
           <div class="card-progress">
+            ${totalCount === 0 ? `<span class="card-progress-notasks">Sin tareas</span>` : `
             <div class="card-progress-bar">
               <div class="card-progress-fill" style="width:${pct}%;background:${progressColor}"></div>
             </div>
-            <span class="card-progress-label" style="color:${progressColor}">${pct}%</span>
+            <span class="card-progress-label" style="color:${progressColor}">${pct === 100 ? '✓ 100%' : pct + '%'}</span>`}
           </div>
-          ` : ''}
           <div class="card-details">
             ${solutionDropdown}
             ${notesHtml}

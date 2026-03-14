@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastUpdated": "2026-03-09T12:00:00.000Z",
+  "lastUpdated": "2026-03-13T00:00:00.000Z",
   "solutions": [
     {
       "slug": "whatsapp-bot",
@@ -534,7 +534,7 @@
           "assignee": "Emiliano"
         }
       ],
-      "notes": "Marca This Is — alimentos artesanales (mermeladas, esparcibles). Multi-agente: contenido, pauta, SEO, WhatsApp, analytics, comunidad, tendencias, ingredientes. Contactos: Catalina, Lucas, Manuela, Irina.",
+      "notes": "Marca This Is — alimentos artesanales (mermeladas, esparcibles). Multi-agente: contenido, pauta, SEO, WhatsApp, analytics, comunidad, tendencias, ingredientes. Contactos: Catalina, Lucas Jaramillo (ljaramillo — dueño TerraMística, también dueño US Housing / Reditus / Alinea Sports / Fortaleza), Manuela, Irina.",
       "createdAt": "2026-03-08T18:37:56Z",
       "industry": "marcas-personales",
       "solution": "multi-agent"
@@ -842,6 +842,140 @@
       "createdAt": "2026-03-08T00:00:00Z",
       "industry": "inmobiliaria",
       "solution": "whatsapp-bot"
+    },
+    {
+      "id": "us-housing",
+      "name": "US Housing (Lucas Jaramillo)",
+      "repos": [
+        "ebojanini10/us-housing"
+      ],
+      "stage": "propuesta",
+      "proposal": {
+        "url": "https://props.doceprojects.com/us-housing/",
+        "password": "doce-us-housing",
+        "slug": "us-housing"
+      },
+      "tasks": [
+        {
+          "id": "t-ush-1",
+          "text": "Reunión con Cristian (Property Partners) — inventario 52 casas",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-ush-2",
+          "text": "Deployar propuesta en prop.doceprojects.com/us-housing/",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Clara"
+        },
+        {
+          "id": "t-ush-3",
+          "text": "Enviar propuesta a Lucas",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "52 casas en Miami. Cash out urgente. Cristian (Property Partners) maneja obras. 3 fases: dashboard inventario → PM obras → marketing. Lector cheques ya existe (puerto 5021). GitHub: ljaramillo.",
+      "createdAt": "2026-03-13T00:00:00Z",
+      "industry": "inmobiliaria",
+      "solution": "dashboard"
+    },
+    {
+      "id": "reditus-group",
+      "name": "Reditus Group",
+      "repos": [
+        "ebojanini10/reditus-platform"
+      ],
+      "stage": "propuesta",
+      "proposal": {
+        "url": "https://props.doceprojects.com/reditus/",
+        "password": "doce-reditus",
+        "slug": "reditus"
+      },
+      "tasks": [
+        {
+          "id": "t-rg-1",
+          "text": "Enviar propuesta a Lucas",
+          "done": false,
+          "priority": "HIGH",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-rg-2",
+          "text": "Conseguir docs API Stonex (Aretty Advisors)",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "Advisory financiero. ~60M USD AUM. 15-20 clientes. Paga $500 USD/mes a Opti (básico, solo Stonex). 4 brazos: Aretty Advisors, ROI Development (Orlando+Miami), Reditus Mortgage ($20M USD), Using. Portal propio con perfil riesgo + portafolio consolidado + newsletter. Oficina: 19790 W Dixie Hwy Suite 1001, Aventura FL. GitHub: ljaramillo.",
+      "createdAt": "2026-03-13T00:00:00Z",
+      "industry": "finanzas",
+      "solution": "dashboard"
+    },
+    {
+      "id": "alinea-sports",
+      "name": "Alinea Sports",
+      "repos": [
+        "ebojanini10/alinea-sports"
+      ],
+      "stage": "propuesta",
+      "proposal": {
+        "url": "https://props.doceprojects.com/alinea-sports/",
+        "password": "doce-alinea-sports",
+        "slug": "alinea-sports"
+      },
+      "tasks": [
+        {
+          "id": "t-as-1",
+          "text": "Enviar propuesta a Lucas",
+          "done": false,
+          "priority": "LOW",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-as-2",
+          "text": "Discovery: entender atletas actuales + sponsors + web actual",
+          "done": false,
+          "priority": "LOW",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "Agencia de representación deportiva de Lucas. Quiere rediseñar web. Propuesta: nueva web + CRM atletas/contratos/sponsors. Proyecto puntual $5M COP. GitHub: ljaramillo.",
+      "createdAt": "2026-03-13T00:00:00Z",
+      "industry": "deporte",
+      "solution": "automation"
+    },
+    {
+      "id": "fortaleza-academia",
+      "name": "Fortaleza",
+      "repos": [
+        "ebojanini10/fortaleza-academia"
+      ],
+      "stage": "lead",
+      "tasks": [
+        {
+          "id": "t-fo-1",
+          "text": "Confirmar interés del socio — recibir proyecto completo",
+          "done": false,
+          "priority": "MEDIUM",
+          "assignee": "Emiliano"
+        },
+        {
+          "id": "t-fo-2",
+          "text": "Visita a infraestructura Llano Grande + reunión 30 min con socio",
+          "done": false,
+          "priority": "LOW",
+          "assignee": "Emiliano"
+        }
+      ],
+      "notes": "Academia deportiva fútbol + padel. Socio tiene infraestructura en Llano Grande (norte Bogotá). Se cayó acuerdo con ABC. Modelo financiero enviado 13/03. GitHub: ljaramillo.",
+      "createdAt": "2026-03-13T00:00:00Z",
+      "industry": "deporte",
+      "solution": "automation"
     }
   ],
   "actionItems": [
