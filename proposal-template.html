@@ -1605,43 +1605,71 @@
       </p>
 
       <div class="timeline">
+        <!-- F1: cobro DESPUÉS de entregada — victoria rápida -->
         <div class="timeline-phase">
-          <div class="timeline-dot">1</div>
+          <div class="timeline-dot">F1</div>
           <div class="timeline-content">
-            <h4><!-- PHASE_1_NAME -->[Nombre de la Fase]</h4>
+            <h4><!-- PHASE_1_NAME -->[Nombre Fase 1]</h4>
             <div class="duration"><!-- PHASE_1_DURATION -->[X semanas]</div>
-            <p><!-- PHASE_1_DESC -->[Descripci&oacute;n de lo que se entrega]</p>
+            <p><!-- PHASE_1_DESC -->[Herramienta r&aacute;pida y funcional — primera victoria visible para el equipo.]</p>
             <ul class="deliverables">
               <li><!-- PHASE_1_DEL_1 -->[Entregable 1]</li>
               <li><!-- PHASE_1_DEL_2 -->[Entregable 2]</li>
-              <li><!-- PHASE_1_DEL_3 -->[Entregable 3]</li>
             </ul>
+            <div style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,.1);color:#16A34A;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;">
+              ✓ Se cobra despu&eacute;s de entregada
+            </div>
           </div>
         </div>
 
+        <!-- F2: cobro ADELANTADO -->
         <div class="timeline-phase">
-          <div class="timeline-dot">2</div>
+          <div class="timeline-dot">F2</div>
           <div class="timeline-content">
-            <h4><!-- PHASE_2_NAME -->[Nombre de la Fase]</h4>
+            <h4><!-- PHASE_2_NAME -->[Nombre Fase 2]</h4>
             <div class="duration"><!-- PHASE_2_DURATION -->[X semanas]</div>
             <p><!-- PHASE_2_DESC -->[Descripci&oacute;n]</p>
             <ul class="deliverables">
               <li><!-- PHASE_2_DEL_1 -->[Entregable 1]</li>
               <li><!-- PHASE_2_DEL_2 -->[Entregable 2]</li>
             </ul>
+            <div style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(106,27,154,.08);color:#6A1B9A;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;">
+              → Se cobra por adelantado
+            </div>
           </div>
         </div>
 
+        <!-- F3+: cobro ADELANTADO — duplicar según fases del proyecto -->
         <div class="timeline-phase">
-          <div class="timeline-dot">3</div>
+          <div class="timeline-dot">F3</div>
           <div class="timeline-content">
-            <h4><!-- PHASE_3_NAME -->[Nombre de la Fase]</h4>
+            <h4><!-- PHASE_3_NAME -->[Nombre Fase 3]</h4>
             <div class="duration"><!-- PHASE_3_DURATION -->[X semanas]</div>
             <p><!-- PHASE_3_DESC -->[Descripci&oacute;n]</p>
             <ul class="deliverables">
               <li><!-- PHASE_3_DEL_1 -->[Entregable 1]</li>
               <li><!-- PHASE_3_DEL_2 -->[Entregable 2]</li>
             </ul>
+            <div style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(106,27,154,.08);color:#6A1B9A;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;">
+              → Se cobra por adelantado
+            </div>
+          </div>
+        </div>
+
+        <!-- FINAL: cobro ADELANTADO -->
+        <div class="timeline-phase">
+          <div class="timeline-dot" style="background:#1F2937;font-size:10px;">FIN</div>
+          <div class="timeline-content">
+            <h4><!-- PHASE_FINAL_NAME -->Entregable Final</h4>
+            <div class="duration"><!-- PHASE_FINAL_DURATION -->[X semanas]</div>
+            <p><!-- PHASE_FINAL_DESC -->Sistema completo operando. El cliente queda aut&oacute;nomo.</p>
+            <ul class="deliverables">
+              <li><!-- PHASE_FINAL_DEL_1 -->[Entregable final 1]</li>
+              <li><!-- PHASE_FINAL_DEL_2 -->[Entregable final 2]</li>
+            </ul>
+            <div style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(106,27,154,.08);color:#6A1B9A;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;">
+              → Se cobra por adelantado
+            </div>
           </div>
         </div>
       </div>
@@ -1686,20 +1714,17 @@
       <div class="maintenance-card">
         <div class="maint-info">
           <h4>Soporte + Monitoreo + Upgrades</h4>
-          <p>Incluye monitoreo 24/7, reportes semanales, status page, y obligaci&oacute;n de upgrade.</p>
+          <p>Incluye monitoreo 24/7, reportes semanales, status page, y obligaci&oacute;n de upgrade. El primer mes descuenta el valor del Discovery.</p>
         </div>
         <div class="maint-price">
-          <div class="amount"><!-- MAINT_PRICE -->$[X,XXX,XXX]</div>
-          <div class="period">COP / mes</div>
+          <div class="amount">$2.678.885</div>
+          <div class="period">COP / mes · 1.53 SMMLV</div>
         </div>
       </div>
 
       <div class="investment-note">
         <p>
-          <strong>Modelo decremental:</strong> El mantenimiento mensual disminuye
-          progresivamente a medida que la soluci&oacute;n madura. Nos comprometemos
-          a mantener su operaci&oacute;n en la mejor tecnolog&iacute;a disponible
-          sin costo adicional de upgrade.
+          <strong>Forma de pago:</strong> La Fase 1 se cobra <strong>despu&eacute;s de entregada</strong> — usted ve que funciona antes de pagar. Las fases siguientes se cobran <strong>por adelantado</strong>. El primer mes de mantenimiento descuenta el valor del Discovery ($500.000 COP / $500 USD).
         </p>
       </div>
     </div>
@@ -1715,10 +1740,11 @@
         <div class="condition-box">
           <h4>Forma de Pago</h4>
           <ul>
-            <li><!-- PAY_1 -->Pago por fase al inicio de cada etapa</li>
-            <li><!-- PAY_2 -->Retainer mensual inicia al completar Fase 1</li>
-            <li><!-- PAY_3 -->Transferencia bancaria o efectivo</li>
-            <li><!-- PAY_4 -->Factura formal disponible</li>
+            <li>F1 se cobra <strong>despu&eacute;s</strong> de entregada</li>
+            <li>F2, F3... Final se cobran <strong>por adelantado</strong></li>
+            <li>Mantenimiento mensual desde la entrega de F1</li>
+            <li>Primer mes descuenta el Discovery</li>
+            <li>Transferencia bancaria · Factura electr&oacute;nica</li>
           </ul>
         </div>
         <div class="condition-box">
