@@ -334,8 +334,8 @@
       ],
       "stage": "discovery",
       "proposal": {
-        "url": "https://prop.doceprojects.com/eqr/",
-        "password": "doce-eqr",
+        "url": "https://doceprojects.com/eqr/prop/",
+        "password": "tumomento",
         "slug": "eqr"
       },
       "tasks": [
@@ -375,8 +375,8 @@
       ],
       "stage": "discovery",
       "proposal": {
-        "url": "https://prop.doceprojects.com/casa-ardente/",
-        "password": "doce-casa-ardente",
+        "url": "https://doceprojects.com/casa-ardente/prop/",
+        "password": "queorgullo",
         "slug": "casa-ardente"
       },
       "tasks": [
@@ -485,8 +485,8 @@
       ],
       "stage": "propuesta",
       "proposal": {
-        "url": "https://prop.doceprojects.com/construhigienicas/",
-        "password": "doce-construhigienicas",
+        "url": "https://doceprojects.com/construhigienicas/prop/",
+        "password": "creoenti",
         "slug": "construhigienicas"
       },
       "tasks": [
@@ -610,8 +610,8 @@
       ],
       "stage": "propuesta",
       "proposal": {
-        "url": "https://prop.doceprojects.com/distrihogar/",
-        "password": "doce-distrihogar",
+        "url": "https://doceprojects.com/distrihogar/prop/",
+        "password": "dalatoda",
         "slug": "distrihogar"
       },
       "tasks": [],
@@ -851,8 +851,8 @@
       ],
       "stage": "propuesta",
       "proposal": {
-        "url": "https://props.doceprojects.com/us-housing/",
-        "password": "doce-us-housing",
+        "url": "https://doceprojects.com/us-housing/prop/",
+        "password": "eshoy",
         "slug": "us-housing"
       },
       "tasks": [
@@ -891,8 +891,8 @@
       ],
       "stage": "propuesta",
       "proposal": {
-        "url": "https://props.doceprojects.com/reditus/",
-        "password": "doce-reditus",
+        "url": "https://doceprojects.com/reditus/prop/",
+        "password": "meencanta",
         "slug": "reditus"
       },
       "tasks": [
@@ -924,8 +924,8 @@
       ],
       "stage": "propuesta",
       "proposal": {
-        "url": "https://props.doceprojects.com/alinea-sports/",
-        "password": "doce-alinea-sports",
+        "url": "https://doceprojects.com/alinea-sports/prop/",
+        "password": "vamoscontoda",
         "slug": "alinea-sports"
       },
       "tasks": [
