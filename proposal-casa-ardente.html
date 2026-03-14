@@ -565,11 +565,32 @@
     .footer-meta strong { color: #9CA3AF; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      .doc-header, .hero, .section, .doc-footer { padding-left: 28px; padding-right: 28px; }
-      .problema-grid, .inversion-grid, .pasos-list { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .doc-header { padding: 16px 20px; flex-direction: column; gap: 12px; }
+      .header-meta { flex-direction: column; gap: 2px; }
+      .header-meta-line { font-size: 10px; white-space: normal; text-align: center; }
+      .hero { padding: 48px 24px 56px; }
+      .hero h1 { font-size: 44px; }
+      .section { padding: 40px 24px; }
+      .doc-footer { padding: 28px 24px; flex-direction: column; gap: 12px; text-align: center; }
+      .footer-meta { text-align: center; }
+      .problema-grid { grid-template-columns: 1fr; }
+      .inversion-grid { grid-template-columns: 1fr; }
+      .pasos-list { grid-template-columns: 1fr; }
       .cronograma { grid-template-columns: 1fr 1fr; }
-      .header-meta { display: none; }
+      .solucion-hero { padding: 24px 20px; }
+      .resuelve-table { font-size: 12px; }
+      .resuelve-table td { padding: 10px 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 36px; }
+      .cronograma { grid-template-columns: 1fr; }
+      .flujo-step { gap: 14px; }
+      .step-num { width: 32px; height: 32px; font-size: 15px; }
+      .inv-card .inv-precio { font-size: 36px; }
+      .resuelve-table thead { display: none; }
+      .resuelve-table td { display: block; padding: 8px 12px; }
     }
   </style>
 </head>
