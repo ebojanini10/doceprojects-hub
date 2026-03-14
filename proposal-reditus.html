@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS &times; Reditus Group &mdash; Propuesta Comercial</title>
+  <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('assets/brand/fonts/BebasNeue-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Glock Grotesque';
+      src: url('assets/brand/fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+           url('assets/brand/fonts/GlockGrotesque-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6A1B9A;
+      --purple-hover: #58147F;
+      --dark: #1F2937;
+      --grid-gray: #F4F6F8;
+      --white: #FFFFFF;
+      --green: #16A34A;
+      --orange: #F59E0B;
+      --red: #DC2626;
+      --wa-green: #25D366;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Glock Grotesque', sans-serif;
+      color: var(--dark);
+      background: #E8DED0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .proposal {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 0 60px rgba(0,0,0,0.15);
+    }
+
+    .doc-header {
+      background: var(--dark);
+      padding: 24px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header-brands {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-client {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .header-client-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .header-agency {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header-agency-logo {
+      height: 48px;
+      width: auto;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+    }
+
+    .header-meta-line {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+
+    .header-meta-line .separator { margin: 0 8px; opacity: 0.4; }
+    .header-meta-line strong { font-weight: 600; color: rgba(255,255,255,0.75); }
+
+    .hero {
+      position: relative;
+      padding: 72px 60px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-label {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 8vw, 96px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      color: var(--purple);
+      margin-bottom: 0;
+    }
+
+    .hero-tagline {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 24px;
+      opacity: 0.85;
+    }
+
+    .countdown-section {
+      background: var(--dark);
+      padding: 28px 60px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--purple);
+    }
+
+    .countdown-label {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 72px;
+    }
+
+    .countdown-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .countdown-number.urgent { color: var(--red); }
+
+    .countdown-text {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .countdown-separator {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: #9CA3AF;
+      line-height: 1;
+      opacity: 0.25;
+    }
+
+    .countdown-expired {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--red);
+    }
+
+    .countdown-progress {
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,0.06);
+      margin-top: 18px;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .countdown-progress-bar {
+      height: 100%;
+      background: var(--purple);
+      transition: width 1s linear;
+      border-radius: 1px;
+    }
+
+    .countdown-progress-bar.urgent { background: var(--red); }
+
+    .section {
+      padding: 56px 60px;
+      border-bottom: 1px solid var(--grid-gray);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      line-height: 1.05;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #6B7280;
+      max-width: 720px;
+    }
+
+    .section p + p { margin-top: 16px; }
+
+    .pain-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .pain-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--grid-gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 15px;
+      color: #6B7280;
+      line-height: 1.65;
+    }
+
+    .pain-list li::before {
+      content: attr(data-num);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--purple);
+      min-width: 28px;
+      line-height: 1.1;
+    }
+
+    .solutions { margin-top: 28px; }
+
+    .solution-card {
+      border: 1px solid var(--grid-gray);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .solution-header {
+      background: var(--grid-gray);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .solution-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+    }
+
+    .solution-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+
+    .solution-tag.automation { background: rgba(106, 27, 154, 0.08); color: var(--purple); }
+    .solution-tag.dashboard { background: rgba(22, 163, 74, 0.1); color: var(--green); }
+    .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
+    .solution-tag.integration { background: rgba(245, 158, 11, 0.1); color: #D97706; }
+
+    .solution-body { padding: 24px; }
+
+    .solution-problem {
+      font-size: 13px;
+      font-style: italic;
+      color: #6B7280;
+      line-height: 1.65;
+      padding-left: 16px;
+      border-left: 3px solid var(--purple);
+      margin-bottom: 18px;
+    }
+
+    .solution-problem-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      font-style: normal;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .solution-deliverable-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .solution-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #6B7280;
+    }
+
+    .solution-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .solution-spec {
+      font-size: 13px;
+      color: #6B7280;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-spec::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .timeline { margin-top: 28px; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--grid-gray);
+    }
+
+    .timeline-phase {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 3px solid var(--purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      color: var(--purple);
+      z-index: 1;
+    }
+
+    .timeline-content { flex: 1; padding-top: 6px; }
+
+    .timeline-content h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content .duration {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p { font-size: 14px; line-height: 1.65; color: #6B7280; }
+
+    .timeline-content .deliverables { list-style: none; margin-top: 12px; }
+
+    .timeline-content .deliverables li {
+      font-size: 13px;
+      color: #6B7280;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-content .deliverables li::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .investment-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .investment-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--dark);
+      font-weight: 700;
+    }
+
+    .investment-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--grid-gray);
+      font-size: 15px;
+      color: #6B7280;
+    }
+
+    .investment-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .investment-table tr.total td {
+      border-top: 2px solid var(--dark);
+      border-bottom: none;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--dark);
+      padding-top: 20px;
+    }
+
+    .investment-note {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: rgba(106, 27, 154, 0.08);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .investment-note p { font-size: 13px; color: #6B7280; line-height: 1.65; }
+    .investment-note strong { color: var(--dark); }
+
+    .vs-box {
+      background: var(--grid-gray);
+      border-radius: 3px;
+      padding: 28px 32px;
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .vs-side { }
+
+    .vs-side .vs-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .vs-side .vs-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .vs-side .vs-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #9CA3AF;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .vs-side.us .vs-name { color: var(--purple); }
+    .vs-side.us .vs-price { color: var(--purple); }
+
+    .vs-side ul { list-style: none; }
+    .vs-side ul li {
+      font-size: 12px;
+      color: #6B7280;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .vs-divider {
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: #D1D5DB;
+      letter-spacing: 2px;
+    }
+
+    .maintenance-card {
+      background: var(--grid-gray);
+      padding: 28px 32px;
+      border-radius: 3px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 3px solid var(--purple);
+    }
+
+    .maintenance-card .maint-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .maintenance-card .maint-info p { font-size: 13px; color: #6B7280; }
+    .maintenance-card .maint-price { text-align: right; }
+
+    .maintenance-card .maint-price .amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .maintenance-card .maint-price .period {
+      font-size: 11px;
+      color: #6B7280;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .cta-section {
+      position: relative;
+      padding: 64px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .cta-section > * { position: relative; z-index: 1; }
+
+    .cta-section .cta-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      color: var(--purple);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section .cta-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .cta-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      max-width: 130px;
+    }
+
+    .cta-step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+    }
+
+    .cta-step-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .accept-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    .btn-accept { background: var(--purple); color: var(--white); }
+    .btn-accept:hover { background: var(--purple-hover); transform: translateY(-1px); }
+
+    .btn-decline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .btn-decline:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+    .proposal-footer {
+      background: var(--dark);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+
+    .footer-confidential {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: var(--wa-green);
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    .wa-float svg { width: 22px; height: 22px; fill: currentColor; }
+
+    @media (max-width: 768px) {
+      .doc-header { padding: 16px 20px 14px; gap: 12px; }
+      .hero { padding: 48px 24px 56px; }
+      .hero h1 { font-size: 44px; }
+      .countdown-section { padding: 20px 24px; }
+      .countdown-number { font-size: 40px; }
+      .countdown-separator { font-size: 40px; }
+      .section { padding: 40px 24px; }
+      .solution-specs { grid-template-columns: 1fr; }
+      .vs-box { grid-template-columns: 1fr; }
+      .vs-divider { display: none; }
+      .maintenance-card { flex-direction: column; text-align: center; gap: 16px; }
+      .cta-section { padding: 48px 24px; }
+      .cta-steps { flex-direction: column; align-items: center; gap: 20px; }
+      .accept-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; text-align: center; }
+      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      .wa-float { bottom: 18px; right: 18px; padding: 12px 16px; font-size: 12px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .proposal { box-shadow: none; }
+      .countdown-section { position: static; }
+      .wa-float { display: none; }
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page { margin: 14mm 12mm; }
+  </style>
+</head>
+<body>
+
+<div class="proposal">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="header-brands">
+      <div class="header-client">
+        <span class="header-client-name">REDITUS GROUP</span>
+      </div>
+      <div class="header-agency">
+        <img src="assets/brand/logos/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-agency-logo">
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="header-meta-line">
+        Propuesta de automatizaci&oacute;n
+        <span class="separator">&middot;</span>
+        Medell&iacute;n, Marzo 2026
+      </span>
+      <span class="header-meta-line">
+        Para: <strong>Lucas Jaramillo &middot; Reditus Group</strong>
+        <span class="separator">&middot;</span>
+        Preparado por: Emiliano Bojanini
+      </span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-label">Portal de Inversi&oacute;n para Clientes Reditus</div>
+    <h1>TU PORTAL.<br>TODO EL<br>PORTAFOLIO.</h1>
+    <div class="hero-tagline">Para: Lucas Jaramillo &middot; Reditus Group</div>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section" id="countdownSection">
+    <div class="countdown-label">Esta propuesta expira en</div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-hours">12</div>
+        <div class="countdown-text">Horas</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-minutes">00</div>
+        <div class="countdown-text">Minutos</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-seconds">00</div>
+        <div class="countdown-text">Segundos</div>
+      </div>
+    </div>
+    <div class="countdown-progress">
+      <div class="countdown-progress-bar" id="progressBar" style="width: 100%"></div>
+    </div>
+  </div>
+
+  <!-- 01 / DIAGNÓSTICO -->
+  <div class="section">
+    <div class="section-number">01 / DIAGN&Oacute;STICO</div>
+    <h2>LO QUE ENCONTRAMOS</h2>
+    <p>
+      ~60M USD en AUM. 15&ndash;20 clientes. 4 brazos de inversi&oacute;n: Aretty Advisors (stocks/bonos),
+      ROI Development (real estate), Reditus Mortgage ($20M USD) y Using. El problema no es el volumen
+      &mdash; es que la informaci&oacute;n vive en silos y Catalina la consolida a mano todos los meses.
+    </p>
+
+    <ul class="pain-list">
+      <li data-num="01">
+        <div>
+          <strong style="color: var(--dark);">Opti cuesta $500 USD/mes y solo ingiere Stonex.</strong> El software actual no consolida private equity ni real estate. Un cliente con posiciones en los 4 brazos no puede ver su portafolio completo en ning&uacute;n lugar.
+        </div>
+      </li>
+      <li data-num="02">
+        <div>
+          <strong style="color: var(--dark);">Portafolio consolidado hecho a mano por Catalina.</strong> Cada mes alguien tiene que juntar manualmente los extractos de Stonex con los reportes de ROI Development, Reditus Mortgage y Using. Es tiempo de una persona dedicada a algo que puede ser autom&aacute;tico.
+        </div>
+      </li>
+      <li data-num="03">
+        <div>
+          <strong style="color: var(--dark);">Perfiles de riesgo no estandarizados.</strong> Cada cliente es ad hoc. No existe un proceso formal de asignaci&oacute;n de portafolio seg&uacute;n perfil. Cuando entra un cliente nuevo, la asignaci&oacute;n es subjetiva.
+        </div>
+      </li>
+      <li data-num="04">
+        <div>
+          <strong style="color: var(--dark);">Sin newsletter de estado de proyectos.</strong> Los inversionistas de proyectos como Flagler Village, Orduna o Single Family no reciben actualizaciones sistem&aacute;ticas. La comunicaci&oacute;n es reactiva (cuando preguntan).
+        </div>
+      </li>
+      <li data-num="05">
+        <div>
+          <strong style="color: var(--dark);">4 brazos sin panel unificado.</strong> Stocks en Stonex, real estate en spreadsheets, hipotecas en otro sistema, private equity en PDFs sueltos. Ning&uacute;n cliente puede ver todo en un solo lugar.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO BASE — EFICIENCIA OPERATIVA -->
+  <div class="section" style="background: #F9FAFB; border-left: 4px solid var(--purple);">
+    <div class="section-number" style="display:inline-block; background: var(--purple); color: #fff; padding: 3px 12px; border-radius: 2px; letter-spacing: 2px; font-size: 11px; margin-bottom: 16px;">MÓDULO BASE · TODA PROPUESTA DOCEPROJECTS</div>
+    <h2>PRIMERO:<br>ELIMINAR LO QUE NO GENERA VALOR.</h2>
+    <p>
+      Antes de construir cualquier herramienta nueva, auditamos lo que ya existe.
+      La mayoría de las empresas pagan por tareas, roles y procesos que consumen tiempo y dinero
+      sin generar valor real. Identificarlos y eliminarlos o automatizarlos es la primera inversión
+      que siempre se paga sola.
+    </p>
+
+    <div class="solutions" style="margin-top: 28px;">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Evaluación de Tareas + Organigrama</h4>
+          <span class="solution-tag automation">Eficiencia Operativa</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">El problema universal</div>
+            Toda empresa tiene un porcentaje de su nómina y tiempo invertido en tareas que no generan valor directo: reportes que nadie lee, reuniones evitables, procesos manuales que existen "porque siempre se hizo así", roles duplicados y gastos recurrentes sin retorno claro.
+          </div>
+          <div class="solution-deliverable-label">Cómo lo hacemos</div>
+          <p>Mapeamos <strong>cada tarea del equipo</strong> contra una pregunta simple: ¿esto genera valor para el cliente o para el negocio? Lo que no pasa el filtro se elimina, automatiza o reduce. El resultado es un organigrama eficiente y una lista concreta de ahorro mensual.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Mapa de tareas por área y persona</div>
+            <div class="solution-spec">Clasificación: valor alto / valor bajo / sin valor</div>
+            <div class="solution-spec">Organigrama actual vs. organigrama eficiente</div>
+            <div class="solution-spec">Lista de gastos operativos eliminables</div>
+            <div class="solution-spec">Estimado de ahorro mensual potencial</div>
+            <div class="solution-spec">Hoja de ruta de automatización por tarea</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 24px; padding: 20px 24px; background: var(--white); border: 1px solid #E5E7EB; border-radius: 3px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-size: 28px; flex-shrink: 0;">⚡</div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); font-weight: 700; margin-bottom: 4px;">Por qué va primero</div>
+        <p style="font-size: 14px; color: #6B7280; line-height: 1.6; margin: 0;">Este módulo financia el resto del proyecto. El ahorro identificado en la auditoría operativa cubre — parcial o totalmente — la inversión en las herramientas que construimos. No se trata de gastar más: se trata de redirigir lo que ya se gasta hacia lo que sí genera valor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 / LA SOLUCIÓN -->
+  <div class="section">
+    <div class="section-number">02 / LA SOLUCI&Oacute;N</div>
+    <h2>UN PORTAL PROPIO.<br>10X EL VALOR DE OPTI.</h2>
+    <p>
+      En lugar de seguir pagando $500 USD/mes por un software que solo hace la mitad del trabajo,
+      construimos el portal de Reditus: un sistema propio que consolida los 4 brazos, tiene
+      login por cliente y genera los newsletters autom&aacute;ticamente.
+    </p>
+
+    <div class="solutions">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>QUICK WIN &mdash; Cuestionario de Perfil de Riesgo</h4>
+          <span class="solution-tag automation">Semanas 1&ndash;2</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            La asignaci&oacute;n de portafolio para cada cliente nuevo es ad hoc y subjetiva. No hay proceso estandarizado que determine el perfil de riesgo y sugiera la distribuci&oacute;n correcta entre los 4 brazos.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Cuestionario web de perfil de riesgo estandarizado. El cliente lo responde una vez y el sistema genera autom&aacute;ticamente su score (conservador / moderado / agresivo) y la asignaci&oacute;n de portafolio modelo entre Aretty, ROI, Mortgage y Using.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Cuestionario web con 8&ndash;12 preguntas calibradas</div>
+            <div class="solution-spec">Score autom&aacute;tico: conservador / moderado / agresivo</div>
+            <div class="solution-spec">Asignaci&oacute;n de portafolio modelo por perfil</div>
+            <div class="solution-spec">PDF de propuesta de portafolio personalizado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>FASE 1 &mdash; Portal Autenticado por Cliente</h4>
+          <span class="solution-tag dashboard">Semanas 3&ndash;5</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Catalina consolida manualmente el portafolio de cada cliente combinando extractos PDF de Stonex con reportes de real estate y hipotecas. Es un proceso de d&iacute;as que se repite todos los meses.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Portal web con login &uacute;nico por inversionista. Cada cliente entra y ve su portafolio consolidado en tiempo real: posiciones Stonex (de extractos PDF), participaci&oacute;n en proyectos de real estate, estado de hipotecas y activos de private equity. Catalina deja de consolidar manualmente.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Login seguro por cliente</div>
+            <div class="solution-spec">Portafolio consolidado: Stonex + real estate + hipotecas</div>
+            <div class="solution-spec">Ingesta autom&aacute;tica de extractos PDF Stonex</div>
+            <div class="solution-spec">Dashboard personalizado por inversionista</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>FASE 2 &mdash; Newsletter Autom&aacute;tico por Proyecto</h4>
+          <span class="solution-tag agent">Semanas 6&ndash;8</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Los inversionistas en Flagler Village, Orduna, Single Family, Co-Living y otros proyectos no reciben actualizaciones sistem&aacute;ticas. La comunicaci&oacute;n es reactiva y consume tiempo del equipo Reditus.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Newsletter mensual autom&aacute;tico por proyecto. El sistema genera el HTML del correo con el estado de cada proyecto, hitos alcanzados, pr&oacute;ximos pasos y datos financieros clave &mdash; y lo env&iacute;a a los inversionistas correspondientes. Conexi&oacute;n API Stonex para datos en tiempo real.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Newsletter mensual autom&aacute;tico por proyecto</div>
+            <div class="solution-spec">Generado con Claude: Flagler, Orduna, Single Family, Co-Living</div>
+            <div class="solution-spec">Env&iacute;o segmentado por inversionista</div>
+            <div class="solution-spec">Conexi&oacute;n API Stonex para datos en tiempo real</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 / CRONOGRAMA -->
+  <div class="section">
+    <div class="section-number">03 / CRONOGRAMA</div>
+    <h2>8 SEMANAS AL PORTAL COMPLETO</h2>
+    <p>
+      Semana 2 ya tiene entregable funcional: el cuestionario de perfil de riesgo.
+      El portal completo con los 15&ndash;20 clientes migrados est&aacute; listo en semana 8.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-phase">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <h4>Quick Win &mdash; Perfil de Riesgo</h4>
+          <div class="duration">Semanas 1&ndash;2</div>
+          <p>Cuestionario web estandarizado. Primer cliente nuevo puede completarlo y recibir su portafolio modelo en la semana 2.</p>
+          <ul class="deliverables">
+            <li>Cuestionario web en espa&ntilde;ol e ingl&eacute;s</li>
+            <li>Motor de scoring autom&aacute;tico</li>
+            <li>PDF de portafolio modelo personalizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <h4>Fase 1 &mdash; Portal Cliente</h4>
+          <div class="duration">Semanas 3&ndash;5</div>
+          <p>Portal autenticado con portafolio consolidado. Migraci&oacute;n de los 15&ndash;20 clientes actuales al sistema nuevo.</p>
+          <ul class="deliverables">
+            <li>Login &uacute;nico por cliente</li>
+            <li>Ingesta de extractos PDF Stonex</li>
+            <li>Portafolio real estate + hipotecas integrado</li>
+            <li>Catana deja de consolidar manualmente</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <h4>Fase 2 &mdash; Newsletter + API Stonex</h4>
+          <div class="duration">Semanas 6&ndash;8</div>
+          <p>Comunicaci&oacute;n autom&aacute;tica con inversionistas. Cada proyecto tiene su propio newsletter mensual.</p>
+          <ul class="deliverables">
+            <li>Newsletter por proyecto: Flagler, Orduna, Single Family, Co-Living</li>
+            <li>Conexi&oacute;n API Stonex para datos en tiempo real</li>
+            <li>Dashboard interno para el equipo Reditus</li>
+            <li>Sistema completo entregado y documentado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 / INVERSIÓN -->
+  <div class="section">
+    <div class="section-number">04 / INVERSI&Oacute;N</div>
+    <h2>LO QUE CUESTA &mdash; Y LO QUE VALE</h2>
+    <p>Portal propio vs. Opti: costo similar, 10x el valor. Con tu propio portal no dependes de un proveedor externo y consolidas los 4 brazos &mdash; algo que Opti nunca podr&aacute; hacer.</p>
+
+    <table class="investment-table">
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Alcance</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Quick Win</strong></td>
+          <td>Cuestionario perfil de riesgo + PDF portafolio modelo</td>
+          <td>$2.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Fase 1</strong></td>
+          <td>Portal autenticado &mdash; portafolio consolidado 4 brazos + 15&ndash;20 clientes migrados</td>
+          <td>$5.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Fase 2</strong></td>
+          <td>Newsletter autom&aacute;tico por proyecto + API Stonex conectada</td>
+          <td>$3.000.000 COP</td>
+        </tr>
+        <tr class="total">
+          <td colspan="2"><strong>Setup Total</strong></td>
+          <td><strong>$10.000.000 COP</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="vs-box">
+      <div class="vs-side">
+        <div class="vs-label">Opti &mdash; hoy</div>
+        <div class="vs-name">$500 USD/mes</div>
+        <ul>
+          <li>Solo ingiere Stonex</li>
+          <li>Sin portafolio consolidado</li>
+          <li>Sin real estate ni hipotecas</li>
+          <li>Sin newsletter por proyecto</li>
+          <li>Sin perfil de riesgo propio</li>
+        </ul>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="vs-side us">
+        <div class="vs-label">Portal Reditus &mdash; propuesta</div>
+        <div class="vs-name">Portal propio</div>
+        <ul>
+          <li>Consolida los 4 brazos</li>
+          <li>Login por cada inversionista</li>
+          <li>Real estate + hipotecas integrados</li>
+          <li>Newsletter mensual por proyecto</li>
+          <li>Perfil de riesgo estandarizado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="investment-note">
+      <p><strong>Retainer mensual: $2.500.000 COP/mes.</strong> Incluye operaci&oacute;n del portal, soporte, nuevos clientes y actualizaciones. Comparado con los $500 USD/mes de Opti (~$2.200.000 COP), el retainer es similar &mdash; pero el valor entregado es 10x.</p>
+    </div>
+
+    <div class="maintenance-card">
+      <div class="maint-info">
+        <h4>Retainer Mensual</h4>
+        <p>Operaci&oacute;n, soporte prioritario, nuevos clientes y actualizaciones incluidas.</p>
+      </div>
+      <div class="maint-price">
+        <div class="amount">$2.500.000</div>
+        <div class="period">COP / mes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 / AGENTES IA -->
+  <div class="section">
+    <div class="section-number">05 / AGENTES IA</div>
+    <h2>LOS 4 AGENTES DEL PORTAL</h2>
+    <p>Cada agente resuelve una capa del sistema. Juntos forman el portal completo de Reditus.</p>
+
+    <div class="solutions">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Agente Perfil de Riesgo</h4>
+          <span class="solution-tag automation">Automatizaci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <p>Cuestionario web con 8&ndash;12 preguntas calibradas para inversi&oacute;n. Genera score autom&aacute;tico y asigna portafolio modelo entre los 4 brazos de Reditus. PDF personalizado para el cliente.</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Agente Portafolio</h4>
+          <span class="solution-tag dashboard">Dashboard</span>
+        </div>
+        <div class="solution-body">
+          <p>Consolida extractos Stonex (PDF), posiciones en ROI Development, Reditus Mortgage y Using en un solo dashboard autenticado por cliente. Catalina deja de hacer el proceso manual mensual.</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Agente Newsletter</h4>
+          <span class="solution-tag agent">Agente AI</span>
+        </div>
+        <div class="solution-body">
+          <p>Genera autom&aacute;ticamente el newsletter mensual por proyecto (Flagler Village, Orduna, Single Family, Co-Living, etc.) usando Claude. Env&iacute;o segmentado: cada inversionista recibe solo sus proyectos.</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Portal Clientes</h4>
+          <span class="solution-tag integration">Integraci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <p>Login &uacute;nico por inversionista. Dashboard personalizado con todo su portafolio. Control de qu&eacute; ve el cliente vs. qu&eacute; es solo interno del equipo Reditus. Conexi&oacute;n API Stonex para datos en tiempo real.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 06 / ARRANQUEMOS -->
+  <div class="section">
+    <div class="section-number">06 / ARRANQUEMOS</div>
+    <h2>LO QUE NECESITAMOS PARA EMPEZAR</h2>
+    <p>Todo lo que necesitamos para arrancar esta semana y tener el cuestionario de perfil listo en 7 d&iacute;as.</p>
+
+    <ul class="pain-list">
+      <li data-num="1">
+        <div>
+          <strong style="color: var(--dark);">Demo de Opti (30 min con Lucas + pantalla compartida).</strong> Ver exactamente qu&eacute; hace hoy: qu&eacute; reportes genera, c&oacute;mo ingiere los extractos Stonex y qu&eacute; informaci&oacute;n le llega a cada cliente.
+        </div>
+      </li>
+      <li data-num="2">
+        <div>
+          <strong style="color: var(--dark);">Lista de 15&ndash;20 clientes con categor&iacute;as de portafolio.</strong> Qu&eacute; tipo de activos tiene cada uno: stocks / real estate / hipotecas / private equity. Con esto dise&ntilde;amos las vistas del portal.
+        </div>
+      </li>
+      <li data-num="3">
+        <div>
+          <strong style="color: var(--dark);">Docs API Stonex.</strong> Lucas los consigue con el equipo de Aretty Advisors. Necesitamos el endpoint, credenciales sandbox y ejemplos de respuesta para saber qu&eacute; tan r&aacute;pido es la integraci&oacute;n.
+        </div>
+      </li>
+      <li data-num="4">
+        <div>
+          <strong style="color: var(--dark);">Definir qu&eacute; ve el cliente vs. qu&eacute; es interno.</strong> Qu&eacute; informaci&oacute;n de portafolio le mostramos al inversionista y qu&eacute; datos quedan solo para el equipo Reditus.
+        </div>
+      </li>
+      <li data-num="5">
+        <div>
+          <strong style="color: var(--dark);">Logo + brand guidelines Reditus Group.</strong> Para que el portal y los newsletters tengan la identidad visual correcta desde el primer d&iacute;a.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">Siguiente paso</div>
+    <h2>REEMPLAZA OPTI.<br>CON EL MISMO COSTO.</h2>
+    <p class="cta-subtitle">
+      En 8 semanas tienes un portal propio que consolida los 4 brazos y
+      le da a cada cliente una vista personalizada de todo su portafolio.
+    </p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cta-step-number">1</div>
+        <div class="cta-step-text">Aceptas la propuesta</div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-number">2</div>
+        <div class="cta-step-text">Demo Opti 30 min</div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-number">3</div>
+        <div class="cta-step-text">Semana 2: cuestionario listo</div>
+      </div>
+    </div>
+    <div class="accept-buttons">
+      <a href="https://wa.me/573196020800" class="btn btn-accept" target="_blank">Acepto &mdash; Arranquemos</a>
+      <a href="https://wa.me/573196020800" class="btn btn-decline" target="_blank">Tengo preguntas</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="proposal-footer">
+    <span class="footer-text">DoceProjects &middot; Emiliano Bojanini &middot; Marzo 2026</span>
+    <span class="footer-confidential">Confidencial &middot; Reditus Group</span>
+  </footer>
+
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/573196020800" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  Escr&iacute;beme
+</a>
+
+<script>
+  (function() {
+    const deadline = new Date(Date.now() + 12 * 60 * 60 * 1000);
+    const totalMs = 12 * 60 * 60 * 1000;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const now = Date.now();
+      const diff = deadline - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
+        document.getElementById('progressBar').style.width = '0%';
+        return;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const urgent = h === 0;
+      document.getElementById('cd-hours').textContent = pad(h);
+      document.getElementById('cd-minutes').textContent = pad(m);
+      document.getElementById('cd-seconds').textContent = pad(s);
+      ['cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+        document.getElementById(id).classList.toggle('urgent', urgent);
+      });
+      const bar = document.getElementById('progressBar');
+      bar.classList.toggle('urgent', urgent);
+      bar.style.width = ((diff / totalMs) * 100) + '%';
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS &times; US Housing &mdash; Propuesta Comercial</title>
+  <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('assets/brand/fonts/BebasNeue-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Glock Grotesque';
+      src: url('assets/brand/fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+           url('assets/brand/fonts/GlockGrotesque-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ══════════════════════════════════════════════════ */
+    /* DOCEPROJECTS — Proposal Template v2               */
+    /* Brand Refresh: Kraft + Purple + System Gray        */
+    /* ══════════════════════════════════════════════════ */
+
+    /* ── RESET & VARIABLES ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6A1B9A;
+      --purple-hover: #58147F;
+      --dark: #1F2937;
+      --grid-gray: #F4F6F8;
+      --white: #FFFFFF;
+      --green: #16A34A;
+      --orange: #F59E0B;
+      --red: #DC2626;
+      --wa-green: #25D366;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Glock Grotesque', sans-serif;
+      color: var(--dark);
+      background: #E8DED0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── KRAFT PAPER TEXTURE (real image) ── */
+    .kraft-bg {
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+    }
+
+    /* ── PROPOSAL CONTAINER ── */
+    .proposal {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 0 60px rgba(0,0,0,0.15);
+    }
+
+    /* ── DUAL-BRAND HEADER ── */
+    .doc-header {
+      background: var(--dark);
+      padding: 24px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header-brands {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-client {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .header-client-logo {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .header-client-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .header-agency {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header-agency-logo {
+      height: 48px;
+      width: auto;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+    }
+
+    .header-meta-line {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+
+    .header-meta-line .separator {
+      margin: 0 8px;
+      opacity: 0.4;
+    }
+
+    .header-meta-line strong {
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── HERO / COVER ── */
+    .hero {
+      position: relative;
+      padding: 72px 60px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-label {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 8vw, 96px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      color: var(--purple);
+      margin-bottom: 0;
+    }
+
+    .hero-tagline {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 24px;
+      opacity: 0.85;
+    }
+
+    /* ── COUNTDOWN TIMER ── */
+    .countdown-section {
+      background: var(--dark);
+      padding: 28px 60px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--purple);
+    }
+
+    .countdown-label {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 72px;
+    }
+
+    .countdown-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .countdown-number.urgent { color: var(--red); }
+
+    .countdown-text {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .countdown-separator {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: #9CA3AF;
+      line-height: 1;
+      opacity: 0.25;
+    }
+
+    .countdown-expired {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--red);
+    }
+
+    .countdown-progress {
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,0.06);
+      margin-top: 18px;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .countdown-progress-bar {
+      height: 100%;
+      background: var(--purple);
+      transition: width 1s linear;
+      border-radius: 1px;
+    }
+
+    .countdown-progress-bar.urgent { background: var(--red); }
+
+    /* ── SECTION SYSTEM ── */
+    .section {
+      padding: 56px 60px;
+      border-bottom: 1px solid var(--grid-gray);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      line-height: 1.05;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .section h3 {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 12px;
+      margin-top: 36px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #6B7280;
+      max-width: 720px;
+    }
+
+    .section p + p { margin-top: 16px; }
+
+    /* ── PAIN POINTS ── */
+    .pain-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .pain-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--grid-gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 15px;
+      color: #6B7280;
+      line-height: 1.65;
+    }
+
+    .pain-list li::before {
+      content: attr(data-num);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--purple);
+      min-width: 28px;
+      line-height: 1.1;
+    }
+
+    /* ── SOLUTIONS ── */
+    .solutions { margin-top: 28px; }
+
+    .solution-card {
+      border: 1px solid var(--grid-gray);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .solution-header {
+      background: var(--grid-gray);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .solution-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+    }
+
+    .solution-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+
+    .solution-tag.automation { background: rgba(106, 27, 154, 0.08); color: var(--purple); }
+    .solution-tag.dashboard { background: rgba(22, 163, 74, 0.1); color: var(--green); }
+    .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
+    .solution-tag.integration { background: rgba(245, 158, 11, 0.1); color: #D97706; }
+
+    .solution-body { padding: 24px; }
+
+    .solution-problem {
+      font-size: 13px;
+      font-style: italic;
+      color: #6B7280;
+      line-height: 1.65;
+      padding-left: 16px;
+      border-left: 3px solid var(--purple);
+      margin-bottom: 18px;
+    }
+
+    .solution-problem-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      font-style: normal;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .solution-deliverable-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .solution-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #6B7280;
+    }
+
+    .solution-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .solution-spec {
+      font-size: 13px;
+      color: #6B7280;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-spec::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 28px; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--grid-gray);
+    }
+
+    .timeline-phase {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 3px solid var(--purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      color: var(--purple);
+      z-index: 1;
+    }
+
+    .timeline-content { flex: 1; padding-top: 6px; }
+
+    .timeline-content h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content .duration {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p { font-size: 14px; line-height: 1.65; color: #6B7280; }
+
+    .timeline-content .deliverables { list-style: none; margin-top: 12px; }
+
+    .timeline-content .deliverables li {
+      font-size: 13px;
+      color: #6B7280;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-content .deliverables li::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* ── INVESTMENT ── */
+    .investment-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .investment-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--dark);
+      font-weight: 700;
+    }
+
+    .investment-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--grid-gray);
+      font-size: 15px;
+      color: #6B7280;
+    }
+
+    .investment-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .investment-table tr.total td {
+      border-top: 2px solid var(--dark);
+      border-bottom: none;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--dark);
+      padding-top: 20px;
+    }
+
+    .investment-note {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: rgba(106, 27, 154, 0.08);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .investment-note p { font-size: 13px; color: #6B7280; line-height: 1.65; }
+    .investment-note strong { color: var(--dark); }
+
+    /* ── MAINTENANCE CARD ── */
+    .maintenance-card {
+      background: var(--grid-gray);
+      padding: 28px 32px;
+      border-radius: 3px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 3px solid var(--purple);
+    }
+
+    .maintenance-card .maint-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .maintenance-card .maint-info p { font-size: 13px; color: #6B7280; }
+    .maintenance-card .maint-price { text-align: right; }
+
+    .maintenance-card .maint-price .amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .maintenance-card .maint-price .period {
+      font-size: 11px;
+      color: #6B7280;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      position: relative;
+      padding: 64px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .cta-section > * { position: relative; z-index: 1; }
+
+    .cta-section .cta-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      color: var(--purple);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section .cta-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .cta-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      max-width: 130px;
+    }
+
+    .cta-step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+    }
+
+    .cta-step-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ── ACCEPT / DECLINE ── */
+    .accept-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    .btn-accept { background: var(--purple); color: var(--white); }
+    .btn-accept:hover { background: var(--purple-hover); transform: translateY(-1px); }
+
+    .btn-decline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .btn-decline:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+    /* ── FOOTER ── */
+    .proposal-footer {
+      background: var(--dark);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+
+    .footer-confidential {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: var(--wa-green);
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    .wa-float svg { width: 22px; height: 22px; fill: currentColor; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .doc-header { padding: 16px 20px 14px; gap: 12px; }
+      .header-brands { flex-direction: row; gap: 12px; }
+      .header-client-logo { height: 36px; }
+      .header-client-name { font-size: 16px; }
+      .header-agency-logo { height: 36px; }
+      .header-meta { gap: 2px; flex-direction: column; }
+      .header-meta-line { font-size: 10px; white-space: normal; text-align: center; }
+      .hero { padding: 48px 24px 56px; }
+      .hero h1 { font-size: 44px; }
+      .countdown-section { padding: 20px 24px; }
+      .countdown-number { font-size: 40px; }
+      .countdown-separator { font-size: 40px; }
+      .countdown-unit { min-width: 56px; }
+      .section { padding: 40px 24px; }
+      .solution-specs { grid-template-columns: 1fr; }
+      .maintenance-card { flex-direction: column; text-align: center; gap: 16px; }
+      .cta-section { padding: 48px 24px; }
+      .cta-steps { flex-direction: column; align-items: center; gap: 20px; }
+      .accept-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; text-align: center; }
+      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      .wa-float { bottom: 18px; right: 18px; padding: 12px 16px; font-size: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 36px; }
+      .countdown { gap: 12px; }
+      .countdown-number { font-size: 32px; }
+      .countdown-separator { font-size: 32px; }
+      .countdown-unit { min-width: 44px; }
+      .timeline-phase { gap: 16px; }
+      .timeline-dot { width: 32px; height: 32px; font-size: 13px; }
+      .timeline::before { left: 16px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .proposal { box-shadow: none; }
+      .countdown-section { position: static; }
+      .wa-float { display: none; }
+      .btn { border: 1px solid #ccc !important; }
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page { margin: 14mm 12mm; }
+  </style>
+</head>
+<body>
+
+<div class="proposal">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="header-brands">
+      <div class="header-client">
+        <span class="header-client-name">US HOUSING</span>
+      </div>
+      <div class="header-agency">
+        <img src="assets/brand/logos/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-agency-logo">
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="header-meta-line">
+        Propuesta de automatizaci&oacute;n
+        <span class="separator">&middot;</span>
+        Medell&iacute;n, Marzo 2026
+      </span>
+      <span class="header-meta-line">
+        Para: <strong>Lucas Jaramillo &middot; Cristian (Property Partners)</strong>
+        <span class="separator">&middot;</span>
+        Preparado por: Emiliano Bojanini
+      </span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-label">Sistema de Inventario y PM de Propiedades</div>
+    <h1>52 CASAS.<br>UN SOLO<br>DASHBOARD.</h1>
+    <div class="hero-tagline">Para: Lucas Jaramillo &middot; Cristian (Property Partners)</div>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section" id="countdownSection">
+    <div class="countdown-label">Esta propuesta expira en</div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-hours">12</div>
+        <div class="countdown-text">Horas</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-minutes">00</div>
+        <div class="countdown-text">Minutos</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-seconds">00</div>
+        <div class="countdown-text">Segundos</div>
+      </div>
+    </div>
+    <div class="countdown-progress">
+      <div class="countdown-progress-bar" id="progressBar" style="width: 100%"></div>
+    </div>
+  </div>
+
+  <!-- 01 / DIAGNÓSTICO -->
+  <div class="section">
+    <div class="section-number">01 / DIAGN&Oacute;STICO</div>
+    <h2>LO QUE EST&Aacute; PASANDO HOY</h2>
+    <p>
+      52 casas en Miami. Algunas en obra, otras listas para vender, otras con renta activa.
+      Sin un sistema central, la operaci&oacute;n depende de llamadas, Excel y memoria — y cuando
+      el objetivo es hacer cash out, eso cuesta plata.
+    </p>
+
+    <ul class="pain-list">
+      <li data-num="01">
+        <div>
+          <strong style="color: var(--dark);">Sin inventario centralizado.</strong> No existe una fuente &uacute;nica que muestre el estado exacto de cada casa en tiempo real: libre, arrendada, en obra, lista para vender. Cada actualizaci&oacute;n es una llamada o un mensaje.
+        </div>
+      </li>
+      <li data-num="02">
+        <div>
+          <strong style="color: var(--dark);">Cristian sin rendici&oacute;n de cuentas.</strong> Presupuesto vs. real por obra no existe. No hay seguimiento sistem&aacute;tico de avances ni alertas cuando una obra se pasa del presupuesto o se retrasa.
+        </div>
+      </li>
+      <li data-num="03">
+        <div>
+          <strong style="color: var(--dark);">Marketing limitado.</strong> Virtual staging manual con ChatGPT. Sin landing pages por propiedad. Cada casa lista para vender necesita su propia ficha t&eacute;cnica y presentaci&oacute;n digital — hacerlo a mano es inescalable con 52 propiedades.
+        </div>
+      </li>
+      <li data-num="04">
+        <div>
+          <strong style="color: var(--dark);">Lector de cheques sin integrar.</strong> El lector de cheques ya existe (puerto 5021) pero no est&aacute; conectado al inventario de propiedades. Los pagos no se reconcilian autom&aacute;ticamente contra el estado de cada casa.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO BASE — EFICIENCIA OPERATIVA -->
+  <div class="section" style="background: #F9FAFB; border-left: 4px solid var(--purple);">
+    <div class="section-number" style="display:inline-block; background: var(--purple); color: #fff; padding: 3px 12px; border-radius: 2px; letter-spacing: 2px; font-size: 11px; margin-bottom: 16px;">MÓDULO BASE · TODA PROPUESTA DOCEPROJECTS</div>
+    <h2>PRIMERO:<br>ELIMINAR LO QUE NO GENERA VALOR.</h2>
+    <p>
+      Antes de construir cualquier herramienta nueva, auditamos lo que ya existe.
+      La mayoría de las empresas pagan por tareas, roles y procesos que consumen tiempo y dinero
+      sin generar valor real. Identificarlos y eliminarlos o automatizarlos es la primera inversión
+      que siempre se paga sola.
+    </p>
+
+    <div class="solutions" style="margin-top: 28px;">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Evaluación de Tareas + Organigrama</h4>
+          <span class="solution-tag automation">Eficiencia Operativa</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">El problema universal</div>
+            Toda empresa tiene un porcentaje de su nómina y tiempo invertido en tareas que no generan valor directo: reportes que nadie lee, reuniones evitables, procesos manuales que existen "porque siempre se hizo así", roles duplicados y gastos recurrentes sin retorno claro.
+          </div>
+          <div class="solution-deliverable-label">Cómo lo hacemos</div>
+          <p>Mapeamos <strong>cada tarea del equipo</strong> contra una pregunta simple: ¿esto genera valor para el cliente o para el negocio? Lo que no pasa el filtro se elimina, automatiza o reduce. El resultado es un organigrama eficiente y una lista concreta de ahorro mensual.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Mapa de tareas por área y persona</div>
+            <div class="solution-spec">Clasificación: valor alto / valor bajo / sin valor</div>
+            <div class="solution-spec">Organigrama actual vs. organigrama eficiente</div>
+            <div class="solution-spec">Lista de gastos operativos eliminables</div>
+            <div class="solution-spec">Estimado de ahorro mensual potencial</div>
+            <div class="solution-spec">Hoja de ruta de automatización por tarea</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 24px; padding: 20px 24px; background: var(--white); border: 1px solid #E5E7EB; border-radius: 3px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-size: 28px; flex-shrink: 0;">⚡</div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); font-weight: 700; margin-bottom: 4px;">Por qué va primero</div>
+        <p style="font-size: 14px; color: #6B7280; line-height: 1.6; margin: 0;">Este módulo financia el resto del proyecto. El ahorro identificado en la auditoría operativa cubre — parcial o totalmente — la inversión en las herramientas que construimos. No se trata de gastar más: se trata de redirigir lo que ya se gasta hacia lo que sí genera valor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 / LA SOLUCIÓN -->
+  <div class="section">
+    <div class="section-number">02 / LA SOLUCI&Oacute;N</div>
+    <h2>TRES FASES.<br>UN SOLO SISTEMA.</h2>
+    <p>
+      Empezamos con lo que da visibilidad inmediata: el inventario. Luego le damos estructura a Cristian.
+      Luego hacemos que cada casa lista para vender se presente sola.
+    </p>
+
+    <div class="solutions">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>QUICK WIN &mdash; Dashboard Inventario 52 Casas</h4>
+          <span class="solution-tag dashboard">Semanas 1&ndash;2</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            El estado de cada propiedad vive en tu cabeza o en mensajes dispersos. No hay una sola pantalla que diga cu&aacute;ntas casas est&aacute;n libres, cu&aacute;ntas rinden renta y cu&aacute;ntas est&aacute;n listas para vender hoy.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Dashboard web con todas las 52 propiedades en vista Kanban: <strong>En obra / Lista / Arrendada / En venta</strong>. Cada tarjeta muestra direcci&oacute;n, valor estimado, renta mensual y foto. Filtros por estado, zona y valor. Actualizable en tiempo real desde el m&oacute;vil.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Vista Kanban por estado de propiedad</div>
+            <div class="solution-spec">Valor estimado y renta mensual por casa</div>
+            <div class="solution-spec">Fotos integradas por propiedad</div>
+            <div class="solution-spec">Dashboard web, acceso desde m&oacute;vil</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>FASE 1 &mdash; M&oacute;dulo PM de Obras</h4>
+          <span class="solution-tag agent">Semanas 3&ndash;4</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Cristian maneja las obras sin sistema. No existe presupuesto vs. real por propiedad, ni alertas cuando una obra se pasa del budget. El seguimiento es informal y reactivo.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>M&oacute;dulo de gesti&oacute;n de obras con presupuesto vs. real por propiedad. Cuando una obra se pasa del presupuesto o supera la fecha estimada, el sistema env&iacute;a alerta autom&aacute;tica por WhatsApp a Lucas y a Cristian. Timeline visual por casa.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Presupuesto vs. real por propiedad</div>
+            <div class="solution-spec">Alertas WhatsApp cuando se excede budget</div>
+            <div class="solution-spec">Timeline de obra por casa</div>
+            <div class="solution-spec">Historial de actualizaciones de Cristian</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>FASE 2 &mdash; Marketing Autom&aacute;tico</h4>
+          <span class="solution-tag automation">Semanas 5&ndash;6</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Virtual staging manual con ChatGPT, sin proceso estandarizado. Cada propiedad lista para vender necesita su propia presentaci&oacute;n digital — hacerlo casa por casa a mano es inescalable.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Landing page autom&aacute;tica por propiedad lista para venta: fotos, virtual staging con IA, descripci&oacute;n generada autom&aacute;ticamente, datos clave. PDF de ficha t&eacute;cnica para compradores generado con un clic. Integraci&oacute;n del lector de cheques existente (puerto 5021) con el inventario.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Landing page autom&aacute;tica por propiedad</div>
+            <div class="solution-spec">Virtual staging con IA (Claude Vision)</div>
+            <div class="solution-spec">PDF ficha t&eacute;cnica para compradores</div>
+            <div class="solution-spec">Lector de cheques integrado al inventario</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 / CRONOGRAMA -->
+  <div class="section">
+    <div class="section-number">03 / CRONOGRAMA</div>
+    <h2>6 SEMANAS AL SISTEMA COMPLETO</h2>
+    <p>
+      Semana 1 ya tiene entregable funcional: el inventario de tus 52 casas en pantalla.
+      Los tiempos cuentan desde la aceptaci&oacute;n y el env&iacute;o del inventario base.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-phase">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <h4>Quick Win &mdash; Dashboard Inventario</h4>
+          <div class="duration">Semanas 1&ndash;2</div>
+          <p>Montamos el inventario de las 52 propiedades con el Google Sheet que env&iacute;a Lucas. Vista Kanban funcional desde el d&iacute;a 7.</p>
+          <ul class="deliverables">
+            <li>Importaci&oacute;n del inventario desde Google Sheets</li>
+            <li>Dashboard Kanban: En obra / Lista / Arrendada / En venta</li>
+            <li>Vista por propiedad: direcci&oacute;n, valor, renta, foto</li>
+            <li>Acceso m&oacute;vil funcionando</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <h4>Fase 1 &mdash; PM de Obras</h4>
+          <div class="duration">Semanas 3&ndash;4</div>
+          <p>M&oacute;dulo de obras conectado al inventario. Cristian actualiza desde WhatsApp, Lucas recibe alertas cuando algo se sale del plan.</p>
+          <ul class="deliverables">
+            <li>Reuni&oacute;n 30 min con Cristian para mapear flujo actual</li>
+            <li>Presupuesto vs. real por propiedad en obra</li>
+            <li>Alertas WhatsApp por exceso de presupuesto o retraso</li>
+            <li>Timeline visual por casa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <h4>Fase 2 &mdash; Marketing Digital</h4>
+          <div class="duration">Semanas 5&ndash;6</div>
+          <p>Cada casa lista para vender genera su propia landing page y ficha t&eacute;cnica en minutos. Integraci&oacute;n del lector de cheques.</p>
+          <ul class="deliverables">
+            <li>Landing page autom&aacute;tica por propiedad</li>
+            <li>Virtual staging con IA activado</li>
+            <li>PDF ficha t&eacute;cnica para compradores</li>
+            <li>Lector de cheques integrado y reconciliado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 / INVERSIÓN -->
+  <div class="section">
+    <div class="section-number">04 / INVERSI&Oacute;N</div>
+    <h2>LO QUE CUESTA</h2>
+    <p>Sistema completo en 6 semanas. Setup &uacute;nico + retainer mensual para operaci&oacute;n continua.</p>
+
+    <table class="investment-table">
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Alcance</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Quick Win</strong></td>
+          <td>Dashboard inventario 52 casas &mdash; vista Kanban + fotos + valores</td>
+          <td>$2.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Fase 1</strong></td>
+          <td>M&oacute;dulo PM obras &mdash; presupuesto vs. real + alertas WhatsApp + timeline</td>
+          <td>$3.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Fase 2</strong></td>
+          <td>Marketing autom&aacute;tico &mdash; landing pages + virtual staging + lector cheques</td>
+          <td>$3.000.000 COP</td>
+        </tr>
+        <tr class="total">
+          <td colspan="2"><strong>Setup Total</strong></td>
+          <td><strong>$8.000.000 COP</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="investment-note">
+      <p><strong>Pago:</strong> 50% al inicio, 50% al entregar el sistema completo. <strong>Retainer mensual: $2.000.000 COP/mes</strong> &mdash; incluye operaci&oacute;n continua, soporte, actualizaciones y nuevas propiedades al inventario.</p>
+    </div>
+
+    <div class="maintenance-card">
+      <div class="maint-info">
+        <h4>Retainer Mensual</h4>
+        <p>Operaci&oacute;n continua, soporte prioritario, actualizaciones y nuevas propiedades incluidas.</p>
+      </div>
+      <div class="maint-price">
+        <div class="amount">$2.000.000</div>
+        <div class="period">COP / mes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 / AGENTES IA -->
+  <div class="section">
+    <div class="section-number">05 / AGENTES IA</div>
+    <h2>LOS 4 AGENTES DEL SISTEMA</h2>
+    <p>Cada agente resuelve una parte de la operaci&oacute;n. Trabajan juntos en un solo sistema.</p>
+
+    <div class="solutions">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Agente Inventario</h4>
+          <span class="solution-tag dashboard">Dashboard</span>
+        </div>
+        <div class="solution-body">
+          <p>Dashboard de las 52 casas conectado a Google Sheets API y Google Maps. Vista Kanban por estado, filtros, actualizaci&oacute;n en tiempo real desde cualquier dispositivo.</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Agente PM Obras</h4>
+          <span class="solution-tag agent">Agente AI</span>
+        </div>
+        <div class="solution-body">
+          <p>Presupuesto vs. real por propiedad. Cuando se excede el presupuesto o la fecha, alerta autom&aacute;tica por WhatsApp a Lucas y Cristian. Construido con Claude + WhatsApp Business API.</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Agente Staging</h4>
+          <span class="solution-tag automation">Automatizaci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <p>Virtual staging con IA: toma las fotos de la propiedad, aplica renders de decoraci&oacute;n con Claude Vision, genera la landing page y el PDF de ficha t&eacute;cnica para compradores.</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Lector de Cheques (integrado)</h4>
+          <span class="solution-tag integration">Integraci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <p>El lector que ya existe (puerto 5021) se conecta al inventario. Los pagos se reconcilian autom&aacute;ticamente contra la propiedad correspondiente. OCR + Claude Vision ya funcionando.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 06 / ARRANQUEMOS -->
+  <div class="section">
+    <div class="section-number">06 / ARRANQUEMOS</div>
+    <h2>LO QUE NECESITAMOS PARA EMPEZAR</h2>
+    <p>Todo lo que necesitamos para arrancar esta semana. Con el inventario base podemos tener el primer dashboard en 7 d&iacute;as.</p>
+
+    <ul class="pain-list">
+      <li data-num="1">
+        <div>
+          <strong style="color: var(--dark);">Inventario de las 52 casas.</strong> Google Sheet con direcci&oacute;n, estado actual (en obra / lista / arrendada / en venta), valor estimado y renta mensual de cada propiedad.
+        </div>
+      </li>
+      <li data-num="2">
+        <div>
+          <strong style="color: var(--dark);">Reuni&oacute;n 30 min con Cristian (Property Partners).</strong> Mapear c&oacute;mo hace el seguimiento de obras hoy: qu&eacute; herramientas usa, c&oacute;mo reporta avances y d&oacute;nde lleva los presupuestos.
+        </div>
+      </li>
+      <li data-num="3">
+        <div>
+          <strong style="color: var(--dark);">Acceso GitHub ljaramillo.</strong> Compartir repo us-housing para que el c&oacute;digo quede en tu cuenta desde el primer d&iacute;a.
+        </div>
+      </li>
+      <li data-num="4">
+        <div>
+          <strong style="color: var(--dark);">Fotos actuales de cada propiedad.</strong> Drive o WhatsApp. Con las fotos podemos montar el inventario visual y preparar el m&oacute;dulo de staging desde la semana 1.
+        </div>
+      </li>
+      <li data-num="5">
+        <div>
+          <strong style="color: var(--dark);">Confirmar lector de cheques (puerto 5021).</strong> &iquest;Est&aacute; corriendo? &iquest;Qu&eacute; datos extrae hoy? Con eso sabemos qu&eacute; tan r&aacute;pido es la integraci&oacute;n.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">Siguiente paso</div>
+    <h2>ARRANQUEMOS ESTA SEMANA</h2>
+    <p class="cta-subtitle">
+      Con el inventario base podemos tener el dashboard de las 52 casas listo en 7 d&iacute;as.
+      Escr&iacute;beme y coordinamos.
+    </p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cta-step-number">1</div>
+        <div class="cta-step-text">Aceptas la propuesta</div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-number">2</div>
+        <div class="cta-step-text">Env&iacute;as el inventario base</div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-number">3</div>
+        <div class="cta-step-text">D&iacute;a 7: dashboard listo</div>
+      </div>
+    </div>
+    <div class="accept-buttons">
+      <a href="https://wa.me/573196020800" class="btn btn-accept" target="_blank">Acepto &mdash; Arranquemos</a>
+      <a href="https://wa.me/573196020800" class="btn btn-decline" target="_blank">Tengo preguntas</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="proposal-footer">
+    <div class="footer-left">
+      <img src="assets/brand/logos/doceprojects-logo-blanco.png" alt="DoceProjects" class="footer-logo" style="height:20px;opacity:0.3;">
+      <span class="footer-text">DoceProjects &middot; Emiliano Bojanini &middot; Marzo 2026</span>
+    </div>
+    <span class="footer-confidential">Confidencial &middot; US Housing</span>
+  </footer>
+
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/573196020800" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  Escr&iacute;beme
+</a>
+
+<script>
+  (function() {
+    const deadline = new Date(Date.now() + 12 * 60 * 60 * 1000);
+    const totalMs = 12 * 60 * 60 * 1000;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const now = Date.now();
+      const diff = deadline - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
+        document.getElementById('progressBar').style.width = '0%';
+        return;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const urgent = h === 0;
+      const hoursEl = document.getElementById('cd-hours');
+      const minsEl = document.getElementById('cd-minutes');
+      const secsEl = document.getElementById('cd-seconds');
+      const bar = document.getElementById('progressBar');
+      hoursEl.textContent = pad(h);
+      minsEl.textContent = pad(m);
+      secsEl.textContent = pad(s);
+      [hoursEl, minsEl, secsEl].forEach(el => {
+        el.classList.toggle('urgent', urgent);
+      });
+      bar.classList.toggle('urgent', urgent);
+      bar.style.width = ((diff / totalMs) * 100) + '%';
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+</body>
+</html>

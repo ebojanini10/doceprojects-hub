@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCEPROJECTS &times; Fortaleza &mdash; Transformaci&oacute;n Digital</title>
+  <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('assets/brand/fonts/BebasNeue-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Glock Grotesque';
+      src: url('assets/brand/fonts/GlockGrotesque-Medium.woff2') format('woff2'),
+           url('assets/brand/fonts/GlockGrotesque-Medium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #6A1B9A;
+      --purple-hover: #58147F;
+      --dark: #1F2937;
+      --grid-gray: #F4F6F8;
+      --white: #FFFFFF;
+      --green: #16A34A;
+      --orange: #F59E0B;
+      --red: #DC2626;
+      --wa-green: #25D366;
+      --fortaleza-navy: #041E41;
+      --fortaleza-gold: #FFE174;
+      --fortaleza-red: #FF1B44;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Glock Grotesque', sans-serif;
+      color: var(--dark);
+      background: #E8DED0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .proposal {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 0 60px rgba(0,0,0,0.15);
+    }
+
+    .doc-header {
+      background: var(--dark);
+      padding: 24px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header-brands {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-client {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .header-client-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .header-agency {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header-agency-logo {
+      height: 48px;
+      width: auto;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+    }
+
+    .header-meta-line {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+
+    .header-meta-line .separator { margin: 0 8px; opacity: 0.4; }
+    .header-meta-line strong { font-weight: 600; color: rgba(255,255,255,0.75); }
+
+    .hero {
+      position: relative;
+      padding: 72px 60px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-label {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 8vw, 96px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      color: var(--purple);
+      margin-bottom: 0;
+    }
+
+    .hero-tagline {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 24px;
+      opacity: 0.85;
+    }
+
+    /* CREDIBILITY BAR — Fortaleza colors */
+    .credibility-bar {
+      background: var(--fortaleza-navy);
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      border-bottom: 3px solid var(--fortaleza-gold);
+    }
+
+    .cred-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 28px;
+      border-right: 1px solid rgba(255,225,116,0.2);
+    }
+
+    .cred-item:last-child { border-right: none; }
+
+    .cred-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--fortaleza-gold);
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .cred-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      font-weight: 600;
+      margin-top: 3px;
+      text-align: center;
+      max-width: 120px;
+    }
+
+    .countdown-section {
+      background: var(--dark);
+      padding: 28px 60px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--purple);
+    }
+
+    .countdown-label {
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 72px;
+    }
+
+    .countdown-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .countdown-number.urgent { color: var(--red); }
+
+    .countdown-text {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .countdown-separator {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: #9CA3AF;
+      line-height: 1;
+      opacity: 0.25;
+    }
+
+    .countdown-expired {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--red);
+    }
+
+    .countdown-progress {
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,0.06);
+      margin-top: 18px;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .countdown-progress-bar {
+      height: 100%;
+      background: var(--purple);
+      transition: width 1s linear;
+      border-radius: 1px;
+    }
+
+    .countdown-progress-bar.urgent { background: var(--red); }
+
+    .section {
+      padding: 56px 60px;
+      border-bottom: 1px solid var(--grid-gray);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      line-height: 1.05;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #6B7280;
+      max-width: 720px;
+    }
+
+    .section p + p { margin-top: 16px; }
+
+    .pain-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .pain-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--grid-gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 15px;
+      color: #6B7280;
+      line-height: 1.65;
+    }
+
+    .pain-list li::before {
+      content: attr(data-num);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--purple);
+      min-width: 28px;
+      line-height: 1.1;
+    }
+
+    /* Instagram comparison widget */
+    .ig-comparison {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--grid-gray);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .ig-account {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .ig-account.club {
+      background: var(--fortaleza-navy);
+    }
+
+    .ig-account.academia {
+      background: var(--grid-gray);
+    }
+
+    .ig-handle {
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .ig-account.club .ig-handle { color: var(--fortaleza-gold); }
+    .ig-account.academia .ig-handle { color: #6B7280; }
+
+    .ig-followers {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .ig-account.club .ig-followers { color: var(--fortaleza-gold); }
+    .ig-account.academia .ig-followers { color: var(--dark); }
+
+    .ig-desc {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .ig-account.club .ig-desc { color: rgba(255,255,255,0.5); }
+    .ig-account.academia .ig-desc { color: #9CA3AF; }
+
+    .ig-gap-label {
+      grid-column: 1 / -1;
+      background: var(--fortaleza-red);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .solutions { margin-top: 28px; }
+
+    .solution-card {
+      border: 1px solid var(--grid-gray);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .solution-header {
+      background: var(--grid-gray);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .solution-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+    }
+
+    .solution-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+
+    .solution-tag.automation { background: rgba(106, 27, 154, 0.08); color: var(--purple); }
+    .solution-tag.dashboard { background: rgba(22, 163, 74, 0.1); color: var(--green); }
+    .solution-tag.agent { background: rgba(59,130,246,0.1); color: #3B82F6; }
+    .solution-tag.integration { background: rgba(245, 158, 11, 0.1); color: #D97706; }
+
+    .solution-body { padding: 24px; }
+
+    .solution-problem {
+      font-size: 13px;
+      font-style: italic;
+      color: #6B7280;
+      line-height: 1.65;
+      padding-left: 16px;
+      border-left: 3px solid var(--purple);
+      margin-bottom: 18px;
+    }
+
+    .solution-problem-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      font-style: normal;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .solution-deliverable-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .solution-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #6B7280;
+    }
+
+    .solution-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .solution-spec {
+      font-size: 13px;
+      color: #6B7280;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-spec::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .timeline { margin-top: 28px; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--grid-gray);
+    }
+
+    .timeline-phase {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 3px solid var(--purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      color: var(--purple);
+      z-index: 1;
+    }
+
+    .timeline-content { flex: 1; padding-top: 6px; }
+
+    .timeline-content h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content .duration {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p { font-size: 14px; line-height: 1.65; color: #6B7280; }
+
+    .timeline-content .deliverables { list-style: none; margin-top: 12px; }
+
+    .timeline-content .deliverables li {
+      font-size: 13px;
+      color: #6B7280;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-content .deliverables li::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .investment-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .investment-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--dark);
+      font-weight: 700;
+    }
+
+    .investment-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--grid-gray);
+      font-size: 15px;
+      color: #6B7280;
+    }
+
+    .investment-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .investment-table tr.total td {
+      border-top: 2px solid var(--dark);
+      border-bottom: none;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--dark);
+      padding-top: 20px;
+    }
+
+    .investment-note {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: rgba(106, 27, 154, 0.08);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .investment-note p { font-size: 13px; color: #6B7280; line-height: 1.65; }
+    .investment-note strong { color: var(--dark); }
+
+    .maintenance-card {
+      background: var(--grid-gray);
+      padding: 28px 32px;
+      border-radius: 3px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 3px solid var(--purple);
+    }
+
+    .maintenance-card .maint-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .maintenance-card .maint-info p { font-size: 13px; color: #6B7280; }
+    .maintenance-card .maint-price { text-align: right; }
+
+    .maintenance-card .maint-price .amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .maintenance-card .maint-price .period {
+      font-size: 11px;
+      color: #6B7280;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .cta-section {
+      position: relative;
+      padding: 64px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand/textures/kraft-texture.jpg') center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .cta-section > * { position: relative; z-index: 1; }
+
+    .cta-section .cta-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      color: var(--purple);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section .cta-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .cta-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      max-width: 130px;
+    }
+
+    .cta-step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+    }
+
+    .cta-step-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .accept-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-family: 'Glock Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    .btn-accept { background: var(--purple); color: var(--white); }
+    .btn-accept:hover { background: var(--purple-hover); transform: translateY(-1px); }
+
+    .btn-decline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .btn-decline:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+    .proposal-footer {
+      background: var(--dark);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+
+    .footer-confidential {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: var(--wa-green);
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    .wa-float svg { width: 22px; height: 22px; fill: currentColor; }
+
+    @media (max-width: 768px) {
+      .doc-header { padding: 16px 20px 14px; gap: 12px; }
+      .hero { padding: 48px 24px 56px; }
+      .hero h1 { font-size: 44px; }
+      .countdown-section { padding: 20px 24px; }
+      .countdown-number { font-size: 40px; }
+      .countdown-separator { font-size: 40px; }
+      .section { padding: 40px 24px; }
+      .solution-specs { grid-template-columns: 1fr; }
+      .maintenance-card { flex-direction: column; text-align: center; gap: 16px; }
+      .cta-section { padding: 48px 24px; }
+      .cta-steps { flex-direction: column; align-items: center; gap: 20px; }
+      .accept-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; text-align: center; }
+      .proposal-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      .wa-float { bottom: 18px; right: 18px; padding: 12px 16px; font-size: 12px; }
+      .credibility-bar { padding: 16px 20px; gap: 0; }
+      .cred-item { padding: 0 14px; }
+      .cred-number { font-size: 24px; }
+      .ig-comparison { grid-template-columns: 1fr; }
+      .ig-gap-label { grid-column: 1; }
+    }
+
+    @media print {
+      body { background: white; }
+      .proposal { box-shadow: none; }
+      .countdown-section { position: static; }
+      .wa-float { display: none; }
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page { margin: 14mm 12mm; }
+
+    /* Hero quote block */
+    .hero-quote {
+      margin-top: 32px;
+      padding: 20px 28px;
+      background: rgba(255,255,255,0.08);
+      border-left: 3px solid var(--fortaleza-gold);
+      text-align: left;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .hero-quote p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Agents table */
+    .agents-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .agents-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--dark);
+      font-weight: 700;
+    }
+
+    .agents-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--grid-gray);
+      font-size: 14px;
+      color: #6B7280;
+      vertical-align: top;
+    }
+
+    .agents-table td:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="proposal">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="header-brands">
+      <div class="header-client">
+        <span class="header-client-name">FORTALEZA F&Uacute;TBOL CLUB</span>
+      </div>
+      <div class="header-agency">
+        <img src="assets/brand/logos/doceprojects-logo-blanco.png" alt="DOCEPROJECTS" class="header-agency-logo">
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="header-meta-line">
+        TRANSFORMACI&Oacute;N INTEGRAL
+        <span class="separator">&middot;</span>
+        MARZO 2026
+      </span>
+      <span class="header-meta-line">
+        Para: <strong>Lucas Jaramillo &middot; Fortaleza F&uacute;tbol Club</strong>
+        <span class="separator">&middot;</span>
+        DoceProjects 12:12
+      </span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-label">El Club del Futuro &mdash; Ya Es Hoy</div>
+    <h1>EL CLUB<br>QUE COLOMBIA<br>MERECE.</h1>
+    <div class="hero-tagline">Para: Lucas Jaramillo &middot; Fortaleza F&uacute;tbol Club</div>
+    <div class="hero-quote">
+      <p>"76 jugadores llegaron al profesionalismo. 32 vistieron la selecci&oacute;n. El siguiente paso es construir la empresa que sostenga ese legado &mdash; y hacerla crecer."</p>
+    </div>
+  </header>
+
+  <!-- CREDIBILITY BAR -->
+  <div class="credibility-bar">
+    <div class="cred-item">
+      <div class="cred-number">76</div>
+      <div class="cred-label">D&eacute;buts Profesionales</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-number">1.000+</div>
+      <div class="cred-label">Atletas en el Colegio</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-number">32</div>
+      <div class="cred-label">Convocatorias Selecci&oacute;n</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-number">171K</div>
+      <div class="cred-label">Seguidores @fortaleza_ceif</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-number">2007</div>
+      <div class="cred-label">Desde</div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section" id="countdownSection">
+    <div class="countdown-label">Esta propuesta expira en</div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-hours">12</div>
+        <div class="countdown-text">Horas</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-minutes">00</div>
+        <div class="countdown-text">Minutos</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-seconds">00</div>
+        <div class="countdown-text">Segundos</div>
+      </div>
+    </div>
+    <div class="countdown-progress">
+      <div class="countdown-progress-bar" id="progressBar" style="width: 100%"></div>
+    </div>
+  </div>
+
+  <!-- 01 / DIAGNÓSTICO -->
+  <div class="section">
+    <div class="section-number">01 / DIAGN&Oacute;STICO</div>
+    <h2>LO QUE EL TALENTO MERECE</h2>
+    <p>
+      Fortaleza produce los mejores jugadores de Colombia. El reto ahora es construir la infraestructura empresarial que sostenga ese nivel &mdash; patrocinios de talla mundial, administraci&oacute;n que escale, presencia internacional y un modelo financiero que crezca.
+    </p>
+
+    <!-- Instagram comparison visual -->
+    <div class="ig-comparison">
+      <div class="ig-account club">
+        <div class="ig-handle">@fortaleza_ceif</div>
+        <div class="ig-followers">171K</div>
+        <div class="ig-desc">Club Profesional</div>
+      </div>
+      <div class="ig-account academia">
+        <div class="ig-handle">@forta_academy</div>
+        <div class="ig-followers">1.389</div>
+        <div class="ig-desc">Academia &amp; Colegio CEIF</div>
+      </div>
+      <div class="ig-gap-label">Brecha: 123x &mdash; La academia, el coraz&oacute;n del proyecto CEIF, es invisible digitalmente. Ese es talento sin vitrina.</div>
+    </div>
+
+    <ul class="pain-list" style="margin-top: 32px;">
+      <li data-num="01">
+        <div>
+          <strong style="color: var(--dark);">Patrocinios por debajo del potencial.</strong> Con 171K seguidores y 76 profesionales formados, el club tiene el activo. Pero sin un kit de patrocinio digital estructurado, las marcas grandes no pueden ver el valor real de activar con Fortaleza.
+        </div>
+      </li>
+      <li data-num="02">
+        <div>
+          <strong style="color: var(--dark);">Administraci&oacute;n que no escala.</strong> Con la entrada de Vives + Ur&aacute;n, el club entr&oacute; en una nueva dimensi&oacute;n. Los procesos administrativos actuales no est&aacute;n dise&ntilde;ados para ese nivel de exigencia &mdash; reporting, KPIs, finanzas del colegio: todo fragmentado.
+        </div>
+      </li>
+      <li data-num="03">
+        <div>
+          <strong style="color: var(--dark);">Sin programa de conexi&oacute;n internacional.</strong> La cantera produce talento de exportaci&oacute;n. Pero no hay un pipeline estructurado con academias europeas, clubes de MLS o agentes internacionales que canalice ese flujo de manera sistem&aacute;tica.
+        </div>
+      </li>
+      <li data-num="04">
+        <div>
+          <strong style="color: var(--dark);">El Colegio con 1.000 atletas sin sistema digital.</strong> Inscripciones, pagos, seguimiento acad&eacute;mico y deportivo: manual. Para el primer colegio deportivo de Colombia, eso es el techo de cristal del crecimiento.
+        </div>
+      </li>
+      <li data-num="05">
+        <div>
+          <strong style="color: var(--dark);">La brecha de marketing: 123 veces.</strong> @fortaleza_ceif tiene 171K seguidores. @forta_academy tiene 1.389. La academia &mdash; el coraz&oacute;n del proyecto CEIF &mdash; es invisible digitalmente. Ese es talento sin vitrina.
+        </div>
+      </li>
+      <li data-num="06">
+        <div>
+          <strong style="color: var(--dark);">Sin veh&iacute;culo de impacto social estructurado.</strong> Fortaleza tiene una historia social poderosa. Pero sin un modelo RSE estructurado (contenedores, programa comunitario, medici&oacute;n de impacto), ese capital no se monetiza ni se comunica a escala.
+        </div>
+      </li>
+      <li data-num="07">
+        <div>
+          <strong style="color: var(--dark);">Sin hinchada. Sin estadio lleno. Sin cultura de club.</strong> En Colombia hay equipos con menos historia que Fortaleza y m&aacute;s gente en las gradas. Una hinchada fiel no se improvisa &mdash; se construye con identidad, pertenencia y comunidad. Hoy Fortaleza no tiene un programa estructurado para conquistar su ciudad.
+        </div>
+      </li>
+      <li data-num="08">
+        <div>
+          <strong style="color: var(--dark);">Rentabilidad atada al marcador.</strong> Si gana, hay ingresos. Si pierde, no. Ese modelo no escala. Los clubes m&aacute;s rentables del mundo &mdash; Arsenal, Ajax, Boca &mdash; generan la mayor parte de sus ingresos independientemente del resultado: membres&iacute;as, contenido exclusivo, merch, academia, experiencias, naming rights. Fortaleza tiene todos los activos para ese modelo. Hoy no los est&aacute; usando.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO BASE — EFICIENCIA OPERATIVA -->
+  <div class="section" style="background: #F9FAFB; border-left: 4px solid var(--purple);">
+    <div class="section-number" style="display:inline-block; background: var(--purple); color: #fff; padding: 3px 12px; border-radius: 2px; letter-spacing: 2px; font-size: 11px; margin-bottom: 16px;">MÓDULO BASE · TODA PROPUESTA DOCEPROJECTS</div>
+    <h2>PRIMERO:<br>ELIMINAR LO QUE NO GENERA VALOR.</h2>
+    <p>
+      Antes de construir cualquier herramienta nueva, auditamos lo que ya existe.
+      La mayoría de las empresas pagan por tareas, roles y procesos que consumen tiempo y dinero
+      sin generar valor real. Identificarlos y eliminarlos o automatizarlos es la primera inversión
+      que siempre se paga sola.
+    </p>
+
+    <div class="solutions" style="margin-top: 28px;">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Evaluación de Tareas + Organigrama</h4>
+          <span class="solution-tag automation">Eficiencia Operativa</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">El problema universal</div>
+            Toda empresa tiene un porcentaje de su nómina y tiempo invertido en tareas que no generan valor directo: reportes que nadie lee, reuniones evitables, procesos manuales que existen "porque siempre se hizo así", roles duplicados y gastos recurrentes sin retorno claro.
+          </div>
+          <div class="solution-deliverable-label">Cómo lo hacemos</div>
+          <p>Mapeamos <strong>cada tarea del equipo</strong> contra una pregunta simple: ¿esto genera valor para el cliente o para el negocio? Lo que no pasa el filtro se elimina, automatiza o reduce. El resultado es un organigrama eficiente y una lista concreta de ahorro mensual.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Mapa de tareas por área y persona</div>
+            <div class="solution-spec">Clasificación: valor alto / valor bajo / sin valor</div>
+            <div class="solution-spec">Organigrama actual vs. organigrama eficiente</div>
+            <div class="solution-spec">Lista de gastos operativos eliminables</div>
+            <div class="solution-spec">Estimado de ahorro mensual potencial</div>
+            <div class="solution-spec">Hoja de ruta de automatización por tarea</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 24px; padding: 20px 24px; background: var(--white); border: 1px solid #E5E7EB; border-radius: 3px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-size: 28px; flex-shrink: 0;">⚡</div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); font-weight: 700; margin-bottom: 4px;">Por qué va primero</div>
+        <p style="font-size: 14px; color: #6B7280; line-height: 1.6; margin: 0;">Este módulo financia el resto del proyecto. El ahorro identificado en la auditoría operativa cubre — parcial o totalmente — la inversión en las herramientas que construimos. No se trata de gastar más: se trata de redirigir lo que ya se gasta hacia lo que sí genera valor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 / LA SOLUCIÓN -->
+  <div class="section">
+    <div class="section-number">02 / LA SOLUCI&Oacute;N</div>
+    <h2>OCHO FRENTES. UN CLUB.</h2>
+    <p>
+      No es un proyecto puntual. Es la infraestructura empresarial que Fortaleza necesita para operar a la altura de su talento &mdash; y para ser rentable gane o pierda.
+    </p>
+
+    <div class="solutions">
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Kit de Patrocinio Digital</h4>
+          <span class="solution-tag automation">Automatizaci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Las marcas no pueden ver el valor de activar con Fortaleza.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Deck interactivo con datos reales de audiencia, estad&iacute;sticas del club, formatos de activaci&oacute;n por categor&iacute;a (naming, jersey, digital, experiencial). Actualizable en tiempo real. Presentable a cualquier marca en minutos.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Dashboard de patrocinadores activos</div>
+            <div class="solution-spec">Propuesta autom&aacute;tica por categor&iacute;a</div>
+            <div class="solution-spec">Seguimiento de activaciones</div>
+            <div class="solution-spec">ROI por sponsor</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Sistema Administrativo</h4>
+          <span class="solution-tag dashboard">Dashboard</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            La entrada de nuevos inversionistas exige reporting de otro nivel.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Dashboard ejecutivo del club &mdash; finanzas consolidadas, KPIs operativos, seguimiento de presupuesto por &aacute;rea (primer equipo, academia, colegio, staff). Reportes autom&aacute;ticos mensuales.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">P&amp;L por &aacute;rea</div>
+            <div class="solution-spec">KPIs en tiempo real</div>
+            <div class="solution-spec">Reportes autom&aacute;ticos para inversionistas</div>
+            <div class="solution-spec">Alertas de desviaci&oacute;n presupuestal</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Programa de Conexi&oacute;n Internacional</h4>
+          <span class="solution-tag agent">Agente AI</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            76 jugadores al profesionalismo pero sin pipeline internacional sistem&aacute;tico.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Plataforma de scouting digital + CRM de relaciones internacionales. Perfil exportable por jugador (video, stats, posici&oacute;n, edad). Pipeline de contacto con academias Europa, MLS, Liga MX. Alertas de oportunidades de transferencia.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Perfil digital por jugador</div>
+            <div class="solution-spec">Pipeline de clubes contactados</div>
+            <div class="solution-spec">Historial de negociaciones</div>
+            <div class="solution-spec">Alertas de mercado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Colegio Fortaleza Digital</h4>
+          <span class="solution-tag automation">Automatizaci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            +1.000 atletas, inscripciones manuales. El primer colegio deportivo de Colombia no puede operar en Excel.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Sistema de inscripciones + pagos + seguimiento acad&eacute;mico y deportivo por atleta. Dashboard de padres: progreso deportivo, asistencia, pagos, comunicaciones del cuerpo t&eacute;cnico.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Inscripci&oacute;n web + confirmaci&oacute;n autom&aacute;tica</div>
+            <div class="solution-spec">Pagos en l&iacute;nea</div>
+            <div class="solution-spec">Seguimiento individual</div>
+            <div class="solution-spec">App para padres</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Marketing Academia</h4>
+          <span class="solution-tag agent">Agente AI</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            @forta_academy: 1.389 seguidores. El coraz&oacute;n del proyecto CEIF es invisible.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Estrategia de contenido + Meta Ads automatizados + bot de WhatsApp para consultas de inscripci&oacute;n. Target: cerrar la brecha de 123x con el club. De 1.389 a 20.000 seguidores en 6 meses.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Calendario contenido semanal</div>
+            <div class="solution-spec">Meta Ads automatizados</div>
+            <div class="solution-spec">Bot WhatsApp consultas</div>
+            <div class="solution-spec">Reporte de crecimiento mensual</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Modelo RSE / Impacto Social</h4>
+          <span class="solution-tag integration">Integraci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Una historia social poderosa sin estructura ni medici&oacute;n.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Dise&ntilde;o del modelo de Responsabilidad Social Estructurado &mdash; programa de contenedores comunitarios, m&eacute;tricas de impacto, comunicaci&oacute;n a sponsors y medios. Convierte el impacto social en activo comercial.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Modelo RSE documentado</div>
+            <div class="solution-spec">Dashboard de impacto</div>
+            <div class="solution-spec">Kit de comunicaci&oacute;n para medios</div>
+            <div class="solution-spec">Integraci&oacute;n con pitch de patrocinios</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Construcci&oacute;n de Hinchada</h4>
+          <span class="solution-tag agent">Fan Engagement</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            Fortaleza no tiene una hinchada estructurada. El Metropolitano de Techo promedia 1.000 personas por partido. Eso no es falta de talento &mdash; es falta de comunidad.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Programa integral de construcci&oacute;n de hinchada: identidad de barra, programa de membres&iacute;as de fanático, experiencias en el estadio, activaciones digitales pre/durante/post partido. El objetivo es que Fortaleza tenga una comunidad que llene el estadio independientemente del puesto en la tabla.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Programa de membres&iacute;as &mdash; Fan ID</div>
+            <div class="solution-spec">App / comunidad digital de hinchas</div>
+            <div class="solution-spec">Experiencias VIP en estadio</div>
+            <div class="solution-spec">Activaciones pre/durante/post partido</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-header">
+          <h4>Modelo de Ingresos Independientes del Resultado</h4>
+          <span class="solution-tag integration">Diversificaci&oacute;n</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-problem">
+            <div class="solution-problem-label">Problema actual</div>
+            La rentabilidad del club depende del marcador. Si gana, hay ingresos. Si pierde, no. Ese modelo no escala &mdash; y no es sostenible para los inversionistas.
+          </div>
+          <div class="solution-deliverable-label">Lo que entregamos</div>
+          <p>Dise&ntilde;o e implementaci&oacute;n del modelo de ingresos diversificado: merch digital, membres&iacute;as premium de hinchas, contenido exclusivo por suscripci&oacute;n, naming rights digitales, experiencias pagadas (tours, meet &amp; greet, campus de vacaciones). Arsenal, Ajax y Boca generan la mayor parte de sus ingresos sin importar el marcador. Fortaleza tiene todos los activos para ese modelo.</p>
+          <div class="solution-specs">
+            <div class="solution-spec">Tienda online Fortaleza (merch)</div>
+            <div class="solution-spec">Membres&iacute;a premium hinchas</div>
+            <div class="solution-spec">Contenido exclusivo por suscripci&oacute;n</div>
+            <div class="solution-spec">Experiencias pagadas (campus, tours, VIP)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 / CRONOGRAMA -->
+  <div class="section">
+    <div class="section-number">03 / CRONOGRAMA</div>
+    <h2>DOCE SEMANAS</h2>
+    <p>
+      Tres fases secuenciales. Quick wins primero para demostrar valor, luego el core operativo, luego la escala.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <h4>Quick Wins</h4>
+          <div class="duration">Semanas 1&ndash;2</div>
+          <p>Kit de Patrocinio Digital listo para presentar a marcas. Dashboard administrativo v1 con los KPIs principales del club y las &aacute;reas de inversionistas.</p>
+          <ul class="deliverables">
+            <li>Deck patrocinio interactivo + propuesta por categor&iacute;a</li>
+            <li>Dashboard ejecutivo con KPIs principales</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <h4>Core</h4>
+          <div class="duration">Semanas 3&ndash;6</div>
+          <p>Colegio Fortaleza Digital: inscripciones + pagos operativos. Marketing academia: estrategia activa y primeras campa&ntilde;as Meta Ads. Programa internacional: perfiles exportables de jugadores y pipeline v1 de clubes.</p>
+          <ul class="deliverables">
+            <li>Sistema colegio: inscripciones + pagos + seguimiento</li>
+            <li>Campa&ntilde;a Meta Ads @forta_academy activa</li>
+            <li>Pipeline clubes internacionales v1</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-phase">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <h4>Escala</h4>
+          <div class="duration">Semanas 7&ndash;12</div>
+          <p>Modelo RSE estructurado y documentado. Bot WhatsApp academia activo para consultas de inscripci&oacute;n. Dashboard de patrocinadores con primeras activaciones tracked. @forta_academy en crecimiento sostenido hacia 20.000.</p>
+          <ul class="deliverables">
+            <li>RSE documentado + dashboard de impacto</li>
+            <li>Bot WhatsApp academia activo</li>
+            <li>Reporte de impacto completo</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 04 / INVERSIÓN -->
+  <div class="section">
+    <div class="section-number">04 / INVERSI&Oacute;N</div>
+    <h2>LO QUE CUESTA</h2>
+    <p>Setup total de los seis frentes en doce semanas + retainer mensual para operaci&oacute;n, optimizaci&oacute;n y evoluci&oacute;n continua.</p>
+
+    <table class="investment-table">
+      <thead>
+        <tr>
+          <th>Frente</th>
+          <th>Fase</th>
+          <th>Inversi&oacute;n</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kit Patrocinio + Dashboard Admin</strong></td>
+          <td>Semanas 1&ndash;2</td>
+          <td>$3.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Colegio Digital + Marketing Academia</strong></td>
+          <td>Semanas 3&ndash;6</td>
+          <td>$6.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Conexi&oacute;n Internacional + RSE + Bot</strong></td>
+          <td>Semanas 7&ndash;12</td>
+          <td>$5.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Construcci&oacute;n de Hinchada + Fan ID</strong></td>
+          <td>Semanas 5&ndash;12</td>
+          <td>$4.000.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong>Modelo Ingresos Independientes (Merch + Membres&iacute;as + Experiencias)</strong></td>
+          <td>Semanas 8&ndash;16</td>
+          <td>$5.000.000 COP</td>
+        </tr>
+        <tr class="total">
+          <td colspan="2"><strong>TOTAL SETUP</strong></td>
+          <td><strong>$23.000.000 COP</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="investment-note">
+      <p><strong>Nota:</strong> El retainer incluye: actualizaciones de todos los sistemas, gesti&oacute;n mensual Meta Ads academia, reportes autom&aacute;ticos para inversionistas, operaci&oacute;n del modelo de hinchada y merch, soporte t&eacute;cnico y evoluci&oacute;n de los 8 frentes.</p>
+    </div>
+
+    <div class="maintenance-card">
+      <div class="maint-info">
+        <h4>Retainer Mensual</h4>
+        <p>Operaci&oacute;n continua, soporte, gesti&oacute;n Meta Ads academia, reportes autom&aacute;ticos para inversionistas, crecimiento de hinchada y evoluci&oacute;n de los ocho frentes.</p>
+      </div>
+      <div class="maint-price">
+        <div class="amount">$3.500.000</div>
+        <div class="period">COP / mes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 / AGENTES IA -->
+  <div class="section">
+    <div class="section-number">05 / AGENTES IA</div>
+    <h2>EL EQUIPO DETR&Aacute;S DEL EQUIPO</h2>
+    <p>Seis agentes de inteligencia artificial que operan los seis frentes de la transformaci&oacute;n digital de Fortaleza.</p>
+
+    <table class="agents-table">
+      <thead>
+        <tr>
+          <th>Agente</th>
+          <th>Funci&oacute;n</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Agente Patrocinios</td>
+          <td>Genera propuestas personalizadas por marca + trackea activaciones en tiempo real</td>
+        </tr>
+        <tr>
+          <td>Agente Admin</td>
+          <td>Dashboard KPIs + reportes autom&aacute;ticos para inversionistas (Vives + Ur&aacute;n + Serrano)</td>
+        </tr>
+        <tr>
+          <td>Agente Scout</td>
+          <td>Perfiles exportables de jugadores + pipeline internacional (Europa, MLS, Liga MX)</td>
+        </tr>
+        <tr>
+          <td>Agente Colegio</td>
+          <td>Inscripciones + pagos + seguimiento de atletas en el Colegio Fortaleza CEIF</td>
+        </tr>
+        <tr>
+          <td>Agente Marketing</td>
+          <td>Contenido + Meta Ads + crecimiento sostenido de @forta_academy (target: 20K)</td>
+        </tr>
+        <tr>
+          <td>Agente RSE</td>
+          <td>M&eacute;tricas de impacto social + comunicaci&oacute;n a medios y sponsors</td>
+        </tr>
+        <tr>
+          <td>Agente Hinchada</td>
+          <td>Membres&iacute;as Fan ID + activaciones partido a partido + comunidad digital hinchas</td>
+        </tr>
+        <tr>
+          <td>Agente Ingresos</td>
+          <td>Tienda online + membres&iacute;as premium + experiencias pagadas + dashboard de ingresos no deportivos</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 06 / ARRANQUEMOS -->
+  <div class="section">
+    <div class="section-number">06 / LO QUE NECESITAMOS DE TU LADO</div>
+    <h2>SEIS PASOS PARA ARRANCAR</h2>
+    <p>Con estos insumos arrancamos esta semana y tenemos los Quick Wins listos en 14 d&iacute;as.</p>
+
+    <ul class="pain-list">
+      <li data-num="1">
+        <div>
+          <strong style="color: var(--dark);">Reuni&oacute;n 60 min con Francisco Serrano (Presidente) + Lucas.</strong> Mapear prioridades y quick wins inmediatos. Con la visi&oacute;n del presidente y del equipo comercial definimos el orden correcto de los seis frentes.
+        </div>
+      </li>
+      <li data-num="2">
+        <div>
+          <strong style="color: var(--dark);">Acceso de auditor&iacute;a @forta_academy.</strong> Ver qu&eacute; contenido funciona y cu&aacute;nto se gasta en pauta. Con esto arrancamos la estrategia que lleva la academia de 1.389 a 20.000 seguidores.
+        </div>
+      </li>
+      <li data-num="3">
+        <div>
+          <strong style="color: var(--dark);">Estructura financiera del club (no montos, solo &aacute;rbol de &aacute;reas).</strong> Primer equipo, academia, colegio, staff, comercial. Con esto dise&ntilde;amos el dashboard que Francisco Serrano y los inversionistas van a ver todos los meses.
+        </div>
+      </li>
+      <li data-num="4">
+        <div>
+          <strong style="color: var(--dark);">Lista de patrocinadores actuales y categor&iacute;as vacantes.</strong> Para arrancar el kit de patrocinio con datos reales y presentarlo a nuevas marcas en los primeros 14 d&iacute;as.
+        </div>
+      </li>
+      <li data-num="5">
+        <div>
+          <strong style="color: var(--dark);">Base de datos Colegio Fortaleza CEIF (estructura, no datos personales).</strong> &iquest;Cu&aacute;ntas disciplinas? &iquest;Cu&aacute;ntos atletas por categor&iacute;a? &iquest;C&oacute;mo se registran hoy los pagos? Para dise&ntilde;ar el sistema de inscripciones que reemplaza el Excel.
+        </div>
+      </li>
+      <li data-num="6">
+        <div>
+          <strong style="color: var(--dark);">&iquest;Hay contactos internacionales activos hoy?</strong> Agentes, clubes europeos, academias de MLS con los que Fortaleza ya tenga relaci&oacute;n. Para priorizar el pipeline de conexi&oacute;n internacional desde el d&iacute;a uno.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">Siguiente paso</div>
+    <h2>FORTALEZA TIENE EL TALENTO.<br>NOSOTROS PONEMOS<br>LA INFRAESTRUCTURA.</h2>
+    <p class="cta-subtitle">
+      76 jugadores llegaron al profesionalismo con El M&eacute;todo Fortaleza. Con el sistema digital correcto, los pr&oacute;ximos 76 llegan m&aacute;s r&aacute;pido &mdash; y el club crece financieramente con ellos.
+    </p>
+    <div class="accept-buttons">
+      <a href="https://wa.me/573196020800" class="btn btn-accept" target="_blank">HABLEMOS HOY</a>
+      <a href="https://wa.me/573196020800" class="btn btn-decline" target="_blank">Tengo preguntas</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="proposal-footer">
+    <span class="footer-text">DoceProjects &middot; Emiliano Bojanini &middot; Fortaleza F&uacute;tbol Club &middot; Marzo 2026</span>
+    <span class="footer-confidential">Confidencial &middot; Lucas Jaramillo</span>
+  </footer>
+
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/573196020800" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  Escr&iacute;beme
+</a>
+
+<script>
+  (function() {
+    var STORAGE_KEY = 'fortaleza_proposal_deadline';
+    var totalMs = 12 * 60 * 60 * 1000;
+    var stored = localStorage.getItem(STORAGE_KEY);
+    var deadline;
+
+    if (stored) {
+      deadline = parseInt(stored, 10);
+      if (isNaN(deadline) || deadline < Date.now()) {
+        deadline = Date.now() + totalMs;
+        localStorage.setItem(STORAGE_KEY, deadline);
+      }
+    } else {
+      deadline = Date.now() + totalMs;
+      localStorage.setItem(STORAGE_KEY, deadline);
+    }
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      var now = Date.now();
+      var diff = deadline - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-expired">PROPUESTA EXPIRADA</div>';
+        document.getElementById('progressBar').style.width = '0%';
+        return;
+      }
+      var h = Math.floor(diff / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      var urgent = h === 0;
+      document.getElementById('cd-hours').textContent = pad(h);
+      document.getElementById('cd-minutes').textContent = pad(m);
+      document.getElementById('cd-seconds').textContent = pad(s);
+      ['cd-hours','cd-minutes','cd-seconds'].forEach(function(id) {
+        document.getElementById(id).classList.toggle('urgent', urgent);
+      });
+      var bar = document.getElementById('progressBar');
+      bar.classList.toggle('urgent', urgent);
+      bar.style.width = ((diff / totalMs) * 100) + '%';
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+</body>
+</html>

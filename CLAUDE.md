@@ -1,6 +1,6 @@
 # DoceProjects — Automatización e IA para empresas colombianas
 
-**Repo:** `mclara-martinez/doceprojects` (private)
+**Repo:** `ebojanini10/doceprojects` (private)
 **Equipo:** Emiliano Bojanini + María Clara Martínez + David Posada + Santiago Restrepo
 
 ---
@@ -78,7 +78,7 @@ WhatsApp (agente AI) → Diagnóstico tech stack
 | Loretta Puro Antojo | Discovery | `ebojanini10/loretta-cliente-bogota` |
 | Obras y Montajes | Propuesta | `ebojanini10/obras-montajes-sistema` |
 | EQR Roses | Discovery | `ebojanini10/eqr-roses-sistema`, `eqr-roses-client` |
-| Construhigiénicas | Propuesta | `mclara-martinez/construhigienicas` |
+| Construhigiénicas | Propuesta | `ebojanini10/construhigienicas` |
 | Casa Ardente | Discovery | `ebojanini10/casa-ardente-sistema`, `casa-ardente-propuesta` |
 | Paulina Arquitectura | Implementación | `ebojanini10/arquitectura-bot` |
 | Hortensia Vision | Implementación | `ebojanini10/skyflowers-hortensia-vision` |
